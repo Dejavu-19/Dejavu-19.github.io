@@ -20,22 +20,22 @@
     var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="阿里巴巴开发手册笔记 无规矩不成方圆，无规范不能协作。  这个手册可以当做开发规范使用，放在电脑中最显眼的地方，时不时就翻出来看一看，总是有收获的。 一、 编程规约(一) 命名风格 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束。  反例：name &#x2F; __name &#x2F; $name &#x2F; name &#x2F; name$ &#x2F; name__  代码中的命名严禁使用拼音与英文混合的方式，">
+  <meta name="description" content="cs61b Lecture 1See (Video) and (Code) links under each lecture here. IntroductionWhat is 61B about?   Writing code that runs efficiently  &amp;  Writing code efficiently.  Required: Solid foundation i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里巴巴开发手册笔记">
-<meta property="og:url" content="https://dejavi-19.github.io/2020/06/26/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="cs61b Lecture 1">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/07/01/cs61b%20Lecture%201/index.html">
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
-<meta property="og:description" content="阿里巴巴开发手册笔记 无规矩不成方圆，无规范不能协作。  这个手册可以当做开发规范使用，放在电脑中最显眼的地方，时不时就翻出来看一看，总是有收获的。 一、 编程规约(一) 命名风格 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束。  反例：name &#x2F; __name &#x2F; $name &#x2F; name &#x2F; name$ &#x2F; name__  代码中的命名严禁使用拼音与英文混合的方式，">
+<meta property="og:description" content="cs61b Lecture 1See (Video) and (Code) links under each lecture here. IntroductionWhat is 61B about?   Writing code that runs efficiently  &amp;  Writing code efficiently.  Required: Solid foundation i">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-25T15:01:27.421Z">
-<meta property="article:modified_time" content="2020-06-26T03:14:11.299Z">
+<meta property="article:published_time" content="2020-06-30T16:47:49.103Z">
+<meta property="article:modified_time" content="2020-06-30T16:47:49.265Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dejavi-19.github.io/2020/06/26/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="https://dejavi-19.github.io/2020/07/01/cs61b%20Lecture%201/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>阿里巴巴开发手册笔记 | Dejavu's Notebook</title>
+  <title>cs61b Lecture 1 | Dejavu's Notebook</title>
   
 
 
@@ -154,7 +154,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/26/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/01/cs61b%20Lecture%201/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,7 +167,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          阿里巴巴开发手册笔记
+          cs61b Lecture 1
         </h1>
 
         <div class="post-meta">
@@ -176,9 +176,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-06-26 00:01:27 / 修改时间：12:14:11" itemprop="dateCreated datePublished" datetime="2020-06-26T00:01:27+09:00">2020-06-26</time>
+              <time title="创建时间：2020-07-01 01:47:49" itemprop="dateCreated datePublished" datetime="2020-07-01T01:47:49+09:00">2020-07-01</time>
             </span>
 
           
@@ -192,45 +191,57 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="阿里巴巴开发手册笔记"><a href="#阿里巴巴开发手册笔记" class="headerlink" title="阿里巴巴开发手册笔记"></a>阿里巴巴开发手册笔记</h1><blockquote>
-<p>无规矩不成方圆，无规范不能协作。</p>
+        <h1 id="cs61b-Lecture-1"><a href="#cs61b-Lecture-1" class="headerlink" title="cs61b Lecture 1"></a>cs61b Lecture 1</h1><p>See (Video) and (Code) links under each lecture <a href="http://datastructur.es" target="_blank" rel="noopener">here</a>.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>What is 61B about?</strong></p>
+<blockquote>
+<p> Writing code that runs efficiently  &amp;  Writing code efficiently.</p>
 </blockquote>
-<p>这个手册可以当做开发规范使用，放在电脑中最显眼的地方，时不时就翻出来看一看，总是有收获的。</p>
-<h2 id="一、-编程规约"><a href="#一、-编程规约" class="headerlink" title="一、 编程规约"></a>一、 编程规约</h2><h3 id="一-命名风格"><a href="#一-命名风格" class="headerlink" title="(一) 命名风格"></a>(一) 命名风格</h3><ol>
-<li><p>代码中的命名均不能以<strong>下划线或美元符号</strong>开始，也不能以下划线或美元符号结束。 </p>
-<p>反例：<em>name / __name / $name / name</em> / name$ / name__</p>
-</li>
-<li><p>代码中的命名<strong>严禁使用拼音与英文混合</strong>的方式，更不允许直接使用中文的方式。 </p>
-<p>正例：renminbi / alibaba / taobao / youku / hangzhou 等国际通用的名称，可视同英文</p>
-<p>反例：DaZhePromotion [打折] / getPingfenByName() [评分] / int 某变量 = 3</p>
-</li>
-<li><p><strong>类名</strong>使用 UpperCamelCase 风格，但以下情形例外：DO / BO / DTO / VO / AO / PO / UID 等。 </p>
-<p>正例：JavaServerlessPlatform / UserDO / XmlService / TcpUdpDeal / TaPromotion</p>
-<p>反例：javaserverlessplatform / UserDo / XMLService / TCPUDPDeal / TAPromotion</p>
-</li>
-<li><p><strong>方法名、参数名、成员变量、局部变量</strong>都统一使用 lowerCamelCase 风格，必须遵 从驼峰形式。 </p>
-<p>正例： localValue / getHttpMessage() / inputUserId</p>
-</li>
-<li><p><strong>常量</strong>命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。 </p>
-<p>正例：MAX_STOCK_COUNT / CACHE_EXPIRED_TIME 反例：MAX_COUNT / EXPIRED_TIME</p>
-</li>
-<li><p><strong>抽象类</strong>命名使用 Abstract 或 Base 开头；<strong>异常类</strong>命名使用 Exception 结尾；<strong>测试类</strong>命名以它要测试的类的名称开始，以 Test 结尾。</p>
-</li>
-<li><p>类型与中括号紧挨相连来表示<strong>数组</strong>。 </p>
-<p>正例：定义整形数组 int[] arrayDemo; </p>
-<p>反例：在 main 参数中，使用 String args[]来定义</p>
-</li>
-<li><p><strong>POJO 类中布尔类型变量</strong>都不要加 is 前缀，否则部分框架解析会引起序列化错误。 说明：在本文 MySQL 规约中的建表约定第一条，表达是与否的值采用 is_xxx 的命名方式，所以，需要在 设置从 is_xxx 到 xxx 的映射关系。 </p>
-<p>反例：定义为基本数据类型 Boolean isDeleted 的属性，它的方法也是 isDeleted()，RPC 框架在反向解 析的时候，“误以为”对应的属性名称是 deleted，导致属性获取不到，进而抛出异常</p>
-</li>
-<li><p><strong>包</strong>名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使 用单数形式，但是类名如果有复数含义，类名可以使用复数形式。 </p>
-<p>正例：应用工具类包名为 com.alibaba.ai.util、类名为 MessageUtils（此规则参考 spring 的框架结构）</p>
-</li>
-<li></li>
-</ol>
-<p><a href="https://github.com/alibaba/p3c" target="_blank" rel="noopener">泰山版地址</a></p>
-<p><a href="https://alitech-private.oss-cn-beijing.aliyuncs.com/1561031481870/Java-huashanxinban.pdf?Expires=1593100530&OSSAccessKeyId=LTAIqKGWQyF6Vd3W&Signature=H%2BKr0in2dIADhQT3R1Vq0o0haPI%3D" target="_blank" rel="noopener">华山版地址</a></p>
-
+<p><strong>Required:</strong></p>
+<p>Solid foundation in programming fundamentals, including:</p>
+<p>Object oriented programming, recursion, lists, and trees.</p>
+<p><strong>Learning Philosophy</strong></p>
+<p>Practice make perfect.(eg. dancing example)</p>
+<h2 id="Course-Logistics"><a href="#Course-Logistics" class="headerlink" title="Course Logistics"></a>Course Logistics</h2><p>Course website: <a href="http://datastructur.es" target="_blank" rel="noopener">http://datastructur.es</a></p>
+<p>Mini-Textbook: Obscurantism in Java <a href="https://joshhug.gitbooks.io/obscurantism-in-java-first-edition" target="_blank" rel="noopener">https://joshhug.gitbooks.io/obscurantism-in-java-first-edition</a></p>
+<p>*<em>Phase 1: Programming Intensive Introduction to Java. *</em></p>
+<p>Weeks 1-4.One browser-based programming HW (this HW0 is optional).</p>
+<p>Three labs to introduce you to various tools (starting this week).</p>
+<p>Two projects (proj0 and proj1).</p>
+<p><strong>Phase 2: Data Structures. Weeks 5-10.</strong></p>
+<p>Incredibly important and foundational material: Expect an CS job interview to lean heavily on this part of the course.</p>
+<p>Two medium sized HWs (HW1, HW2) and one small HW (HW3).Applications and deeper insight into data structures.</p>
+<p>One large project (Proj2A/2B), due ~3/18 and ~3/22.No autograder. </p>
+<p>You’re responsible for your code’s correctness.</p>
+<p>Standard labs implement data structures (e.g. hash table).</p>
+<p>Challenge labs are more like hard puzzles using data structures.</p>
+<p><strong>Phase 3: Algorithms and Software Engineering Weeks 10-14</strong></p>
+<p>Labs: Implement a basic algorithm (e.g. quicksort).</p>
+<p>Challenge labs: Hard data structures / algorithmic puzzles.</p>
+<p>One medium sized HW: Implement an AI that solves problems using A* algorithm.</p>
+<p>Two projects:Proj2C: BearMaps. </p>
+<p>Uses data structures from Proj2A/2B and algorithm from HW4 to implement a browser-based mapping application.</p>
+<p>Proj 3: Build Your Own World: An open ended project where you build a 2D world with physics according to your own design.</p>
+<p><strong>HWs and Projects</strong></p>
+<p>4 homeworks. Due dates vary widely, see calendar.<br>Projects: Projects 1 and 2 must be done solo. </p>
+<p>0 and 3 can be done as a pair.</p>
+<p>Projects 2 and 3 will be really time consuming and difficult.</p>
+<p><strong>All code on solo projects must be your own work.</strong></p>
+<p><strong>Course Pacing</strong></p>
+<p>Optional HW0 is out.</p>
+<p>Intro to Java syntax.</p>
+<p>Will take 1-4 hours.</p>
+<p>Work with friends!</p>
+<p>Recommended that you complete before your lab.</p>
+<p>Strongly recommended that you complete by lecture Friday.</p>
+<p>Lab1 and Lab1 Setup are both available.</p>
+<p>Lab1: How to use various tools.</p>
+<p>Lab1 Setup: How to set up your home computer (maybe do before lab1).</p>
+<p>Project 0 released 1/23. </p>
+<p>Due Friday Feb 1st (10 days from start of semester).</p>
+<p>Start by Saturday if possible, especially if you’re new to Java.</p>
+<p>Exercises all the basic Java features.</p>
+<p>Allowed to work in pairs (more in lecture next time or see proj0 spec).</p>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2>
     </div>
 
     
@@ -245,13 +256,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/25/%E5%8C%85%E6%9C%BA%E5%88%B6/" rel="prev" title="包机制">
-      <i class="fa fa-chevron-left"></i> 包机制
+    <a href="/2020/07/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8BOOP/" rel="prev" title="面向对象编程OOP">
+      <i class="fa fa-chevron-left"></i> 面向对象编程OOP
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/26/Java%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92Scanner/" rel="next" title="Java用户交互Scanner">
-      Java用户交互Scanner <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -310,7 +318,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阿里巴巴开发手册笔记"><span class="nav-number">1.</span> <span class="nav-text">阿里巴巴开发手册笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-编程规约"><span class="nav-number">1.1.</span> <span class="nav-text">一、 编程规约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-命名风格"><span class="nav-number">1.1.1.</span> <span class="nav-text">(一) 命名风格</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-Lecture-1"><span class="nav-number">1.</span> <span class="nav-text">cs61b Lecture 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Course-Logistics"><span class="nav-number">1.2.</span> <span class="nav-text">Course Logistics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-World"><span class="nav-number">1.3.</span> <span class="nav-text">Hello World</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
