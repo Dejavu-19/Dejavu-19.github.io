@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Stay gold">
@@ -116,12 +116,37 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+    <a href="/%E9%A6%96%E9%A1%B5/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/1/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
 
   </li>
   </ul>
@@ -154,7 +179,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/01/cs61b%20Lecture%201/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -174,8 +199,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-07-01 01:47:49" itemprop="dateCreated datePublished" datetime="2020-07-01T01:47:49+09:00">2020-07-01</time>
+              <time title="创建时间：2020-07-01 01:47:49 / 修改时间：12:55:48" itemprop="dateCreated datePublished" datetime="2020-07-01T01:47:49+09:00">2020-07-01</time>
             </span>
 
           
@@ -239,7 +265,62 @@
 <p>Start by Saturday if possible, especially if you’re new to Java.</p>
 <p>Exercises all the basic Java features.</p>
 <p>Allowed to work in pairs (more in lecture next time or see proj0 spec).</p>
-<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>Java is an object oriented language with strict requirements:</p>
+<p>Every Java file must contain a class declaration.*</p>
+<p><strong>All code</strong> lives inside a class*, even helper functions, global constants, etc.</p>
+<p>To run a Java program, you typically define a main method using    <strong><em>public static void main(String[] args)</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cs61B;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">helloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello world"</span>);<span class="comment">//分号semicolon</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.In java all codemust be part of a class.</span></span><br><span class="line"><span class="comment">2.Classes are defined with "public class classname".</span></span><br><span class="line"><span class="comment">3.We use curly braces&#123;&#125; to delineate the beginning and endng of things.</span></span><br><span class="line"><span class="comment">4.We must end line with semicolon.</span></span><br><span class="line"><span class="comment">5.The code we want to run must be inside</span></span><br><span class="line"><span class="comment">public static void main(String[] args).</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Static Typing</strong></p>
+<p>Java is statically typed!All variables, parameters, and methods must have a declared type.</p>
+<p>That type can never change.</p>
+<p>Expressions also have a type, e.g. “larger(5, 10) + 3” has type int.</p>
+<p>The compiler checks that all the types in your program are compatible <strong>before the program ever runs</strong>!e.g. </p>
+<ul>
+<li><p>String x = larger(5, 10) + 3 will fail to compile.</p>
+</li>
+<li><p>This is unlike a language like Python, where type checks are performed DURING execution.</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cs61B;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloNumbers</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(x&lt;<span class="number">10</span>)&#123;</span><br><span class="line">            System.out.println(x);</span><br><span class="line">            x += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.Before java variables can be used, they must be declared.</span></span><br><span class="line"><span class="comment">2.Java variables must have a specific type.</span></span><br><span class="line"><span class="comment">3.Java variable types can never change.</span></span><br><span class="line"><span class="comment">4.Types are verified before the code even runs!!!</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Declaring Functions</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cs61B;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LargerDemo</span> </span>&#123;</span><br><span class="line">    <span class="comment">//Returns the larger of x and y.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">larger</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &gt; y)&#123;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(larger(-<span class="number">5</span>,<span class="number">20</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.Functions must be declared as a part of a class in java.</span></span><br><span class="line"><span class="comment">    a function that is a part of class is called a "method"</span></span><br><span class="line"><span class="comment">    so in java all functions are methods.</span></span><br><span class="line"><span class="comment">2.To define a function in java ,we use "public static".</span></span><br><span class="line"><span class="comment">    we will see alternate ways of defining functions later.</span></span><br><span class="line"><span class="comment">3.All parameters of a function must have a declared type.</span></span><br><span class="line"><span class="comment">    Function in java only return one value!!!</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Reflections on Static Typing</strong></p>
+<p><strong>Good:</strong></p>
+<ol>
+<li><p>Easier to follow what the code does!!</p>
+</li>
+<li><p>It lets you catch one type of mistake beforehand.</p>
+</li>
+</ol>
+<ul>
+<li><p>Customers never see type erorrs.</p>
+</li>
+<li><p>You the programmer immediately catch one type of error.</p>
+</li>
+</ul>
+<ol start="3">
+<li>More efficient under the hood.</li>
+</ol>
+<p><strong>Bad:</strong></p>
+<ol>
+<li>Tedious!</li>
+</ol>
+<ul>
+<li><p>The code is verbose</p>
+</li>
+<li><p>Code is less general and making it general takes lots more code.</p>
+</li>
+</ul>
+<h2 id="HW0-Lab1-Lab1B-optional"><a href="#HW0-Lab1-Lab1B-optional" class="headerlink" title="HW0,Lab1,Lab1B(optional):"></a><a href="https://sp19.datastructur.es/materials/hw/hw0/hw0" target="_blank" rel="noopener">HW0</a>,Lab1,Lab1B(optional):</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cs61B;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Ex1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                System.out.print(<span class="string">"*"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
       
     </div>
 
@@ -261,7 +342,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8BOOP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -329,7 +410,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/30/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -392,7 +473,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/30/%E6%95%B0%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -510,7 +591,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/30/Java%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -590,7 +671,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/27/%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -618,7 +699,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-30 10:53:10" itemprop="dateModified" datetime="2020-06-30T10:53:10+09:00">2020-06-30</time>
+                <time title="修改时间：2020-07-01 12:55:20" itemprop="dateModified" datetime="2020-07-01T12:55:20+09:00">2020-07-01</time>
               </span>
 
           
@@ -710,7 +791,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/26/Java%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92Scanner/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -795,7 +876,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/26/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -891,7 +972,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/25/%E5%8C%85%E6%9C%BA%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -975,7 +1056,7 @@
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/06/25/%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E5%88%9D%E8%AF%86Math%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/80699976_p0_master1200.jpg">
       <meta itemprop="name" content="Dejavu">
       <meta itemprop="description" content="Stay gold">
     </span>
@@ -1088,6 +1169,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/80699976_p0_master1200.jpg">
   <p class="site-author-name" itemprop="name">Dejavu</p>
   <div class="site-description" itemprop="description">Stay gold</div>
 </div>
@@ -1110,6 +1193,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
 
 
 
@@ -1131,7 +1219,7 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
