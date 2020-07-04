@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="cs61b week2References, Recursion, and Lists2.1 Primitive TypesMystery of WalrusThe code below will both change the weight of Walrus a and b. 123456Walrus a &#x3D; new Walrus(1000, 8.3);Walrus b;b &#x3D; a;b.wei">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs61b week2">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/07/04/cs61b%20week2/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="cs61b week2References, Recursion, and Lists2.1 Primitive TypesMystery of WalrusThe code below will both change the weight of Walrus a and b. 123456Walrus a &#x3D; new Walrus(1000, 8.3);Walrus b;b &#x3D; a;b.wei">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-04T13:58:38.529Z">
+<meta property="article:modified_time" content="2020-07-04T16:57:10.723Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="cs61b">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2020/07/04/cs61b%20week2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>cs61b week2 | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/04/cs61b%20week2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cs61b week2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-04 22:58:38" itemprop="dateCreated datePublished" datetime="2020-07-04T22:58:38+09:00">2020-07-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-05 01:57:10" itemprop="dateModified" datetime="2020-07-05T01:57:10+09:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs/" itemprop="url" rel="index"><span itemprop="name">cs</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="cs61b-week2"><a href="#cs61b-week2" class="headerlink" title="cs61b week2"></a>cs61b week2</h1><h2 id="References-Recursion-and-Lists"><a href="#References-Recursion-and-Lists" class="headerlink" title="References, Recursion, and Lists"></a>References, Recursion, and Lists</h2><h3 id="2-1-Primitive-Types"><a href="#2-1-Primitive-Types" class="headerlink" title="2.1 Primitive Types"></a>2.1 Primitive Types</h3><h4 id="Mystery-of-Walrus"><a href="#Mystery-of-Walrus" class="headerlink" title="Mystery of Walrus"></a>Mystery of Walrus</h4><p>The code below will both change the weight of Walrus a and b.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Walrus a = <span class="keyword">new</span> Walrus(<span class="number">1000</span>, <span class="number">8.3</span>);</span><br><span class="line">Walrus b;</span><br><span class="line">b = a;</span><br><span class="line">b.weight = <span class="number">5</span>;</span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></table></figure>
+
+<p>However, the code below will only change integer x to 2.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> y;</span><br><span class="line">y = x;</span><br><span class="line">x = <span class="number">2</span>;</span><br><span class="line">System.out.println(<span class="string">"x is: "</span> + x);</span><br><span class="line">System.out.println(<span class="string">"y is: "</span> + y);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Bits"><a href="#Bits" class="headerlink" title="Bits"></a>Bits</h4><p>Information are stored in memory of computers, which is a sequence of ones and zeros. </p>
+<p>The identical sequence may have different meanings, since each Java type has a different way to interpret bits. </p>
+<p>For instance, <code>&#39;01001000&#39;</code> may represent integer <code>72</code> or character <code>&#39;H&#39;</code>.</p>
+<ul>
+<li>72 is often stored as<code>101001000</code></li>
+<li>205.75 is often stored as <code>01000011 01001101 11000000 00000000</code></li>
+<li>The letter H is often stored as <code>01001000</code> (same as 72)</li>
+<li>The <code>true</code> value is often stored as <code>00000001</code></li>
+</ul>
+<p>Java has 8 <strong>primitive types</strong>: <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>boolean</code>, <code>char</code>. </p>
+<p>Computers set aside exactly enough bits to hold a thing of a certain type when you declare a variable of that type. For example, declaring an int sets aside a box of 32 bit, and a double sets aside a box of 64 bits.</p>
+<ul>
+<li>Java creates an internal table that maps each variable name to a location.</li>
+<li>Java does not write anything into the boxes, and does not allow access to an uninitialiized variable.</li>
+</ul>
+<h3 id="Reference-Types"><a href="#Reference-Types" class="headerlink" title="Reference Types"></a>Reference Types</h3><p>8 primitive types: <code>byte</code>, <code>short</code>,<code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>boolean</code>, <code>char</code>.</p>
+<p>Every type not included in the primitive types is a <strong>reference type</strong>, such as <code>Array</code>.</p>
+<h4 id="Object-Instantiation"><a href="#Object-Instantiation" class="headerlink" title="Object Instantiation"></a>Object Instantiation</h4><h4 id="Reference-Variable-Declaration"><a href="#Reference-Variable-Declaration" class="headerlink" title="Reference Variable Declaration"></a>Reference Variable Declaration</h4><p>When we declare a variable of any <code>reference type</code>:</p>
+<ul>
+<li>Java allocates a box of size 64 bits.</li>
+<li>These bits can be either set to Null or the address of a specific instance of that class (returned by <code>new</code>).</li>
+</ul>
+<h3 id="The-Golden-Rule-of-Equals-GRoE"><a href="#The-Golden-Rule-of-Equals-GRoE" class="headerlink" title="The Golden Rule of Equals (GRoE)"></a>The Golden Rule of Equals (GRoE)</h3><p>Given variables y and x:</p>
+<ul>
+<li><code>y = x</code> <strong>copies</strong> all the bits from x into y.</li>
+</ul>
+<p>There are 9 types of variables in Java:</p>
+<ul>
+<li><p>8 primitive types (byte, short, int, long, float, double, boolean, char).</p>
+</li>
+<li><p>The 9th type is <code>references</code> to Objects (an arrow). References may be null.</p>
+</li>
+</ul>
+<h4 id="Box-and-Pointer-Notation"><a href="#Box-and-Pointer-Notation" class="headerlink" title="Box and Pointer Notation"></a>Box and Pointer Notation</h4><p>Just as before, it’s hard to interpret a bunch of bits inside a reference variable, so we’ll create a simplified box notation for reference variable as follows:</p>
+<ul>
+<li>If an address is all zeros, we will represent it with <code>null</code>.</li>
+<li>A non-zero address will be represented by an <strong>arrow</strong> pointing at an object instantiation.</li>
+</ul>
+<h4 id="Parameter-Passing"><a href="#Parameter-Passing" class="headerlink" title="Parameter Passing"></a>Parameter Passing</h4><h4 id="Test-Your-Understanding"><a href="#Test-Your-Understanding" class="headerlink" title="Test Your Understanding"></a>Test Your Understanding</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PassByValueFigure</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">           Walrus walrus = <span class="keyword">new</span> Walrus(<span class="number">3500</span>, <span class="number">10.5</span>);</span><br><span class="line">           <span class="keyword">int</span> x = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">           doStuff(walrus, x);</span><br><span class="line">           System.out.println(walrus);</span><br><span class="line">           System.out.println(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doStuff</span><span class="params">(Walrus W, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">           W.weight = W.weight - <span class="number">100</span>;</span><br><span class="line">           x = x - <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Does the call to <code>doStuff</code> have an effect on walrus and/or x? </p>
+<h3 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h3><p>Arrays are also objects, which are instantiated using the <code>new</code> keyword.</p>
+<ul>
+<li>Creates a 64 bit box for storing an array address. (Declaration)</li>
+<li>Creates a new array object. (Instantiation)</li>
+<li>Puts the address of this new object into the 64 bit box. (Assignment)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] x; <span class="comment">// Declaration</span></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">// Instantiation</span></span><br><span class="line"><span class="keyword">int</span>[] x = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">// Declaration, Instantiation, Assignment</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="IntLists"><a href="#IntLists" class="headerlink" title="IntLists"></a>IntLists</h3><p>Here’s a very basic linked list:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntList</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> first;</span><br><span class="line">    <span class="keyword">public</span> IntList rest;        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IntList</span><span class="params">(<span class="keyword">int</span> f, IntList r)</span> </span>&#123;</span><br><span class="line">        first = f;</span><br><span class="line">        rest = r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>There are two ways to create a list of the numbers 5, 10, and 15: build it forward or backward.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntList L = <span class="keyword">new</span> IntList(<span class="number">5</span>, <span class="keyword">null</span>);</span><br><span class="line">L.rest = <span class="keyword">new</span> IntList(<span class="number">10</span>, <span class="keyword">null</span>);</span><br><span class="line">L.rest.rest = <span class="keyword">new</span> IntList(<span class="number">15</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntList L = <span class="keyword">new</span> IntList(<span class="number">15</span>, <span class="keyword">null</span>);</span><br><span class="line">L = <span class="keyword">new</span> IntList(<span class="number">10</span>, L);</span><br><span class="line">L = <span class="keyword">new</span> IntList(<span class="number">5</span>, L);</span><br></pre></td></tr></table></figure>
+
+<p>We will add methods to the IntList class to let it perform basic tasks.</p>
+<h4 id="size-and-iterativeSize"><a href="#size-and-iterativeSize" class="headerlink" title="size() and iterativeSize()"></a>size() and iterativeSize()</h4><p>We could either use recursive or iterative methods to get the <code>size</code> of the IntList.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.rest == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rest.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">iterativeSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    IntList p = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">int</span> totalSize = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span>) &#123;</span><br><span class="line">        totalSize += <span class="number">1</span>;</span><br><span class="line">        p = p .rest;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> totalSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h4><p>Write a method <code>get(int i)</code> that returns the ith item of the list.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.first;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.rest.get(i - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs61b/" rel="tag"># cs61b</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/03/%E5%89%91%E6%8C%87offer03/" rel="prev" title="剑指offer03">
+      <i class="fa fa-chevron-left"></i> 剑指offer03
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week2"><span class="nav-number">1.</span> <span class="nav-text">cs61b week2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#References-Recursion-and-Lists"><span class="nav-number">1.1.</span> <span class="nav-text">References, Recursion, and Lists</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Primitive-Types"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.1 Primitive Types</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mystery-of-Walrus"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Mystery of Walrus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bits"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Bits</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference-Types"><span class="nav-number">1.1.2.</span> <span class="nav-text">Reference Types</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-Instantiation"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Object Instantiation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference-Variable-Declaration"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Reference Variable Declaration</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Golden-Rule-of-Equals-GRoE"><span class="nav-number">1.1.3.</span> <span class="nav-text">The Golden Rule of Equals (GRoE)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Box-and-Pointer-Notation"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Box and Pointer Notation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parameter-Passing"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Parameter Passing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Test-Your-Understanding"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Test Your Understanding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arrays"><span class="nav-number">1.1.4.</span> <span class="nav-text">Arrays</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IntLists"><span class="nav-number">1.1.5.</span> <span class="nav-text">IntLists</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#size-and-iterativeSize"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">size() and iterativeSize()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">get()</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
