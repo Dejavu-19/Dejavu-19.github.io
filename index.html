@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-05 01:57:10" itemprop="dateModified" datetime="2020-07-05T01:57:10+09:00">2020-07-05</time>
+                <time title="修改时间：2020-07-05 11:27:14" itemprop="dateModified" datetime="2020-07-05T11:27:14+09:00">2020-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,54 +243,14 @@
 <li>Java creates an internal table that maps each variable name to a location.</li>
 <li>Java does not write anything into the boxes, and does not allow access to an uninitialiized variable.</li>
 </ul>
-<h3 id="Reference-Types"><a href="#Reference-Types" class="headerlink" title="Reference Types"></a>Reference Types</h3><p>8 primitive types: <code>byte</code>, <code>short</code>,<code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>boolean</code>, <code>char</code>.</p>
-<p>Every type not included in the primitive types is a <strong>reference type</strong>, such as <code>Array</code>.</p>
-<h4 id="Object-Instantiation"><a href="#Object-Instantiation" class="headerlink" title="Object Instantiation"></a>Object Instantiation</h4><h4 id="Reference-Variable-Declaration"><a href="#Reference-Variable-Declaration" class="headerlink" title="Reference Variable Declaration"></a>Reference Variable Declaration</h4><p>When we declare a variable of any <code>reference type</code>:</p>
-<ul>
-<li>Java allocates a box of size 64 bits.</li>
-<li>These bits can be either set to Null or the address of a specific instance of that class (returned by <code>new</code>).</li>
-</ul>
-<h3 id="The-Golden-Rule-of-Equals-GRoE"><a href="#The-Golden-Rule-of-Equals-GRoE" class="headerlink" title="The Golden Rule of Equals (GRoE)"></a>The Golden Rule of Equals (GRoE)</h3><p>Given variables y and x:</p>
-<ul>
-<li><code>y = x</code> <strong>copies</strong> all the bits from x into y.</li>
-</ul>
-<p>There are 9 types of variables in Java:</p>
-<ul>
-<li><p>8 primitive types (byte, short, int, long, float, double, boolean, char).</p>
-</li>
-<li><p>The 9th type is <code>references</code> to Objects (an arrow). References may be null.</p>
-</li>
-</ul>
-<h4 id="Box-and-Pointer-Notation"><a href="#Box-and-Pointer-Notation" class="headerlink" title="Box and Pointer Notation"></a>Box and Pointer Notation</h4><p>Just as before, it’s hard to interpret a bunch of bits inside a reference variable, so we’ll create a simplified box notation for reference variable as follows:</p>
-<ul>
-<li>If an address is all zeros, we will represent it with <code>null</code>.</li>
-<li>A non-zero address will be represented by an <strong>arrow</strong> pointing at an object instantiation.</li>
-</ul>
-<h4 id="Parameter-Passing"><a href="#Parameter-Passing" class="headerlink" title="Parameter Passing"></a>Parameter Passing</h4><h4 id="Test-Your-Understanding"><a href="#Test-Your-Understanding" class="headerlink" title="Test Your Understanding"></a>Test Your Understanding</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PassByValueFigure</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">           Walrus walrus = <span class="keyword">new</span> Walrus(<span class="number">3500</span>, <span class="number">10.5</span>);</span><br><span class="line">           <span class="keyword">int</span> x = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">           doStuff(walrus, x);</span><br><span class="line">           System.out.println(walrus);</span><br><span class="line">           System.out.println(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doStuff</span><span class="params">(Walrus W, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">           W.weight = W.weight - <span class="number">100</span>;</span><br><span class="line">           x = x - <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Does the call to <code>doStuff</code> have an effect on walrus and/or x? </p>
-<h3 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h3><p>Arrays are also objects, which are instantiated using the <code>new</code> keyword.</p>
-<ul>
-<li>Creates a 64 bit box for storing an array address. (Declaration)</li>
-<li>Creates a new array object. (Instantiation)</li>
-<li>Puts the address of this new object into the 64 bit box. (Assignment)</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] x; <span class="comment">// Declaration</span></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">// Instantiation</span></span><br><span class="line"><span class="keyword">int</span>[] x = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">// Declaration, Instantiation, Assignment</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="IntLists"><a href="#IntLists" class="headerlink" title="IntLists"></a>IntLists</h3><p>Here’s a very basic linked list:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntList</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> first;</span><br><span class="line">    <span class="keyword">public</span> IntList rest;        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IntList</span><span class="params">(<span class="keyword">int</span> f, IntList r)</span> </span>&#123;</span><br><span class="line">        first = f;</span><br><span class="line">        rest = r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>There are two ways to create a list of the numbers 5, 10, and 15: build it forward or backward.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntList L = <span class="keyword">new</span> IntList(<span class="number">5</span>, <span class="keyword">null</span>);</span><br><span class="line">L.rest = <span class="keyword">new</span> IntList(<span class="number">10</span>, <span class="keyword">null</span>);</span><br><span class="line">L.rest.rest = <span class="keyword">new</span> IntList(<span class="number">15</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntList L = <span class="keyword">new</span> IntList(<span class="number">15</span>, <span class="keyword">null</span>);</span><br><span class="line">L = <span class="keyword">new</span> IntList(<span class="number">10</span>, L);</span><br><span class="line">L = <span class="keyword">new</span> IntList(<span class="number">5</span>, L);</span><br></pre></td></tr></table></figure>
-
-<p>We will add methods to the IntList class to let it perform basic tasks.</p>
-<h4 id="size-and-iterativeSize"><a href="#size-and-iterativeSize" class="headerlink" title="size() and iterativeSize()"></a>size() and iterativeSize()</h4><p>We could either use recursive or iterative methods to get the <code>size</code> of the IntList.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.rest == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rest.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">iterativeSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    IntList p = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">int</span> totalSize = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span>) &#123;</span><br><span class="line">        totalSize += <span class="number">1</span>;</span><br><span class="line">        p = p .rest;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> totalSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h4><p>Write a method <code>get(int i)</code> that returns the ith item of the list.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.first;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.rest.get(i - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/04/cs61b%20week2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -658,7 +618,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-04 11:03:23" itemprop="dateModified" datetime="2020-07-04T11:03:23+09:00">2020-07-04</time>
+                <time title="修改时间：2020-07-05 11:34:06" itemprop="dateModified" datetime="2020-07-05T11:34:06+09:00">2020-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -682,13 +642,13 @@
 
       
           <h1 id="剑指offer01"><a href="#剑指offer01" class="headerlink" title="剑指offer01"></a>剑指offer01</h1><h2 id="面试的流程"><a href="#面试的流程" class="headerlink" title="面试的流程"></a>面试的流程</h2><h3 id="面试官谈面试"><a href="#面试官谈面试" class="headerlink" title="面试官谈面试"></a>面试官谈面试</h3><blockquote>
-<p>应届生—–最看重的还是编程语言、数据结构与算法的基本功。要求新人拥有厚重的项目经验是不太现实的，project只能作为锦上添花的事。最关键的还是手撕代码的能力，以及与面试官交流时体现的沟通能力、学习能力和逻辑思维能力。</p>
+<p>应届生—–最看重的还是<strong>编程语言、数据结构与算法的基本功</strong>。要求新人拥有厚重的项目经验是不太现实的，<code>project</code>只能作为锦上添花的事。最关键的还是手撕代码的能力，以及与面试官交流时体现的沟通能力、学习能力和逻辑思维能力。</p>
 </blockquote>
 <blockquote>
-<p>不要基于编写代码，最好跟面试官多沟通，然后开始做一些整体的规划和设计，有助于编写高质量和高可读性的代码。写完后不要马上提交，最好自己检查并借助一些测试用例来测试几遍代码，找出可能出现的错误。</p>
+<p>不要基于编写代码，最好<strong>跟面试官多沟通</strong>，然后开始做一些<strong>整体的规划和设计</strong>，有助于编写高质量和高可读性的代码。写完后不要马上提交，最好自己检查并借助一些<code>测试用例</code>来测试几遍代码，找出可能出现的错误。</p>
 </blockquote>
 <blockquote>
-<p>应聘者要事先做好准备，对公司近期动向，项目情况有所了解，对所应聘的岗位怀有热情。另外可以提前准备好一些问题问面试官。</p>
+<p>应聘者要事先做好准备，对<strong>公司近期动向，项目情况</strong>有所了解，对所应聘的岗位怀有热情。另外可以提前准备好一些<code>问题</code>问面试官。</p>
 </blockquote>
 <h3 id="面试的三种形式"><a href="#面试的三种形式" class="headerlink" title="面试的三种形式"></a>面试的三种形式</h3><h4 id="1-电话面试："><a href="#1-电话面试：" class="headerlink" title="1. 电话面试："></a>1. <strong>电话面试</strong>：</h4><p>   没有肢体语言、面部表情，清楚表达自己的想法会比现场面试更难。<strong>要用形象化的语言尽可能把技术细节说清楚。</strong>eg. 现场面试二叉树可以画图，电话的话需要把哪些节点，每个节点左右节点分别是什么说清楚。</p>
 <p>   对应聘者英语听力能力提出了更高要求。<strong>如果没有听清楚或听懂面试官问题，要敢于说Pardon</strong>，不要不懂装懂、答非所问，这是大忌。不确定时一定要大胆向面试官多提问，知道弄清楚面试官意图为止。</p>
@@ -714,107 +674,14 @@
 <p>现场面试是面试流程中的重头戏，通过应聘者的语言和行动考察沟通能力、学习能力、编程能力等综合能力。</p>
 </li>
 </ul>
-<h3 id="面试的三个环节"><a href="#面试的三个环节" class="headerlink" title="面试的三个环节"></a>面试的三个环节</h3><p>通常每一轮面试分为三个环节：</p>
-<ul>
-<li>行为面试：参照resume了解应聘者过往经验。</li>
-<li>技术面试：要求应聘者现场写代码。</li>
-<li>应聘者提问：问几个自己感兴趣的问题。</li>
-</ul>
-<h4 id="1-行为面试环节"><a href="#1-行为面试环节" class="headerlink" title="1. 行为面试环节"></a>1. <strong>行为面试环节</strong></h4><p>面试开始5~10min内通常为行为面试。面试官会注意应聘者的性格特点，深入了解简历项目。</p>
-<p>不少面试官会让应聘者做一个简短的自我介绍。由于对方已经有你的resume，用30s~1min的时间介绍自己的学习、工作经历即可。如果面试官对你某一段经历或项目感兴趣会针对性的提几个问题详细了解。</p>
-<ul>
-<li><p><strong>项目经验</strong></p>
-<p>自我介绍后，面试官会对应resume去了解他感兴趣的项目。采用<strong>STAR模型</strong>。</p>
-<p>Situation————Task————Action————Result</p>
-<p>简短项目背景————自己完成的任务————为了任务做了哪些部分用了什么技术————自己的贡献与量化数字体现</p>
-<ul>
-<li><p><strong>Situation简短项目背景。</strong>比如项目规模，开发的软件功能、目标用户等。</p>
-</li>
-<li><p><strong>Task自己完成的任务。</strong>这个要写详细，让面试官对自己的工作一目了然。用词上注意区分<code>参与</code>和<code>负责</code>，</p>
-<p>面试官如果看到<code>负责</code>可能会问你项目总体框架设计、核心算法、团队合作等问题。这些问题对于仅是简单<code>参与</code>的人来说是很难回答的，会让面试官认为你不诚实，印象分减去很多。</p>
-</li>
-<li><p><strong>Action做了哪些部分工作，是怎么做的。</strong>这里可以详细介绍。eg 系统设计——可以介绍系统架构的特点；软件开发——可以写基于什么工具在哪个平台下应用了哪些技术；软件测试——手工测试还是自动化测试、白盒测试还是黑箱测试等等。</p>
-</li>
-<li><p><strong>Result自己的贡献。</strong>信息可以写的具体一些，最好用数字加以说明。eg 功能开发，则可以说按时完成了多少功能；优化，性能提高百分比是多少；维护，可以说修改了多少个bug。</p>
-</li>
-</ul>
-<p>如果上述模型信息还不够清晰，面试官则可能问几个相关的问题：</p>
-<ul>
-<li><p>你在项目中碰到的最大的问题是什么？是怎么解决的？</p>
-</li>
-<li><p>从这项目中你学到了什么？</p>
-</li>
-<li><p>什么时候会和其他成员有什么样的冲突，你们是怎么解决冲突的？</p>
-<p>对每一个项目精力都做好相应的充足准备，才能做到游刃有余。介绍项目经验时(包括resume和面试时口头介绍)不要详述项目背景，都要突出自己完成的工作与取得的成绩。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>应聘者掌握的技能</strong></p>
-<p>描述即能掌握程度时，注意<code>了解</code>、<code>熟悉</code>和<code>精通</code>的区别。</p>
-<ul>
-<li><p><code>了解</code>——上过课看过书，但是没有做过实际项目，不建议列在简历里。</p>
-</li>
-<li><p><code>熟悉</code>——简历中描述的技能的掌握程度应该是<code>熟悉</code>，对应届生而言，毕业设计中用到的技能可以用<code>熟悉</code>来描述；实际项目长时间的某项技术，可以通过查阅文档独立解决大部分问题；已经工作的，在项目开发中所用到的都可以成为<code>熟悉</code>。</p>
-</li>
-<li><p><code>精通</code>——可以轻松的回答这个领域中的绝大多数问题</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-技术面试环节"><a href="#2-技术面试环节" class="headerlink" title="2.技术面试环节"></a>2.技术面试环节</h4><p>通过简历及行为面试大体了解背景后，接下里就是技术面试。一轮1h的面试技术面试通常会占40-50min，这是面试的重头戏，对面试结果起决定性作用。</p>
-<p>关注应聘者五个素质：</p>
-<ul>
-<li>基础知识扎实全面，包括编程语言、数据结构、算法等</li>
-<li>能写正确的bug-free、完整的、鲁棒的代码</li>
-<li>能思路清晰得分析、解决复杂问题</li>
-<li>能从时间和空间两方面优化算法效率</li>
-<li>学习、沟通、发散思维能力等</li>
-</ul>
-<p>简单问题——注意细节，写出完整的、鲁棒的代码</p>
-<p>复杂问题——可以通过画图、举具体例子和分析复杂度理清楚思路后再动手编程，力求最优解</p>
-<p>主动提问——弄清楚题目要求，展现自己的沟通能力</p>
-<p>当面试官前后问的两个有相关性时候，尽量把解决前面问题的思路迁移到后面问题中，展示自己良好的学习能力。</p>
-<ol>
-<li><p>扎实的基础知识：编程语言、数据结构和算法。</p>
-<p>首先，熟练掌握1到2门编程语言。</p>
-<p>其次，面试前熟练掌握链表、树、栈、队列和哈希表等数据结构 eg.重点注意<strong>链表插入删除节点</strong>，<strong>二叉树的各种遍历方法的循环和递归写法</strong>。</p>
-<p>最后，了解各种查找排序等算法基础上，eg. 重点注意<strong>二分查找、归并排序和快速排序</strong>，少数注重算法的公司如百度、谷歌还会要求应聘者熟练掌握动态规划和贪婪算法</p>
-</li>
-<li><p>高质量的代码</p>
-<p>边界调节、特殊输入等细枝末节要额外关注。要把问题方方面面都考虑到做好defence。</p>
-<p>最好的解决办法是动手写代码前想好测试用例。只有把所有可能的事先输入都想好了才能针对各种情况做出相应处理。</p>
-<p>面试官出了应聘者能写出具有基本功能的代码外，还会关注应聘者是否考虑了边界条件、特殊输入(如nullptr指针、空字符串等)及错误处理。</p>
-</li>
-<li><p>清晰的思路</p>
-<p>几个方法帮助形成思路：</p>
-<p><code>举例</code>举一两个例子模拟操作的过程；</p>
-<p><code>画图</code>尝试用图形表示抽象的数据结构如链表、二叉树；</p>
-<p><code>分解</code>最后可以试着把复杂的问题分解成若干个简单的子问题，如基于递归思路的分治法、动态规划等。</p>
-</li>
-<li><p>优化效率的能力</p>
-<p>想优化代码的效率，需要熟知各种数据结构的优缺点，并选择合适的数据结构解决问题；以及常用的算法(排序和查找)。</p>
-</li>
-<li><p>优秀的综合能力</p>
-<p>Soft Skills语言表达能力，介绍项目经验或者算法思路时观点明确、逻辑清晰=<code>沟通能力强</code>。</p>
-<p>最近看什么书，学到什么新知识=<code>学习能力强</code>。抛出一个新概念(丑数)，看应聘者能不能经过提问、思考、再提问总结出规律并找到解决方案。</p>
-<p><code>知识迁移能力</code>、<code>抽象建模能力</code>、<code>发散思维能力</code>等</p>
-</li>
-</ol>
-<h4 id="应聘者提问环节"><a href="#应聘者提问环节" class="headerlink" title="应聘者提问环节"></a>应聘者提问环节</h4><p>每一轮面试提前准备1~2个问题</p>
-<p>不要问和自己职位没关系的问题，不要问薪水，不要问面试结果。</p>
-<p>推荐问职位或项目相关的问题：</p>
-<ul>
-<li>提前搜集信息，对公司成立时间、主要业务、职位要求都了然于胸</li>
-<li>面试过程中留心面试官说过的话，其中可能包含其他渠道无法得知的信息，比如项目进展等，</li>
-</ul>
-<h3 id="03-剑指-Offer-03-数组中重复的数字"><a href="#03-剑指-Offer-03-数组中重复的数字" class="headerlink" title="03. 剑指 Offer 03. 数组中重复的数字"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/" target="_blank" rel="noopener">03. 剑指 Offer 03. 数组中重复的数字</a></h3><p>找出数组中重复的数字。</p>
-<p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
-<p>示例 1：</p>
-<p>输入：<br>[2, 3, 1, 0, 2, 5, 3]<br>输出：2 或 3 </p>
-<p>限制：</p>
-<p>2 &lt;= n &lt;= 100000</p>
-<p>这道题在原书上绝对不是简单级别。<br>它考察的是程序员的沟通能力，先问面试官要时间/空间需求！<br>只是时间优先就用字典，<br>还有空间要求，就用指针+原地排序数组，<br>如果面试官要求空间O(1)并且不能修改原数组，还得写成二分法！</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/01/%E5%89%91%E6%8C%87offer/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
