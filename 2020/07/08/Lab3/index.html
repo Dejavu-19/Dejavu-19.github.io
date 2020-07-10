@@ -22,22 +22,21 @@
     var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Stay gold">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://dejavi-19.github.io/tags/index.html">
+  <meta name="description" content="Lab 3: Unit Testing with JUnit, DebuggingIntroductionUnit Testing, JUnit, the 61B style checker, and get a bit more debugging experience. What is JUnit?JUnit is a Unit Testing Framework for Java. JUni">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lab3">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/07/08/Lab3/index.html">
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
-<meta property="og:description" content="Stay gold">
+<meta property="og:description" content="Lab 3: Unit Testing with JUnit, DebuggingIntroductionUnit Testing, JUnit, the 61B style checker, and get a bit more debugging experience. What is JUnit?JUnit is a Unit Testing Framework for Java. JUni">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-13T10:21:23.000Z">
-<meta property="article:modified_time" content="2020-07-03T01:50:28.480Z">
+<meta property="article:published_time" content="2020-07-08T06:33:30.037Z">
+<meta property="article:modified_time" content="2020-07-08T07:48:34.002Z">
 <meta property="article:author" content="Dejavu">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
-<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dejavi-19.github.io/tags/">
+<link rel="canonical" href="https://dejavi-19.github.io/2020/07/08/Lab3/">
 
 
 <script id="page-configurations">
@@ -45,13 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>tags | Dejavu's Notebook
-</title>
+  <title>Lab3 | Dejavu's Notebook</title>
   
 
 
@@ -167,51 +165,106 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/08/Lab3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lab3
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2020-07-08 15:33:30 / 修改时间：16:48:34" itemprop="dateCreated datePublished" datetime="2020-07-08T15:33:30+09:00">2020-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Lab-3-Unit-Testing-with-JUnit-Debugging"><a href="#Lab-3-Unit-Testing-with-JUnit-Debugging" class="headerlink" title="Lab 3: Unit Testing with JUnit, Debugging"></a>Lab 3: Unit Testing with JUnit, Debugging</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong><code>Unit Testing</code></strong>, <strong><code>JUnit</code></strong>, the 61B style checker, and get a bit more <strong><code>debugging experience</code></strong>.</p>
+<h4 id="What-is-JUnit"><a href="#What-is-JUnit" class="headerlink" title="What is JUnit?"></a>What is JUnit?</h4><p><a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a> is a Unit Testing Framework for Java.</p>
+<h4 id="JUnit-Syntax"><a href="#JUnit-Syntax" class="headerlink" title="JUnit Syntax"></a>JUnit Syntax</h4><p>JUnit tests are written in Java.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    assertEquals(&lt;expected&gt;, &lt;actual&gt;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>assertEquals</code> is a common method used in JUnit tests. It tests whether a variable’s actual value is equivalent to its expected value.</p>
+<p>When you create JUnit test files, you should precede each test method with a <code>@Test</code> annotation, and can have one or more <code>assertEquals</code> or <code>assertTrue</code> methods (provided by the JUnit library). ** All tests must be non-static. ** </p>
+<h2 id="Running-JUnit-Tests-in-IntelliJ"><a href="#Running-JUnit-Tests-in-IntelliJ" class="headerlink" title="Running JUnit Tests in IntelliJ"></a>Running JUnit Tests in IntelliJ</h2><p><strong><code>alt+shift+F10</code></strong></p>
+<h2 id="Intlists"><a href="#Intlists" class="headerlink" title="Intlists"></a>Intlists</h2><p> <strong><code>‘of’</code></strong> method</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IntList myList = IntList.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Which will create the IntList <code>0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; null</code>.</p>
+<h4 id="Test-a-Reverse-Method"><a href="#Test-a-Reverse-Method" class="headerlink" title="Test a Reverse Method"></a>Test a Reverse Method</h4><p>Write a unit test even before we write the new method.</p>
+<p>Add a new test to IntListTest.java that tests the <code>.reverse()</code> method.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IntList <span class="title">testReverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    IntList one = IntList.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">    IntList two = IntList.of();</span><br><span class="line">    assertEquals(IntList.of(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>),IntList.reverse(one));</span><br><span class="line">    assertNotEquals(one,IntList.reverse(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>));</span><br><span class="line">    assertEquals(two,IntList.reverse(<span class="keyword">null</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/08/ML%20note/" rel="prev" title="Machine Learning Note">
+      <i class="fa fa-chevron-left"></i> Machine Learning Note
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共计 5 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/200/" style="font-size: 12px; color: #ccc">200</a> <a href="/tags/Machine-Learning/" style="font-size: 12px; color: #ccc">Machine Learning</a> <a href="/tags/cs/" style="font-size: 30px; color: #111">cs</a> <a href="/tags/java/" style="font-size: 21px; color: #6f6f6f">java</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px; color: #ccc">面试</a>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -262,6 +315,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-3-Unit-Testing-with-JUnit-Debugging"><span class="nav-number">1.</span> <span class="nav-text">Lab 3: Unit Testing with JUnit, Debugging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-JUnit"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">What is JUnit?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JUnit-Syntax"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">JUnit Syntax</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-JUnit-Tests-in-IntelliJ"><span class="nav-number">1.2.</span> <span class="nav-text">Running JUnit Tests in IntelliJ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intlists"><span class="nav-number">1.3.</span> <span class="nav-text">Intlists</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Test-a-Reverse-Method"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">Test a Reverse Method</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

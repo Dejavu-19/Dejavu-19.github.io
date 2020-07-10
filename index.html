@@ -171,6 +171,185 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/08/Lab3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/08/Lab3/" class="post-title-link" itemprop="url">Lab3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-08 15:33:30 / 修改时间：16:48:34" itemprop="dateCreated datePublished" datetime="2020-07-08T15:33:30+09:00">2020-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Lab-3-Unit-Testing-with-JUnit-Debugging"><a href="#Lab-3-Unit-Testing-with-JUnit-Debugging" class="headerlink" title="Lab 3: Unit Testing with JUnit, Debugging"></a>Lab 3: Unit Testing with JUnit, Debugging</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong><code>Unit Testing</code></strong>, <strong><code>JUnit</code></strong>, the 61B style checker, and get a bit more <strong><code>debugging experience</code></strong>.</p>
+<h4 id="What-is-JUnit"><a href="#What-is-JUnit" class="headerlink" title="What is JUnit?"></a>What is JUnit?</h4><p><a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a> is a Unit Testing Framework for Java.</p>
+<h4 id="JUnit-Syntax"><a href="#JUnit-Syntax" class="headerlink" title="JUnit Syntax"></a>JUnit Syntax</h4><p>JUnit tests are written in Java.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    assertEquals(&lt;expected&gt;, &lt;actual&gt;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>assertEquals</code> is a common method used in JUnit tests. It tests whether a variable’s actual value is equivalent to its expected value.</p>
+<p>When you create JUnit test files, you should precede each test method with a <code>@Test</code> annotation, and can have one or more <code>assertEquals</code> or <code>assertTrue</code> methods (provided by the JUnit library). ** All tests must be non-static. ** </p>
+<h2 id="Running-JUnit-Tests-in-IntelliJ"><a href="#Running-JUnit-Tests-in-IntelliJ" class="headerlink" title="Running JUnit Tests in IntelliJ"></a>Running JUnit Tests in IntelliJ</h2><p><strong><code>alt+shift+F10</code></strong></p>
+<h2 id="Intlists"><a href="#Intlists" class="headerlink" title="Intlists"></a>Intlists</h2><p> <strong><code>‘of’</code></strong> method</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IntList myList = IntList.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Which will create the IntList <code>0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; null</code>.</p>
+<h4 id="Test-a-Reverse-Method"><a href="#Test-a-Reverse-Method" class="headerlink" title="Test a Reverse Method"></a>Test a Reverse Method</h4><p>Write a unit test even before we write the new method.</p>
+<p>Add a new test to IntListTest.java that tests the <code>.reverse()</code> method.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IntList <span class="title">testReverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    IntList one = IntList.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">    IntList two = IntList.of();</span><br><span class="line">    assertEquals(IntList.of(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>),IntList.reverse(one));</span><br><span class="line">    assertNotEquals(one,IntList.reverse(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>));</span><br><span class="line">    assertEquals(two,IntList.reverse(<span class="keyword">null</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/08/ML%20note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/08/ML%20note/" class="post-title-link" itemprop="url">Machine Learning Note</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-08 14:12:18 / 修改时间：14:30:33" itemprop="dateCreated datePublished" datetime="2020-07-08T14:12:18+09:00">2020-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coursera/" itemprop="url" rel="index"><span itemprop="name">Coursera</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="week1"><a href="#week1" class="headerlink" title="week1"></a>week1</h1><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><h3 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning"></a>What is Machine Learning</h3><blockquote>
+<p>Arthur Samuel (1959). Machine Learning: Field of study that gives computers the ability to learn without being explicitly programmed.</p>
+<p>Tom Mitchell (1998) Well-posed Learning Problem: A computer program is said to learn from experience E with respect to some <strong><code>task T</code></strong> and some <strong><code>performance measure P</code></strong>, if its performance on T, as measured by P, improves with <strong><code>experience E</code></strong>.</p>
+</blockquote>
+<h3 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h3><h4 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h4><p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180105_194712.png" alt=""></p>
+<h4 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h4><p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180105_194839.png" alt=""></p>
+<p>SVM——deal with many features with limited resources.</p>
+<h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><h4 id="Non-clustering"><a href="#Non-clustering" class="headerlink" title="Non-clustering"></a>Non-clustering</h4><h2 id="2-Linear-Regression-with-One-Variable"><a href="#2-Linear-Regression-with-One-Variable" class="headerlink" title="2.Linear Regression with One Variable"></a>2.Linear Regression with One Variable</h2><h3 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h3><p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180105_212048.png" alt=""></p>
+<h3 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h3><p>The difference between <strong><code>Loss/Error Function</code> &amp; <code>Cost Function</code></strong></p>
+<p><a href="https://www.zhihu.com/question/52398145/answer/298003145" target="_blank" rel="noopener">link</a></p>
+<p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180105_224648.png" alt=""></p>
+<h3 id="Cost-Function-Intuition-I"><a href="#Cost-Function-Intuition-I" class="headerlink" title="Cost Function - Intuition I"></a>Cost Function - Intuition I</h3><p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180106_085915.png" alt=""></p>
+<h3 id="Cost-Function-Intuition-II"><a href="#Cost-Function-Intuition-II" class="headerlink" title="Cost Function - Intuition II"></a>Cost Function - Intuition II</h3><p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180106_090904.png" alt=""></p>
+<p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/0f38a99c8ceb8aa5b90a5f12136fdf43.png" alt=""></p>
+<p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/db48c81304317847870d486ba5bb2015.jpg" alt=""></p>
+<h3 id="Gradient-Descent-Intuition"><a href="#Gradient-Descent-Intuition" class="headerlink" title="Gradient Descent Intuition"></a>Gradient Descent Intuition</h3><p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180106_184926.png" alt=""></p>
+<p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180106_191956.png" alt=""></p>
+<h3 id="Gradient-Descent-For-Linear-Regression"><a href="#Gradient-Descent-For-Linear-Regression" class="headerlink" title="Gradient Descent For Linear Regression"></a>Gradient Descent For Linear Regression</h3><p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180106_203726.png" alt=""></p>
+<p><strong><code>Batch Gradient Descent</code></strong></p>
+<h2 id="3-Linear-Algebra-Review"><a href="#3-Linear-Algebra-Review" class="headerlink" title="3.Linear Algebra Review"></a>3.Linear Algebra Review</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% The ; denotes we are going back to a new row.</span></span><br><span class="line">A = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>; <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>; <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>; <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">% Initialize a vector </span></span><br><span class="line">v = [<span class="number">1</span>;<span class="number">2</span>;<span class="number">3</span>] </span><br><span class="line"></span><br><span class="line"><span class="comment">% Get the dimension of the matrix A where m = rows and n = columns</span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(A)</span><br><span class="line"></span><br><span class="line"><span class="comment">% You could also store it this way</span></span><br><span class="line">dim_A = <span class="built_in">size</span>(A)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Get the dimension of the vector v </span></span><br><span class="line">dim_v = <span class="built_in">size</span>(v)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Now let's index into the 2nd row 3rd column of matrix A</span></span><br><span class="line">A_23 = A(<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Result</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">A =</span><br><span class="line"></span><br><span class="line">    <span class="number">1</span>    <span class="number">2</span>    <span class="number">3</span></span><br><span class="line">    <span class="number">4</span>    <span class="number">5</span>    <span class="number">6</span></span><br><span class="line">    <span class="number">7</span>    <span class="number">8</span>    <span class="number">9</span></span><br><span class="line">   <span class="number">10</span>   <span class="number">11</span>   <span class="number">12</span></span><br><span class="line"></span><br><span class="line">v =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span></span><br><span class="line">   <span class="number">2</span></span><br><span class="line">   <span class="number">3</span></span><br><span class="line"></span><br><span class="line">m =  <span class="number">4</span></span><br><span class="line">n =  <span class="number">3</span></span><br><span class="line">dim_A =</span><br><span class="line"></span><br><span class="line">   <span class="number">4</span>   <span class="number">3</span></span><br><span class="line"></span><br><span class="line">dim_v =</span><br><span class="line"></span><br><span class="line">   <span class="number">3</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line">A_23 =  <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p>etc.</p>
+<h1 id="week2"><a href="#week2" class="headerlink" title="week2"></a>week2</h1><h2 id="4-Multiple-Features"><a href="#4-Multiple-Features" class="headerlink" title="4.Multiple Features"></a>4.Multiple Features</h2><p>Linear regression with multiple variables is also known as “multivariate linear regression”.</p>
+<h3 id="Gradient-Descent-for-Multiple-Variables"><a href="#Gradient-Descent-for-Multiple-Variables" class="headerlink" title="Gradient Descent for Multiple Variables"></a>Gradient Descent for Multiple Variables</h3><h3 id="Gradient-Descent-in-Practice-I-Feature-Scaling"><a href="#Gradient-Descent-in-Practice-I-Feature-Scaling" class="headerlink" title="Gradient Descent in Practice I - Feature Scaling"></a>Gradient Descent in Practice I - Feature Scaling</h3><p><strong><code>Mean normalization</code></strong><br>$$<br>x_i = \frac{x_i-average(x)}{max(a)-min(a)}<br>$$</p>
+<h3 id="Gradient-Descent-in-Practice-II-Learning-Rate"><a href="#Gradient-Descent-in-Practice-II-Learning-Rate" class="headerlink" title="Gradient Descent in Practice II - Learning Rate"></a>Gradient Descent in Practice II - Learning Rate</h3><p>…0,0.001,0.003,0.01,0.03,0.1…</p>
+<h3 id="Features-and-Polynomial-Regression"><a href="#Features-and-Polynomial-Regression" class="headerlink" title="Features and Polynomial Regression"></a>Features and Polynomial Regression</h3><h3 id="Normal-Equation"><a href="#Normal-Equation" class="headerlink" title="Normal Equation"></a>Normal Equation</h3><p>For liner probs</p>
+<h3 id="Normal-Equation-Noninvertibility"><a href="#Normal-Equation-Noninvertibility" class="headerlink" title="Normal Equation Noninvertibility"></a>Normal Equation Noninvertibility</h3><p>When implementing the normal equation in octave we want to use the ‘pinv’ function rather than ‘inv.’ The ‘pinv’ function will give you a value of θ even if<br>$$<br>X^TX<br>$$<br> is not invertible.</p>
+<h2 id="5-Octave-Matlab-Tutorial"><a href="#5-Octave-Matlab-Tutorial" class="headerlink" title="5.Octave/Matlab Tutorial"></a>5.Octave/Matlab Tutorial</h2><p>etc.</p>
+<h1 id="week3"><a href="#week3" class="headerlink" title="week3"></a>week3</h1><h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/07/cs61b-week3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -278,7 +457,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-07 10:56:54" itemprop="dateModified" datetime="2020-07-07T10:56:54+09:00">2020-07-07</time>
+                <time title="修改时间：2020-07-10 23:45:48" itemprop="dateModified" datetime="2020-07-10T23:45:48+09:00">2020-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -820,181 +999,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/01/cs61b%20week1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/01/cs61b%20week1/" class="post-title-link" itemprop="url">cs61b week 01</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-01 01:47:49" itemprop="dateCreated datePublished" datetime="2020-07-01T01:47:49+09:00">2020-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-07 19:44:32" itemprop="dateModified" datetime="2020-07-07T19:44:32+09:00">2020-07-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week-01"><a href="#cs61b-week-01" class="headerlink" title="cs61b week 01"></a>cs61b week 01</h1><p>See (Video) and (Code) links under each lecture <a href="http://datastructur.es" target="_blank" rel="noopener">here</a>.</p>
-<h2 id="1-1-Intro-Hello-World-Java"><a href="#1-1-Intro-Hello-World-Java" class="headerlink" title="1.1 Intro, Hello World Java"></a>1.1 Intro, Hello World Java</h2><h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p><strong>What is 61B about?</strong></p>
-<blockquote>
-<p> Writing code that runs efficiently.  </p>
-<p> Writing code efficiently.</p>
-</blockquote>
-<p><strong>Required:</strong></p>
-<p>Solid foundation in programming fundamentals, including:</p>
-<p>Object oriented programming, recursion, lists, and trees.</p>
-<p><strong>Learning Philosophy</strong></p>
-<p><code>Practice make perfect.</code>(eg. dancing example)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/01/cs61b%20week1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8BOOP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8BOOP/" class="post-title-link" itemprop="url">面向对象编程OOP</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-01 00:41:07" itemprop="dateCreated datePublished" datetime="2020-07-01T00:41:07+09:00">2020-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 12:24:54" itemprop="dateModified" datetime="2020-07-06T12:24:54+09:00">2020-07-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/KSS/" itemprop="url" rel="index"><span itemprop="name">KSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="面向对象编程OOP"><a href="#面向对象编程OOP" class="headerlink" title="面向对象编程OOP"></a>面向对象编程OOP</h1><blockquote>
-<p>以类的方式组织代码，以对象的组织(封装)数据</p>
-<p>三大特性：</p>
-<ul>
-<li>封装</li>
-<li>继承</li>
-<li>多态</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> oop;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Demo01 类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//main 方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    修饰符 返回值类型 方法名(...)&#123;</span></span><br><span class="line"><span class="comment">           //方法体</span></span><br><span class="line"><span class="comment">           return 返回值</span></span><br><span class="line"><span class="comment">     &#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">//return 结束方法 返回一个结果</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello,world"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a&gt;b ? a:b;<span class="comment">//三元运算符</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1066,20 +1070,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
