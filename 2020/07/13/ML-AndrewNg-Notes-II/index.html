@@ -22,20 +22,21 @@
     var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Stay gold">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dejavu&#39;s Notebook">
-<meta property="og:url" content="https://dejavi-19.github.io/categories/%E4%B9%9D%E7%AB%A0/index.html">
+  <meta name="description" content="week610.Advice for Applying Machine LearningDeciding What to Try NextEvaluating a HypothesisModel Selection and Train&#x2F;Validation&#x2F;Test SetsDiagnosing Bias vs. VarianceRegularization and Bias&#x2F;VarianceLe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ML-AndrewNg-Notes II">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/07/13/ML-AndrewNg-Notes-II/index.html">
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
-<meta property="og:description" content="Stay gold">
+<meta property="og:description" content="week610.Advice for Applying Machine LearningDeciding What to Try NextEvaluating a HypothesisModel Selection and Train&#x2F;Validation&#x2F;Test SetsDiagnosing Bias vs. VarianceRegularization and Bias&#x2F;VarianceLe">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-12T18:26:15.150Z">
+<meta property="article:modified_time" content="2020-07-12T18:46:10.507Z">
 <meta property="article:author" content="Dejavu">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="java">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="cs">
+<meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dejavi-19.github.io/categories/%E4%B9%9D%E7%AB%A0/">
+<link rel="canonical" href="https://dejavi-19.github.io/2020/07/13/ML-AndrewNg-Notes-II/">
 
 
 <script id="page-configurations">
@@ -43,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: 九章 | Dejavu's Notebook</title>
+  <title>ML-AndrewNg-Notes II | Dejavu's Notebook</title>
   
 
 
@@ -165,51 +166,89 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">九章
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/13/ML-AndrewNg-Notes-II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ML-AndrewNg-Notes II
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-13 03:26:15 / 修改时间：03:46:10" itemprop="dateCreated datePublished" datetime="2020-07-13T03:26:15+09:00">2020-07-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coursera/" itemprop="url" rel="index"><span itemprop="name">Coursera</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <h1 id="week6"><a href="#week6" class="headerlink" title="week6"></a>week6</h1><h2 id="10-Advice-for-Applying-Machine-Learning"><a href="#10-Advice-for-Applying-Machine-Learning" class="headerlink" title="10.Advice for Applying Machine Learning"></a>10.Advice for Applying Machine Learning</h2><h3 id="Deciding-What-to-Try-Next"><a href="#Deciding-What-to-Try-Next" class="headerlink" title="Deciding What to Try Next"></a>Deciding What to Try Next</h3><h3 id="Evaluating-a-Hypothesis"><a href="#Evaluating-a-Hypothesis" class="headerlink" title="Evaluating a Hypothesis"></a>Evaluating a Hypothesis</h3><h3 id="Model-Selection-and-Train-Validation-Test-Sets"><a href="#Model-Selection-and-Train-Validation-Test-Sets" class="headerlink" title="Model Selection and Train/Validation/Test Sets"></a>Model Selection and Train/Validation/Test Sets</h3><h3 id="Diagnosing-Bias-vs-Variance"><a href="#Diagnosing-Bias-vs-Variance" class="headerlink" title="Diagnosing Bias vs. Variance"></a>Diagnosing Bias vs. Variance</h3><h3 id="Regularization-and-Bias-Variance"><a href="#Regularization-and-Bias-Variance" class="headerlink" title="Regularization and Bias/Variance"></a>Regularization and Bias/Variance</h3><h3 id="Learning-Curves"><a href="#Learning-Curves" class="headerlink" title="Learning Curves"></a>Learning Curves</h3><h3 id="Deciding-What-to-Do-Next-Revisited"><a href="#Deciding-What-to-Do-Next-Revisited" class="headerlink" title="Deciding What to Do Next Revisited"></a>Deciding What to Do Next Revisited</h3><h2 id="11-Machine-Learning-System-Design"><a href="#11-Machine-Learning-System-Design" class="headerlink" title="11 Machine Learning System Design"></a>11 Machine Learning System Design</h2><h3 id="Prioritizing-What-to-Work-On"><a href="#Prioritizing-What-to-Work-On" class="headerlink" title="Prioritizing What to Work On"></a>Prioritizing What to Work On</h3><h3 id="Error-Analysis"><a href="#Error-Analysis" class="headerlink" title="Error Analysis"></a>Error Analysis</h3><h3 id="Error-Metrics-for-Skewed-Classes"><a href="#Error-Metrics-for-Skewed-Classes" class="headerlink" title="Error Metrics for Skewed Classes"></a>Error Metrics for Skewed Classes</h3><h3 id="Trading-Off-Precision-and-Recall"><a href="#Trading-Off-Precision-and-Recall" class="headerlink" title="Trading Off Precision and Recall"></a>Trading Off Precision and Recall</h3><h3 id="Data-For-Machine-Learning"><a href="#Data-For-Machine-Learning" class="headerlink" title="Data For Machine Learning"></a>Data For Machine Learning</h3>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-02T00:22:45+09:00"
-              content="2020-07-02">
-          07-02
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/02/%E4%B9%9D%E7%AB%A0L0102/" itemprop="url">
-            <span itemprop="name">九章L0102</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/08/Lab3/" rel="prev" title="Lab3">
+      <i class="fa fa-chevron-left"></i> Lab3
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -262,6 +301,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week6"><span class="nav-number">1.</span> <span class="nav-text">week6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Advice-for-Applying-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">10.Advice for Applying Machine Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deciding-What-to-Try-Next"><span class="nav-number">1.1.1.</span> <span class="nav-text">Deciding What to Try Next</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluating-a-Hypothesis"><span class="nav-number">1.1.2.</span> <span class="nav-text">Evaluating a Hypothesis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Selection-and-Train-Validation-Test-Sets"><span class="nav-number">1.1.3.</span> <span class="nav-text">Model Selection and Train&#x2F;Validation&#x2F;Test Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Diagnosing-Bias-vs-Variance"><span class="nav-number">1.1.4.</span> <span class="nav-text">Diagnosing Bias vs. Variance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regularization-and-Bias-Variance"><span class="nav-number">1.1.5.</span> <span class="nav-text">Regularization and Bias&#x2F;Variance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Curves"><span class="nav-number">1.1.6.</span> <span class="nav-text">Learning Curves</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deciding-What-to-Do-Next-Revisited"><span class="nav-number">1.1.7.</span> <span class="nav-text">Deciding What to Do Next Revisited</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Machine-Learning-System-Design"><span class="nav-number">1.2.</span> <span class="nav-text">11 Machine Learning System Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prioritizing-What-to-Work-On"><span class="nav-number">1.2.1.</span> <span class="nav-text">Prioritizing What to Work On</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-Analysis"><span class="nav-number">1.2.2.</span> <span class="nav-text">Error Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-Metrics-for-Skewed-Classes"><span class="nav-number">1.2.3.</span> <span class="nav-text">Error Metrics for Skewed Classes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trading-Off-Precision-and-Recall"><span class="nav-number">1.2.4.</span> <span class="nav-text">Trading Off Precision and Recall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-For-Machine-Learning"><span class="nav-number">1.2.5.</span> <span class="nav-text">Data For Machine Learning</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
