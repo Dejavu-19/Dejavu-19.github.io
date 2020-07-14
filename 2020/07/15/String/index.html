@@ -22,25 +22,20 @@
     var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="week 1 Introduction to Deep Learning1.1 Welcome 深度学习改变了传统互联网业务，例如如网络搜索和广告。但是深度学习同时也使得许多新产品和企业以很多方式帮助人们，从获得更好的健康关注。 AI是最新的电力，大约在一百年前，我们社会的电气化改变了每个主要行业，从交通运输行业到制造业、医疗保健、通讯等方面，我认为如今我们见到了AI明显的令人惊讶的能量，带来了同">
+  <meta name="description" content="# Leetcode Array[编程之美 3.1](https:&#x2F;&#x2F;github.com&#x2F;CyC2018&#x2F;CS-Notes&#x2F;blob&#x2F;master&#x2F;notes&#x2F;Leetcode 题解 - 字符串.md#) 12s1 &#x3D; AABCD, s2 &#x3D; CDAAReturn : true  给定两个字符串 s1 和 s2，要求判定 s2 是否能够被 s1 做循环移位得到的字符串包含。 s1 进行循环移位的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DL-AndrewNg-Notes">
-<meta property="og:url" content="https://dejavi-19.github.io/2020/07/13/DL-AndrewNg-Notes/index.html">
+<meta property="og:title" content="String">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/07/15/String/index.html">
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
-<meta property="og:description" content="week 1 Introduction to Deep Learning1.1 Welcome 深度学习改变了传统互联网业务，例如如网络搜索和广告。但是深度学习同时也使得许多新产品和企业以很多方式帮助人们，从获得更好的健康关注。 AI是最新的电力，大约在一百年前，我们社会的电气化改变了每个主要行业，从交通运输行业到制造业、医疗保健、通讯等方面，我认为如今我们见到了AI明显的令人惊讶的能量，带来了同">
+<meta property="og:description" content="# Leetcode Array[编程之美 3.1](https:&#x2F;&#x2F;github.com&#x2F;CyC2018&#x2F;CS-Notes&#x2F;blob&#x2F;master&#x2F;notes&#x2F;Leetcode 题解 - 字符串.md#) 12s1 &#x3D; AABCD, s2 &#x3D; CDAAReturn : true  给定两个字符串 s1 和 s2，要求判定 s2 是否能够被 s1 做循环移位得到的字符串包含。 s1 进行循环移位的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.ai-start.com/dl2017/images/ac477ba60e120e318cfb2ed71ff55478.png">
-<meta property="og:image" content="http://www.ai-start.com/dl2017/images/3fe6da26014467243e3d499569be3675.png">
-<meta property="og:image" content="http://www.ai-start.com/dl2017/images/d900d26b850d55abce36d4c8daf71327.png">
-<meta property="article:published_time" content="2020-07-12T20:45:39.435Z">
-<meta property="article:modified_time" content="2020-07-13T01:58:35.581Z">
+<meta property="article:published_time" content="2020-07-14T15:37:48.475Z">
+<meta property="article:modified_time" content="2020-07-14T15:53:30.545Z">
 <meta property="article:author" content="Dejavu">
-<meta property="article:tag" content="cs">
-<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="200">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.ai-start.com/dl2017/images/ac477ba60e120e318cfb2ed71ff55478.png">
 
-<link rel="canonical" href="https://dejavi-19.github.io/2020/07/13/DL-AndrewNg-Notes/">
+<link rel="canonical" href="https://dejavi-19.github.io/2020/07/15/String/">
 
 
 <script id="page-configurations">
@@ -53,7 +48,7 @@
   };
 </script>
 
-  <title>DL-AndrewNg-Notes | Dejavu's Notebook</title>
+  <title>String | Dejavu's Notebook</title>
   
 
 
@@ -177,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/13/DL-AndrewNg-Notes/">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/15/String/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
@@ -190,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          DL-AndrewNg-Notes
+          String
         </h1>
 
         <div class="post-meta">
@@ -201,7 +196,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-07-13 05:45:39 / 修改时间：10:58:35" itemprop="dateCreated datePublished" datetime="2020-07-13T05:45:39+09:00">2020-07-13</time>
+              <time title="创建时间：2020-07-15 00:37:48 / 修改时间：00:53:30" itemprop="dateCreated datePublished" datetime="2020-07-15T00:37:48+09:00">2020-07-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -209,7 +204,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Coursera/" itemprop="url" rel="index"><span itemprop="name">Coursera</span></a>
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
                 </span>
             </span>
 
@@ -224,29 +219,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="week-1-Introduction-to-Deep-Learning"><a href="#week-1-Introduction-to-Deep-Learning" class="headerlink" title="week 1 Introduction to Deep Learning"></a>week 1 Introduction to Deep Learning</h1><h3 id="1-1-Welcome"><a href="#1-1-Welcome" class="headerlink" title="1.1 Welcome"></a>1.1 Welcome</h3><blockquote>
-<p>深度学习改变了传统互联网业务，例如如网络搜索和广告。但是深度学习同时也使得许多新产品和企业以很多方式帮助人们，从获得更好的健康关注。</p>
-<p>AI是最新的电力，大约在一百年前，我们社会的电气化改变了每个主要行业，从交通运输行业到制造业、医疗保健、通讯等方面，我认为如今我们见到了<strong>AI</strong>明显的令人惊讶的能量，带来了同样巨大的转变。显然，AI的各个分支中，发展的最为迅速的就是深度学习。因此现在，深度学习是在科技世界中广受欢迎的一种技巧。</p>
-</blockquote>
-<p>第一门课程<strong><code>Neural Networks and Deep Learning</code></strong>中，将学习如何建立神经网络（包含一个深度神经网络），以及如何在数据上面训练他们。</p>
-<p>在这门课程的结尾，将用一个深度神经网络进行辨认猫。</p>
-<p><img src="http://www.ai-start.com/dl2017/images/ac477ba60e120e318cfb2ed71ff55478.png" alt=""></p>
-<p>第二门课中，我们将使用三周时间。将进行深度学习方面的实践，学习严密地构建神经网络，如何真正让它表现良好，因此你将要学习超参数调整、正则化、诊断偏差和方差以及一些高级优化算法，比如<strong><code>Momentum</code></strong>和<strong><code>Adam</code></strong>算法，犹如黑魔法一样根据你建立网络的方式。三周学习时间。</p>
-<p>第三门课中，我们将使用两周时间来学习如何结构化你的机器学习工程。事实证明，构建机器学习系统的策略改变了深度学习的错误。</p>
-<p>举个例子：你分割数据的方式，分割成训练集、比较集或改变的验证集，以及测试集合，改变了深度学习的错误。</p>
-<p>所以最好的实践方式是什么呢？</p>
-<p>你的训练集和测试集来自不同的贡献度在深度学习中的影响很大，那么你应该怎么处理呢？</p>
-<p>如果你听说过端对端深度学习，你也会在第三门课中了解到更多，进而了解到你是否需要使用它，第三课的资料是相对比较独特的，我将和你分享。我们了解到的所有的热门领域的建立并且改良许多的深度学习问题。</p>
-<p>在第四门课程中，我们将会提到卷积神经网络(<strong><code>CNN(s)</code></strong>)，它经常被用于图像领域，你将会在第四门课程中学到如何搭建这样的模型。</p>
-<p>最后在第五门课中，你将会学习到序列模型，以及如何将它们应用于自然语言处理，以及其它问题。</p>
-<p>序列模型包括的模型有循环神经网络（<strong><code>RNN</code></strong>）、全称是长短期记忆网络（<strong><code>LSTM</code></strong>）。你将在课程五中了解其中的时期是什么含义，并且有能力应用到自然语言处理（<strong><code>NLP</code></strong>）问题。</p>
-<p>总之你将在课程五中学习这些模型，以及能够将它们应用于序列数据。比如说，自然语言就是一个单词序列。你也将能够理解这些模型如何应用到语音识别或者是编曲以及其它问题。</p>
-<p>因此，通过这些课程，你将学习深度学习的这些工具，你将能够去使用它们去做一些神奇的事情，并借此来提升你的职业生涯。</p>
-<p>吴恩达</p>
-<h3 id="1-2-What-is-a-Neural-Network"><a href="#1-2-What-is-a-Neural-Network" class="headerlink" title="1.2 What is a Neural Network"></a>1.2 What is a Neural Network</h3><p><img src="http://www.ai-start.com/dl2017/images/3fe6da26014467243e3d499569be3675.png" alt="pip install C:\Users\86480\anaconda3\mypkgs/torchvision-0.6.0+cpu-cp37-cp37m-win_amd64.whl -i http://pypi.mirrors.ustc.edu.cn/simple --trusted-host pypi.mirrors.ustc.edu.cn"></p>
-<p>我们把房屋的面积作为神经网络的输入（我们称之为x），通过一个节点（一个小圆圈），最终输出了价格（我们用y表示）。其实这个小圆圈就是一个单独的神经元。接着你的网络实现了左边这个函数的功能。</p>
-<p>在有关神经网络的文献中，你经常看得到这个函数。从趋近于零开始，然后变成一条直线。这个函数被称作<strong>ReLU</strong>激活函数，它的全称是<strong>Rectified Linear Unit</strong>。rectify（修正）可以理解成(0, x)，这也是你得到一个这种形状的函数的原因。</p>
-<p><img src="http://www.ai-start.com/dl2017/images/d900d26b850d55abce36d4c8daf71327.png" alt=""></p>
+        <h1 id="Leetcode-Array"><a href="#Leetcode-Array" class="headerlink" title="# Leetcode Array"></a># Leetcode Array</h1><p>[编程之美 3.1](<a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode" target="_blank" rel="noopener">https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode</a> 题解 - 字符串.md#)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s1 = AABCD, s2 = CDAA</span><br><span class="line">Return : <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+<p>给定两个字符串 s1 和 s2，要求判定 s2 是否能够被 s1 做循环移位得到的字符串包含。</p>
+<p>s1 进行循环移位的结果是 s1s1 的子字符串，因此只要判断 s2 是否是 s1s1 的子字符串即可。</p>
+<h2 id="2-字符串循环移位"><a href="#2-字符串循环移位" class="headerlink" title="2. 字符串循环移位"></a>2. 字符串循环移位</h2><p>[编程之美 2.17](<a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode" target="_blank" rel="noopener">https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode</a> 题解 - 字符串.md#)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"abcd123"</span> k = <span class="number">3</span></span><br><span class="line">Return <span class="string">"123abcd"</span></span><br></pre></td></tr></table></figure>
+
+<p>将字符串向右循环移动 k 位。</p>
+<p>将 abcd123 中的 abcd 和 123 单独翻转，得到 dcba321，然后对整个字符串进行翻转，得到 123abcd。</p>
+<a id="more"></a>
+
+<h2 id="3-字符串中单词的翻转"><a href="#3-字符串中单词的翻转" class="headerlink" title="3. 字符串中单词的翻转"></a>3. 字符串中单词的翻转</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"I am a student"</span></span><br><span class="line">Return <span class="string">"student a am I"</span></span><br></pre></td></tr></table></figure>
+
+<p>将每个单词翻转，然后将整个字符串翻转。</p>
 
     </div>
 
@@ -256,8 +243,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/cs/" rel="tag"># cs</a>
-              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/200/" rel="tag"># 200</a>
           </div>
 
         
@@ -266,13 +252,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/08/Lab3/" rel="prev" title="Lab3">
-      <i class="fa fa-chevron-left"></i> Lab3
+    <a href="/2020/07/13/DL-AndrewNg-Notes/" rel="prev" title="DL-AndrewNg-Notes">
+      <i class="fa fa-chevron-left"></i> DL-AndrewNg-Notes
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/15/String/" rel="next" title="String">
-      String <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -331,7 +314,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#week-1-Introduction-to-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">week 1 Introduction to Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Welcome"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 Welcome</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-What-is-a-Neural-Network"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2 What is a Neural Network</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Leetcode-Array"><span class="nav-number">1.</span> <span class="nav-text"># Leetcode Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-字符串循环移位"><span class="nav-number">1.1.</span> <span class="nav-text">2. 字符串循环移位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-字符串中单词的翻转"><span class="nav-number">1.2.</span> <span class="nav-text">3. 字符串中单词的翻转</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
