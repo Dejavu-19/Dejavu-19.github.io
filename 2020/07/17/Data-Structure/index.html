@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/D67peceibeISTRz5ibO62oFJIY3OQIc2nQ3ehplzibAZCr5xOzzBM1icVr8PUDHq9AFmicGrGSNIhGjFLYmybFtyA3A/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2020-07-16T17:40:19.138Z">
-<meta property="article:modified_time" content="2020-07-17T14:51:50.981Z">
+<meta property="article:modified_time" content="2020-07-17T15:36:45.420Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="cs">
 <meta name="twitter:card" content="summary">
@@ -196,10 +196,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-07-17 02:40:19 / 修改时间：23:51:50" itemprop="dateCreated datePublished" datetime="2020-07-17T02:40:19+09:00">2020-07-17</time>
+              <time title="创建时间：2020-07-17 02:40:19" itemprop="dateCreated datePublished" datetime="2020-07-17T02:40:19+09:00">2020-07-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-18 00:36:45" itemprop="dateModified" datetime="2020-07-18T00:36:45+09:00">2020-07-18</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -324,22 +330,32 @@
 <p><strong>binary tree</strong></p>
 <p><strong>that you’re cutting in half every time.</strong></p>
 <p><strong>one more operation where you eliminate half</strong></p>
-<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><p><strong>Perhaps the most classic and most commonly used of all data structures, the array is <code>deceptively</code> simple.</strong> </p>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><p><strong>Perhaps the most classic and most commonly used of all data structures, the array is <code>deceptively</code> simple.**</strong> </p>
 <p><strong>Arrays stored in memory</strong></p>
-<p><strong>bounded memory canvas with a memory slots**</strong>Each slot holds a byte which is eight bits**</p>
-<p><strong>two types of Arrays</strong></p>
-<p><strong>Static Arrays</strong></p>
-<p><strong>specify the length of your Array**</strong>and in memory that Array will have that length,<strong><strong>the equivalent number of memory slots allocated to it,</strong></strong>It’ll never change.**</p>
+<p><strong>In bounded memory canvas with a memory slots, each slot holds a byte which is eight bits</strong></p>
+<h3 id="two-types-of-Arrays"><a href="#two-types-of-Arrays" class="headerlink" title="two types of Arrays"></a><strong>two types of Arrays</strong></h3><h4 id="Static-Arrays"><a href="#Static-Arrays" class="headerlink" title="Static Arrays"></a><strong>Static Arrays</strong></h4><p><strong>specify the length of your Array and in memory that Array will have that length</strong></p>
+<p><strong>the equivalent number of memory slots allocated to it, It’ll never change</strong></p>
 <p><strong>Dynamic Arrays</strong></p>
-<p><strong>read a value at a given index in an Array.</strong></p>
-<p><strong>when we are accessing an element in an Array**</strong>at a given index, all that’s really happening behindthe scenes, is our operating system is finding**    <strong>the memory address with that starts the Array.**</strong></p>
-<p>in total you are left with a constant time operationto access an element at a given index.**</p>
-<p><strong>getting an element in an Array is O of one</strong></p>
-<p><strong>the Array that you’re dealing with has a size N,**</strong>as N increases the time that it takes to initialize<strong>**increases linearly with respect to N</strong></p>
-<p><strong>traversing through an Array**</strong>traversing through every element in the Array.**</p>
-<p><strong>get——O(1)</strong></p>
-<p><strong>set——O(1)</strong></p>
-<p><strong>init</strong>——O(N)</p>
+<p><strong><code>get——O(1) ST</code></strong></p>
+<p><strong>Read a value at a given index in an Array. getting an element in an Array is O of one</strong></p>
+<p><strong>when we are accessing an element in an Array at a given index, all that’s really happening behind the scenes, is our operating system is finding    the memory address with that starts the Array.**</strong></p>
+<p><strong>in total you are left with a constant time operation to access an element at a given index.**</strong></p>
+<p><strong><code>set——O(1) ST</code></strong></p>
+<p><strong>change a value in one memory slot</strong></p>
+<p><strong><code>init——O(N) ST</code></strong></p>
+<p><strong>the Array that you’re dealing with has a size N,as N increases the time that it takes to initialize increases linearly with respect to N</strong></p>
+<p><strong><code>traverse——O(N) T , O(1) S</code></strong></p>
+<p><strong>traversing through an Array traversing through every element in the Array.</strong></p>
+<p><strong><code>copy——O(N) ST</code></strong></p>
+<p><strong><code>insert——O(N) T , O(1) S (Dynamic Array maybe O(1)T)</code></strong></p>
+<p><strong>Inserting a value in Array setting here we meant overwriting a value in an Array</strong></p>
+<p><strong>actually under the hood have to copy the entire Array that you had, shifting the operating system is gonna copy our Array but it’s gonna wipe out this old one. So it’s gonna be like creating O of N space but freeing up end memory slots.</strong></p>
+<p><strong>auxiliary operation</strong></p>
+<h4 id="Dynamic-Arraysis"><a href="#Dynamic-Arraysis" class="headerlink" title="*Dynamic Arraysis *"></a>*<em>Dynamic Arraysis *</em></h4><p><strong>an Array that can change in size</strong></p>
+<p><strong>[1,-]——[1, 2,-,-]</strong></p>
+<p><strong>amortized analysis</strong></p>
+<p><strong>if you want to insert an element in a Dynamic Array in the middle of the Array or at the beginning of the Array,     unfortunately their Dynamic Arrays won’t really help you. And so in those cases it will still take O of N time because you’re gonna have to shift all the elements.</strong></p>
+<p><strong>pop values at the beginning of an Array is O(N)</strong></p>
 
     </div>
 
@@ -420,7 +436,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structure"><span class="nav-number">1.</span> <span class="nav-text">Data Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#All-you-need-are-two-types-of-knowledge"><span class="nav-number">1.1.1.</span> <span class="nav-text">All you need are two types of knowledge:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Are-Data-Structures"><span class="nav-number">1.2.</span> <span class="nav-text">What Are Data Structures?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-app"><span class="nav-number">1.2.1.</span> <span class="nav-text">web app :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#developing-an-API"><span class="nav-number">1.2.2.</span> <span class="nav-text">developing an API :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#running-joke-at-big-tech-companies"><span class="nav-number">1.2.3.</span> <span class="nav-text">running joke at big tech companies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wikipedia-puts-it-pretty-elegantly"><span class="nav-number">1.2.4.</span> <span class="nav-text">Wikipedia puts it pretty elegantly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Focus-on"><span class="nav-number">1.2.5.</span> <span class="nav-text">Focus on:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity-Analysis"><span class="nav-number">1.3.</span> <span class="nav-text">Complexity Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notorious-question"><span class="nav-number">1.3.1.</span> <span class="nav-text">notorious question</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#time-complexity-and-space-complexity"><span class="nav-number">1.3.2.</span> <span class="nav-text">time complexity and space complexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory"><span class="nav-number">1.4.</span> <span class="nav-text">Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bounded-canvas-memory-slots"><span class="nav-number">1.4.1.</span> <span class="nav-text">bounded canvas memory slots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binary-numbers"><span class="nav-number">1.4.2.</span> <span class="nav-text">binary numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pointer"><span class="nav-number">1.4.3.</span> <span class="nav-text">pointer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-O-Notation"><span class="nav-number">1.5.</span> <span class="nav-text">Big O Notation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#asymptotic-analysis"><span class="nav-number">1.5.1.</span> <span class="nav-text">asymptotic analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logarithmic-time"><span class="nav-number">1.5.2.</span> <span class="nav-text">logarithmic time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#worst-case-complexity"><span class="nav-number">1.5.3.</span> <span class="nav-text">worst case complexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logarithm"><span class="nav-number">1.6.</span> <span class="nav-text">Logarithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mathematics-behind-the-logarithm"><span class="nav-number">1.6.1.</span> <span class="nav-text">mathematics behind the logarithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#complexity-analysis"><span class="nav-number">1.6.2.</span> <span class="nav-text">complexity analysis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays"><span class="nav-number">1.7.</span> <span class="nav-text">Arrays</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structure"><span class="nav-number">1.</span> <span class="nav-text">Data Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#All-you-need-are-two-types-of-knowledge"><span class="nav-number">1.1.1.</span> <span class="nav-text">All you need are two types of knowledge:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Are-Data-Structures"><span class="nav-number">1.2.</span> <span class="nav-text">What Are Data Structures?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-app"><span class="nav-number">1.2.1.</span> <span class="nav-text">web app :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#developing-an-API"><span class="nav-number">1.2.2.</span> <span class="nav-text">developing an API :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#running-joke-at-big-tech-companies"><span class="nav-number">1.2.3.</span> <span class="nav-text">running joke at big tech companies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wikipedia-puts-it-pretty-elegantly"><span class="nav-number">1.2.4.</span> <span class="nav-text">Wikipedia puts it pretty elegantly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Focus-on"><span class="nav-number">1.2.5.</span> <span class="nav-text">Focus on:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity-Analysis"><span class="nav-number">1.3.</span> <span class="nav-text">Complexity Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notorious-question"><span class="nav-number">1.3.1.</span> <span class="nav-text">notorious question</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#time-complexity-and-space-complexity"><span class="nav-number">1.3.2.</span> <span class="nav-text">time complexity and space complexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory"><span class="nav-number">1.4.</span> <span class="nav-text">Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bounded-canvas-memory-slots"><span class="nav-number">1.4.1.</span> <span class="nav-text">bounded canvas memory slots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binary-numbers"><span class="nav-number">1.4.2.</span> <span class="nav-text">binary numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pointer"><span class="nav-number">1.4.3.</span> <span class="nav-text">pointer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-O-Notation"><span class="nav-number">1.5.</span> <span class="nav-text">Big O Notation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#asymptotic-analysis"><span class="nav-number">1.5.1.</span> <span class="nav-text">asymptotic analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logarithmic-time"><span class="nav-number">1.5.2.</span> <span class="nav-text">logarithmic time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#worst-case-complexity"><span class="nav-number">1.5.3.</span> <span class="nav-text">worst case complexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logarithm"><span class="nav-number">1.6.</span> <span class="nav-text">Logarithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mathematics-behind-the-logarithm"><span class="nav-number">1.6.1.</span> <span class="nav-text">mathematics behind the logarithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#complexity-analysis"><span class="nav-number">1.6.2.</span> <span class="nav-text">complexity analysis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays"><span class="nav-number">1.7.</span> <span class="nav-text">Arrays</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#two-types-of-Arrays"><span class="nav-number">1.7.1.</span> <span class="nav-text">two types of Arrays</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Static-Arrays"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">Static Arrays</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dynamic-Arraysis"><span class="nav-number">1.7.1.2.</span> <span class="nav-text">*Dynamic Arraysis *</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
