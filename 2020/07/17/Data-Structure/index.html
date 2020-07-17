@@ -30,7 +30,7 @@
 <meta property="og:description" content="Data StructureIntroductionCoding interviews.  Problem-solving skills.  Algorithm questions.  What do you call the intersection of their Venn Diagram?  Hint: it starts with “data” and ends with “struct">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-16T17:40:19.138Z">
-<meta property="article:modified_time" content="2020-07-16T17:41:28.053Z">
+<meta property="article:modified_time" content="2020-07-17T04:43:10.855Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="cs">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-07-17 02:40:19 / 修改时间：02:41:28" itemprop="dateCreated datePublished" datetime="2020-07-17T02:40:19+09:00">2020-07-17</time>
+              <time title="创建时间：2020-07-17 02:40:19 / 修改时间：13:43:10" itemprop="dateCreated datePublished" datetime="2020-07-17T02:40:19+09:00">2020-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,7 +243,7 @@
 <li><strong><code>display data</code></strong> on a screen maybe on a website or on a phone screen</li>
 </ol>
 <h3 id="developing-an-API"><a href="#developing-an-API" class="headerlink" title="developing an API :"></a><strong>developing an API :</strong></h3><ol>
-<li><code>**stores and retrieves data**</code> from a database that transforms that data a little bit</li>
+<li><strong><code>stores and retrieves data</code></strong> from a database that transforms that data a little bit</li>
 <li>returns it to a client that asks for it</li>
 </ol>
 <h3 id="running-joke-at-big-tech-companies"><a href="#running-joke-at-big-tech-companies" class="headerlink" title="running joke at big tech companies"></a><strong>running joke at big tech companies</strong></h3><blockquote>
@@ -255,6 +255,45 @@
 </blockquote>
 <h3 id="Focus-on"><a href="#Focus-on" class="headerlink" title="Focus on:"></a>Focus on:</h3><p><strong>To know how we <code>remove</code> the 76, or we can remove the two,or maybe we can <code>look for</code> a number,maybe we can <code>insert</code> a number, <code>add</code> a number all of these operations are gonna be part of the data structure.</strong></p>
 <p><strong>Relationships between data values all of the functions and operations that these data structures support and to know the <code>benefits</code> and <code>downsides</code> that all of these data structures have.</strong></p>
+<h2 id="Complexity-Analysis"><a href="#Complexity-Analysis" class="headerlink" title="Complexity Analysis"></a>Complexity Analysis</h2><p>Consists of two dimensions, time and space, is sort of like the <strong>bedrock</strong> of coding interview problems.</p>
+<p>Maybe you’ve even coded it out your interviewer’s going to ask you </p>
+<h3 id="the-notorious-question"><a href="#the-notorious-question" class="headerlink" title="the notorious question"></a>the <strong><code>notorious question</code></strong></h3><p><strong><code>can you do better?</code></strong></p>
+<p><strong><code>Can you find a better solution?</code></strong></p>
+<p>So what makes one solution better than another solution?</p>
+<p>And this is where complexity comes into play. </p>
+<p>Granted, if a solution is needlessly complicated,that might make it worse than another solution,</p>
+<h3 id="time-complexity-and-space-complexity"><a href="#time-complexity-and-space-complexity" class="headerlink" title="time complexity and space complexity"></a><strong>time complexity and space complexity</strong></h3><ol>
+<li><strong>The faster an algorithm runs,the better its time complexity is and therefore the better the algorithm is.</strong></li>
+<li><strong>Similarly, the less memory an algorithm takes,the better its space complexity is and therefore the better the algorithm is.</strong></li>
+</ol>
+<p><strong>Different data structures are gonna have different time complexity and space complexity ramifications for the functions and operations that they support.</strong></p>
+<p><strong>not only to figure out what data structure best allows you to solve the problem,but also what data structure allows you to do so with the best time complex it you with the best space complexity.</strong>    </p>
+<p><strong>This means that you’re gonna have to be very familiar with all of the space-time complexity ramificationsof the various popular data structures.</strong></p>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>The bedrock of all data structures, memory is the underlying concept that you absolutely need to know in order to understand why data structures work the way they do.</p>
+<h3 id="bounded-canvas-memory-slots"><a href="#bounded-canvas-memory-slots" class="headerlink" title="bounded canvas memory slots"></a><strong>bounded canvas memory slots</strong></h3><p><strong>Give one <code>caveat</code> which is that we could talk about memory for hours,we could have an entire course dedicated purely to memory. Memory is a very large topic area.</strong></p>
+<p><strong>The topic is purely relevant to coding interviews.</strong></p>
+<p><strong>To be well equipped for coding interviews.</strong></p>
+<p><strong>Declare a variable named foobar,**</strong>set that variable to be the integer one.**</p>
+<h3 id="binary-numbers"><a href="#binary-numbers" class="headerlink" title="binary numbers"></a>binary numbers</h3><p><strong>Your program will always store a variable in a memory slot</strong></p>
+<p><strong>Which is made up of just what are called <code>bits</code>.</strong>    <strong>Bits are zeros and ones.</strong></p>
+<p><strong>one memory slot can hold <code>eight bits</code>. And that’s actually called a <code>byte</code>.</strong></p>
+<p><strong>you actually store a byte of data.</strong></p>
+<p><strong>in total, you have two to the power of eight 2^8^, which is 256, potential data values that you can represent in one byte.</strong></p>
+<p><strong>the type <code>int</code> presents a 32 bit integer. four bytes.</strong></p>
+<p><strong>The type <code>long</code> represents a 64 bit integer.</strong></p>
+<p><strong>endianness.</strong></p>
+<p><strong>the key thing to remember is that we are typically dealing with what are called fixed-width integers.</strong></p>
+<p><strong><code>[] bracket</code></strong></p>
+<p><strong>ASCII character mapping——String</strong></p>
+<p><strong>Instead of storing data here, you can just pointer another memory slot that might have that data or that might have a relevant piece of data.</strong></p>
+<p><strong>your computer can access all of these different memory slots directly, very quickly.</strong></p>
+<p>*<em>First of all, you can think of memory as of memory slots that lives somewhere in your computer. *</em></p>
+<p><strong>bounded canvas of slots. And that can store data.</strong></p>
+<p><strong>Again, the really important part is the fact that it’s bounded.</strong></p>
+<p><strong>stored in base two format in binary number format as bits, one memory slot can fit eight bits, which is called one byte.</strong></p>
+<h3 id="pointer"><a href="#pointer" class="headerlink" title="pointer"></a>pointer</h3><p><strong>When you’re storing an integer in memory,that integer is typically a fixed-width integer,meaning that it’s either 32 bits,or 64 bits,or 16 bits, eight bits</strong></p>
+<p><strong>at any memory slot,you can actually store the memory address of another memory slot in base two format in binary number format.</strong></p>
+<p><strong>And that’s called a <code>pointer</code>.</strong></p>
 
     </div>
 
@@ -335,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structure"><span class="nav-number">1.</span> <span class="nav-text">Data Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#All-you-need-are-two-types-of-knowledge"><span class="nav-number">1.1.1.</span> <span class="nav-text">All you need are two types of knowledge:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Are-Data-Structures"><span class="nav-number">1.2.</span> <span class="nav-text">What Are Data Structures?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-app"><span class="nav-number">1.2.1.</span> <span class="nav-text">web app :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#developing-an-API"><span class="nav-number">1.2.2.</span> <span class="nav-text">developing an API :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#running-joke-at-big-tech-companies"><span class="nav-number">1.2.3.</span> <span class="nav-text">running joke at big tech companies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wikipedia-puts-it-pretty-elegantly"><span class="nav-number">1.2.4.</span> <span class="nav-text">Wikipedia puts it pretty elegantly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Focus-on"><span class="nav-number">1.2.5.</span> <span class="nav-text">Focus on:</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structure"><span class="nav-number">1.</span> <span class="nav-text">Data Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#All-you-need-are-two-types-of-knowledge"><span class="nav-number">1.1.1.</span> <span class="nav-text">All you need are two types of knowledge:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Are-Data-Structures"><span class="nav-number">1.2.</span> <span class="nav-text">What Are Data Structures?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-app"><span class="nav-number">1.2.1.</span> <span class="nav-text">web app :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#developing-an-API"><span class="nav-number">1.2.2.</span> <span class="nav-text">developing an API :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#running-joke-at-big-tech-companies"><span class="nav-number">1.2.3.</span> <span class="nav-text">running joke at big tech companies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wikipedia-puts-it-pretty-elegantly"><span class="nav-number">1.2.4.</span> <span class="nav-text">Wikipedia puts it pretty elegantly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Focus-on"><span class="nav-number">1.2.5.</span> <span class="nav-text">Focus on:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity-Analysis"><span class="nav-number">1.3.</span> <span class="nav-text">Complexity Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-notorious-question"><span class="nav-number">1.3.1.</span> <span class="nav-text">the notorious question</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#time-complexity-and-space-complexity"><span class="nav-number">1.3.2.</span> <span class="nav-text">time complexity and space complexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory"><span class="nav-number">1.4.</span> <span class="nav-text">Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bounded-canvas-memory-slots"><span class="nav-number">1.4.1.</span> <span class="nav-text">bounded canvas memory slots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binary-numbers"><span class="nav-number">1.4.2.</span> <span class="nav-text">binary numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pointer"><span class="nav-number">1.4.3.</span> <span class="nav-text">pointer</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
