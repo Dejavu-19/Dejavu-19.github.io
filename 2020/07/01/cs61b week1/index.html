@@ -30,7 +30,7 @@
 <meta property="og:description" content="cs61b week 01See (Video) and (Code) links under each lecture here. 1.1 Intro, Hello World JavaIntroductionWhat is 61B about?   Writing code that runs efficiently.    Writing code efficiently.  Require">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-30T16:47:49.103Z">
-<meta property="article:modified_time" content="2020-07-11T07:05:25.616Z">
+<meta property="article:modified_time" content="2020-07-18T04:47:41.060Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
@@ -203,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-11 16:05:25" itemprop="dateModified" datetime="2020-07-11T16:05:25+09:00">2020-07-11</time>
+                <time title="修改时间：2020-07-18 13:47:41" itemprop="dateModified" datetime="2020-07-18T13:47:41+09:00">2020-07-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,24 +242,24 @@
 <h4 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h4><p>Java is an object oriented language with strict requirements:</p>
 <p>Every Java file must contain a <code>class</code> declaration.*</p>
 <p><strong>All code</strong> lives inside a class*, even helper functions, global constants, etc.</p>
-<p>To run a Java program, you typically define a <code>main</code> method using    <strong><em>public static void main(String[] args)</em></strong></p>
+<p>To run a Java program, you typically define a <code>main</code> method using    <strong>public static void main(String[] args)</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cs61B;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">helloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello world"</span>);<span class="comment">//分号semicolon</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.In java all code must be part of a class.</span></span><br><span class="line"><span class="comment">2.Classes are defined with "public class classname".</span></span><br><span class="line"><span class="comment">3.We use curly braces&#123;&#125; to delineate the beginning and endng of things.</span></span><br><span class="line"><span class="comment">4.We must end line with semicolon.</span></span><br><span class="line"><span class="comment">5.The code we want to run must be inside</span></span><br><span class="line"><span class="comment">public static void main(String[] args).</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>Key Syntax Features.</strong></p>
 <ul>
 <li>All code lives inside a class.</li>
-<li>The code that is executed is inside a function, a.k.a. method, called <code>main</code>.</li>
-<li>Curly braces<code>{}</code> are used to denote the beginning and end of a section of code, e.g. a class or method declaration.</li>
-<li>Statements end with semi-colons <code>;</code>.</li>
+<li>The code that is executed is inside a function, a.k.a. method, called <strong><code>main</code></strong>.</li>
+<li><strong><code>Curly braces{}</code></strong> are used to denote the beginning and end of a section of code, e.g. a class or method declaration.</li>
+<li>Statements end with <strong><code>semi-colons ;</code></strong>.</li>
 <li>Variables have declared types, also called their “static type”.</li>
 <li>Variables must be declared before use.</li>
-<li>Functions must have a return type. If a function does not return anything, we use <code>void</code>,</li>
+<li>Functions must have a return type. If a function does not return anything, we use <strong><code>void</code></strong>,</li>
 <li>The compiler ensures type consistency. If types are inconsistent, the program will not compile.</li>
 </ul>
 <h4 id="Compilation"><a href="#Compilation" class="headerlink" title="Compilation"></a>Compilation</h4><p>The common way to run a Java program is to run it through two programs: <code>javac</code> and <code>java</code>.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ javac HelloWorld.java</span><br><span class="line">$ java HelloWorld</span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
 
-<h4 id="Static-Typing"><a href="#Static-Typing" class="headerlink" title="Static Typing"></a>Static Typing</h4><p>Java is statically typed!All variables, parameters, and methods must have a declared type. That type can never change.</p>
+<h4 id="Static-Typing"><a href="#Static-Typing" class="headerlink" title="Static Typing"></a>Static Typing</h4><p>Java is statically typed! All variables, parameters, and methods must have a declared type. That type can never change.</p>
 <p>It gives us a number of important advantages over languages without static typing:</p>
 <ul>
 <li>Types are checked before the program is even run, allowing developers to catch type errors with ease.</li>
@@ -359,7 +359,7 @@
 <ul>
 <li>Static method are invoked using the class name.</li>
 <li>Instance methods are invoked using an instance name, e.g. maya.makeNoise()</li>
-<li>Static method can’t access instance variables. , but are more simple.</li>
+<li>Static method can’t access instance variables, but are more simple.</li>
 </ul>
 <p>Sometimes, a class may contain both static and non-static methods.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Dog <span class="title">maxDog</span><span class="params">(Dog d1, Dog d2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (d1.weightInPounds &gt; d2.weightInPounds) &#123;</span><br><span class="line">   		<span class="keyword">return</span> d1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> d2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Dog <span class="title">maxDog</span><span class="params">(Dog d2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.weightInPounds &gt; d2.weightInPounds) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> d2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
