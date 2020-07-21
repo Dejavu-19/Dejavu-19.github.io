@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://joshhug.gitbooks.io/hug61b/content/chap2/fig22/IntList_vs_SLList.png">
 <meta property="article:published_time" content="2020-07-04T13:58:38.529Z">
-<meta property="article:modified_time" content="2020-07-18T04:53:53.699Z">
+<meta property="article:modified_time" content="2020-07-21T06:08:10.610Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
@@ -205,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-18 13:53:53" itemprop="dateModified" datetime="2020-07-18T13:53:53+09:00">2020-07-18</time>
+                <time title="修改时间：2020-07-21 15:08:10" itemprop="dateModified" datetime="2020-07-21T15:08:10+09:00">2020-07-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -294,16 +294,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntList L = <span class="keyword">new</span> IntList(<span class="number">15</span>, <span class="keyword">null</span>);</span><br><span class="line">L = <span class="keyword">new</span> IntList(<span class="number">10</span>, L);</span><br><span class="line">L = <span class="keyword">new</span> IntList(<span class="number">5</span>, L);</span><br></pre></td></tr></table></figure>
 
 <p>We will add methods to the IntList class to let it perform basic tasks.</p>
-<h4 id="size-and-iterativeSize"><a href="#size-and-iterativeSize" class="headerlink" title="size() and iterativeSize()"></a>size() and iterativeSize()</h4><p>We could either use recursive or iterative methods to get the <code>size</code> of the IntList.</p>
+<h4 id="size-and-iterativeSize"><a href="#size-and-iterativeSize" class="headerlink" title="size() and iterativeSize()"></a><code>size() and iterativeSize()</code></h4><p>We could either use recursive or iterative methods to get the <code>size</code> of the IntList.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.rest == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rest.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">iterativeSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    IntList p = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">int</span> totalSize = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span>) &#123;</span><br><span class="line">        totalSize += <span class="number">1</span>;</span><br><span class="line">        p = p .rest;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> totalSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h4><p>Write a method <code>get(int i)</code> that returns the ith item   of the list.</p>
+<h4 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h4><p>Write a method <code>get(int i)</code> that returns the i th item  of the list.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.first;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.rest.get(i - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><a href="http://sp19.datastructur.es/materials/lab/lab2setup/lab2setup" target="_blank" rel="noopener">Lab setup</a></li>
-<li><a href="http://sp19.datastructur.es/materials/lab/lab2/lab2" target="_blank" rel="noopener">Lab 2</a></li>
-</ul>
+
+
 <h2 id="SLLists-Nested-Classes-Sentinel-Nodes"><a href="#SLLists-Nested-Classes-Sentinel-Nodes" class="headerlink" title="SLLists, Nested Classes, Sentinel Nodes"></a>SLLists, Nested Classes, Sentinel Nodes</h2><p>While functional, “naked” linked lists like the one above are hard to use.</p>
 <h3 id="Improvement-1-Rebranding"><a href="#Improvement-1-Rebranding" class="headerlink" title="Improvement #1: Rebranding"></a>Improvement #1: Rebranding</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> item;</span><br><span class="line">    <span class="keyword">public</span> IntNode next;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IntNode</span><span class="params">(<span class="keyword">int</span> i, IntNode n)</span> </span>&#123;</span><br><span class="line">        item = i;</span><br><span class="line">        next = n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -366,7 +364,7 @@
 <p>We could add a pointer to each node which points to the previous node, but the problem is that the <code>last</code> pointer of the <code>SLList</code> class may points to the sentinel node.</p>
 <p>Thus, we could add a second sentinel at the end of the list, and point it with <code>sentBack</code>.</p>
 <p>Alternatively, we may just use a single sentinel and make the list circular.</p>
-<h3 id="Generic-List"><a href="#Generic-List" class="headerlink" title="Generic List"></a>Generic List</h3><p>We could improve our IntList to make it available for other types.</p>
+<h3 id="Generic-List"><a href="#Generic-List" class="headerlink" title="Generic List"></a>Generic List</h3><p>We could improve our IntList to make it available for <strong><code>other types</code></strong>.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DLList</span>&lt;<span class="title">BleepBlorp</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IntNode sentinel;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> IntNode prev;</span><br><span class="line">        <span class="keyword">public</span> BleepBlorp item;</span><br><span class="line">        <span class="keyword">public</span> IntNode next;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>We put the desired type inside of angle brackets during declaration, and also use empty angle brackets during instantiation.</p>
@@ -500,7 +498,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
