@@ -171,6 +171,317 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/15/cs61b%20week7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/15/cs61b%20week7/" class="post-title-link" itemprop="url">cs61b week7</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-15 18:58:18" itemprop="dateCreated datePublished" datetime="2020-08-15T18:58:18+09:00">2020-08-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-17 08:24:03" itemprop="dateModified" datetime="2020-08-17T08:24:03+09:00">2020-08-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="cs61b-week7"><a href="#cs61b-week7" class="headerlink" title="cs61b week7"></a>cs61b week7</h1><h2 id="Asymptotics1"><a href="#Asymptotics1" class="headerlink" title="Asymptotics1"></a>Asymptotics1</h2><h3 id="Writing-Efficient-Programs"><a href="#Writing-Efficient-Programs" class="headerlink" title="Writing Efficient Programs"></a>Writing Efficient Programs</h3><p>In the past few weeks, our focus is on saving our time: Java syntax, debugging tools, and other stuffs. However, in this week, we will focus on designing efficient programs.</p>
+<p>Let’s take a typical question as an example: Determine if a sorted array contains any duplicates. Given sorted array <code>A</code>, are there indices <code>i</code> and <code>j</code> where <code>A[i] = A[j]</code>?</p>
+<p>Silly algorithm: Consider every possible pair, returning true if any match. Are (-3, -1) the same? Are (-3, 2) the same? …</p>
+<p>Better algorithm: For each number A[i], look at A[i+1], and return true the first time you see a match. If you run out of items, return false.</p>
+<h3 id="Intuitive-Runtime-Characterizations"><a href="#Intuitive-Runtime-Characterizations" class="headerlink" title="Intuitive Runtime Characterizations"></a>Intuitive Runtime Characterizations</h3><p>Our goal is to somehow characterize the runtimes of the functions below.</p>
+<p>Characterization should be simple and mathematically rigorous.</p>
+<p>Characterization should demonstrate superiority of <code>dup2</code> over <code>dup1</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">dup1</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; A.length; j += <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (A[i] == A[j]) &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">dup2</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length - <span class="number">1</span>; i += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (A[i] == A[i + <span class="number">1</span>]) &#123; </span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/15/cs61b%20week7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/15/cs61b%20week6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/15/cs61b%20week6/" class="post-title-link" itemprop="url">cs61b week6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-15 18:57:35" itemprop="dateCreated datePublished" datetime="2020-08-15T18:57:35+09:00">2020-08-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-17 08:24:14" itemprop="dateModified" datetime="2020-08-17T08:24:14+09:00">2020-08-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="cs61b-week6"><a href="#cs61b-week6" class="headerlink" title="cs61b week6"></a>cs61b week6</h1><h2 id="Packages-and-JAR-files"><a href="#Packages-and-JAR-files" class="headerlink" title="Packages and JAR files"></a>Packages and JAR files</h2><h3 id="Using-Packages"><a href="#Using-Packages" class="headerlink" title="Using Packages"></a>Using Packages</h3><p>If you’re accessing the class from within the same package, you can just use its simple name:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dog d = <span class="keyword">new</span> Dog(...);</span><br></pre></td></tr></table></figure>
+
+<p>If you’re accessing the classes from outside the package, then use its entire canonical name:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ug.joshh.animal.Dog d = <span class="keyword">new</span> ug.joshh.animal.Dog(...);</span><br></pre></td></tr></table></figure>
+
+<p>To make things easier, you can import the package, and use the simple name instead!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ug.joshh.animal.Dog;</span><br><span class="line">...</span><br><span class="line">Dog d = <span class="keyword">new</span> Dog(...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Creating-a-Package"><a href="#Creating-a-Package" class="headerlink" title="Creating a Package"></a>Creating a Package</h3><p>Creating a package takes the following two steps:</p>
+<p>1.) Put the package name at the top of every file in this package</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ug.joshh.animal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String breed;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.) Store the file in a folder that has the appropriate folder name. The folder should have a name that matches your package:</p>
+<p>i.e. <code>ug.joshh.animal</code> package is in ug/joshh/animal folder</p>
+<h3 id="Default-packages"><a href="#Default-packages" class="headerlink" title="Default packages"></a>Default packages</h3><p>Any Java class without an explicit package name at the top of the file is automatically considered to be part of the “default” package. </p>
+<p>However, when writing real programs, you should avoid leaving your files in the default package (unless it’s a very small example program).</p>
+<p>For example, if I were to create a “DogLauncher.java” class in the default package, I would be unable to access this DogLauncher class anywhere else outside of the default package.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DogLauncher.launch(); <span class="comment">// won’t work</span></span><br><span class="line"><span class="keyword">default</span>.DogLauncher.launch(); <span class="comment">// doesn’t exist</span></span><br></pre></td></tr></table></figure>
+
+<p>Therefore, your Java files should generally start with an explicit package declaration.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/15/cs61b%20week6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/14/cs61b%20week5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/14/cs61b%20week5/" class="post-title-link" itemprop="url">cs61b week5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-14 16:13:33" itemprop="dateCreated datePublished" datetime="2020-08-14T16:13:33+09:00">2020-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-17 08:23:39" itemprop="dateModified" datetime="2020-08-17T08:23:39+09:00">2020-08-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="cs61b-week5"><a href="#cs61b-week5" class="headerlink" title="cs61b week5"></a>cs61b week5</h1><h2 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h2><h3 id="Reference-Types-and-Generics-ignore-True-ignorenumbering"><a href="#Reference-Types-and-Generics-ignore-True-ignorenumbering" class="headerlink" title="Reference Types and Generics {ignore=True .ignorenumbering}"></a>Reference Types and Generics {ignore=True .ignorenumbering}</h3><p>Reminder: <strong>Java has 8 primitive types, all other types are reference type</strong></p>
+<ul>
+<li>For each primitive type, there is corresponding reference type called wrapper class.<ul>
+<li>e.g. <code>boolean</code>‘s wrapper class is <code>Boolean</code></li>
+</ul>
+</li>
+<li>To instantiate generic object, we have to use reference types:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();  <span class="comment">//not &lt;int&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>But then why the code below works ?</p>
+<blockquote>
+<p>works</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L.add(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">int</span> first = L.get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>why not below ?</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L.add(<span class="keyword">new</span> Integer(<span class="number">5</span>));</span><br><span class="line">it first = L.get(<span class="number">0</span>).valueOf();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Autoboxing"><a href="#Autoboxing" class="headerlink" title="Autoboxing"></a>Autoboxing</h3><p><strong>Autoboxing (Auto-unboxing)</strong>: Implicit conversions between wrapper/primitives</p>
+<p>Wrapper types and primitives can be used almost interchangeably:</p>
+<ul>
+<li>If Java code expects a wrapper type and gets a primitive, it is autoboxed</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L.add(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">int</span> first = L.get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>If the code expects a primitive and gets a wrapper, it is unboxed</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">blahPrimitive</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    System.out.println(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    blahPrimitive(<span class="keyword">new</span> Integer(<span class="number">20</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Notes:</p>
+<ul>
+<li>Arrays are never autoboxed/unboxed<ul>
+<li>e.g.: an <code>Integer[]</code> cannot be used in place of an <code>int[]</code> (or vice versa)</li>
+</ul>
+</li>
+<li>Autoboxing / unboxing incurs a measurable performance impact !</li>
+<li>Wrapper types use MUCH more memory than primitive types</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/14/cs61b%20week5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/12/work%20simulation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1068,7 +1379,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-06 00:04:20" itemprop="dateModified" datetime="2020-08-06T00:04:20+09:00">2020-08-06</time>
+                <time title="修改时间：2020-08-17 08:23:24" itemprop="dateModified" datetime="2020-08-17T08:23:24+09:00">2020-08-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1104,354 +1415,10 @@
 <h2 id="VengefulSLList"><a href="#VengefulSLList" class="headerlink" title="VengefulSLList"></a>VengefulSLList</h2><p>We could build a <code>VengefulSLList</code> class to make a list that could remeber the deleted items. <code>super</code> key word could be used to call the corresponding method in the super class.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VengefulSLList</span>&lt;<span class="title">Item</span>&gt; <span class="keyword">extends</span> <span class="title">SLList</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line">    SLList&lt;Item&gt; deletedItems;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">VengefulSLList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        deletedItems = <span class="keyword">new</span> SLList&lt;Item&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Item <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Item x = <span class="keyword">super</span>.removeLast();</span><br><span class="line">        deletedItems.addLast(x);</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Prints deleted items. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printLostItems</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        deletedItems.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a>Constructors</h3><p>While constructors are not inherited, Java requires that all constructors must start with a call to one of its superclass’s constructors. If you don’t call it explicitly, Java will automatically call it for you. If we forget to specify which constructor to use, Java will call the default one without parameters.</p>
-<h3 id="The-Object-Class"><a href="#The-Object-Class" class="headerlink" title="The Object Class"></a>The Object Class</h3><p>Every class in Java is a descendant of the Object class, or extends the Object class. Even classes that do not have an explicit extends in their class still implicitly extend the Object class.</p>
-<p><strong><code>.equals(Object obj)</code></strong> <strong><code>.jashCode()</code></strong> <strong><code>toString()</code></strong></p>
-<h3 id="Encapsulation-封装"><a href="#Encapsulation-封装" class="headerlink" title="Encapsulation(封装)"></a>Encapsulation(封装)</h3><ul>
-<li>A model is a set of methods working together to perform some task or set of related tasks.</li>
-<li>A model is said to be encapsulated if its implementation is highly hidden: It can be accessed merely through the documented interfaces.</li>
-</ul>
-<h3 id="Type-Checking-and-Casting"><a href="#Type-Checking-and-Casting" class="headerlink" title="Type Checking and Casting"></a>Type Checking and Casting</h3><p>Compilers will check types of objects based on its staitc type. For instance, the following code will result in a compile-time error since the compiler thinks that <code>SLList</code> does not have the <code>printLostItem</code> method and <code>vsl2</code> can’t contain the <code>SLList</code> object.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VengefulSLList&lt;Integer&gt; vsl = <span class="keyword">new</span> VengefulSLList&lt;Integer&gt;(<span class="number">9</span>);</span><br><span class="line">SLList&lt;Integer&gt; sl = vsl;</span><br><span class="line">sl.printLostItems();</span><br><span class="line">VengefulSLList&lt;Integer&gt; vsl2 = sl;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h4><p>As we seen above, expression with <code>new</code> key word has compile-time types.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SLList&lt;Integer&gt; sl = <span class="keyword">new</span> VengefulSLList&lt;Integer&gt;();</span><br></pre></td></tr></table></figure>
-
-<p>Above, the compile-time type of the right-hand side of the expression is <code>VengefulSLList</code>. The compiler checks to make sure that <code>VengefulSLList</code> “is-a” <code>SLList</code>, and allows this assignment.</p>
-<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p>The type of a method’s return value is the method’s compile-time type. Since the return type of <code>maxDog</code> is <code>Dog</code>, any call to <code>maxDog</code> will have compile-time type <code>Dog</code>.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Poodle frank = <span class="keyword">new</span> Poodle(<span class="string">"Frank"</span>, <span class="number">5</span>);</span><br><span class="line">Poodle frankJr = <span class="keyword">new</span> Poodle(<span class="string">"Frank Jr."</span>, <span class="number">15</span>);</span><br><span class="line"></span><br><span class="line">Dog largerDog = maxDog(frank, frankJr);</span><br><span class="line">Poodle largerPoodle = maxDog(frank, frankJr); <span class="comment">//does not compile! RHS has compile-time type Dog</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Casting"><a href="#Casting" class="headerlink" title="Casting"></a>Casting</h4><p>We could specify the type of an expression or a method to let Java compiler ignore type check. That might be dangerous and may cause run-time errors.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poodle largerPoodle &#x3D; (Poodle) maxDog(frank, frankJr); &#x2F;&#x2F; compiles! Right hand side has compile-time type Poodle after casting</span><br></pre></td></tr></table></figure>
-
-<h3 id="High-Order-Functions"><a href="#High-Order-Functions" class="headerlink" title="High Order Functions"></a>High Order Functions</h3><p>In Python, we could define a function that will take another function as a parameter.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">def <span class="title">tenX</span><span class="params">(x)</span>:</span></span><br><span class="line"><span class="function">    return 10 * x</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">def <span class="title">do_twice</span><span class="params">(f, x)</span>:</span></span><br><span class="line"><span class="function">    return <span class="title">f</span><span class="params">(f(x)</span>)</span></span><br></pre></td></tr></table></figure>
-
-<p>In Java, we could do so by declaring an interface.</p>
-<p><a href="https://blog.csdn.net/chen_chun_guang/article/details/6323201" target="_blank" rel="noopener">Java 中extends与implements使用方法</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IntUnaryFunction</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">apply</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TenX</span> <span class="keyword">implements</span> <span class="title">IntUnaryFunction</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">apply</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span> * x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">do_twice</span><span class="params">(IntUnaryFunction f, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f.apply(f.apply(x));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(do_twice(<span class="keyword">new</span> TenX(), <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="Subtype-Polymorphism-vs-HoFs"><a href="#Subtype-Polymorphism-vs-HoFs" class="headerlink" title="Subtype Polymorphism vs. HoFs"></a>Subtype Polymorphism vs. HoFs</h2><h3 id="Max-Function"><a href="#Max-Function" class="headerlink" title="Max Function"></a>Max Function</h3><p>Suppose we will write a method <code>max</code> that will take an array of objects and return the maximum one.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">max</span><span class="params">(Object[] items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxDex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; items.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (items[i] &gt; items[maxDex]) &#123;</span><br><span class="line">            maxDex = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> items[maxDex];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Dog[] dogs = &#123;<span class="keyword">new</span> Dog(<span class="string">"Elyse"</span>, <span class="number">3</span>), <span class="keyword">new</span> Dog(<span class="string">"Sture"</span>, <span class="number">9</span>), <span class="keyword">new</span> Dog(<span class="string">"Benjamin"</span>, <span class="number">15</span>)&#125;;</span><br><span class="line">    Dog maxDog = (Dog) max(dogs);</span><br><span class="line">    maxDog.bark();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The problem is that the <code>Dog</code> object can’t work with the <code>&gt;</code> operater. To fix this problem, we may change the function slightly.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Dog <span class="title">maxDog</span><span class="params">(Dog[] dogs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (dogs == <span class="keyword">null</span> || dogs.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Dog maxDog = dogs[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (Dog d : dogs) &#123;</span><br><span class="line">        <span class="keyword">if</span> (d.size &gt; maxDog.size) &#123;</span><br><span class="line">            maxDog = d;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxDog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>However, another problem is that we couldn’t generalize this function to other type of objects.</p>
-<h3 id="compareTo"><a href="#compareTo" class="headerlink" title="compareTo"></a>compareTo</h3><p>We can create an interface that guarantees that any implementing class, like <code>Dog</code>, contains a comparison method, which we’ll call <code>compareTo</code>.</p>
-<p>Let’s write our own interface.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OurComparable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object o)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Return a negative number if <code>this</code> &lt; o.</li>
-<li>Return 0 if <code>this</code> equals o.</li>
-<li>Return a positive number if <code>this</code> &gt; o.</li>
-</ul>
-<p>Now, we could let our <code>Dog</code> class implements the <code>OurComparable</code> interface.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">OurComparable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">(String n, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">        name = n;</span><br><span class="line">        size = s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">" says: bark"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        Dog uddaDog = (Dog) o;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size - uddaDog.size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Then, we could generalize the <code>max</code> function by taking in <code>OurComparable</code> objects.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> OurComparable <span class="title">max</span><span class="params">(OurComparable[] items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxDex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; items.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> cmp = items[i].compareTo(items[maxDex]);</span><br><span class="line">        <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            maxDex = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> items[maxDex];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Comparables"><a href="#Comparables" class="headerlink" title="Comparables"></a>Comparables</h3><p>Although <code>OurComparable</code> interface seems solved the issue, it’s awkward to use and there’s no existing classes implement <code>OurComparable</code>. The solution is that we could use the existed interface <code>Comparable</code>.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T obj)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Notice that <code>Comparable&lt;T&gt;</code> means that it takes a generic type. This will help us avoid having to cast an object to a specific type.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Dog</span>&gt; </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Dog uddaDog)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size - uddaDog.size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Comparator"><a href="#Comparator" class="headerlink" title="Comparator"></a>Comparator</h3><p>We could only implement one <code>compareTo</code> method for each class. However, if we want to add more orders of comparasion, we could implement <code>Comparator</code> interface.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1, T o2)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>This shows that the <code>Comparator</code> interface requires that any implementing class implements the <code>compare</code> method.</p>
-<p>To compare two dogs based on their names, we can simply defer to <code>String</code>‘s already defined <code>compareTo</code> method.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Dog</span>&gt; </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Dog uddaDog)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size - uddaDog.size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NameComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Dog</span>&gt; </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Dog a, Dog b)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a.name.compareTo(b.name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Comparator&lt;Dog&gt; <span class="title">getNameComparator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> NameComparator();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Comparator&lt;Dog&gt; nc = Dog.getNameComparator();</span><br></pre></td></tr></table></figure>
-
-<h2 id="Exceptions-Iterators-Object-Methods"><a href="#Exceptions-Iterators-Object-Methods" class="headerlink" title="Exceptions, Iterators, Object Methods"></a>Exceptions, Iterators, Object Methods</h2><h3 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h3><p>Java provides us a built-in <code>List</code> interface and several implementations.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.util.List&lt;Integer&gt; L &#x3D; new java.util.ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure>
-
-<p>We could import the packages to make the code more simple.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        L.add(<span class="number">5</span>);</span><br><span class="line">        L.add(<span class="number">10</span>);</span><br><span class="line">        System.out.println(L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h3><p>Sets are a collection of unique elements, which means that you can only have one copy of each element. There is also no sense of order.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"></span><br><span class="line">Set&lt;String&gt; s = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">s.add(<span class="string">"Tokyo"</span>);</span><br><span class="line">s.add(<span class="string">"Lagos"</span>);</span><br><span class="line">System.out.println(S.contains(<span class="string">"Tokyo"</span>));</span><br></pre></td></tr></table></figure>
-
-<h3 id="ArraySet"><a href="#ArraySet" class="headerlink" title="ArraySet"></a>ArraySet</h3><p>Our goal is to make our own set with <code>ArrayList</code> we built before, which has the following methods.</p>
-<ul>
-<li><code>add(value)</code>: add the value to the set if not already present</li>
-<li><code>contains(value)</code>: check to see if ArraySet contains the key</li>
-<li><code>size()</code>: return number of values</li>
-</ul>
-<p>Here’s our code.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArraySet</span>&lt;<span class="title">T</span>&gt;  </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T[] items;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size; <span class="comment">// the next item to be added will be at position size</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArraySet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        items = (T[]) <span class="keyword">new</span> Object[<span class="number">100</span>];</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Returns true if this map contains a mapping for the specified key.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i += <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (items[i].equals(x)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Associates the specified value with the specified key in this map. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (contains(x)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        items[size] = x;</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Returns the number of key-value mappings in this map. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>When we add <code>null</code> to our <code>ArraySet</code>, the program will crash since we are calling <code>null.equals(x)</code> and will throw a <code>NullPointerException</code>.</p>
-<p>However, we could manually throw an exception <code>IllegalArgumentException</code> by updating the <code>add</code> method.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"can't add null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (contains(x)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    items[size] = x;</span><br><span class="line">    size += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Iterations"><a href="#Iterations" class="headerlink" title="Iterations"></a>Iterations</h3><p>We could use enhanced loop in Java’s <code>HashSet</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; s = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">s.add(<span class="string">"Tokyo"</span>);</span><br><span class="line">s.add(<span class="string">"Lagos"</span>);</span><br><span class="line"><span class="keyword">for</span> (String city : s) &#123;</span><br><span class="line">    System.out.println(city);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The code above is equal to the following ugly implementaion.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; s = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">...</span><br><span class="line">Iterator&lt;String&gt; seer = s.iterator();</span><br><span class="line"><span class="keyword">while</span> (seer.hasNext()) &#123;</span><br><span class="line">    String city = seer.next();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>If we want to do the same (ugly version of enhanced loop) with our own <code>ArraySet</code>, we have to implement the <code>Iterator</code> interface.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">T <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ArraySetIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> wizPos;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArraySetIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        wizPos = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wizPos &lt; size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        T returnItem = items[wizPos];</span><br><span class="line">        wizPos += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> returnItem;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>However, if we want to let our class support enhanced for loop, we have to implement <code>Iterable</code> interface.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArraySet</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Iterable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T[] items;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size; <span class="comment">// the next item to be added will be at position size</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArraySet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        items = (T[]) <span class="keyword">new</span> Object[<span class="number">100</span>];</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Returns true if this map contains a mapping for the specified key.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i += <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (items[i].equals(x)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Associates the specified value with the specified key in this map.</span></span><br><span class="line"><span class="comment">       Throws an IllegalArgumentException if the key is null. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"can't add null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (contains(x)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        items[size] = x;</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Returns the number of key-value mappings in this map. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** returns an iterator (a.k.a. seer) into ME */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterator&lt;T&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArraySetIterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ArraySetIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> wizPos;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ArraySetIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            wizPos = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> wizPos &lt; size;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> T <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            T returnItem = items[wizPos];</span><br><span class="line">            wizPos += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> returnItem;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArraySet&lt;Integer&gt; aset = <span class="keyword">new</span> ArraySet&lt;&gt;();</span><br><span class="line">        aset.add(<span class="number">5</span>);</span><br><span class="line">        aset.add(<span class="number">23</span>);</span><br><span class="line">        aset.add(<span class="number">42</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//iteration</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : aset) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h3><p>If we want to print out the whole class, we have to override <code>toString</code> method, or we will only get the name and the address of the object.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String returnString = <span class="string">"&#123;"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i += <span class="number">1</span>) &#123;</span><br><span class="line">        returnString += keys[i];</span><br><span class="line">        returnString += <span class="string">", "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    returnString += <span class="string">"&#125;"</span>;</span><br><span class="line">    <span class="keyword">return</span> returnString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Here’s an enhanced version utilizing the <code>StringBuilder</code> which is more efficient.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    StringBuilder returnSB = <span class="keyword">new</span> StringBuilder(<span class="string">"&#123;"</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size - <span class="number">1</span>; i += <span class="number">1</span>) &#123;</span><br><span class="line">        returnSB.append(items[i].toString());</span><br><span class="line">        returnSB.append(<span class="string">", "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    returnSB.append(items[size - <span class="number">1</span>]);</span><br><span class="line">    returnSB.append(<span class="string">"&#125;"</span>);</span><br><span class="line">    <span class="keyword">return</span> returnSB.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h3><p>In order to check whether a given object is equal to another object, we have to implement the <code>equals</code> method, since <code>==</code> will only compare the memory address.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object other)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == other) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (other == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (other.getClass() != <span class="keyword">this</span>.getClass()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ArraySet&lt;T&gt; o = (ArraySet&lt;T&gt;) other;</span><br><span class="line">    <span class="keyword">if</span> (o.size() != <span class="keyword">this</span>.size()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (T item : <span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!o.contains(item)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/21/cs50/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/21/cs50/" class="post-title-link" itemprop="url">cs50 week 0</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-07-21 20:16:59 / 修改时间：20:17:23" itemprop="dateCreated datePublished" datetime="2020-07-21T20:16:59+09:00">2020-07-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs50/" itemprop="url" rel="index"><span itemprop="name">cs50</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Lecture-0"><a href="#Lecture-0" class="headerlink" title="Lecture 0"></a><a href="https://cs50.harvard.edu/x/2020/notes/0/#lecture-0" target="_blank" rel="noopener">Lecture 0</a></h1><h2 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome"></a>Welcome</h2><p>In fact, two-thirds of CS50 students have never taken a CS course before.</p>
-<p>And importantly, too:</p>
-<blockquote>
-<p>what ultimately matters in this course is not so much where you end up relative to your classmates but where you end up relative to yourself <strong>when you began</strong></p>
-</blockquote>
+<h3 id=""><a href="#" class="headerlink" title=""></a>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/07/21/cs50/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/21/Lab-2setup,-Lab2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/21/Lab-2setup,-Lab2/" class="post-title-link" itemprop="url">Lab2setup, Lab2 ,Proj1A</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-21 13:20:13" itemprop="dateCreated datePublished" datetime="2020-07-21T13:20:13+09:00">2020-07-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-13 12:25:26" itemprop="dateModified" datetime="2020-08-13T12:25:26+09:00">2020-08-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Lab2-Setup"><a href="#Lab2-Setup" class="headerlink" title="Lab2 Setup"></a>Lab2 Setup</h1><h2 id="Setting-Up-IntelliJ"><a href="#Setting-Up-IntelliJ" class="headerlink" title="Setting Up IntelliJ"></a>Setting Up IntelliJ</h2><p>Already finished.</p>
-<h1 id="Lab2-Unit-Testing-with-JUnit-and-IntLists"><a href="#Lab2-Unit-Testing-with-JUnit-and-IntLists" class="headerlink" title="Lab2 Unit Testing with JUnit and IntLists"></a>Lab2 Unit Testing with JUnit and IntLists</h1><h3 id="Application-IntList"><a href="#Application-IntList" class="headerlink" title="Application IntList"></a>Application IntList</h3><h3 id="dSquareList"><a href="#dSquareList" class="headerlink" title="dSquareList"></a>dSquareList</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns a list equal to L with all elements squared. Destructive.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dSquareList</span><span class="params">(IntList L)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (L != <span class="keyword">null</span>) &#123;</span><br><span class="line">        L.first = L.first * L.first;</span><br><span class="line">        L = L.rest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/21/Lab-2setup,-Lab2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/19/AE-90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/19/AE-90/" class="post-title-link" itemprop="url">AE 100</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-19 12:32:00" itemprop="dateCreated datePublished" datetime="2020-07-19T12:32:00+09:00">2020-07-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 16:26:54" itemprop="dateModified" datetime="2020-08-11T16:26:54+09:00">2020-08-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AE/" itemprop="url" rel="index"><span itemprop="name">AE</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="AE-100"><a href="#AE-100" class="headerlink" title="AE 100"></a>AE 100</h1><h2 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a>1. Two Sum</h2><h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1 :"></a>Solution1 :</h3><ol>
-<li><p>two for loop</p>
-<p>1) First think about a simple loop idea. Go through array elements each time, we will say this element is x , there exist left part array on the right hand , traverse this part and find if it has the number y which equals to target minus x.</p>
-</li>
-<li><p>O(n^2^)T O(1)S</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoNumberSum(<span class="keyword">int</span>[] array, <span class="keyword">int</span> targetSum) &#123;</span><br><span class="line">    <span class="comment">// Write your code here.</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; ++i) &#123;</span><br><span class="line">			<span class="keyword">int</span> a = array[i];</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; array.length; ++j) &#123;</span><br><span class="line">				<span class="keyword">int</span> b = array[j];</span><br><span class="line">					<span class="keyword">if</span> (a + b == targetSum) &#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;array[i], array[j]&#125;;</span><br><span class="line">					&#125; </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/19/AE-90/#more" rel="contents">
+              <a class="btn" href="/2020/07/31/cs61b%20week4/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1474,7 +1441,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1542,7 +1509,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

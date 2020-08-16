@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="cs61b week6Packages and JAR filesUsing PackagesIf you’re accessing the class from within the same package, you can just use its simple name: 1Dog d &#x3D; new Dog(...);  If you’re accessing the classes fro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs61b week6">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/08/15/cs61b%20week6/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="cs61b week6Packages and JAR filesUsing PackagesIf you’re accessing the class from within the same package, you can just use its simple name: 1Dog d &#x3D; new Dog(...);  If you’re accessing the classes fro">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://joshhug.gitbooks.io/hug61b/content/assets/access_modifiers.png">
+<meta property="og:image" content="https://joshhug.gitbooks.io/hug61b/content/assets/reverse_list1.png">
+<meta property="og:image" content="https://joshhug.gitbooks.io/hug61b/content/assets/reverse_list2.png">
+<meta property="article:published_time" content="2020-08-15T09:57:35.243Z">
+<meta property="article:modified_time" content="2020-08-16T23:24:14.843Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="cs">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://joshhug.gitbooks.io/hug61b/content/assets/access_modifiers.png">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2020/08/15/cs61b%20week6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>cs61b week6 | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/15/cs61b%20week6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cs61b week6
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-15 18:57:35" itemprop="dateCreated datePublished" datetime="2020-08-15T18:57:35+09:00">2020-08-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-17 08:24:14" itemprop="dateModified" datetime="2020-08-17T08:24:14+09:00">2020-08-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="cs61b-week6"><a href="#cs61b-week6" class="headerlink" title="cs61b week6"></a>cs61b week6</h1><h2 id="Packages-and-JAR-files"><a href="#Packages-and-JAR-files" class="headerlink" title="Packages and JAR files"></a>Packages and JAR files</h2><h3 id="Using-Packages"><a href="#Using-Packages" class="headerlink" title="Using Packages"></a>Using Packages</h3><p>If you’re accessing the class from within the same package, you can just use its simple name:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dog d = <span class="keyword">new</span> Dog(...);</span><br></pre></td></tr></table></figure>
+
+<p>If you’re accessing the classes from outside the package, then use its entire canonical name:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ug.joshh.animal.Dog d = <span class="keyword">new</span> ug.joshh.animal.Dog(...);</span><br></pre></td></tr></table></figure>
+
+<p>To make things easier, you can import the package, and use the simple name instead!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ug.joshh.animal.Dog;</span><br><span class="line">...</span><br><span class="line">Dog d = <span class="keyword">new</span> Dog(...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Creating-a-Package"><a href="#Creating-a-Package" class="headerlink" title="Creating a Package"></a>Creating a Package</h3><p>Creating a package takes the following two steps:</p>
+<p>1.) Put the package name at the top of every file in this package</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ug.joshh.animal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String breed;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.) Store the file in a folder that has the appropriate folder name. The folder should have a name that matches your package:</p>
+<p>i.e. <code>ug.joshh.animal</code> package is in ug/joshh/animal folder</p>
+<h3 id="Default-packages"><a href="#Default-packages" class="headerlink" title="Default packages"></a>Default packages</h3><p>Any Java class without an explicit package name at the top of the file is automatically considered to be part of the “default” package. </p>
+<p>However, when writing real programs, you should avoid leaving your files in the default package (unless it’s a very small example program).</p>
+<p>For example, if I were to create a “DogLauncher.java” class in the default package, I would be unable to access this DogLauncher class anywhere else outside of the default package.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DogLauncher.launch(); <span class="comment">// won’t work</span></span><br><span class="line"><span class="keyword">default</span>.DogLauncher.launch(); <span class="comment">// doesn’t exist</span></span><br></pre></td></tr></table></figure>
+
+<p>Therefore, your Java files should generally start with an explicit package declaration.</p>
+<a id="more"></a>
+
+<h3 id="JAR-Files"><a href="#JAR-Files" class="headerlink" title="JAR Files"></a>JAR Files</h3><p>If you wanted to share this program, rather than sharing all the .class files in special directories, you can “zip” all the files together by creating a JAR file.</p>
+<p>It is important to note that JAR files are just like zip files. It is entirely possible to unzip and transform the files back into .java files. JAR files do not keep your code safe, and thus you should not share your .jar files of your projects with other students.</p>
+<p><strong>Build Systems</strong></p>
+<p>Rather than importing a list of libraries or whatnot each time we wanted to create a project, we can simply put the files into the appropriate place, and use “Build Systems” to automate the process of setting up your project. The advantages of Build Systems are especially seen in bigger teams and projects, where it’s largely beneficial to automate the process of setting up the project structure.</p>
+<h3 id="Access-Control"><a href="#Access-Control" class="headerlink" title="Access Control"></a>Access Control</h3><p><strong>Private</strong> Only code from the given class can access <strong>private</strong> members. It is truly <em>private</em> from everything else, as subclasses, packages, and other external classes cannot access private members. <em>TL;DR: only the class needs this piece of code</em></p>
+<p><strong>Package Private</strong> This is the default access given to Java members if there is no explicit modifier written. Package private entails that classes that belong in the same package can access, but not subclasses! Why is this useful? Usually, packages are handled and modified by the same (group of) people. It is also common for people to extend classes that they didn’t initially write. The original owners of the class that’s being extended may not want certain features or members to be tampered with, if people choose to extend it — hence, package-private allows those who are familiar with the inner workings of the program to access and modify certain members, whereas it blocks those who are subclassing from doing the same. <em>TL;DR: only classes that live in the same package can access</em></p>
+<p><strong>Protected</strong> Protected members are protected from the “outside” world, so classes within the same package and subclasses can access these members, but the rest of the world (e.g. classes external to the package or non-subclasses) cannot! <em>TL;DR: subtypes might need it, but subtype clients will not</em></p>
+<p><strong>Public</strong> This keyword opens up the access to everyone! This is generally what clients of the package can rely on to use, and once deployed, the public members’ signatures should not change. It’s like a promise and contract to people using this public code that it will always be accessible to them. Usually if developers want to “get rid of” something that’s public, rather than removing it, they would call it “deprecated” instead.</p>
+<p><em>TL;DR: open and promised to the world</em></p>
+<p><strong>Exercise</strong> </p>
+<p>See if you can draw the access table yourself, from memory.</p>
+<p>Have the following be the column titles: Modifier, Class, Package, Subclass, World, with the following as the Rows: public, protected, package-private, private.</p>
+<p>Indicate whether or not each row/access type has access to that particular column’s “type”.</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/assets/access_modifiers.png" alt=""></p>
+<h3 id="Access-Control-Subtleties"><a href="#Access-Control-Subtleties" class="headerlink" title="Access Control Subtleties"></a>Access Control Subtleties</h3><p><strong>Default Package</strong> Code that does not have a package declaration is automatically part of the default package. If these classes have members that don’t have access modifiers (i.e. are package-private), then because everything is part of the same (unnamed) default package, these members are still accessible between these “default”-package classes.</p>
+<p><strong>Access is Based Only on Static Types</strong> It is important to note that for interfaces, the default access for its methods is actually public, and not package-private. Additionally, like this subtitle indicates, the access depends only on the static types.</p>
+<p><strong>Exercise</strong></p>
+<p>Given the following code, which lines in the demoAccess method, if any, will error during compile time?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> universe;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BlackHole</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(Object x)</span></span>; <span class="comment">// this method is public, not package-private!</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> universe;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CreationUtils</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> BlackHole <span class="title">hirsute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">new</span> HasHair();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> universe;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HasHair</span> <span class="keyword">implements</span> <span class="title">BlackHole</span> </span>&#123;</span><br><span class="line">    Object[] items;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Object o)</span> </span>&#123; ... &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> CreationUtils.hirsute;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">demoAccess</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      BlackHole b = hirsute();</span><br><span class="line">      b.add(<span class="string">"horse"</span>);</span><br><span class="line">      b.get(<span class="number">0</span>);</span><br><span class="line">      HasHair hb = (HasHair) b;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>ANSWER</strong></p>
+<ul>
+<li>b.get(0); This line errors because <code>b</code> is of static type <code>BlackHole</code>, but the <code>BlackHole</code> interface does not define a <code>get</code> method! Even though you and I both know that <code>b</code> is dynamically a <code>HasHair</code>, and thus has the <code>get</code> method, the compiler bases its checks off the static type.</li>
+<li>HasHair hb = (HasHair) b; This one is tricky, but notice that the <code>HasHair</code> class is not a public class - it’s package-private. This means that <code>Client</code>, a class outside of the <code>universe</code> package, can’t see that the <code>HasHair</code> class exists.</li>
+</ul>
+<h2 id="Efficient-Programming"><a href="#Efficient-Programming" class="headerlink" title="Efficient Programming"></a>Efficient Programming</h2><blockquote>
+<p>“An engineer will do for a dime what any fool will do for a dollar” – Paul Hilfinger</p>
+</blockquote>
+<p>Efficiency comes in two flavors:</p>
+<p>1.) Programming cost.</p>
+<ul>
+<li>How long does it take to develop your programs?</li>
+<li>How easy is it to read, modify, and maintain your code?</li>
+</ul>
+<p>2.) Execution cost (starting next week).</p>
+<ul>
+<li>How much time does your program take to execute?</li>
+<li>How much memory does your program require?</li>
+</ul>
+<p>Some helpful Java features discussed in 61B:</p>
+<ul>
+<li>Packages.<ul>
+<li>Good: Organizing, making things package private</li>
+<li>Bad: Specific</li>
+</ul>
+</li>
+<li>Static type checking.<ul>
+<li>Good: Checks for errors early , reads more like a story</li>
+<li>Bad: Not too flexible, (casting)</li>
+</ul>
+</li>
+<li>Inheritance.<ul>
+<li>Good: Reuse of code</li>
+<li>Bad: “Is a”, the path of debugging gets annoying, can’t instantiate, implement every method of an interface</li>
+</ul>
+</li>
+</ul>
+<h3 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a>Encapsulation</h3><p>We will first define a few terms:</p>
+<ul>
+<li><strong>Module:</strong> A set of methods that work together as a whole to perform some task or set of related tasks.</li>
+<li><strong>Encapsulated:</strong> A module is said to be encapsulated if its implementation is completely hidden, and it can be accessed only through a documented interface.</li>
+</ul>
+<h3 id="API’s"><a href="#API’s" class="headerlink" title="API’s"></a>API’s</h3><p>An API(Application Programming Interface) of an ADT is the list of constructors and methods and a short description of each.</p>
+<p>API consists of syntactic and semantic specification.</p>
+<ul>
+<li>Compiler verifies that <code>syntax</code> is met.<ul>
+<li>AKA, everything specified in the API is present.</li>
+</ul>
+</li>
+<li>Tests help verify that <code>semantics</code> are correct.<ul>
+<li>AKA everything actually works the way it should.</li>
+<li>Semantic specification usually written out in English (possibly including usage examples). Mathematically precise formal specifications are somewhat possible but not widespread.</li>
+</ul>
+</li>
+</ul>
+<h3 id="ADT’s"><a href="#ADT’s" class="headerlink" title="ADT’s"></a>ADT’s</h3><p>ADT’s (Abstract Data Structures) are high-level types that are defined by their <strong>behaviors</strong>, not their implementations.</p>
+<p>i.e.) Deque in Proj1 was an ADT that had certain behaviors (addFirst, addLast, etc.). </p>
+<p>But, the data structures we actually used to implement it was ArrayDeque and LinkedListDeque</p>
+<p>Some ADT’s are actually special cases of other ADT’s. </p>
+<p>For example, Stacks and Queues are just lists that have even more specific behavior.</p>
+<p><strong>Exercise</strong></p>
+<p>Write a Stack class using a Linked List as its underlying data structure. You only need to implement a single function: push(Item x). Make sure to make the class generic with “Item” being the generic type!</p>
+<p>You may have written it a few different ways. Let’s look at three popular solutions:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExtensionStack</span>&lt;<span class="title">Item</span>&gt; <span class="keyword">extends</span> <span class="title">LinkedList</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(Item x)</span> </span>&#123;</span><br><span class="line">        add(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This solution uses <em>extension</em>. it simply borrow the methods from <code>LinkedList&lt;Item&gt;</code> and uses them as its own.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DelegationStack</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> LinkedList&lt;Item&gt; L = <span class="keyword">new</span> LinkedList&lt;Item&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(Item x)</span> </span>&#123;</span><br><span class="line">        L.add(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This approach uses Delegation. It creates a Linked List object and calls its methods to accomplish its goal.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StackAdapter</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List L;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StackAdapter</span><span class="params">(List&lt;Item&gt; worker)</span> </span>&#123;</span><br><span class="line">        L = worker;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(Item x)</span> </span>&#123;</span><br><span class="line">        L.add(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This approach is similar to the previous one, except it can use any class that implements the <strong>List</strong> interface (Linked List, ArrayList, etc).</p>
+<p><strong>Warning</strong>: be mindful of the difference between “is-a” and “has-a” relationships.</p>
+<ul>
+<li>A cat has-a claw</li>
+<li>A cat is-a feline</li>
+</ul>
+<p>Earlier in the section define that delegation is accomplished by passing in a class while extension is defined as inheriting (just because it may be hard to notice at first glance).</p>
+<p><strong>Delegation vs Extension:</strong> Right now it may seem that Delegation and Extension are pretty much interchangeable; however, there are some important differences that must be remembered when using them.</p>
+<p>Extension tends to be used when you know what is going on in the parent class. In other words, you know how the methods are implemented. Additionally, with extension, you are basically saying that the class you are extending from acts similarly to the one that is doing the extending. On the other hand, Delegation is when you do not want to consider your current class to be a version of the class that you are pulling the method from.</p>
+<p>Views: Views are an alternative representation of an existed object. Views essentially limit the access that the user has to the underlying object. However, changes done through the views will affect the actual object.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Create an ArrayList. */</span></span><br><span class="line">List&lt;String&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="comment">/** Add some items. */</span></span><br><span class="line">L.add(“at”); L.add(“ax”); …</span><br></pre></td></tr></table></figure>
+
+<p>Say you only want a list from index 1 and 4. Then you can use a method called sublist do this by the following and you will</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** subList me up fam. */</span></span><br><span class="line">List&lt;String&gt; SL = l.subList(<span class="number">1</span>, <span class="number">4</span>);</span><br><span class="line"><span class="comment">/** Mutate that thing. */</span></span><br><span class="line">SL.set(<span class="number">0</span>, “jug”);</span><br></pre></td></tr></table></figure>
+
+<p>Now why is this useful? Well say we want to reverse only part of the list. For example in the below image, we would want to reverse ax ban bat in the above picture.</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/assets/reverse_list1.png" alt="reverse"></p>
+<p>The most intuitive way is to create a method that takes in a list object and the indices which should be reversed. However, this can be a bit painful because we add some extraneous logic.</p>
+<p>To get around doing this, we can just create a general reverse function that takes in a list and reverses that list. Because views mutates the underlying object that it represents, we can create a sublist like earlier and reverse the sublist. The end result would actually mutate the actual list and not the copy.<br><img src="https://joshhug.gitbooks.io/hug61b/content/assets/reverse_list2.png" alt="img"></p>
+<p>This is all fine and dandy. However, it lends itself to an issue. You are claiming that you can give a list object that when manipulated, can affect the original list object- that’s a bit weird. Just thinking “How do you return an actual List but still have it affect another List?” is a bit confusing. Well the answer is access methods.</p>
+<p>The first thing to notice is that the sublist method returns a list type. Additionally, there is a defined class called Sublist which extends AbstractList. Since Abstract List it implements the List interface it and Sublist are List types.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Item&gt; sublist(int start, int end)&#123;</span><br><span class="line">    Return new this.Sublist(start,end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This first thing to notice from the above code is that subList returns a List type.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Private <span class="class"><span class="keyword">class</span> <span class="title">Sublist</span> <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">Item</span>&gt;</span>&#123;</span><br><span class="line">    Private <span class="keyword">int</span> start end;</span><br><span class="line">    Sublist(inst start, <span class="keyword">int</span> end)&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now the reason the sublist function returns a List is because the class SubList extends AbstractList. Since AbstractList implements the List interface both it and Sublist are List Types.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Item <span class="title">get</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;<span class="keyword">return</span> AbstractList.<span class="keyword">this</span>.get(start+k);&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> l, Item x)</span></span>&#123;AbstractList.<span class="keyword">this</span>.add(start+k, x); end+=<span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>An observation that should be made is that getting the kth item from our sublist is the same as getting the the kth item from our original list with an offset equal to our start index. Because we are using a get method of our outer class (the most parent one) we change our original list.</p>
+<p>Similarly, adding an element to our sublist is the same as adding an element to our original list with an offset equal to the start index of the sublist.</p>
+<p><strong>The Takeaway:</strong></p>
+<ul>
+<li>APIs are pretty hard to design; however, having a coherent design philosophy can make your code much cleaner and easier to deal with.</li>
+<li>Inheritance is tempting to use frequently, but it has problems and should be use sparingly, only when you are certain about attributes of your classes (both those being extended and doing the extending).</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/14/cs61b%20week5/" rel="prev" title="cs61b week5">
+      <i class="fa fa-chevron-left"></i> cs61b week5
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/15/cs61b%20week7/" rel="next" title="cs61b week7">
+      cs61b week7 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week6"><span class="nav-number">1.</span> <span class="nav-text">cs61b week6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Packages-and-JAR-files"><span class="nav-number">1.1.</span> <span class="nav-text">Packages and JAR files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Packages"><span class="nav-number">1.1.1.</span> <span class="nav-text">Using Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-a-Package"><span class="nav-number">1.1.2.</span> <span class="nav-text">Creating a Package</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Default-packages"><span class="nav-number">1.1.3.</span> <span class="nav-text">Default packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAR-Files"><span class="nav-number">1.1.4.</span> <span class="nav-text">JAR Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control"><span class="nav-number">1.1.5.</span> <span class="nav-text">Access Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Subtleties"><span class="nav-number">1.1.6.</span> <span class="nav-text">Access Control Subtleties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Efficient-Programming"><span class="nav-number">1.2.</span> <span class="nav-text">Efficient Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Encapsulation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Encapsulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API’s"><span class="nav-number">1.2.2.</span> <span class="nav-text">API’s</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADT’s"><span class="nav-number">1.2.3.</span> <span class="nav-text">ADT’s</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
