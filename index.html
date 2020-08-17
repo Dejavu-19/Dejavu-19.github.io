@@ -290,7 +290,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-17 08:24:14" itemprop="dateModified" datetime="2020-08-17T08:24:14+09:00">2020-08-17</time>
+                <time title="修改时间：2020-08-17 09:51:33" itemprop="dateModified" datetime="2020-08-17T09:51:33+09:00">2020-08-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -313,27 +313,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="cs61b-week6"><a href="#cs61b-week6" class="headerlink" title="cs61b week6"></a>cs61b week6</h1><h2 id="Packages-and-JAR-files"><a href="#Packages-and-JAR-files" class="headerlink" title="Packages and JAR files"></a>Packages and JAR files</h2><h3 id="Using-Packages"><a href="#Using-Packages" class="headerlink" title="Using Packages"></a>Using Packages</h3><p>If you’re accessing the class from within the same package, you can just use its simple name:</p>
+          <h1 id="cs61b-week6"><a href="#cs61b-week6" class="headerlink" title="cs61b week6"></a>cs61b week6</h1><h2 id="Packages-and-JAR-files"><a href="#Packages-and-JAR-files" class="headerlink" title="Packages and JAR files"></a>Packages and JAR files</h2><h3 id="Using-Packages"><a href="#Using-Packages" class="headerlink" title="Using Packages"></a>Using Packages</h3><p>If you’re accessing the class from <strong><code>within the same package</code></strong>, you can just use its simple name:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dog d = <span class="keyword">new</span> Dog(...);</span><br></pre></td></tr></table></figure>
 
-<p>If you’re accessing the classes from outside the package, then use its entire canonical name:</p>
+<p>If you’re accessing the classes from <strong><code>outside the package</code></strong>, then use its entire canonical name:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ug.joshh.animal.Dog d = <span class="keyword">new</span> ug.joshh.animal.Dog(...);</span><br></pre></td></tr></table></figure>
 
-<p>To make things easier, you can import the package, and use the simple name instead!</p>
+<p>To make things easier, you can <strong><code>import the package</code></strong>, and use the simple name instead!</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ug.joshh.animal.Dog;</span><br><span class="line">...</span><br><span class="line">Dog d = <span class="keyword">new</span> Dog(...);</span><br></pre></td></tr></table></figure>
 
 <h3 id="Creating-a-Package"><a href="#Creating-a-Package" class="headerlink" title="Creating a Package"></a>Creating a Package</h3><p>Creating a package takes the following two steps:</p>
 <p>1.) Put the package name at the top of every file in this package</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ug.joshh.animal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String breed;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>2.) Store the file in a folder that has the appropriate folder name. The folder should have a name that matches your package:</p>
-<p>i.e. <code>ug.joshh.animal</code> package is in ug/joshh/animal folder</p>
-<h3 id="Default-packages"><a href="#Default-packages" class="headerlink" title="Default packages"></a>Default packages</h3><p>Any Java class without an explicit package name at the top of the file is automatically considered to be part of the “default” package. </p>
-<p>However, when writing real programs, you should avoid leaving your files in the default package (unless it’s a very small example program).</p>
-<p>For example, if I were to create a “DogLauncher.java” class in the default package, I would be unable to access this DogLauncher class anywhere else outside of the default package.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DogLauncher.launch(); <span class="comment">// won’t work</span></span><br><span class="line"><span class="keyword">default</span>.DogLauncher.launch(); <span class="comment">// doesn’t exist</span></span><br></pre></td></tr></table></figure>
-
-<p>Therefore, your Java files should generally start with an explicit package declaration.</p>
+<p>2.) Store the file in a folder that has the appropriate folder name. </p>
+<p>The folder should have a name that matches your package:</p>
+<p>i.e. <code>ug.joshh.animal</code> package is in <code>ug/joshh/animal</code> folder</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/08/15/cs61b%20week6/#more" rel="contents">
@@ -391,7 +386,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-17 08:23:39" itemprop="dateModified" datetime="2020-08-17T08:23:39+09:00">2020-08-17</time>
+                <time title="修改时间：2020-08-17 09:15:01" itemprop="dateModified" datetime="2020-08-17T09:15:01+09:00">2020-08-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -414,9 +409,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="cs61b-week5"><a href="#cs61b-week5" class="headerlink" title="cs61b week5"></a>cs61b week5</h1><h2 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h2><h3 id="Reference-Types-and-Generics-ignore-True-ignorenumbering"><a href="#Reference-Types-and-Generics-ignore-True-ignorenumbering" class="headerlink" title="Reference Types and Generics {ignore=True .ignorenumbering}"></a>Reference Types and Generics {ignore=True .ignorenumbering}</h3><p>Reminder: <strong>Java has 8 primitive types, all other types are reference type</strong></p>
+          <h1 id="cs61b-week5"><a href="#cs61b-week5" class="headerlink" title="cs61b week5"></a>cs61b week5</h1><h2 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h2><h3 id="Reference-Types-and-Generics"><a href="#Reference-Types-and-Generics" class="headerlink" title="Reference Types and Generics"></a>Reference Types and Generics</h3><p>Reminder: <strong>Java has 8 primitive types, all other types are reference type</strong></p>
 <ul>
-<li>For each primitive type, there is corresponding reference type called wrapper class.<ul>
+<li>For each primitive type, there is <strong><code>corresponding reference type</code></strong> called <strong><code>wrapper class</code></strong>.<ul>
 <li>e.g. <code>boolean</code>‘s wrapper class is <code>Boolean</code></li>
 </ul>
 </li>
@@ -433,9 +428,9 @@
 <blockquote>
 <p>why not below ?</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L.add(<span class="keyword">new</span> Integer(<span class="number">5</span>));</span><br><span class="line">it first = L.get(<span class="number">0</span>).valueOf();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L.add(<span class="keyword">new</span> Integer(<span class="number">5</span>));  <span class="comment">//corresponding reference type</span></span><br><span class="line">it first = L.get(<span class="number">0</span>).valueOf();</span><br></pre></td></tr></table></figure>
 
-<h3 id="Autoboxing"><a href="#Autoboxing" class="headerlink" title="Autoboxing"></a>Autoboxing</h3><p><strong>Autoboxing (Auto-unboxing)</strong>: Implicit conversions between wrapper/primitives</p>
+<h3 id="Autoboxing"><a href="#Autoboxing" class="headerlink" title="Autoboxing"></a>Autoboxing</h3><p><strong>Autoboxing (Auto-unboxing)</strong>: Implicit <strong><code>conversions between wrapper/primitives</code></strong></p>
 <p>Wrapper types and primitives can be used almost interchangeably:</p>
 <ul>
 <li>If Java code expects a wrapper type and gets a primitive, it is autoboxed</li>
@@ -450,10 +445,10 @@
 <p>Notes:</p>
 <ul>
 <li>Arrays are never autoboxed/unboxed<ul>
-<li>e.g.: an <code>Integer[]</code> cannot be used in place of an <code>int[]</code> (or vice versa)</li>
+<li>e.g.: an <code>Integer[]</code> cannot be used in place of an <code>int[]</code></li>
 </ul>
 </li>
-<li>Autoboxing / unboxing incurs a measurable performance impact !</li>
+<li>Autoboxing / unboxing incurs a measurable performance impact</li>
 <li>Wrapper types use MUCH more memory than primitive types</li>
 </ul>
           <!--noindex-->
