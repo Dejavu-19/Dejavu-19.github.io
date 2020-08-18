@@ -29,12 +29,17 @@
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
 <meta property="og:description" content="cs61b week7Asymptotics1Writing Efficient ProgramsIn the past few weeks, our focus is on saving our time: Java syntax, debugging tools, and other stuffs.  However, in this week, we will focus on design">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://camo.githubusercontent.com/fab277fe5bf3a246b6b6b1375029b99f1c007082/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f6c6f6f7073325f342e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/ba20643aeb7ce42634b47c8588877d74c25f6955/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f6173796d70746f74696373325f747265652e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week7/selection-sort.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week7/merge-operation.png">
 <meta property="article:published_time" content="2020-08-15T09:58:18.348Z">
-<meta property="article:modified_time" content="2020-08-17T01:46:34.794Z">
+<meta property="article:modified_time" content="2020-08-18T04:42:23.114Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/fab277fe5bf3a246b6b6b1375029b99f1c007082/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f6c6f6f7073325f342e706e67">
 
 <link rel="canonical" href="https://dejavi-19.github.io/2020/08/15/cs61b%20week7/">
 
@@ -203,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-17 10:46:34" itemprop="dateModified" datetime="2020-08-17T10:46:34+09:00">2020-08-17</time>
+                <time title="修改时间：2020-08-18 13:42:23" itemprop="dateModified" datetime="2020-08-18T13:42:23+09:00">2020-08-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,12 +241,14 @@
 <p>Better algorithm: </p>
 <p>For each number A[i], look at A[i+1], and return true the first time you see a match. </p>
 <p>If you run out of items, return false.</p>
+<a id="more"></a>
+
 <h3 id="Intuitive-Runtime-Characterizations"><a href="#Intuitive-Runtime-Characterizations" class="headerlink" title="Intuitive Runtime Characterizations"></a>Intuitive Runtime Characterizations</h3><p>Our goal is to somehow characterize the runtimes of the functions below.</p>
 <p>Characterization should be simple and mathematically rigorous.</p>
 <p>Characterization should demonstrate superiority of <code>dup2</code> over <code>dup1</code>.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">dup1</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; A.length; j += <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (A[i] == A[j]) &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">dup2</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length - <span class="number">1</span>; i += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (A[i] == A[i + <span class="number">1</span>]) &#123; </span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<a id="more"></a>
+<!-- more -->
 
 <h4 id="Technique-1-定时"><a href="#Technique-1-定时" class="headerlink" title="Technique 1 定时"></a>Technique 1 定时</h4><p>Measure in Seconds using the following tools:</p>
 <ul>
@@ -276,43 +283,358 @@
 </ul>
 <h3 id="Big-Theta"><a href="#Big-Theta" class="headerlink" title="Big Theta"></a>Big Theta</h3><p>Big Theta represents the <code>order</code> of growth of a function.</p>
 <h3 id="Big-O"><a href="#Big-O" class="headerlink" title="Big O"></a>Big O</h3><p>Whereas Big Theta means “equals”, <code>Big O</code> means “less than or equal”. (The order of growth of a function is less than or equal to Big O</p>
-<h2 id="Disjoint-Sets"><a href="#Disjoint-Sets" class="headerlink" title="Disjoint Sets"></a>Disjoint Sets</h2><h3 id="Dynamic-Connectivity-and-the-Disjoint-Sets-Problem"><a href="#Dynamic-Connectivity-and-the-Disjoint-Sets-Problem" class="headerlink" title="Dynamic Connectivity and the Disjoint Sets Problem"></a>Dynamic Connectivity and the Disjoint Sets Problem</h3><h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>Our data structure will implement these operations:</p>
+<h2 id="Asymptotics2"><a href="#Asymptotics2" class="headerlink" title="Asymptotics2"></a>Asymptotics2</h2><p>In this section, we will discuss more difficult examples related to run-time analysis.</p>
+<h3 id="Function-dup1"><a href="#Function-dup1" class="headerlink" title="Function dup1"></a>Function dup1</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dup1</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N = A.length;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i += <span class="number">1</span>)</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; N; j += <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">if</span> (A[i] == A[j])</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The worst case is that we have to go through every entry (the outer loop runs N times).</p>
+<p>The number of comparisons is: <code>C = 1+2+3+...+(N−3)+(N−2)+(N−1) = N(N−1)/2</code></p>
+<p>Thus, since <code>==</code> is a constant time operation, the overall runtime in the worst case is Theta(N^2).</p>
+<h3 id="printParty"><a href="#printParty" class="headerlink" title="printParty"></a>printParty</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printParty</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i = i * <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j += <span class="number">1</span>) &#123;</span><br><span class="line">         System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">         <span class="keyword">int</span> ZUG = <span class="number">1</span> + <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Let’s create a visualization to find out the runtime cost of the function above.</p>
+<p><a href="https://camo.githubusercontent.com/fab277fe5bf3a246b6b6b1375029b99f1c007082/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f6c6f6f7073325f342e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/fab277fe5bf3a246b6b6b1375029b99f1c007082/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f6c6f6f7073325f342e706e67" alt="printParty"></a></p>
+<p>We could conclude that <code>C(N) = 1 + 2 + 4 + ... + N = 2N - 1 (if N is a power of 2)</code>, which is in the linear family.</p>
+<h3 id="Recursion-f3"><a href="#Recursion-f3" class="headerlink" title="Recursion (f3)"></a>Recursion (f3)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static int f3(int n) &#123;</span><br><span class="line">   if (n &lt;&#x3D; 1) </span><br><span class="line">      return 1;</span><br><span class="line">   return f3(n-1) + f3(n-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Here’s a visualization of the function above.</p>
+<p><a href="https://camo.githubusercontent.com/ba20643aeb7ce42634b47c8588877d74c25f6955/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f6173796d70746f74696373325f747265652e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/ba20643aeb7ce42634b47c8588877d74c25f6955/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f6173796d70746f74696373325f747265652e706e67" alt="recursion"></a></p>
+<p>We could conclude that the runtime cost of the function is <code>C(1)=1 C(2) = 1 + 2C(2)=1+2 C(3) = 1 + 2 + 4C(3)=1+2+4 C(N) = 1 + 2 + 4 + ... +C(N) = 1+2+4+...+ ??? = 2^(N−1)</code>, which is in the <code>2^N</code> family.</p>
+<h3 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h3><p>Binary search is a practical way to find an item in a sorted list. To do a binary search, we start in the middle of the list, and check if that’s our desired element.</p>
 <ul>
-<li>connect(x, y): Connects x and y.</li>
-<li>isConnected(x, y): Returns true if x and y are connected. Connections can be transitive, which means that they don’t need to be direct.</li>
+<li>Start in the middle of the list and check if that’s our desired element.</li>
+<li>If the desired element is larger, eliminate the first half of the list and return to step one.</li>
+<li>If the desired element is smaller, eliminate the second half of the list and return to step one.</li>
 </ul>
-<p>For simpilicity, we will declare that all items are integers and independent from each other.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ds = DisjointSets(<span class="number">7</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">ds.connect(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">ds.isConnected(<span class="number">2</span>, <span class="number">4</span>) <span class="comment">// true</span></span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">6</span>)</span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(String[] sorted, String x, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span></span></span><br><span class="line"><span class="function">    <span class="title">if</span> <span class="params">(lo &gt; hi)</span> return -1</span>;</span><br><span class="line">    <span class="keyword">int</span> m = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = x.compareTo(sorted[m]);</span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) <span class="keyword">return</span> binarySearch(sorted, x, lo, m - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) <span class="keyword">return</span> binarySearch(sorted, x, m + <span class="number">1</span>, hi);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Disjoint-Sets-Interface"><a href="#Disjoint-Sets-Interface" class="headerlink" title="Disjoint Sets Interface"></a>Disjoint Sets Interface</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">	<span class="comment">/** Connects two items P and Q. */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">/** Checks to see if two items are connected. */</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>We will implement this interface to achieve these goals:</p>
+<p>Intuitively, the runtime cost of binary search is <code>log_2 N</code>, since we can figure out that the count seems to increase by one only when <code>N</code> hits a power of 2.</p>
+<p>We can be even more precise: <code>C(N) = ⌊log_2 (N)⌋+1</code>. Because <code>⌊f(N)⌋ = Θ(f(N))</code>, <code>Θ(⌊log_2 (N)⌋) = Θ(log N)</code>.</p>
+<p>Log time is faster than linear time and even as better as constant time, which makes binary search an efficient algorithm.</p>
+<h3 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge Sort"></a>Merge Sort</h3><h3 id="Selection-Sort"><a href="#Selection-Sort" class="headerlink" title="Selection Sort"></a>Selection Sort</h3><ul>
+<li>Find the smallest unfixed item, move it to the front, and <em>fix</em> it</li>
+<li>Sort the remaining unfixed items using selection sort</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Runtime</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week7/selection-sort.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week7/selection-sort.png" alt="img"></a></td>
+<td>$\Theta(N^2)$</td>
+</tr>
+</tbody></table>
+<h3 id="Merge-Operation"><a href="#Merge-Operation" class="headerlink" title="Merge Operation"></a>Merge Operation</h3><table>
+<thead>
+<tr>
+<th>Operation (<a href="https://docs.google.com/presentation/d/1mdCppuWQfKG5JUBHAMHPgbSv326JtCi5mvjH1-6XcMw/edit#slide=id.g463de7561_042" target="_blank" rel="noopener">demo</a>)</th>
+<th>Runtime</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week7/merge-operation.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week7/merge-operation.png" alt="img"></a></td>
+<td>$\Theta(N)$</td>
+</tr>
+</tbody></table>
+<h3 id="Selection-Sort-amp-Merge-Operation"><a href="#Selection-Sort-amp-Merge-Operation" class="headerlink" title="Selection Sort &amp; Merge Operation"></a>Selection Sort &amp; Merge Operation</h3><p>Selection sort works off two basic steps:</p>
 <ul>
-<li>Number of elements N can be huge.</li>
-<li>Number of method calls M can be huge.</li>
-<li>Calls to methods may be interspersed</li>
+<li>Find the smallest item among the unsorted items, move it to the front, and fix it in place.</li>
+<li>Sort the remaining unsorted items using selection sort.</li>
 </ul>
-<p>Naive Approach: Record all the connections in a data structure, and do some iteration to see if one thing can be reached from each other.</p>
-<p>Better Approaach: Ignore how things are connected, and only record sets that each belongs to.</p>
-<h3 id="Quick-Find"><a href="#Quick-Find" class="headerlink" title="Quick Find"></a>Quick Find</h3><p>To find whether two items are connected, here are two ways:</p>
-<ol>
-<li>List of sets of integers.</li>
-</ol>
-<p>Very inituitive way, but quite slow for large N.</p>
-<ol>
-<li>List of integers where ith entry gives set number.</li>
-</ol>
-<p>connect(p, q): Change entries that equal id[p] to id[q]</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickFindDS</span> <span class="keyword">implements</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span>[] id;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">QuickFindDS</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">      id = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">         id[i] = i;</span><br><span class="line">      &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> id[p] == id[q];</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> pid = id[p];</span><br><span class="line">      <span class="keyword">int</span> qid = id[q];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; id.length; i++) &#123;</span><br><span class="line">         <span class="keyword">if</span> (id[i] == pid) &#123;</span><br><span class="line">            id[i] = qid;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If we analyze selection sort, we see that it’s <code>Theta(N^2)</code>. To improve it, we could divide the array into two halves, sort them, and merge them, in which merging only costs <code>Theta(N)</code>.</p>
+<p>This is the essence of merge sort:</p>
+<ul>
+<li>If the list is size 1, return. Otherwise:</li>
+<li>Mergesort the left half</li>
+<li>Mergesort the right half</li>
+<li>Merge the results</li>
+</ul>
+<p>Mergesort has worst case runtime: <code>C = Theta(NlogN)</code>, since it has <code>logN</code> levels:</p>
+<ul>
+<li>The top level takes ~N.</li>
+<li>Next level takes ~N/2 + ~N/2 = ~N.</li>
+<li>One more level down: ~N/4 + ~N/4 + ~N/4 + ~N/4 = ~N.</li>
+</ul>
+<p><code>Theta(NlogN)</code> is better than <code>Theta(N^2)</code>, so that merge sort is better than selection sort.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectionSort</span> <span class="keyword">implements</span> <span class="title">IArraySort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sort(<span class="keyword">int</span>[] sourceArray) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = Arrays.copyOf(sourceArray, sourceArray.length);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 总共要经过 N-1 轮比较</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> min = i;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 每轮需要比较的次数 N-i</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (arr[j] &lt; arr[min]) &#123;</span><br><span class="line">                    <span class="comment">// 记录目前能找到的最小值元素的下标</span></span><br><span class="line">                    min = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 将找到的最小值和i位置所在的值进行交换</span></span><br><span class="line">            <span class="keyword">if</span> (i != min) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = arr[i];</span><br><span class="line">                arr[i] = arr[min];</span><br><span class="line">                arr[min] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>However, connecting is still slow.</p>
-<h3 id="Quick-Union"><a href="#Quick-Union" class="headerlink" title="Quick Union"></a>Quick Union</h3><p>Instead of using random number to represent the index of sets, we could let each entry to be its parent, which results in a tree-like shape.</p>
-<p>To connect two items, simply change the root of one item to the root of another item.</p>
-<p>However, this method is still slow since the tree might be quite tall and the cost of the worst case is proportional to the height.</p>
-<h3 id="Weighted-Quick-Union"><a href="#Weighted-Quick-Union" class="headerlink" title="Weighted Quick Union"></a>Weighted Quick Union</h3><p>We could modify Quick Union to avoid tall trees: Track tree size and link root of smaller tree to the larger one.</p>
-<p>Thus, the <code>connect</code> and <code>isConnected</code> operation will never be slower than <code>log N</code>, which is fast enough for most programs.</p>
-<p>Although we could track the height instead of weight, we will find out that the performance is similar.</p>
-<h2 id="Asymptotics2"><a href="#Asymptotics2" class="headerlink" title="Asymptotics2"></a>Asymptotics2</h2>
+<h2 id="Big-O-Big-Omega-Amortized-Runtime"><a href="#Big-O-Big-Omega-Amortized-Runtime" class="headerlink" title="Big O, Big Omega, Amortized Runtime"></a>Big O, Big Omega, Amortized Runtime</h2><h2 id="Big-O-1"><a href="#Big-O-1" class="headerlink" title="Big O"></a>Big O</h2><p>Whereas Big Theta can informally be thought of as something like <em>equals</em>, Big O can be thought of as <em>less than or equal</em>:</p>
+<ul>
+<li>$N^3 + 3N^4 \in \Theta(N^4)$</li>
+<li>$N^3 + 3N^4 \in O(N^4)$</li>
+<li>$N^3 + 3N^4 \in O(N!)$</li>
+</ul>
+<p>$R(N) \in O(f(N))$ means there exists positive constants $k_2$ such that: $$ R(N) \leq k_2 \cdot f(N) $$ for all values of $N$ greater than some $N_0$ (i.e. very large $N$)</p>
+<h3 id="Big-Theta-vs-Big-O"><a href="#Big-Theta-vs-Big-O" class="headerlink" title="Big Theta vs. Big O"></a>Big Theta vs. Big O</h3><p>Big Theta only expresses exact order of growth for runtime in terms of $N$</p>
+<ul>
+<li>If runtime depends on more factors than just $N$, may need different Big Theta for every interesting condition</li>
+<li>e.g.: The best case runtime of $f$ is $\Theta(1)$, whereas the worst one is $\Theta(N^2)$</li>
+</ul>
+<p>We can just use Big O instead and avoid qualifying our statement at all:</p>
+<ul>
+<li>The runtime of $f$ is $O(N^2)$</li>
+</ul>
+<h3 id="Big-O-Abuse"><a href="#Big-O-Abuse" class="headerlink" title="Big O Abuse"></a>Big O Abuse</h3><p>In the real world, Big O is often used where Big Theta would be more informative, e.g. saying “Mergesort is $O(N \log N)$”</p>
+<ul>
+<li>True statement, but not as strong as saying “Mergesort is $\Theta(N \log N)$”</li>
+</ul>
+<p>Despite lower precision, Big O is used way more often in conversation:</p>
+<ul>
+<li><strong>{++Important++}</strong>: Big O does not mean <em>worst case</em> ! Often abused to mean this.</li>
+</ul>
+<h3 id="The-Usefulness-of-Big-O"><a href="#The-Usefulness-of-Big-O" class="headerlink" title="The Usefulness of Big O"></a>The Usefulness of Big O</h3><p>Big O is still an useful idea:</p>
+<ul>
+<li>Allows us simpler statement<ul>
+<li>e.g.: “Binary search is $O(\log N)$” instead of “Binary search is $\Theta(\log N)$ in the worst case”</li>
+</ul>
+</li>
+<li>Sometimes don’t know the exact runtime, so use $O$ to give an upper bound</li>
+<li>Easier to write proofs for Big O than Big Theta<ul>
+<li>e.g.: Finding runtime of Mergesort, we can round up the number of input items to the next power of 2</li>
+</ul>
+</li>
+</ul>
+<h2 id="Big-Omega"><a href="#Big-Omega" class="headerlink" title="Big Omega"></a>Big Omega</h2><p>Big Omega can be thought of as <em>greater than or equal</em>:</p>
+<p>$R(N) \in \Omega(f(N))$ means there exists positive constants $k_1$ such that: $$ k_1 \cdot f(N) \leq R(N) $$ for all values of $N$ greater than some $N_0$ (i.e. very large $N$)</p>
+<h3 id="Why-Big-Omega"><a href="#Why-Big-Omega" class="headerlink" title="Why Big Omega ?"></a>Why Big Omega ?</h3><p>Two common uses:</p>
+<ul>
+<li>Very careful proofs of Big Theta runtime<ul>
+<li>If $R(N) = O(f(N))$ and $R(N) = \Omega(f(N))$, then $R(N) = \Theta(f(N)$</li>
+<li>Sometimes it’s easier to show $O$ and $\Omega$ separately</li>
+</ul>
+</li>
+<li>Providing lower bounds for the hardness of a problem<ul>
+<li>e.g.: The time to find whether an array has duplicates is $\Omega(N)$ in the worst case for ANY algorithm (have to actually look at everything)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Big-Theta-Big-O-and-Big-Omega-ignore-True-ignorenumbering"><a href="#Big-Theta-Big-O-and-Big-Omega-ignore-True-ignorenumbering" class="headerlink" title="Big Theta, Big O, and Big Omega {ignore=True .ignorenumbering}"></a>Big Theta, Big O, and Big Omega {ignore=True .ignorenumbering}</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>Informal meaning</th>
+<th>Family</th>
+<th>Family members</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Big Theta $\Theta(f(N))$</td>
+<td>Order of growth is $f(N)$</td>
+<td>$\Theta(N^2)$</td>
+<td>$N^2/2$, $2N^2$, $N^2 + N$</td>
+</tr>
+<tr>
+<td>Big O $O(f(N))$</td>
+<td>Order of growth is less than or equal to $f(N)$</td>
+<td>$O(N^2)$</td>
+<td>$N^2/2$, $2N^2$, $\log N$</td>
+</tr>
+<tr>
+<td>Big Omega $\Omega(f(N))$</td>
+<td>Order of growth is greater than or equal to $f(N)$</td>
+<td>$\Omega(N^2)$</td>
+<td>$N^2/2$, $2N^2$, $e^N$</td>
+</tr>
+</tbody></table>
+<h2 id="Amortized-Analysis"><a href="#Amortized-Analysis" class="headerlink" title="Amortized Analysis"></a>Amortized Analysis</h2><h3 id="e-g-Geometric-Resizing-ignore-True-ignorenumbering"><a href="#e-g-Geometric-Resizing-ignore-True-ignorenumbering" class="headerlink" title="e.g.: Geometric Resizing {ignore=True .ignorenumbering}"></a>e.g.: Geometric Resizing {ignore=True .ignorenumbering}</h3><p>Why geometric resizing within <code>ArrayList</code>‘s <code>add()</code> method is much faster ?</p>
+<ul>
+<li>Pick a cost model: Array access (read &amp; write)</li>
+<li>Compute the {++amortized++} (a.k.a. average) cost of the ith insertion</li>
+<li>Show that this cost is bounded above by a constant</li>
+</ul>
+<blockquote>
+<p>Example amorization (starting from size 1)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>add(item)</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>a[i] = item</code> write cost</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>resize</code> copy (read &amp; write) cost</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>total cost</td>
+<td>1</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>9</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>17</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>cumulative cost</td>
+<td>1</td>
+<td>4</td>
+<td>9</td>
+<td>10</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+<td>39</td>
+<td>40</td>
+<td>41</td>
+<td>42</td>
+<td>43</td>
+</tr>
+</tbody></table>
+<ul>
+<li><em>Amortized</em> total cost seems to be about $43 / 12 = 3.58$ accesses / <code>add</code></li>
+<li>How do we prove that this amortized cost is constant ?</li>
+</ul>
+<h3 id="Potential"><a href="#Potential" class="headerlink" title="Potential"></a>Potential</h3><p>Key idea: Choosing $a_i$ so that $\Phi_i$ stays positive</p>
+<p>For operation $i$, choose an arbitrary <em>amortized cost</em> $a_i$. This cost may be more or less than the <em>actual cost</em> $c_i$ of that operation</p>
+<ul>
+<li>Let $\Phi_i$ be the potential at time $i$<ul>
+<li>The potential represents the cumulative difference between arbitrary amortized costs and actual costs over time</li>
+<li>$\Phi_{i + 1} = \Phi_i + (a_i - c_i)$</li>
+</ul>
+</li>
+<li>If we select $a_i$ such that $\Phi_i$ is never negative, then amortized cost is an upper bound on actual cost</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>add(item)</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>amortized cost $a_i$</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>total cost $c_i$</td>
+<td>1</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>9</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>17</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>change in potential</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>4</td>
+<td>-4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>-12</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>potential $\Phi_i$</td>
+<td>4</td>
+<td>6</td>
+<td>6</td>
+<td>10</td>
+<td>6</td>
+<td>10</td>
+<td>14</td>
+<td>18</td>
+<td>6</td>
+<td>10</td>
+<td>14</td>
+<td>18</td>
+<td>22</td>
+</tr>
+</tbody></table>
+<p>Goals for <code>ArrayList</code>: $a_i \in \Theta(1)$ and $\Phi_i \geq 0 $ for all $i$</p>
+<ul>
+<li>Cost for operations is $1$ for non-powers of 2, and $2i + 1$ for powers of 2</li>
+<li>For high cost ops, we need $2i + 1$ in the bank: Have previous $i / 2$ ops to reach this balance</li>
+</ul>
+
     </div>
 
     
@@ -334,7 +656,10 @@
     <a href="/2020/08/15/cs61b%20week6/" rel="prev" title="cs61b week6">
       <i class="fa fa-chevron-left"></i> cs61b week6
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/18/cs61b%20week8/" rel="next" title="cs61b week8">
+      cs61b week8 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -393,7 +718,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week7"><span class="nav-number">1.</span> <span class="nav-text">cs61b week7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymptotics1"><span class="nav-number">1.1.</span> <span class="nav-text">Asymptotics1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Writing-Efficient-Programs"><span class="nav-number">1.1.1.</span> <span class="nav-text">Writing Efficient Programs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuitive-Runtime-Characterizations"><span class="nav-number">1.1.2.</span> <span class="nav-text">Intuitive Runtime Characterizations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Technique-1-定时"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Technique 1 定时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Technique-2A-定量"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Technique 2A 定量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Technique-2B-定操作数"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">Technique 2B 定操作数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparing-Algorithms"><span class="nav-number">1.1.3.</span> <span class="nav-text">Comparing Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Simplified-Solution"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Simplified Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Simplified-Analysis-Process"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Simplified Analysis Process</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-Theta"><span class="nav-number">1.1.4.</span> <span class="nav-text">Big Theta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-O"><span class="nav-number">1.1.5.</span> <span class="nav-text">Big O</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Disjoint-Sets"><span class="nav-number">1.2.</span> <span class="nav-text">Disjoint Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Connectivity-and-the-Disjoint-Sets-Problem"><span class="nav-number">1.2.1.</span> <span class="nav-text">Dynamic Connectivity and the Disjoint Sets Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Disjoint-Sets-Interface"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Disjoint Sets Interface</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-Find"><span class="nav-number">1.2.2.</span> <span class="nav-text">Quick Find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-Union"><span class="nav-number">1.2.3.</span> <span class="nav-text">Quick Union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weighted-Quick-Union"><span class="nav-number">1.2.4.</span> <span class="nav-text">Weighted Quick Union</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymptotics2"><span class="nav-number">1.3.</span> <span class="nav-text">Asymptotics2</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week7"><span class="nav-number">1.</span> <span class="nav-text">cs61b week7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymptotics1"><span class="nav-number">1.1.</span> <span class="nav-text">Asymptotics1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Writing-Efficient-Programs"><span class="nav-number">1.1.1.</span> <span class="nav-text">Writing Efficient Programs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intuitive-Runtime-Characterizations"><span class="nav-number">1.1.2.</span> <span class="nav-text">Intuitive Runtime Characterizations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Technique-1-定时"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Technique 1 定时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Technique-2A-定量"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Technique 2A 定量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Technique-2B-定操作数"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">Technique 2B 定操作数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparing-Algorithms"><span class="nav-number">1.1.3.</span> <span class="nav-text">Comparing Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Simplified-Solution"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Simplified Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Simplified-Analysis-Process"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Simplified Analysis Process</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-Theta"><span class="nav-number">1.1.4.</span> <span class="nav-text">Big Theta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-O"><span class="nav-number">1.1.5.</span> <span class="nav-text">Big O</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymptotics2"><span class="nav-number">1.2.</span> <span class="nav-text">Asymptotics2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-dup1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Function dup1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#printParty"><span class="nav-number">1.2.2.</span> <span class="nav-text">printParty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recursion-f3"><span class="nav-number">1.2.3.</span> <span class="nav-text">Recursion (f3)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Search"><span class="nav-number">1.2.4.</span> <span class="nav-text">Binary Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Sort"><span class="nav-number">1.2.5.</span> <span class="nav-text">Merge Sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Selection-Sort"><span class="nav-number">1.2.6.</span> <span class="nav-text">Selection Sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Operation"><span class="nav-number">1.2.7.</span> <span class="nav-text">Merge Operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Selection-Sort-amp-Merge-Operation"><span class="nav-number">1.2.8.</span> <span class="nav-text">Selection Sort &amp; Merge Operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-O-Big-Omega-Amortized-Runtime"><span class="nav-number">1.3.</span> <span class="nav-text">Big O, Big Omega, Amortized Runtime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-O-1"><span class="nav-number">1.4.</span> <span class="nav-text">Big O</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-Theta-vs-Big-O"><span class="nav-number">1.4.1.</span> <span class="nav-text">Big Theta vs. Big O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-O-Abuse"><span class="nav-number">1.4.2.</span> <span class="nav-text">Big O Abuse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Usefulness-of-Big-O"><span class="nav-number">1.4.3.</span> <span class="nav-text">The Usefulness of Big O</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-Omega"><span class="nav-number">1.5.</span> <span class="nav-text">Big Omega</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-Big-Omega"><span class="nav-number">1.5.1.</span> <span class="nav-text">Why Big Omega ?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-Theta-Big-O-and-Big-Omega-ignore-True-ignorenumbering"><span class="nav-number">1.6.</span> <span class="nav-text">Big Theta, Big O, and Big Omega {ignore&#x3D;True .ignorenumbering}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amortized-Analysis"><span class="nav-number">1.7.</span> <span class="nav-text">Amortized Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-g-Geometric-Resizing-ignore-True-ignorenumbering"><span class="nav-number">1.7.1.</span> <span class="nav-text">e.g.: Geometric Resizing {ignore&#x3D;True .ignorenumbering}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Potential"><span class="nav-number">1.7.2.</span> <span class="nav-text">Potential</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -409,7 +734,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
