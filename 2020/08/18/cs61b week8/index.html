@@ -22,23 +22,53 @@
     var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="cs61b week8ADTs, Sets, Maps, BSTsAbstract Data TypeAn Abstract Data Type (ADT) is defined only by its operations, not by its implementation. For instance, we say that ArrayDeque and LinkedListDeque ar">
+  <meta name="description" content="cs61b week8Disjoint SetsDynamic Connectivity ProblemIntroductionGiven a series of pairwise items connectedness declarations, determine if two items are connected. Two operations:  connect(p, q): Conne">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs61b week8">
 <meta property="og:url" content="https://dejavi-19.github.io/2020/08/18/cs61b%20week8/index.html">
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
-<meta property="og:description" content="cs61b week8ADTs, Sets, Maps, BSTsAbstract Data TypeAn Abstract Data Type (ADT) is defined only by its operations, not by its implementation. For instance, we say that ArrayDeque and LinkedListDeque ar">
+<meta property="og:description" content="cs61b week8Disjoint SetsDynamic Connectivity ProblemIntroductionGiven a series of pairwise items connectedness declarations, determine if two items are connected. Two operations:  connect(p, q): Conne">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/naive-approach.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/better-approach.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/quickfindds.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/quds-worse-case.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/path-compression.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/tree.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/rooted-binary-tree.png">
 <meta property="og:image" content="https://camo.githubusercontent.com/c652bca7dd3dc91267e77b8eeeaf374f03a65b49/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031322e35392e3339253230414d2e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/binary-search-tree.png">
 <meta property="og:image" content="https://camo.githubusercontent.com/892cb1ffa6202e8ec5739c5023dd7108e79788d3/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031302e33352e3536253230414d2e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/case3-delete.png">
 <meta property="og:image" content="https://camo.githubusercontent.com/6004e76c225bdc924086e8229210f2454c693cac/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031302e34332e3435253230414d2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/423fd262e527583ea0c1fa138fb987dfb4459fe0/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3035253230617425323031322e35362e3534253230504d2e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/bushy-vs-spindly.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/4de78376bcc4c62debe487911de4af0f35ea7269/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d30352532306174253230342e31322e3137253230504d2e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/overstuff-problem.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/juicy-tree.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/capped-tree.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/juicy-tree.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/split-node.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/juicy-tree-2.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/split-node-2.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/chain-reaction.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/juicy-root.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/split-root.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/b-trees.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/a83a6f1d3c0b41e33438c490e327e50974ac3921/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e32352e3138253230504d2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/7323fe83cb3695e301405b8d126fe22ad3882c1d/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e33372e3137253230504d2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/d59e7282bf26538f9f4c84e03ab97d277f8331f6/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e35362e3531253230504d2e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/representing-2-3-tree-1.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/representing-2-3-tree-2.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/2-3-tree.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/llrb.png">
 <meta property="article:published_time" content="2020-08-18T04:42:47.843Z">
-<meta property="article:modified_time" content="2020-08-18T04:44:44.189Z">
+<meta property="article:modified_time" content="2020-08-19T15:43:49.132Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://camo.githubusercontent.com/c652bca7dd3dc91267e77b8eeeaf374f03a65b49/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031322e35392e3339253230414d2e706e67">
+<meta name="twitter:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/naive-approach.png">
 
 <link rel="canonical" href="https://dejavi-19.github.io/2020/08/18/cs61b%20week8/">
 
@@ -199,10 +229,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-18 13:42:47 / 修改时间：13:44:44" itemprop="dateCreated datePublished" datetime="2020-08-18T13:42:47+09:00">2020-08-18</time>
+              <time title="创建时间：2020-08-18 13:42:47" itemprop="dateCreated datePublished" datetime="2020-08-18T13:42:47+09:00">2020-08-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-20 00:43:49" itemprop="dateModified" datetime="2020-08-20T00:43:49+09:00">2020-08-20</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -224,7 +260,125 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="cs61b-week8"><a href="#cs61b-week8" class="headerlink" title="cs61b week8"></a>cs61b week8</h1><h2 id="ADTs-Sets-Maps-BSTs"><a href="#ADTs-Sets-Maps-BSTs" class="headerlink" title="ADTs, Sets, Maps, BSTs"></a>ADTs, Sets, Maps, BSTs</h2><h3 id="Abstract-Data-Type"><a href="#Abstract-Data-Type" class="headerlink" title="Abstract Data Type"></a>Abstract Data Type</h3><p>An Abstract Data Type (ADT) is defined only by its operations, not by its implementation. For instance, we say that <code>ArrayDeque</code> and <code>LinkedListDeque</code> are implementations of the <code>Deque</code> ADT. Here are a few commonly used ADTs.</p>
+        <h1 id="cs61b-week8"><a href="#cs61b-week8" class="headerlink" title="cs61b week8"></a>cs61b week8</h1><h1 id="Disjoint-Sets"><a href="#Disjoint-Sets" class="headerlink" title="Disjoint Sets"></a>Disjoint Sets</h1><h2 id="Dynamic-Connectivity-Problem"><a href="#Dynamic-Connectivity-Problem" class="headerlink" title="Dynamic Connectivity Problem"></a>Dynamic Connectivity Problem</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Given a series of pairwise items connectedness declarations, determine if two items are connected. Two operations:</p>
+<ul>
+<li><code>connect(p, q)</code>: Connect items <code>p</code> and <code>q</code></li>
+<li><code>isConnected(p, q)</code>: Are <code>p</code> and <code>q</code> connected ?</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ds = DisjointSets(<span class="number">7</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">ds.connect(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">ds.isConnected(<span class="number">2</span>, <span class="number">4</span>) <span class="comment">// true</span></span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">6</span>)</span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Disjoint-Set-ADT"><a href="#Disjoint-Set-ADT" class="headerlink" title="Disjoint Set ADT"></a>Disjoint Set ADT</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">	<span class="comment">/** Connects two items P and Q. */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">/** Checks to see if two items are connected. */</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>We will implement this interface to achieve these goals:</p>
+<ul>
+<li>Number of elements N can be huge.</li>
+<li>Number of method calls M can be huge.</li>
+<li>Calls to methods may be interspersed</li>
+</ul>
+<p>Naive Approach: </p>
+<p>Record all the connections in a data structure, and do some iteration to see if one thing can be reached from each other. </p>
+<ul>
+<li><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/naive-approach.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/naive-approach.png" alt="naive-approach"></a></li>
+</ul>
+<p>Better Approaach: Model connectedness in terms of <strong><code>sets</code></strong></p>
+<ul>
+<li><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/better-approach.png" target="_blank" rel="noopener"><br><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/better-approach.png" alt="better-approach"></a></li>
+</ul>
+<h3 id="Quick-Find"><a href="#Quick-Find" class="headerlink" title="Quick Find"></a>Quick Find</h3><p><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/quickfindds.png" alt="quickfindds"></p>
+<p>To find whether two items are connected, here are two ways:</p>
+<ol>
+<li>List of sets of integers.</li>
+</ol>
+<p>Very inituitive way, but quite slow for large N.</p>
+<ol>
+<li>List of integers where ith entry gives set number.</li>
+</ol>
+<p>connect(p, q): Change entries that equal id[p] to id[q]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickFindDS</span> <span class="keyword">implements</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span>[] id;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">QuickFindDS</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">      id = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">         id[i] = i;</span><br><span class="line">      &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;  <span class="comment">//judge if the id is same</span></span><br><span class="line">      <span class="keyword">return</span> id[p] == id[q];</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;   <span class="comment">//change id to the same</span></span><br><span class="line">      <span class="keyword">int</span> pid = id[p];</span><br><span class="line">      <span class="keyword">int</span> qid = id[q];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; id.length; i++) &#123;</span><br><span class="line">         <span class="keyword">if</span> (id[i] == pid) &#123;</span><br><span class="line">            id[i] = qid;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Performance Issue, connecting is still slow.</p>
+<h3 id="Quick-Union"><a href="#Quick-Union" class="headerlink" title="Quick Union"></a>Quick Union</h3><p>Instead of using random number to represent the index of sets, we could let each entry to be its parent, which results in a tree-like shape.</p>
+<p>To connect two items, simply change the root of one item to the root of another item.</p>
+<p>However, this method is still slow since the tree might be quite tall and the cost of the worst case is proportional to the height.</p>
+<h3 id="Weighted-Quick-Union"><a href="#Weighted-Quick-Union" class="headerlink" title="Weighted Quick Union"></a>Weighted Quick Union</h3><p>We could modify Quick Union to avoid tall trees: Track tree size and link root of smaller tree to the larger one.</p>
+<p>Thus, the <code>connect</code> and <code>isConnected</code> operation will never be slower than <code>log N</code>, which is fast enough for most programs.</p>
+<p>Although we could track the height instead of weight, we will find out that the performance is similar.</p>
+<table>
+<thead>
+<tr>
+<th>operation</th>
+<th>connected component</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>connect(4, 3)</code> <code>connect(3, 2)</code> <code>connect(2, 1)</code> <code>connect(1, 0)</code></td>
+<td>{&gt;&gt;img&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/quds-worse-case.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/quds-worse-case.png" alt="img"></a></td>
+</tr>
+</tbody></table>
+<p>Results in potentially even worse performance than <code>QuickFindDS</code> if tree is imbalanced</p>
+<p>Performance Issue, tree can get too tall !</p>
+<h3 id="Performance-Summary"><a href="#Performance-Summary" class="headerlink" title="Performance Summary"></a>Performance Summary</h3><table>
+<thead>
+<tr>
+<th>Implementation</th>
+<th>Constructor</th>
+<th>connect</th>
+<th>isConnected</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>QuickFindDS</code></td>
+<td>$\Theta(N)$</td>
+<td>$\Theta(N)$</td>
+<td>$\Theta(1)$</td>
+</tr>
+<tr>
+<td><code>QuickUnionDS</code></td>
+<td>$\Theta(N)$</td>
+<td>$O(N)$</td>
+<td>$O(N)$</td>
+</tr>
+<tr>
+<td><code>WeightedQuickUnionDS</code></td>
+<td>$\Theta(N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+</tr>
+</tbody></table>
+<p>Running $M$ operations on a <code>DisJointSet</code> object with $N$ elements</p>
+<ul>
+<li>Runtimes goes from $O(MN)$ to $O(N + M \log N)$</li>
+<li>For $N = 10^9$ and $M = 10^9$, time to run goes from 30 years to 6 seconds<ul>
+<li>Good data structure unlocks solutions to problems that could otherwise not be solved !</li>
+</ul>
+</li>
+</ul>
+<h3 id="Appendix-Weighted-QuickUnion-DS-With-Path-Compression"><a href="#Appendix-Weighted-QuickUnion-DS-With-Path-Compression" class="headerlink" title="Appendix - Weighted QuickUnion DS With Path Compression"></a>Appendix - Weighted QuickUnion DS With Path Compression</h3><p>Below is the topology of the worst case if we use <code>WeightedQuickUnionDS</code></p>
+<ul>
+<li><p>Clever idea: When we do</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isConnected(<span class="number">15</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p>, tie all nodes seen to the root</p>
+<ul>
+<li>Additional cost is insignificant (same order of growth)</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/path-compression.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/path-compression.png" alt="path-compression"></a></p>
+<p>Path compression results in a <code>connect</code> / <code>isConnected</code> operations that are very close to amortized constant time</p>
+<ul>
+<li>$M$ operations on $N$ nodes is $O(N + M \lg^* N)$<ul>
+<li>$\lg^*$ is less than $5$ for any realistic input</li>
+</ul>
+</li>
+<li>A tighter bound: $O(N + M \alpha(N))$, where $\alpha$ is the inverse Ackermann function<ul>
+<li>$\alpha$ is less than $5$ for all practical input !</li>
+</ul>
+</li>
+</ul>
+<h2 id="ADTs-Sets-Maps-BSTs"><a href="#ADTs-Sets-Maps-BSTs" class="headerlink" title="ADTs, Sets, Maps, BSTs"></a>ADTs, Sets, Maps, BSTs</h2><h3 id="Abstract-Data-Type"><a href="#Abstract-Data-Type" class="headerlink" title="Abstract Data Type"></a>Abstract Data Type</h3><p>An Abstract Data Type (ADT) is defined only by its operations, not by its implementation. For instance, we say that <code>ArrayDeque</code> and <code>LinkedListDeque</code> are implementations of the <code>Deque</code> ADT. Here are a few commonly used ADTs.</p>
 <p><strong>Stacks</strong>: Structures that support last-in first-out retrieval of elements</p>
 <ul>
 <li>push(int x): puts x on the top of the stack</li>
@@ -245,12 +399,45 @@
 <li>put(K key, V value): puts a key value pair into the map</li>
 <li>V get(K key): gets the value corresponding to the key</li>
 </ul>
-<a id="more"></a>
-
-<h3 id="Binary-Search-Trees"><a href="#Binary-Search-Trees" class="headerlink" title="Binary Search Trees"></a>Binary Search Trees</h3><p>Linked List is unefficient in searching for items since it will cost linear time even if the list is sorted.</p>
+<h1 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h1><p>A tree consists of:</p>
+<ul>
+<li>A set of nodes</li>
+<li>A set of deges that connect those nodes<ul>
+<li>Constraint: There is exactly one path between any two nodes</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/tree.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/tree.png" alt="tree"></a></p>
+<p>Rooted (Binary) Trees</p>
+<p>A rooted tree contains one node called the root:</p>
+<ul>
+<li>Every node except the root has exactly one parent, defined as the first node on the path from the node to the root</li>
+<li>A node with no child is called a leaf</li>
+</ul>
+<p>A rooted binary tree, every node has <em>either 0, 1, or 2 children (subtrees)</em></p>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/rooted-binary-tree.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/rooted-binary-tree.png" alt="rooted-binary-tree"></a></p>
+<h2 id="Binary-Search-Trees"><a href="#Binary-Search-Trees" class="headerlink" title="Binary Search Trees"></a>Binary Search Trees</h2><p>Linked List is unefficient in searching for items since it will cost linear time even if the list is sorted.</p>
 <p>We can optimize by adding pointers to the middle of each recursive half of the linked list. The structure is called a <strong>binary tree</strong>.</p>
 <p><a href="https://camo.githubusercontent.com/c652bca7dd3dc91267e77b8eeeaf374f03a65b49/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031322e35392e3339253230414d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/c652bca7dd3dc91267e77b8eeeaf374f03a65b49/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031322e35392e3339253230414d2e706e67" alt="BST"></a></p>
-<h4 id="Properties-of-trees"><a href="#Properties-of-trees" class="headerlink" title="Properties of trees"></a>Properties of trees</h4><p>Trees are composed of:</p>
+<h3 id="Properties-of-trees"><a href="#Properties-of-trees" class="headerlink" title="Properties of trees"></a>Properties of trees</h3><p>A binary search tree is a rooted binary tree with the BST property:</p>
+<ul>
+<li>BST Property:<ul>
+<li>Given a node X in the tree:<ul>
+<li>Every key in the <em>left</em> subtree is <em>less</em> than <code>X</code>‘s key</li>
+<li>Every key in the <em>right</em> subtree is <em>greater</em> than <code>X</code>‘s key</li>
+</ul>
+</li>
+<li>Ordering must be complete, transitive, and antisymmetric. Given keys p and q :<ul>
+<li>Exactly one of <code>p &lt; q</code> and <code>q &lt; p</code> are true</li>
+<li><code>p &lt; q</code> and <code>q &lt; r</code> imply <code>p &lt; r</code></li>
+</ul>
+</li>
+<li><em>One consequence of these rules: No duplicate keys allowed !</em></li>
+</ul>
+</li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/binary-search-tree.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/binary-search-tree.png" alt="binary-search-tree"></a></p>
+<p>Trees are composed of:</p>
 <ul>
 <li>nodes</li>
 <li>edges that connect those nodes. (Only one path between any two nodes.)</li>
@@ -264,29 +451,62 @@
 <li>Every key in the right subtree is greater than X’s key.</li>
 </ul>
 <p>Here’s a simple BST class:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">private class BST&lt;Key&gt; &#123;</span><br><span class="line">    private Key key;</span><br><span class="line">    private BST left;</span><br><span class="line">    private BST right;</span><br><span class="line"></span><br><span class="line">    public BST(Key key, BST left, BST Right) &#123;</span><br><span class="line">        this.key &#x3D; key;</span><br><span class="line">        this.left &#x3D; left;</span><br><span class="line">        this.right &#x3D; right;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public BST(Key key) &#123;</span><br><span class="line">        this.key &#x3D; key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">BST</span>&lt;<span class="title">Key</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Key key;</span><br><span class="line">    <span class="keyword">private</span> BST left;</span><br><span class="line">    <span class="keyword">private</span> BST right;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BST</span><span class="params">(Key key, BST left, BST Right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">        <span class="keyword">this</span>.left = left;</span><br><span class="line">        <span class="keyword">this</span>.right = right;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BST</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h4><ul>
-<li>Start from root note.</li>
-<li>If searched item is larger, move to the child at right.</li>
-<li>Otherwise, move to the child at left.</li>
+<h3 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h3><p>If <code>searchKey</code> equals <code>label</code> return:</p>
+<ul>
+<li>If <code>searchKey &lt; label</code>, search left tree</li>
+<li>If <code>searchKey &gt; label</code>, search right tree</li>
 <li>Repeat recursively until we find the item or we get to the leaf of the tree, which means that the tree does not contain the item we want to find.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static BST find(BST T, Key sk) &#123;</span><br><span class="line">   if (T &#x3D;&#x3D; null)</span><br><span class="line">      return null;</span><br><span class="line">   if (sk.equals(T.key))</span><br><span class="line">      return T;</span><br><span class="line">   else if (sk ≺ T.key)</span><br><span class="line">      return find(T.left, sk);</span><br><span class="line">   else</span><br><span class="line">      return find(T.right, sk);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The worst case runtime for “bushy” BST: $\Theta(\log N)$ ($N$ is the number of nodes in tree), the height of the tree is <code>log N</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> BST <span class="title">find</span><span class="params">(BST T, Key sk)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (T == <span class="keyword">null</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">if</span> (sk.equals(T.key))</span><br><span class="line">      <span class="keyword">return</span> T;</span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span> (sk ≺ T.key)</span><br><span class="line">      <span class="keyword">return</span> find(T.left, sk);</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">return</span> find(T.right, sk);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>If our tree is relatively “bushy”, the find operation will run in <code>log N</code> time because the height of the tree is <code>log N</code>.</p>
 <h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h3><p>We always insert at a leaf node.</p>
 <ul>
 <li>Search the item in the tree. If we find it, then we don’t do anything.</li>
 <li>We can just add the new element to either the left or right of the leaf, preserving the BST property.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">static BST insert(BST T, Key ik) &#123;</span><br><span class="line">  if (T &#x3D;&#x3D; null)</span><br><span class="line">    return new BST(ik);</span><br><span class="line">  if (ik ≺ T.key)</span><br><span class="line">    T.left &#x3D; insert(T.left, ik);</span><br><span class="line">  else if (ik ≻ T.key)</span><br><span class="line">    T.right &#x3D; insert(T.right, ik);</span><br><span class="line">  return T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> BST <span class="title">insert</span><span class="params">(BST T, Key ik)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (T == <span class="keyword">null</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> BST(ik);</span><br><span class="line">  <span class="keyword">if</span> (ik ≺ T.key)</span><br><span class="line">    T.left = insert(T.left, ik);</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (ik ≻ T.key)</span><br><span class="line">    T.right = insert(T.right, ik);</span><br><span class="line">  <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><h4 id="No-children"><a href="#No-children" class="headerlink" title="No children"></a>No children</h4><p>If the node has no children, it is a leaf, and we can just delete its parent pointer and the node will eventually be swept away by the garbage collector.</p>
-<h4 id="1-child"><a href="#1-child" class="headerlink" title="1 child"></a>1 child</h4><p>If the node only has one child, we know that the child maintains the BST property with the parent of the node because the property is recursive to the right and left subtrees.</p>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><h4 id="3-cases"><a href="#3-cases" class="headerlink" title="3 cases:"></a>3 cases:</h4><ol>
+<li>Deletion key has no children</li>
+<li>Deletion key has one child</li>
+<li>Deletion key has two children</li>
+</ol>
+<p>Case 1, 2 are easy and all we need to do is just to manipulate references</p>
+<ul>
+<li>Then the garbage collector cleans discarded variables</li>
+</ul>
+<h4 id="case-1-No-children"><a href="#case-1-No-children" class="headerlink" title="case 1: No children"></a>case 1: No children</h4><p>If the node has no children, it is a leaf, and we can just delete its parent pointer and the node will eventually be swept away by the garbage collector.</p>
+<h4 id="case-2-1-child"><a href="#case-2-1-child" class="headerlink" title="case 2: 1 child"></a>case 2: 1 child</h4><p>If the node only has one child, we know that the child maintains the BST property with the parent of the node because the property is recursive to the right and left subtrees.</p>
 <p>Therefore, we can just reassign the parent’s child pointer to the node’s child and the node will eventually be garbage collected.</p>
 <p><a href="https://camo.githubusercontent.com/892cb1ffa6202e8ec5739c5023dd7108e79788d3/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031302e33352e3536253230414d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/892cb1ffa6202e8ec5739c5023dd7108e79788d3/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031302e33352e3536253230414d2e706e67" alt="Delete 1 child"></a></p>
-<h4 id="2-children"><a href="#2-children" class="headerlink" title="2 children"></a>2 children</h4><p>If the deleted node has two chldren, we choose a new node to replace the deleted one.</p>
+<h4 id="case-3-2-children"><a href="#case-3-2-children" class="headerlink" title="case 3: 2 children"></a>case 3: 2 children</h4><table>
+<thead>
+<tr>
+<th>Example: delete “dog”</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Goal: - Find a new root node - Must be larger than everything in the left subtree - Must be smaller than everything in the right subtree</td>
+<td>{&gt;&gt;Image&lt;&lt;} <a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/case3-delete.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/case3-delete.png" alt="img"></a></td>
+</tr>
+</tbody></table>
+<p>Would <code>bag</code> work ?: No !!</p>
+<p>Choose either <code>cat</code> or <code>elf</code>:</p>
+<ul>
+<li>Delete cat or elf, and stick new copy in the root position<ul>
+<li>This deletion guaranteed to be either case 0 or 2:<ul>
+<li>Because they are always the biggest node in the left or the smallest node in the right</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>This deletion operation is called Hibbard deletion.</p>
+<p>If the deleted node has two chldren, we choose a new node to replace the deleted one.</p>
 <p>We know that the new node must be:</p>
 <ul>
 <li>larger than everything in left subtree.</li>
@@ -296,6 +516,290 @@
 <p><a href="https://camo.githubusercontent.com/6004e76c225bdc924086e8229210f2454c693cac/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031302e34332e3435253230414d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/6004e76c225bdc924086e8229210f2454c693cac/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30322d3238253230617425323031302e34332e3435253230414d2e706e67" alt="Delete 2 children"></a></p>
 <h3 id="BSTs-as-Sets-and-Maps"><a href="#BSTs-as-Sets-and-Maps" class="headerlink" title="BSTs as Sets and Maps"></a>BSTs as Sets and Maps</h3><p>We can use BST to implement <code>Set</code> ADT, which is better than using ArraySet, since the worst-case runtime cost <code>log N</code> is faster than <code>N</code>.</p>
 <p>We can also implement <code>Map</code> with BST by having each node hold (key,value) pairs. We will compare each element’s key to determine where to place it within our tree.</p>
+<h3 id="Height-of-BST"><a href="#Height-of-BST" class="headerlink" title="Height of BST"></a>Height of BST</h3><ul>
+<li>Worst case: <code>Theta(N)</code></li>
+<li>Best case: <code>Theta(log N)</code></li>
+</ul>
+<p><a href="https://camo.githubusercontent.com/423fd262e527583ea0c1fa138fb987dfb4459fe0/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3035253230617425323031322e35362e3534253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/423fd262e527583ea0c1fa138fb987dfb4459fe0/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3035253230617425323031322e35362e3534253230504d2e706e67" alt="Height of BST "></a></p>
+<p>O is just an upper bound, rather than the worst case. However, many people use O as a shorthand for worst case.</p>
+<h3 id="BST-Performance"><a href="#BST-Performance" class="headerlink" title="BST Performance"></a>BST Performance</h3><p>Height varies dramatically between “bushy” and “spindly” trees:</p>
+<ul>
+<li>Height of “bushy”: $\Theta(\log N)$</li>
+<li>height of “spindly”: $\Theta(N)$</li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/bushy-vs-spindly.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/bushy-vs-spindly.png" alt="bushy-vs.-spindly"></a></p>
+<h3 id="Random-Insertion"><a href="#Random-Insertion" class="headerlink" title="Random Insertion"></a>Random Insertion</h3><p><strong>Nice property</strong>: Random insertions take on average only $\Theta(\log N)$ each</p>
+<p><strong>Comparison counting</strong>: If $N$ distinct keys are inserted into a BST, the expected average number of compares per insert is $C(N) \sim 2 \ln N = \Theta(\log N)$</p>
+<p><strong>Tree height</strong>: If $N$ distinct keys are inserted in random order, expected tree height is $H(N) \sim 4.311 \ln N$</p>
+<h3 id="Random-Deletion"><a href="#Random-Deletion" class="headerlink" title="Random Deletion"></a>Random Deletion</h3><p><strong>Surprising Fact</strong>: Tree will get imbalanced !: $C(N) \sim \sqrt{N}$ per operation (Finding a simple and efficient delete operation for BSTs is still an open problem)</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Binary search tree: Efficient data structures for supporting insertion and search</p>
+<ul>
+<li>Operations on “bushy” BSTs are logarithmic time</li>
+<li>Insertion of random data yields a bushy BST<ul>
+<li>On random data, order of growth for get/put operations is logarithmic</li>
+</ul>
+</li>
+</ul>
+<p>Performance issues:</p>
+<ul>
+<li>“Spindly” trees have linear performance</li>
+<li>Hibbard deletion results in order of growth $\sqrt{N}$<ul>
+<li>Nobody knows how to do better on simple BSTs</li>
+</ul>
+</li>
+</ul>
+<h1 id="Balanced-Search-Tree"><a href="#Balanced-Search-Tree" class="headerlink" title="Balanced Search Tree"></a>Balanced Search Tree</h1><p>BST have potential performance issue if it get “spindly” (too tall)</p>
+<ul>
+<li>Worst case: Items inserted in order</li>
+</ul>
+<p>One solution:</p>
+<ul>
+<li><p>Insert in random order: Results in $\Theta(\log N)$ height with extremely high probability</p>
+</li>
+<li><p><em>But might not have all the data up front</em></p>
+</li>
+<li><p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/notes/week8.md#red-black-tree" target="_blank" rel="noopener">https://github.com/aviatesk/cs61b-sp18/blob/master/notes/week8.md#red-black-tree</a>)</p>
+</li>
+</ul>
+<h2 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h2><p><a href="https://camo.githubusercontent.com/4de78376bcc4c62debe487911de4af0f35ea7269/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d30352532306174253230342e31322e3137253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/4de78376bcc4c62debe487911de4af0f35ea7269/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d30352532306174253230342e31322e3137253230504d2e706e67" alt="2-3-4 Tree"></a></p>
+<p>The tree showed above is called <strong>B-Tree</strong> or <strong>2-3-4 Tree</strong>. 2-3-4 and 2-3 refer to the number of children each node can have.</p>
+<p>The process of adding a node to a 2-3-4 tree is:</p>
+<ul>
+<li>Similar to BST, we compare new item with each node in the tree and insert it into the leaf node.</li>
+<li>If the node has 4 items, pop up the middle left item and re-arrange the children accordingly.</li>
+<li>If the parent node having 4 nodes, pop up the middle left node again, rearranging the children accordingly.</li>
+<li>Repeat this process until the parent node can accommodate or you get to the root.</li>
+</ul>
+<h3 id="B-tree-Runtime-Analysis"><a href="#B-tree-Runtime-Analysis" class="headerlink" title="B-tree Runtime Analysis"></a>B-tree Runtime Analysis</h3><p>The worst case runtime of searching a B-tree:</p>
+<ul>
+<li>Each node had the maximum number of elements</li>
+<li>Traverse all the way to bottom</li>
+</ul>
+<p>The amount of operations will be <code>L log N</code>. Since <code>L</code> is constant, the runtime is <code>O(log N)</code>. B-tree is complex, but it could handle insertion operations in any order.</p>
+<h3 id="Search-Trees"><a href="#Search-Trees" class="headerlink" title="Search Trees"></a>Search Trees</h3><p>There are many types of search trees:</p>
+<ul>
+<li><p>Binary Search Tree</p>
+<p>: Require rotations to maintain balance. There are many strategies for rotation:</p>
+<ul>
+<li>AVL, weight-balancing, <strong>Red-Black</strong></li>
+</ul>
+</li>
+<li><p>Treap</p>
+</li>
+<li><p>Splay Tree</p>
+</li>
+<li><p><strong>B-Trees (e.g.: 2-3 / 2-3-4 Tree)</strong>: No rotation required</p>
+</li>
+</ul>
+<h6 id="Why-B-Tree"><a href="#Why-B-Tree" class="headerlink" title="Why B-Tree ?"></a>Why B-Tree ?</h6><p>Intriguingly, a deep understanding of B-Tree also provides a rotation strategy for BST called <strong>Red-Black</strong></p>
+<h3 id="Road-to-Splitting-Tree-A-K-A-B-Tree"><a href="#Road-to-Splitting-Tree-A-K-A-B-Tree" class="headerlink" title="Road to Splitting Tree (A.K.A. B-Tree)"></a>Road to Splitting Tree (A.K.A. B-Tree)</h3><h4 id="Overstuff-Nodes"><a href="#Overstuff-Nodes" class="headerlink" title="Overstuff Nodes"></a>Overstuff Nodes</h4><p>The problem is adding new leaves:</p>
+<ul>
+<li>Solution 1: Overstuff the leaf nodes !<ul>
+<li>“Overstuffed” tree always has balanced height, because leaf depths never change: Height is just max depth</li>
+</ul>
+</li>
+</ul>
+<p><strong>New problem</strong>: Leaf nodes can get too juicy <a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/overstuff-problem.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/overstuff-problem.png" alt="overstuff-problem"></a></p>
+<h4 id="Cap-Nodes"><a href="#Cap-Nodes" class="headerlink" title="Cap Nodes"></a>Cap Nodes</h4><p>Set a cap on the number of items, say 3:</p>
+<ul>
+<li>If more than cap,</li>
+</ul>
+<p>  give an item to parent</p>
+<ul>
+<li>Which one ?: Whatever, let’s say the left-middle</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Juicy</th>
+<th>Capped</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/juicy-tree.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/juicy-tree.png" alt="img"></a></td>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/capped-tree.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/capped-tree.png" alt="img"></a></td>
+</tr>
+</tbody></table>
+<p><strong>New problem</strong>: Item between <code>o</code> and <code>q</code> have no home</p>
+<h4 id="Split-Nodes"><a href="#Split-Nodes" class="headerlink" title="Split Nodes"></a>Split Nodes</h4><p>If more than cap, give an item to parent:</p>
+<ul>
+<li>Pulling item out of juicy node, <strong>splits</strong> it into left and right</li>
+<li>Parent node now has three children !</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Juicy</th>
+<th>Split</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/juicy-tree.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/juicy-tree.png" alt="img"></a></td>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/split-node.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/split-node.png" alt="img"></a></td>
+</tr>
+</tbody></table>
+<p>This is a logically consistent and not so weird data structure.</p>
+<ul>
+<li>e.g.: contains(r)<ul>
+<li><code>r &gt; m</code>, so go right</li>
+<li><code>r &gt; o</code>, so compare vs. <code>q</code></li>
+<li><code>r &gt; q</code>, so go right</li>
+</ul>
+</li>
+</ul>
+<p>Examining a node can cost $n$ compares, but it’s OK since $n$ is capped (where $n$ is the number of items in a node)</p>
+<p>A parent node can have $n + 1$ children at most:</p>
+<table>
+<thead>
+<tr>
+<th>Juicy</th>
+<th>Split</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/juicy-tree-2.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/juicy-tree-2.png" alt="img"></a></td>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/split-node-2.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/split-node-2.png" alt="img"></a></td>
+</tr>
+</tbody></table>
+<h3 id="B-Tree-1"><a href="#B-Tree-1" class="headerlink" title="B-Tree"></a>B-Tree</h3><h4 id="More-Splitting-Rules"><a href="#More-Splitting-Rules" class="headerlink" title="More Splitting Rules"></a>More Splitting Rules</h4><h5 id="Chain-Reaction"><a href="#Chain-Reaction" class="headerlink" title="Chain Reaction"></a>Chain Reaction</h5><p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/chain-reaction.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/chain-reaction.png" alt="chain-reaction"></a></p>
+<h5 id="When-The-Root-Get-Too-Juicy"><a href="#When-The-Root-Get-Too-Juicy" class="headerlink" title="When The Root Get Too Juicy"></a>When The Root Get Too Juicy</h5><table>
+<thead>
+<tr>
+<th>Juicy Root</th>
+<th>Split Root</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/juicy-root.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/juicy-root.png" alt="img"></a></td>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/split-root.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/split-root.png" alt="img"></a></td>
+</tr>
+</tbody></table>
+<h4 id="Perfect-Balance-and-Logarithmic-Height"><a href="#Perfect-Balance-and-Logarithmic-Height" class="headerlink" title="Perfect Balance and Logarithmic Height"></a>Perfect Balance and Logarithmic Height</h4><p>Observation: Splitting-tree has perfect balance</p>
+<ul>
+<li>If we split a leaf or an internal node, the height doesn’t change</li>
+<li>If we split the root, every node gets pushed down exactly by one level</li>
+</ul>
+<p>Punch Line: All operations have guaranteed $\Theta(log N)$ time</p>
+<ul>
+<li><p>$M$: Max number of <em>children</em> (1 + the item cap)</p>
+</li>
+<li><p>Height $H$:</p>
+</li>
+</ul>
+<p>  Between $\log_M (N)$ and $\log_2(N)$</p>
+<ul>
+<li>Every node has:<ul>
+<li>2 children at least: $\log_2(N) \leq H$</li>
+<li>$M$ children at most: $H \leq \log_M(N)$</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Max number of splitting operations per insert: $\sim{H}$</p>
+<ul>
+<li>Time per insert/contains: $\Theta(H)$ or equivalently $\log (N)$</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/b-trees.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/b-trees.png" alt="B-Trees"></a></p>
+<h4 id="Name-Convention"><a href="#Name-Convention" class="headerlink" title="Name Convention"></a>Name Convention</h4><ul>
+<li>A B-Tree of order $M = 4$ is also called a “2-3-4 Tree” or a “2-4 Tree”</li>
+<li>A B-Tree of order $M = 3$ is also called a “2-3 Tree”</li>
+</ul>
+<p>B-Trees are most popular with very large $M$ (say thousands):</p>
+<ul>
+<li>Used in practical for databases and filesystems</li>
+<li>Since the small $M$ tree isn’t practically useful, people usually only use the name “B-Tree” to refer to the very large $M$ case</li>
+</ul>
+<h3 id="Rotating-Trees"><a href="#Rotating-Trees" class="headerlink" title="Rotating Trees"></a>Rotating Trees</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rotateLeft(G): Say x is the right child of G. Make G the <span class="keyword">new</span> left child of x.</span><br><span class="line"></span><br><span class="line">rotateRight(G): Say x is the left child of G. Make G the <span class="keyword">new</span> right child of x.</span><br></pre></td></tr></table></figure>
+
+<p>Below is a graphical description of what happens in a left rotation on the node G.</p>
+<p><a href="https://camo.githubusercontent.com/a83a6f1d3c0b41e33438c490e327e50974ac3921/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e32352e3138253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/a83a6f1d3c0b41e33438c490e327e50974ac3921/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e32352e3138253230504d2e706e67" alt="Rotating Left"></a></p>
+<p>We could also <strong><code>rotate a non-root node</code></strong>.</p>
+<p><a href="https://camo.githubusercontent.com/7323fe83cb3695e301405b8d126fe22ad3882c1d/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e33372e3137253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/7323fe83cb3695e301405b8d126fe22ad3882c1d/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e33372e3137253230504d2e706e67" alt="None Root Node"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">rotateRight</span><span class="params">(Node h)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert (h != null) &amp;&amp; isRed(h.left);</span></span><br><span class="line">    Node x = h.left;</span><br><span class="line">    h.left = x.right;</span><br><span class="line">    x.right = h;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// make a right-leaning link lean to the left</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">rotateLeft</span><span class="params">(Node h)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert (h != null) &amp;&amp; isRed(h.right);</span></span><br><span class="line">    Node x = h.right;</span><br><span class="line">    h.right = x.left;</span><br><span class="line">    x.left = h;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Red-Black-Tree"><a href="#Red-Black-Tree" class="headerlink" title="Red-Black Tree"></a>Red-Black Tree</h2><p>We could use a red link to convert a 3-node to BST tree. We choose arbitrarily to make the left element a child of the right one. The structure is called left-leaning red-black trees (LLRB).</p>
+<p><a href="https://camo.githubusercontent.com/d59e7282bf26538f9f4c84e03ab97d277f8331f6/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e35362e3531253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/d59e7282bf26538f9f4c84e03ab97d277f8331f6/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3036253230617425323031302e35362e3531253230504d2e706e67" alt="Red Link"></a></p>
+<h4 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h4><ul>
+<li>Left-Leaning Red-Black trees have a 1-1 correspondence with 2-3 trees.</li>
+<li>No node has 2 red links.</li>
+<li>There are no red right-links.</li>
+<li>Every path from root to leaf has same number of black links.</li>
+<li>Height is no more than 2x height of corresponding 2-3 tree.</li>
+</ul>
+<h4 id="Inserting-into-LLRB"><a href="#Inserting-into-LLRB" class="headerlink" title="Inserting into LLRB"></a>Inserting into LLRB</h4><ul>
+<li>While inserting, use a red link.</li>
+<li>If there is a right leaning “3-node”, rotate left the appropriate node to fix.</li>
+<li>If there are two consecutive left links, rotate right the appropriate node to fix.</li>
+<li>If there are any nodes with two red children, color flip the node to emulate the split operation.</li>
+</ul>
+<h4 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h4><p>Because a LLRB tree has a 1-1 correspondence with a 2-3 tree and will always remain within 2x the height of its 2-3 tree, the runtimes of the operations will take <code>log N</code> time.</p>
+<h3 id="Motivation-for-Red-Black-Tree"><a href="#Motivation-for-Red-Black-Tree" class="headerlink" title="Motivation for Red-Black Tree"></a>Motivation for Red-Black Tree</h3><p>2-3 (or 2-3-4) Tree is a real pain to implement, and suffer from performance issues:</p>
+<ul>
+<li>Maintaining different node types</li>
+<li>Interconversion of nodes between 2-nodes and 3-nodes</li>
+<li>Walking up the tree to split nodes</li>
+</ul>
+<blockquote>
+<p>Beautiful algorithms are, unfortunately, not always the most useful.</p>
+<blockquote>
+<p>Donald Knuth</p>
+</blockquote>
+</blockquote>
+<p>Clever (and strange idea): <em>Build BST so that it is isometric (i.e. structurally identical) to a 2-3 tree</em></p>
+<ul>
+<li>Use rotations to ensure the isometry</li>
+<li>Since 2-3 trees are balanced, rotations on BST will ensure balance</li>
+</ul>
+<h3 id="Representing-2-3-Tree"><a href="#Representing-2-3-Tree" class="headerlink" title="Representing 2-3 Tree"></a>Representing 2-3 Tree</h3><p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/representing-2-3-tree-1.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/representing-2-3-tree-1.png" alt="representing-2-3-tree-1"></a></p>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/representing-2-3-tree-2.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/representing-2-3-tree-2.png" alt="representing-2-3-tree-2"></a></p>
+<h3 id="Left-Leaning-Red-Black-Binary-Search-Tree-LLRB"><a href="#Left-Leaning-Red-Black-Binary-Search-Tree-LLRB" class="headerlink" title="Left-Leaning Red-Black Binary Search Tree (LLRB)"></a>Left-Leaning Red-Black Binary Search Tree (LLRB)</h3><p>Any BST that maintains an isometry with a 2-3 Tree has these properties:</p>
+<ol>
+<li>No node has two red links (otherwise it’d be like a 4 nodes)</li>
+<li>Every path from root to a leaf has same number of black links: “Black balanced”</li>
+<li>Red links lean left (just by convention)</li>
+<li>Also called a “Left-Leaning Red-Black Binary Search Tree (LLRB)”</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>2-3 Tree</th>
+<th>LLRB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{&gt;&gt;Image&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/2-3-tree.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/2-3-tree.png" alt="img"></a></td>
+<td><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week8/llrb.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week8/llrb.png" alt="img"></a>{&gt;&gt;Image&lt;&lt;}</td>
+</tr>
+</tbody></table>
+<h4 id="Interesting-Facts"><a href="#Interesting-Facts" class="headerlink" title="Interesting Facts"></a>Interesting Facts</h4><p>For any 2-3 Tree (which is balanced), there exists a corresponding LLRB that has depth no more than 2 times the depth of the original 2-3 Tree</p>
+<ul>
+<li>Because of Rule.1 above</li>
+</ul>
+<p>With a HUGE dose of cleverness can use rotations to maintain isometry after each insertion and deletion !</p>
+<h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><p>2-3 and 2-3-4 Trees have perfect balance:</p>
+<ul>
+<li>Height is guaranteed logarithmic</li>
+<li>After insert/delete, at most 1 split operation per level of the tree<ul>
+<li>Since height is logarithmic, we have $O(\log N)$ splits</li>
+<li>insert/delete are therefore $O(\log N)$</li>
+</ul>
+</li>
+<li>But hard to implement</li>
+</ul>
+<p>LLRB mimics 2-3 Tree behavior using tree rotation and color flipping</p>
+<ul>
+<li>Height is guaranteed logarithmic</li>
+<li>After insert/delete, at most 1 color flip or rotation per level of the tree<ul>
+<li>Since height is logarithmic, we have $O(\log N)$ flips/rotations</li>
+<li>insert/delete operations are therefore $O(\log N)$</li>
+</ul>
+</li>
+<li>Easier to implement, constant factor faster than 2-3 or 2-3-4 tree</li>
+</ul>
 
     </div>
 
@@ -377,7 +881,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week8"><span class="nav-number">1.</span> <span class="nav-text">cs61b week8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ADTs-Sets-Maps-BSTs"><span class="nav-number">1.1.</span> <span class="nav-text">ADTs, Sets, Maps, BSTs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-Data-Type"><span class="nav-number">1.1.1.</span> <span class="nav-text">Abstract Data Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Search-Trees"><span class="nav-number">1.1.2.</span> <span class="nav-text">Binary Search Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Properties-of-trees"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Properties of trees</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Search"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Search</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Insert"><span class="nav-number">1.1.3.</span> <span class="nav-text">Insert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete"><span class="nav-number">1.1.4.</span> <span class="nav-text">Delete</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#No-children"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">No children</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-child"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">1 child</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-children"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">2 children</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSTs-as-Sets-and-Maps"><span class="nav-number">1.1.5.</span> <span class="nav-text">BSTs as Sets and Maps</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week8"><span class="nav-number">1.</span> <span class="nav-text">cs61b week8</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Disjoint-Sets"><span class="nav-number">2.</span> <span class="nav-text">Disjoint Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Connectivity-Problem"><span class="nav-number">2.1.</span> <span class="nav-text">Dynamic Connectivity Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">2.1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Disjoint-Set-ADT"><span class="nav-number">2.1.2.</span> <span class="nav-text">Disjoint Set ADT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-Find"><span class="nav-number">2.1.3.</span> <span class="nav-text">Quick Find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-Union"><span class="nav-number">2.1.4.</span> <span class="nav-text">Quick Union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weighted-Quick-Union"><span class="nav-number">2.1.5.</span> <span class="nav-text">Weighted Quick Union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance-Summary"><span class="nav-number">2.1.6.</span> <span class="nav-text">Performance Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appendix-Weighted-QuickUnion-DS-With-Path-Compression"><span class="nav-number">2.1.7.</span> <span class="nav-text">Appendix - Weighted QuickUnion DS With Path Compression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ADTs-Sets-Maps-BSTs"><span class="nav-number">2.2.</span> <span class="nav-text">ADTs, Sets, Maps, BSTs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-Data-Type"><span class="nav-number">2.2.1.</span> <span class="nav-text">Abstract Data Type</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tree"><span class="nav-number">3.</span> <span class="nav-text">Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-Search-Trees"><span class="nav-number">3.1.</span> <span class="nav-text">Binary Search Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-of-trees"><span class="nav-number">3.1.1.</span> <span class="nav-text">Properties of trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search"><span class="nav-number">3.1.2.</span> <span class="nav-text">Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Insert"><span class="nav-number">3.1.3.</span> <span class="nav-text">Insert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete"><span class="nav-number">3.1.4.</span> <span class="nav-text">Delete</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-cases"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">3 cases:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-1-No-children"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">case 1: No children</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-2-1-child"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">case 2: 1 child</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-3-2-children"><span class="nav-number">3.1.4.4.</span> <span class="nav-text">case 3: 2 children</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSTs-as-Sets-and-Maps"><span class="nav-number">3.1.5.</span> <span class="nav-text">BSTs as Sets and Maps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Height-of-BST"><span class="nav-number">3.1.6.</span> <span class="nav-text">Height of BST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BST-Performance"><span class="nav-number">3.1.7.</span> <span class="nav-text">BST Performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Insertion"><span class="nav-number">3.1.8.</span> <span class="nav-text">Random Insertion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Deletion"><span class="nav-number">3.1.9.</span> <span class="nav-text">Random Deletion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">3.2.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Balanced-Search-Tree"><span class="nav-number">4.</span> <span class="nav-text">Balanced Search Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tree"><span class="nav-number">4.1.</span> <span class="nav-text">B-Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-tree-Runtime-Analysis"><span class="nav-number">4.1.1.</span> <span class="nav-text">B-tree Runtime Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-Trees"><span class="nav-number">4.1.2.</span> <span class="nav-text">Search Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Why-B-Tree"><span class="nav-number">4.1.2.0.0.1.</span> <span class="nav-text">Why B-Tree ?</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Road-to-Splitting-Tree-A-K-A-B-Tree"><span class="nav-number">4.1.3.</span> <span class="nav-text">Road to Splitting Tree (A.K.A. B-Tree)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Overstuff-Nodes"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">Overstuff Nodes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cap-Nodes"><span class="nav-number">4.1.3.2.</span> <span class="nav-text">Cap Nodes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Split-Nodes"><span class="nav-number">4.1.3.3.</span> <span class="nav-text">Split Nodes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree-1"><span class="nav-number">4.1.4.</span> <span class="nav-text">B-Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#More-Splitting-Rules"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">More Splitting Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Chain-Reaction"><span class="nav-number">4.1.4.1.1.</span> <span class="nav-text">Chain Reaction</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#When-The-Root-Get-Too-Juicy"><span class="nav-number">4.1.4.1.2.</span> <span class="nav-text">When The Root Get Too Juicy</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Perfect-Balance-and-Logarithmic-Height"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">Perfect Balance and Logarithmic Height</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Name-Convention"><span class="nav-number">4.1.4.3.</span> <span class="nav-text">Name Convention</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rotating-Trees"><span class="nav-number">4.1.5.</span> <span class="nav-text">Rotating Trees</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Red-Black-Tree"><span class="nav-number">4.2.</span> <span class="nav-text">Red-Black Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Properties"><span class="nav-number">4.2.0.1.</span> <span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inserting-into-LLRB"><span class="nav-number">4.2.0.2.</span> <span class="nav-text">Inserting into LLRB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Runtime"><span class="nav-number">4.2.0.3.</span> <span class="nav-text">Runtime</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Motivation-for-Red-Black-Tree"><span class="nav-number">4.2.1.</span> <span class="nav-text">Motivation for Red-Black Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Representing-2-3-Tree"><span class="nav-number">4.2.2.</span> <span class="nav-text">Representing 2-3 Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Left-Leaning-Red-Black-Binary-Search-Tree-LLRB"><span class="nav-number">4.2.3.</span> <span class="nav-text">Left-Leaning Red-Black Binary Search Tree (LLRB)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Interesting-Facts"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">Interesting Facts</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary-1"><span class="nav-number">4.2.4.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
