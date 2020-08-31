@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="DSA Interview Questionsdata-structure?Data structure is a way of defining, storing &amp; retrieving(检索) of data in a structural &amp; systematic(系统地) way.  A data structure may contain different type">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DSA Interview Questions">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/08/30/DSA%20Interview%20Questions/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="DSA Interview Questionsdata-structure?Data structure is a way of defining, storing &amp; retrieving(检索) of data in a structural &amp; systematic(系统地) way.  A data structure may contain different type">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.tutorialspoint.com/data_structures_algorithms/images/binary_search_tree.jpg">
+<meta property="article:published_time" content="2020-08-30T08:27:03.389Z">
+<meta property="article:modified_time" content="2020-08-31T01:09:26.073Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="Interview">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.tutorialspoint.com/data_structures_algorithms/images/binary_search_tree.jpg">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2020/08/30/DSA%20Interview%20Questions/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>DSA Interview Questions | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/30/DSA%20Interview%20Questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DSA Interview Questions
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-30 17:27:03" itemprop="dateCreated datePublished" datetime="2020-08-30T17:27:03+09:00">2020-08-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-31 10:09:26" itemprop="dateModified" datetime="2020-08-31T10:09:26+09:00">2020-08-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Amazon/" itemprop="url" rel="index"><span itemprop="name">Amazon</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="DSA-Interview-Questions"><a href="#DSA-Interview-Questions" class="headerlink" title="DSA Interview Questions"></a>DSA Interview Questions</h1><h3 id="data-structure"><a href="#data-structure" class="headerlink" title="data-structure?"></a>data-structure?</h3><p>Data structure is a way of defining, storing &amp; retrieving(检索) of data in a structural &amp; systematic(系统地) way. </p>
+<p>A data structure may contain different type of data items.</p>
+<h3 id="various-data-structures-available"><a href="#various-data-structures-available" class="headerlink" title="various data-structures available?"></a>various data-structures available?</h3><p>Data structure availability may vary by programming languages. </p>
+<p>Commonly available data structures are list, arrays, stack, queues, graph, tree etc.</p>
+<h3 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm?"></a>algorithm?</h3><p>Algorithm is a step by step procedure, which defines a set of instructions to be executed in certain order to get the desired output.</p>
+<h3 id="algorithm-analysis"><a href="#algorithm-analysis" class="headerlink" title="algorithm analysis?"></a>algorithm analysis?</h3><p>A problem can be solved in more than one ways. </p>
+<p>So, many solution algorithms can be derived for a given problem. </p>
+<p>We analyze available algorithms to find and implement the best suitable algorithm.</p>
+<h3 id="criteria-of-algorithm-analysis"><a href="#criteria-of-algorithm-analysis" class="headerlink" title="criteria of algorithm analysis?"></a>criteria of algorithm analysis?</h3><p>An algorithm are generally analyzed on two factors − time and space. </p>
+<p>That is, how much <strong>execution</strong> time and how much <strong>extra space</strong> required by the algorithm.</p>
+<h3 id="asymptotic-analysis-of-an-algorithm"><a href="#asymptotic-analysis-of-an-algorithm" class="headerlink" title="asymptotic analysis of an algorithm?"></a>asymptotic analysis of an algorithm?</h3><p>Asymptotic analysis of an algorithm, refers to defining the mathematical boundation/framing of its run-time performance. </p>
+<p>Using asymptotic analysis, we can very well conclude the best case, average case and worst case scenario of an algorithm.</p>
+<h3 id="What-are-asymptotic-notations"><a href="#What-are-asymptotic-notations" class="headerlink" title="What are asymptotic notations?"></a>What are asymptotic notations?</h3><p>Asymptotic analysis can provide three levels of mathematical binding of execution time of an algorithm −</p>
+<ul>
+<li>Best case is represented by Ω(n) notation.</li>
+<li>Worst case is represented by Ο(n) notation.</li>
+<li>Average case is represented by Θ(n) notation.</li>
+</ul>
+<h3 id="linear-data-structure"><a href="#linear-data-structure" class="headerlink" title="linear data structure?"></a>linear data structure?</h3><p>A linear data-structure has sequentially arranged data items. </p>
+<p>The next time can be located in the next memory address. </p>
+<p>It is stored and accessed in a sequential manner. </p>
+<p>Array and list are example of linear data structure.</p>
+<h3 id="common-operations-on-a-data-structure"><a href="#common-operations-on-a-data-structure" class="headerlink" title="common operations on a data-structure?"></a>common operations on a data-structure?</h3><p>The following operations are commonly performed on any data-structure −</p>
+<ul>
+<li><strong>Insertion</strong> − adding a data item</li>
+<li><strong>Deletion</strong> − removing a data item</li>
+<li><strong>Traversal</strong> − accessing and/or printing all data items</li>
+<li><strong>Searching</strong> − finding a particular data item</li>
+<li><strong>Sorting</strong> − arranging data items in a pre-defined sequence</li>
+</ul>
+<h3 id="Briefly-explain-the-approaches-to-develop-algorithms"><a href="#Briefly-explain-the-approaches-to-develop-algorithms" class="headerlink" title="Briefly explain the approaches to develop algorithms."></a>Briefly explain the approaches to develop algorithms.</h3><p>There are three commonly used approaches to develop algorithms −</p>
+<ul>
+<li><strong>Greedy Approach</strong> − finding solution by choosing next best option</li>
+<li><strong>Divide and Conquer</strong> − diving the problem to a minimum possible sub-problem and solving them independently</li>
+<li><strong>Dynamic Programming</strong> − diving the problem to a minimum possible sub-problem and solving them combinedly</li>
+</ul>
+<h3 id="Give-some-examples-greedy-algorithms"><a href="#Give-some-examples-greedy-algorithms" class="headerlink" title="Give some examples greedy algorithms."></a>Give some examples greedy algorithms.</h3><p>The below given problems find their solution using greedy algorithm approach −</p>
+<ul>
+<li>Travelling Salesman Problem</li>
+<li>Prim’s Minimal Spanning Tree Algorithm</li>
+<li>Kruskal’s Minimal Spanning Tree Algorithm</li>
+<li>Dijkstra’s Minimal Spanning Tree Algorithm</li>
+<li>Graph - Map Coloring</li>
+<li>Graph - Vertex Cover</li>
+<li>Knapsack Problem</li>
+<li>Job Scheduling Problem</li>
+</ul>
+<h3 id="What-are-some-examples-of-divide-and-conquer-algorithms"><a href="#What-are-some-examples-of-divide-and-conquer-algorithms" class="headerlink" title="What are some examples of divide and conquer algorithms?"></a>What are some examples of divide and conquer algorithms?</h3><p>The below given problems find their solution using divide and conquer algorithm approach −</p>
+<ul>
+<li>Merge Sort</li>
+<li>Quick Sort</li>
+<li>Binary Search</li>
+<li>Strassen’s Matrix Multiplication</li>
+<li>Closest pair (points)</li>
+</ul>
+<h3 id="What-are-some-examples-of-dynamic-programming-algorithms"><a href="#What-are-some-examples-of-dynamic-programming-algorithms" class="headerlink" title="What are some examples of dynamic programming algorithms?"></a>What are some examples of dynamic programming algorithms?</h3><p>The below given problems find their solution using divide and conquer algorithm approach −</p>
+<ul>
+<li>Fibonacci number series</li>
+<li>Knapsack problem</li>
+<li>Tower of Hanoi</li>
+<li>All pair shortest path by Floyd-Warshall</li>
+<li>Shortest path by Dijkstra</li>
+<li>Project scheduling</li>
+</ul>
+<h2 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked-list"></a>Linked-list</h2><h3 id="What-is-a-linked-list-⭐⭐"><a href="#What-is-a-linked-list-⭐⭐" class="headerlink" title="What is a linked-list?⭐⭐"></a>What is a linked-list?⭐⭐</h3><p>A linked-list is a list of data-items connected with links i.e. pointers or references. </p>
+<p>Most modern high-level programming language does not provide the feature of directly accessing memory location, therefore, linked-list are not supported in them or available in form of inbuilt functions.</p>
+<h3 id="Difference-between-an-ArrayList-over-a-LinkedList-⭐⭐"><a href="#Difference-between-an-ArrayList-over-a-LinkedList-⭐⭐" class="headerlink" title="Difference between an ArrayList over a LinkedList?⭐⭐"></a>Difference between an ArrayList over a LinkedList?⭐⭐</h3><p>ArrayList and LinkedList both implements List interface and maintains insertion order. Both are non synchronized classes. However, there are many differences between ArrayList and LinkedList classes that are given below.</p>
+<p><strong>ArrayList</strong></p>
+<ul>
+<li>ArrayList internally uses a <strong>dynamic array</strong> to store the elements.</li>
+<li>Manipulation with ArrayList is <strong>slow</strong> because it internally uses an array. If any element is removed from the array, all the bits are shifted in memory.</li>
+<li>An ArrayList class can <strong>act as a list</strong> only because it implements List only.</li>
+<li>ArrayList is <strong>better for storing and accessing</strong> data.</li>
+</ul>
+<p><strong>LinkedList</strong></p>
+<ul>
+<li>LinkedList internally uses a <strong>doubly linked list</strong> to store the elements.</li>
+<li>Manipulation with LinkedList is <strong>faster</strong> than ArrayList because it uses a doubly linked list, so no bit shifting is required in memory.</li>
+<li>LinkedList class can <strong>act as a list and queue</strong> both because it implements List and Deque interfaces.</li>
+<li>LinkedList is <strong>better for manipulating</strong> data.</li>
+</ul>
+<h3 id="When-to-use-a-linked-list-over-an-array-array-list-⭐⭐"><a href="#When-to-use-a-linked-list-over-an-array-array-list-⭐⭐" class="headerlink" title="When to use a linked list over an array/array list?⭐⭐"></a>When to use a linked list over an array/array list?⭐⭐</h3><p><strong>Linked lists are preferable over arrays when:</strong></p>
+<ol>
+<li>you need constant-time insertions/deletions from the list (such as in real-time computing where time predictability is absolutely critical)</li>
+<li>you don’t know how many items will be in the list. With arrays, you may need to re-declare and copy memory if the array grows too big</li>
+<li>you don’t need random access to any elements</li>
+<li>you want to be able to insert items in the middle of the list (such as a priority queue)</li>
+</ol>
+<p><strong>Arrays are preferable when:</strong></p>
+<ol>
+<li>you need indexed/random access to elements</li>
+<li>you know the number of elements in the array ahead of time so that you can allocate the correct amount of memory for the array</li>
+<li>you need speed when iterating through all the elements in sequence. You can use pointer math on the array to access each element, whereas you need to lookup the node based on the pointer for each element in linked list, which may result in page faults which may result in performance hits.</li>
+<li>memory is a concern. Filled arrays take up less memory than linked lists. Each element in the array is just the data. Each linked list node requires the data as well as one (or more) pointers to the other elements in the linked list.</li>
+</ol>
+<h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><h3 id="What-is-stack-⭐⭐"><a href="#What-is-stack-⭐⭐" class="headerlink" title="What is stack?⭐⭐"></a>What is stack?⭐⭐</h3><p>In data-structure, stack is an Abstract Data Type (ADT) used to store and retrieve values in Last In First Out method.</p>
+<h3 id="Why-do-we-use-stacks"><a href="#Why-do-we-use-stacks" class="headerlink" title="Why do we use stacks?"></a>Why do we use stacks?</h3><p>Stacks follows LIFO method and addition and retrieval of a data item takes only Ο(n) time. </p>
+<p>Stacks are used where we need to access data in the reverse order or their arrival. </p>
+<p>Stacks are used commonly in recursive function calls, expression parsing, depth first traversal of graphs etc.</p>
+<h3 id="What-operations-can-be-performed-on-stacks"><a href="#What-operations-can-be-performed-on-stacks" class="headerlink" title="What operations can be performed on stacks?"></a>What operations can be performed on stacks?</h3><p>The below operations can be performed on a stack −</p>
+<ul>
+<li><strong>push()</strong> − adds an item to stack</li>
+<li><strong>pop()</strong> − removes the top stack item</li>
+<li><strong>peek()</strong> − gives value of top item without removing it</li>
+<li><strong>isempty()</strong> − checks if stack is empty</li>
+<li><strong>isfull()</strong> − checks if stack is full</li>
+</ul>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><h3 id="What-is-a-queue-in-data-structure-⭐⭐"><a href="#What-is-a-queue-in-data-structure-⭐⭐" class="headerlink" title="What is a queue in data-structure?⭐⭐"></a>What is a queue in data-structure?⭐⭐</h3><p>Queue is an abstract data structure, somewhat similar to stack. In contrast to stack, queue is opened at both end. One end is always used to insert data (enqueue) and the other is used to remove data (dequeue). Queue follows First-In-First-Out methodology, i.e., the data item stored first will be accessed first.</p>
+<h3 id="Why-do-we-use-queues"><a href="#Why-do-we-use-queues" class="headerlink" title="Why do we use queues?"></a>Why do we use queues?</h3><p>As queues follows FIFO method, they are used when we need to work on data-items in exact sequence of their arrival. Every operating system maintains queues of various processes. Priority queues and breadth first traversal of graphs are some examples of queues.</p>
+<h3 id="What-operations-can-be-performed-on-Queues"><a href="#What-operations-can-be-performed-on-Queues" class="headerlink" title="What operations can be performed on Queues?"></a>What operations can be performed on Queues?</h3><p>The below operations can be performed on a stack −</p>
+<ul>
+<li><strong>enqueue()</strong> − adds an item to rear of the queue</li>
+<li><strong>dequeue()</strong> − removes the item from front of the queue</li>
+<li><strong>peek()</strong> − gives value of front item without removing it</li>
+<li><strong>isempty()</strong> − checks if stack is empty</li>
+<li><strong>isfull()</strong> − checks if stack is full</li>
+</ul>
+<h2 id="Searching"><a href="#Searching" class="headerlink" title="Searching"></a>Searching</h2><h3 id="What-is-linear-searching"><a href="#What-is-linear-searching" class="headerlink" title="What is linear searching?"></a>What is linear searching?</h3><p>Linear search tries to find an item in a sequentially arranged data type. These sequentially arranged data items known as array or list, are accessible in incrementing memory location. Linear search compares expected data item with each of data items in list or array. The average case time complexity of linear search is Ο(n) and worst case complexity is Ο(n2). Data in target arrays/lists need not to be sorted.</p>
+<h3 id="What-is-binary-search"><a href="#What-is-binary-search" class="headerlink" title="What is binary search?"></a>What is binary search?</h3><p>A binary search works only on sorted lists or arrays. </p>
+<p>This search selects the middle which splits the entire list into two parts. </p>
+<p>First the middle is compared.</p>
+<p>This search first compares the target value to the mid of the list. </p>
+<p>If it is not found, then it takes decision on whether.</p>
+<h2 id="Sort"><a href="#Sort" class="headerlink" title="Sort"></a>Sort</h2><h3 id="What-is-bubble-sort-and-how-bubble-sort-works"><a href="#What-is-bubble-sort-and-how-bubble-sort-works" class="headerlink" title="What is bubble sort and how bubble sort works?"></a>What is bubble sort and how bubble sort works?</h3><p>Bubble sort is comparison based algorithm in which each pair of adjacent elements is compared and elements are swapped if they are not in order. </p>
+<p>Because the time complexity is Ο(n2), it is not suitable for large set of data.</p>
+<h3 id="Tell-me-something-about-‘insertion-sort’"><a href="#Tell-me-something-about-‘insertion-sort’" class="headerlink" title="Tell me something about ‘insertion sort’?"></a>Tell me something about ‘insertion sort’?</h3><p>Insertion sort divides the list into two sub-list, sorted and unsorted. It takes one element at time and finds it appropriate location in sorted sub-list and insert there. </p>
+<p>The output after insertion is a sorted sub-list. </p>
+<p>It iteratively works on all the elements of unsorted sub-list and inserts them to sorted sub-list in order.</p>
+<h3 id="What-is-selection-sort"><a href="#What-is-selection-sort" class="headerlink" title="What is selection sort?"></a>What is selection sort?</h3><p>Selection sort is in-place sorting technique. It divides the data set into two sub-lists: sorted and unsorted. Then it selects the minimum element from unsorted sub-list and places it into the sorted list. This iterates unless all the elements from unsorted sub-list are consumed into sorted sub-list.</p>
+<h3 id="How-insertion-sort-and-selection-sorts-are-different"><a href="#How-insertion-sort-and-selection-sorts-are-different" class="headerlink" title="How insertion sort and selection sorts are different?"></a>How insertion sort and selection sorts are different?</h3><p>Both sorting techniques maintains two sub-lists, sorted and unsorted and both take one element at a time and places it into sorted sub-list. Insertion sort works on the current element in hand and places it in the sorted array at appropriate location maintaining the properties of insertion sort. Whereas, selection sort searches the minimum from the unsorted sub-list and replaces it with the current element in hand.</p>
+<h3 id="What-is-merge-sort-and-how-it-works"><a href="#What-is-merge-sort-and-how-it-works" class="headerlink" title="What is merge sort and how it works?"></a>What is merge sort and how it works?</h3><p>Merge sort is sorting algorithm based on divide and conquer programming approach. </p>
+<p>It keeps on dividing the list into smaller sub-list until all sub-list has only 1 element. </p>
+<p>And then it merges them in a sorted way until all sub-lists are consumed. </p>
+<p>It has run-time complexity of Ο(n log n) and it needs Ο(n) auxiliary space.</p>
+<h3 id="What-is-shell-sort"><a href="#What-is-shell-sort" class="headerlink" title="What is shell sort?"></a>What is shell sort?</h3><p>Shell sort can be said a variant of insertion sort. Shell sort divides the list into smaller sub-list based on some <strong>gap</strong> variable and then each sub-list is sorted using insertion sort. In best cases, it can perform up to Ο(n log n).</p>
+<h3 id="How-quick-sort-works"><a href="#How-quick-sort-works" class="headerlink" title="How quick sort works?"></a>How quick sort works?</h3><p>Quick sort uses divide and conquer approach. </p>
+<p>It divides the list in smaller ‘partitions’ using ‘pivot’. </p>
+<p>The values which are smaller than the pivot are arranged in the left partition and greater values are arranged in the right partition. </p>
+<p>Each partition is recursively sorted using quick sort.</p>
+<h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><h3 id="What-is-a-graph-⭐⭐"><a href="#What-is-a-graph-⭐⭐" class="headerlink" title="What is a graph?⭐⭐"></a>What is a graph?⭐⭐</h3><p>A graph is a pictorial representation of a set of objects where some pairs of objects are connected by links. </p>
+<p>The interconnected objects are represented by points termed as vertices, and the links that connect the vertices are called edges.</p>
+<h3 id="How-depth-first-traversal-works"><a href="#How-depth-first-traversal-works" class="headerlink" title="How depth first traversal works?"></a>How depth first traversal works?</h3><p>Depth First Search algorithm(DFS) traverses a graph in a depthward motion and uses a stack to remember to get the next vertex to start a search when a dead end occurs in any iteration.</p>
+<h3 id="How-breadth-first-traversal-works"><a href="#How-breadth-first-traversal-works" class="headerlink" title="How breadth first traversal works?"></a>How breadth first traversal works?</h3><p>Breadth First Search algorithm(BFS) traverses a graph in a breadthwards motion and uses a queue to remember to get the next vertex to start a search when a dead end occurs in any iteration.</p>
+<h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><h3 id="What-is-a-tree-⭐⭐"><a href="#What-is-a-tree-⭐⭐" class="headerlink" title="What is a tree?⭐⭐"></a>What is a tree?⭐⭐</h3><p>A tree is a minimally connected graph having no loops and circuits.</p>
+<h3 id="What-is-a-binary-tree-⭐⭐"><a href="#What-is-a-binary-tree-⭐⭐" class="headerlink" title="What is a binary tree?⭐⭐"></a>What is a binary tree?⭐⭐</h3><p>A binary tree has a special condition that each node can have two children at maximum.</p>
+<h3 id="What-is-a-binary-search-tree-⭐⭐"><a href="#What-is-a-binary-search-tree-⭐⭐" class="headerlink" title="What is a binary search tree?⭐⭐"></a>What is a binary search tree?⭐⭐</h3><p>A binary search tree is a binary tree with a special provision where a node’s left child must have value less than its parent’s value and node’s right child must have value greater than it’s parent value.</p>
+<h3 id="What-is-tree-traversal"><a href="#What-is-tree-traversal" class="headerlink" title="What is tree traversal?"></a>What is tree traversal?</h3><p>Tree traversal is a process to visit all the nodes of a tree. </p>
+<p>Because, all nodes are connected via edges (links) we always start from the root (head) node. </p>
+<p>There are three ways which we use to traverse a tree −</p>
+<ul>
+<li>In-order Traversal</li>
+<li>Pre-order Traversal</li>
+<li>Post-order Traversal</li>
+</ul>
+<p>See the below image of a binary search tree, and traverse it using all available methods −</p>
+<p><img src="https://www.tutorialspoint.com/data_structures_algorithms/images/binary_search_tree.jpg" alt="Tree Traversal"></p>
+<ul>
+<li>In-order traversal − 10 14 19 27 31 35 42</li>
+<li>Pre-order traversal − 27 14 10 19 35 31 42</li>
+<li>Post-order traversal − 10 19 14 31 42 35 27</li>
+</ul>
+<h3 id="What-is-an-AVL-Tree"><a href="#What-is-an-AVL-Tree" class="headerlink" title="What is an AVL Tree?"></a>What is an AVL Tree?</h3><p>AVL trees are height balancing binary search tree. </p>
+<p>AVL tree checks the height of left and right sub-trees and assures that the difference is not more than 1. </p>
+<p>This difference is called Balance Factor.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BalanceFactor = height(left-sutree) − height(right-sutree)</span><br></pre></td></tr></table></figure>
+
+<h3 id="What-is-a-spanning-tree"><a href="#What-is-a-spanning-tree" class="headerlink" title="What is a spanning tree?"></a>What is a spanning tree?</h3><p>A spanning tree is a subset of Graph G, which has all the vertices covered with minimum possible number of edges. </p>
+<p>A spanning tree does not have cycles and it can not be disconnected.</p>
+<h3 id="How-many-spanning-trees-can-a-graph-has"><a href="#How-many-spanning-trees-can-a-graph-has" class="headerlink" title="How many spanning trees can a graph has?"></a>How many spanning trees can a graph has?</h3><p>It depends on how connected the graph is. A complete undirected graph can have maximum nn-1 number of spanning trees, where n is number of nodes</p>
+<h3 id="How-Kruskal’s-algorithm-works"><a href="#How-Kruskal’s-algorithm-works" class="headerlink" title="How Kruskal’s algorithm works?"></a>How Kruskal’s algorithm works?</h3><p>This algorithm treats the graph as a forest and every node it as an individual tree. A tree connects to another only and only if it has least cost among all available options and does not violate MST properties.</p>
+<h3 id="How-Prim’s-algorithm-finds-spanning-tree"><a href="#How-Prim’s-algorithm-finds-spanning-tree" class="headerlink" title="How Prim’s algorithm finds spanning tree?"></a>How Prim’s algorithm finds spanning tree?</h3><p>Prim’s algorithm treats the nodes as a single tree and keeps on adding new nodes to the spanning tree from the given graph.</p>
+<h3 id="What-is-a-minimum-spanning-tree-MST"><a href="#What-is-a-minimum-spanning-tree-MST" class="headerlink" title="What is a minimum spanning tree (MST)?"></a>What is a minimum spanning tree (MST)?</h3><p>In a weighted graph, a minimum spanning tree is a spanning tree that has minimum weight that all other spanning trees of the same graph.</p>
+<h3 id="What-is-a-heap-in-data-structure"><a href="#What-is-a-heap-in-data-structure" class="headerlink" title="What is a heap in data structure?"></a>What is a heap in data structure?</h3><p>Heap is a special balanced binary tree data structure where root-node key is compared with its children and arranged accordingly. A min-heap, a parent node has key value less than its childs and a max-heap parent node has value greater than its childs.</p>
+<h3 id="What-is-a-recursive-function"><a href="#What-is-a-recursive-function" class="headerlink" title="What is a recursive function?"></a>What is a recursive function?</h3><p>A recursive function is one which calls itself, directly or calls a function that in turn calls it. Every recursive function follows the recursive properties − <strong>base criteria</strong> where functions stops calling itself and <strong>progressive approach</strong> where the functions tries to meet the base criteria in each iteration.</p>
+<h3 id="What-is-tower-of-hanoi"><a href="#What-is-tower-of-hanoi" class="headerlink" title="What is tower of hanoi?"></a>What is tower of hanoi?</h3><p>Tower of Hanoi, is a mathematical puzzle which consists of three tower (pegs) and more than one rings. All rings are of different size and stacked upon each other where the large disk is always below the small disk. The aim is to move the tower of disk from one peg to another, without breaking its properties.</p>
+<h3 id="What-is-fibonacci-series"><a href="#What-is-fibonacci-series" class="headerlink" title="What is fibonacci series?"></a>What is fibonacci series?</h3><p>Fibonacci Series generates subsequent number by adding two previous numbers. For example − 0 1 1 2 3 5 8 13.</p>
+<h2 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h2><h3 id="What-is-hashing"><a href="#What-is-hashing" class="headerlink" title="What is hashing?"></a>What is hashing?</h3><p>Hashing is a technique to convert a range of key values into a range of indexes of an array. </p>
+<p>By using hash tables, we can create an associative data storage where data index can be find by providing its key values.</p>
+<p><a href="https://blog.csdn.net/vking_wang/article/details/14166593" target="_blank" rel="noopener">https://blog.csdn.net/vking_wang/article/details/14166593</a></p>
+<h3 id="What-is-interpolation-search-technique"><a href="#What-is-interpolation-search-technique" class="headerlink" title="What is interpolation search technique?"></a>What is interpolation search technique?</h3><p>Interpolation search is an improved variant of binary search. </p>
+<p>This search algorithm works on the probing position of required value.</p>
+<h3 id="What-is-the-prefix-and-post-fix-notation-of-a-b-c-d"><a href="#What-is-the-prefix-and-post-fix-notation-of-a-b-c-d" class="headerlink" title="What is the prefix and post fix notation of (a + b) * (c + d) ?"></a>What is the prefix and post fix notation of (a + b) * (c + d) ?</h3><p>Prefix Notation − * + a b + c d</p>
+<p>Postfix Notation − a b + c d + *</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Interview/" rel="tag"># Interview</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/27/Amazon%20Interview%20Questions/" rel="prev" title="Amazon Interview Questions">
+      <i class="fa fa-chevron-left"></i> Amazon Interview Questions
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DSA-Interview-Questions"><span class="nav-number">1.</span> <span class="nav-text">DSA Interview Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-structure"><span class="nav-number">1.0.1.</span> <span class="nav-text">data-structure?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#various-data-structures-available"><span class="nav-number">1.0.2.</span> <span class="nav-text">various data-structures available?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-number">1.0.3.</span> <span class="nav-text">algorithm?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm-analysis"><span class="nav-number">1.0.4.</span> <span class="nav-text">algorithm analysis?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#criteria-of-algorithm-analysis"><span class="nav-number">1.0.5.</span> <span class="nav-text">criteria of algorithm analysis?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#asymptotic-analysis-of-an-algorithm"><span class="nav-number">1.0.6.</span> <span class="nav-text">asymptotic analysis of an algorithm?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-asymptotic-notations"><span class="nav-number">1.0.7.</span> <span class="nav-text">What are asymptotic notations?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-data-structure"><span class="nav-number">1.0.8.</span> <span class="nav-text">linear data structure?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#common-operations-on-a-data-structure"><span class="nav-number">1.0.9.</span> <span class="nav-text">common operations on a data-structure?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Briefly-explain-the-approaches-to-develop-algorithms"><span class="nav-number">1.0.10.</span> <span class="nav-text">Briefly explain the approaches to develop algorithms.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Give-some-examples-greedy-algorithms"><span class="nav-number">1.0.11.</span> <span class="nav-text">Give some examples greedy algorithms.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-some-examples-of-divide-and-conquer-algorithms"><span class="nav-number">1.0.12.</span> <span class="nav-text">What are some examples of divide and conquer algorithms?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-some-examples-of-dynamic-programming-algorithms"><span class="nav-number">1.0.13.</span> <span class="nav-text">What are some examples of dynamic programming algorithms?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linked-list"><span class="nav-number">1.1.</span> <span class="nav-text">Linked-list</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-linked-list-⭐⭐"><span class="nav-number">1.1.1.</span> <span class="nav-text">What is a linked-list?⭐⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Difference-between-an-ArrayList-over-a-LinkedList-⭐⭐"><span class="nav-number">1.1.2.</span> <span class="nav-text">Difference between an ArrayList over a LinkedList?⭐⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#When-to-use-a-linked-list-over-an-array-array-list-⭐⭐"><span class="nav-number">1.1.3.</span> <span class="nav-text">When to use a linked list over an array&#x2F;array list?⭐⭐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stack"><span class="nav-number">1.2.</span> <span class="nav-text">stack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-stack-⭐⭐"><span class="nav-number">1.2.1.</span> <span class="nav-text">What is stack?⭐⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-do-we-use-stacks"><span class="nav-number">1.2.2.</span> <span class="nav-text">Why do we use stacks?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-operations-can-be-performed-on-stacks"><span class="nav-number">1.2.3.</span> <span class="nav-text">What operations can be performed on stacks?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">1.3.</span> <span class="nav-text">Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-queue-in-data-structure-⭐⭐"><span class="nav-number">1.3.1.</span> <span class="nav-text">What is a queue in data-structure?⭐⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-do-we-use-queues"><span class="nav-number">1.3.2.</span> <span class="nav-text">Why do we use queues?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-operations-can-be-performed-on-Queues"><span class="nav-number">1.3.3.</span> <span class="nav-text">What operations can be performed on Queues?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Searching"><span class="nav-number">1.4.</span> <span class="nav-text">Searching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-linear-searching"><span class="nav-number">1.4.1.</span> <span class="nav-text">What is linear searching?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-binary-search"><span class="nav-number">1.4.2.</span> <span class="nav-text">What is binary search?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sort"><span class="nav-number">1.5.</span> <span class="nav-text">Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-bubble-sort-and-how-bubble-sort-works"><span class="nav-number">1.5.1.</span> <span class="nav-text">What is bubble sort and how bubble sort works?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tell-me-something-about-‘insertion-sort’"><span class="nav-number">1.5.2.</span> <span class="nav-text">Tell me something about ‘insertion sort’?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-selection-sort"><span class="nav-number">1.5.3.</span> <span class="nav-text">What is selection sort?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-insertion-sort-and-selection-sorts-are-different"><span class="nav-number">1.5.4.</span> <span class="nav-text">How insertion sort and selection sorts are different?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-merge-sort-and-how-it-works"><span class="nav-number">1.5.5.</span> <span class="nav-text">What is merge sort and how it works?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-shell-sort"><span class="nav-number">1.5.6.</span> <span class="nav-text">What is shell sort?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-quick-sort-works"><span class="nav-number">1.5.7.</span> <span class="nav-text">How quick sort works?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph"><span class="nav-number">1.6.</span> <span class="nav-text">Graph</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-graph-⭐⭐"><span class="nav-number">1.6.1.</span> <span class="nav-text">What is a graph?⭐⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-depth-first-traversal-works"><span class="nav-number">1.6.2.</span> <span class="nav-text">How depth first traversal works?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-breadth-first-traversal-works"><span class="nav-number">1.6.3.</span> <span class="nav-text">How breadth first traversal works?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree"><span class="nav-number">1.7.</span> <span class="nav-text">Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-tree-⭐⭐"><span class="nav-number">1.7.1.</span> <span class="nav-text">What is a tree?⭐⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-binary-tree-⭐⭐"><span class="nav-number">1.7.2.</span> <span class="nav-text">What is a binary tree?⭐⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-binary-search-tree-⭐⭐"><span class="nav-number">1.7.3.</span> <span class="nav-text">What is a binary search tree?⭐⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-tree-traversal"><span class="nav-number">1.7.4.</span> <span class="nav-text">What is tree traversal?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-an-AVL-Tree"><span class="nav-number">1.7.5.</span> <span class="nav-text">What is an AVL Tree?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-spanning-tree"><span class="nav-number">1.7.6.</span> <span class="nav-text">What is a spanning tree?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-many-spanning-trees-can-a-graph-has"><span class="nav-number">1.7.7.</span> <span class="nav-text">How many spanning trees can a graph has?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-Kruskal’s-algorithm-works"><span class="nav-number">1.7.8.</span> <span class="nav-text">How Kruskal’s algorithm works?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-Prim’s-algorithm-finds-spanning-tree"><span class="nav-number">1.7.9.</span> <span class="nav-text">How Prim’s algorithm finds spanning tree?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-minimum-spanning-tree-MST"><span class="nav-number">1.7.10.</span> <span class="nav-text">What is a minimum spanning tree (MST)?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-heap-in-data-structure"><span class="nav-number">1.7.11.</span> <span class="nav-text">What is a heap in data structure?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-recursive-function"><span class="nav-number">1.7.12.</span> <span class="nav-text">What is a recursive function?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-tower-of-hanoi"><span class="nav-number">1.7.13.</span> <span class="nav-text">What is tower of hanoi?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-fibonacci-series"><span class="nav-number">1.7.14.</span> <span class="nav-text">What is fibonacci series?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-table"><span class="nav-number">1.8.</span> <span class="nav-text">Hash table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-hashing"><span class="nav-number">1.8.1.</span> <span class="nav-text">What is hashing?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-interpolation-search-technique"><span class="nav-number">1.8.2.</span> <span class="nav-text">What is interpolation search technique?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-the-prefix-and-post-fix-notation-of-a-b-c-d"><span class="nav-number">1.8.3.</span> <span class="nav-text">What is the prefix and post fix notation of (a + b) * (c + d) ?</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
