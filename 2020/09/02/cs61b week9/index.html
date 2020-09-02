@@ -22,33 +22,49 @@
     var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Stay gold">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dejavu&#39;s Notebook">
-<meta property="og:url" content="https://dejavi-19.github.io/index.html">
+  <meta name="description" content="cs61b week9HashingStoring Data   Worst case runtimes contains(x) insert(x)    Linked List Θ(N) Θ(N)   Bushy BSTs Θ(logN) Θ(logN)   Unordered Array Θ(N) Θ(N)   Bushy BST Limitations:  Items must be com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs61b week9">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/09/02/cs61b%20week9/index.html">
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
-<meta property="og:description" content="Stay gold">
+<meta property="og:description" content="cs61b week9HashingStoring Data   Worst case runtimes contains(x) insert(x)    Linked List Θ(N) Θ(N)   Bushy BSTs Θ(logN) Θ(logN)   Unordered Array Θ(N) Θ(N)   Bushy BST Limitations:  Items must be com">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://joshhug.gitbooks.io/hug61b/content/assets/Screen%20Shot%202019-03-08%20at%201.37.16%20PM.png">
+<meta property="og:image" content="https://joshhug.gitbooks.io/hug61b/content/assets/Screen%20Shot%202019-03-08%20at%201.44.43%20PM.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/hash-code.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/heap-bad-and-good.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/tree-representation-1.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/072bd3c57194f337d5e8a26483207aefc2195446/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d30392532306174253230392e35342e3034253230504d2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/67f74cb9623c12471414586ff06b6b876cfcec2b/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e30332e3135253230504d2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/d4ff4bfc88fb566693ce47c4b312e1b13321ef44/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e30382e3434253230504d2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/840c19783a7649cdf7e3e817a2a85c7ad57bb3fa/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e31352e3131253230504d2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/b70e0a36bc50f1dfd42f7b95673da50d5e7d2ab0/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e32362e3035253230504d2e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/tree-representation-3.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/tree-representation-3b.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/17de6a6e36d262b962eea83320a88d8c39b5fdab/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f686561702d31332e322e312e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/my-own-summary.png">
+<meta property="article:published_time" content="2020-09-02T03:26:16.288Z">
+<meta property="article:modified_time" content="2020-09-02T07:26:46.781Z">
 <meta property="article:author" content="Dejavu">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
-<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://joshhug.gitbooks.io/hug61b/content/assets/Screen%20Shot%202019-03-08%20at%201.37.16%20PM.png">
 
-<link rel="canonical" href="https://dejavi-19.github.io/">
+<link rel="canonical" href="https://dejavi-19.github.io/2020/09/02/cs61b%20week9/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Dejavu's Notebook</title>
+  <title>cs61b week9 | Dejavu's Notebook</title>
   
 
 
@@ -165,92 +181,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/02/cs61b%20week10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/02/cs61b%20week10/" class="post-title-link" itemprop="url">cs61b week10</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-02 16:45:29" itemprop="dateCreated datePublished" datetime="2020-09-02T16:45:29+09:00">2020-09-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week10"><a href="#cs61b-week10" class="headerlink" title="cs61b week10"></a>cs61b week10</h1><h1 id="Prefix-Operations-and-Tries"><a href="#Prefix-Operations-and-Tries" class="headerlink" title="Prefix Operations and Tries"></a>Prefix Operations and Tries</h1><p>Tries is an ordered tree data structure used to store keys which can be broken into “characters” and share prefixes with other keys.</p>
-<ul>
-<li>Every node stores only one letter.</li>
-<li>Nodes can be shared by multiple keys.</li>
-<li>The last character of the key is marked.</li>
-</ul>
-<p>To check if the trie contains a key, walk down the tree from the root along the correct nodes. If the character does not exist or the final node is not marked, the key does not exist.</p>
-<p>For example, the following trie contains <code>[&quot;sam&quot;, &quot;sad&quot;, &quot;sap&quot;, &quot;same&quot;, &quot;a&quot;, &quot;awls&quot;]</code>.</p>
-<p><a href="https://camo.githubusercontent.com/3cb59ab867b81c402c95a8251cb1209706887b61/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3134253230617425323031322e34372e3338253230414d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/3cb59ab867b81c402c95a8251cb1209706887b61/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3134253230617425323031322e34372e3338253230414d2e706e67" alt="Tries"></a></p>
-<ul>
-<li><code>contains(&quot;a)</code>: true, the final node is marked</li>
-<li><code>contains(&quot;sa&quot;)</code>: false, the final node is not marked</li>
-<li><code>contains(&quot;saq&quot;)</code>: false, fell off tree</li>
-</ul>
-<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><h3 id="DataIndexedCharMap"><a href="#DataIndexedCharMap" class="headerlink" title="DataIndexedCharMap"></a>DataIndexedCharMap</h3><p>The <code>DataIndexedCharMap</code> class is efficient implementation for a map which takes in character keys. The value <code>R</code> represents the number of possible characters (128 for ASCII).</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataIndexedCharMap</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> V[] items;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DataIndexedCharMap</span><span class="params">(<span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">        items = (V[]) <span class="keyword">new</span> Object[R];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">char</span> c, V val)</span> </span>&#123;</span><br><span class="line">        items[c] = val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> items[c];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -266,10 +200,9 @@
       <meta itemprop="name" content="Dejavu's Notebook">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/02/cs61b%20week9/" class="post-title-link" itemprop="url">cs61b week9</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          cs61b week9
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -302,7 +235,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="cs61b-week9"><a href="#cs61b-week9" class="headerlink" title="cs61b week9"></a>cs61b week9</h1><h1 id="Hashing"><a href="#Hashing" class="headerlink" title="Hashing"></a>Hashing</h1><h3 id="Storing-Data"><a href="#Storing-Data" class="headerlink" title="Storing Data"></a>Storing Data</h3><table>
+        <h1 id="cs61b-week9"><a href="#cs61b-week9" class="headerlink" title="cs61b week9"></a>cs61b week9</h1><h1 id="Hashing"><a href="#Hashing" class="headerlink" title="Hashing"></a>Hashing</h1><h3 id="Storing-Data"><a href="#Storing-Data" class="headerlink" title="Storing Data"></a>Storing Data</h3><table>
 <thead>
 <tr>
 <th>Worst case runtimes</th>
@@ -738,833 +671,38 @@
 </tbody></table>
 <p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week9/my-own-summary.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/my-own-summary.png" alt="my-own-summary"></a></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/01/Lab-2setup,-Lab2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/01/Lab-2setup,-Lab2/" class="post-title-link" itemprop="url">Lab2setup, Lab2 ,Proj1A,proj1B,Discussion 3,Exam Prep,Discussion 4,Midterm 1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-01 11:27:06 / 修改时间：14:11:40" itemprop="dateCreated datePublished" datetime="2020-09-01T11:27:06+09:00">2020-09-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Lab2-Setup"><a href="#Lab2-Setup" class="headerlink" title="Lab2 Setup"></a>Lab2 Setup</h1><h2 id="Setting-Up-IntelliJ"><a href="#Setting-Up-IntelliJ" class="headerlink" title="Setting Up IntelliJ"></a>Setting Up IntelliJ</h2><p>Already finished.</p>
-<h1 id="Lab2-Unit-Testing-with-JUnit-and-IntLists"><a href="#Lab2-Unit-Testing-with-JUnit-and-IntLists" class="headerlink" title="Lab2 Unit Testing with JUnit and IntLists"></a>Lab2 Unit Testing with JUnit and IntLists</h1><h3 id="Application-IntList"><a href="#Application-IntList" class="headerlink" title="Application IntList"></a>Application IntList</h3><h3 id="dSquareList"><a href="#dSquareList" class="headerlink" title="dSquareList"></a>dSquareList</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns a list equal to L with all elements squared. Destructive.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dSquareList</span><span class="params">(IntList L)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (L != <span class="keyword">null</span>) &#123;</span><br><span class="line">        L.first = L.first * L.first;</span><br><span class="line">        L = L.rest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/01/Lab-2setup,-Lab2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/30/DSA%20Interview%20Questions/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/30/DSA%20Interview%20Questions/" class="post-title-link" itemprop="url">DSA Interview Questions</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-30 17:27:03" itemprop="dateCreated datePublished" datetime="2020-08-30T17:27:03+09:00">2020-08-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-31 16:05:41" itemprop="dateModified" datetime="2020-08-31T16:05:41+09:00">2020-08-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Amazon/" itemprop="url" rel="index"><span itemprop="name">Amazon</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="DSA-Interview-Questions"><a href="#DSA-Interview-Questions" class="headerlink" title="DSA Interview Questions"></a>DSA Interview Questions</h1><h3 id="data-structure"><a href="#data-structure" class="headerlink" title="data-structure?"></a>data-structure?</h3><p>Data structure is a way of defining, storing &amp; retrieving(检索) of data in a structural &amp; systematic(系统地) way. </p>
-<p>A data structure may contain different type of data items.</p>
-<h3 id="various-data-structures-available"><a href="#various-data-structures-available" class="headerlink" title="various data-structures available?"></a>various data-structures available?</h3><p>Data structure availability may vary by programming languages. </p>
-<p>Commonly available data structures are list, arrays, stack, queues, graph, tree etc.</p>
-<h3 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm?"></a>algorithm?</h3><p>Algorithm is a step by step procedure, which defines a set of instructions to be executed in certain order to get the desired output.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/30/DSA%20Interview%20Questions/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/01/Lab-2setup,-Lab2/" rel="prev" title="Lab2setup, Lab2 ,Proj1A,proj1B,Discussion 3,Exam Prep,Discussion 4,Midterm 1">
+      <i class="fa fa-chevron-left"></i> Lab2setup, Lab2 ,Proj1A,proj1B,Discussion 3,Exam Prep,Discussion 4,Midterm 1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/02/cs61b%20week10/" rel="next" title="cs61b week10">
+      cs61b week10 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/27/Amazon%20Interview%20Questions/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/27/Amazon%20Interview%20Questions/" class="post-title-link" itemprop="url">Amazon Interview Questions</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-27 22:19:21" itemprop="dateCreated datePublished" datetime="2020-08-27T22:19:21+09:00">2020-08-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-31 18:58:45" itemprop="dateModified" datetime="2020-08-31T18:58:45+09:00">2020-08-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Amazon/" itemprop="url" rel="index"><span itemprop="name">Amazon</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Amazon-Interview-Questions"><a href="#Amazon-Interview-Questions" class="headerlink" title="Amazon Interview Questions"></a>Amazon Interview Questions</h1><h3 id="Self-Introduction⭐⭐"><a href="#Self-Introduction⭐⭐" class="headerlink" title="Self Introduction⭐⭐"></a>Self Introduction⭐⭐</h3><p>Good morning, nice to meet you.</p>
-<p>My name is Liu Kunling.</p>
-<p>Thank you very much for your time today to interview me for the position of SDE intern.</p>
-<p>It is really a great honor to have this opportunity for an interview here. I am currently a master’s first-year student from the Graduate School of Frontier Sciences at the University of Tokyo. I got a bachelor’s degree from the University of Shanghai for Science and Technology, my major is advanced energy. I have experience of working as an intern at the Intel Robotics Innovation Center in Shanghai. Besides, I have studied the courses in data science, data structures and algorithms. My research direction basically applies machine learning techniques to improve the fluid dynamic simulation method performance. </p>
-<p>I hope I can make the best use of my knowledge, interpersonal communication skills, and high learning enthusiasm qualified me for this position, I wish I could have a chance to cooperate with the most efficient and professional colleagues here and do my best. </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/27/Amazon%20Interview%20Questions/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/25/AWS3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/25/AWS3/" class="post-title-link" itemprop="url">AWS Day03</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-25 23:55:58" itemprop="dateCreated datePublished" datetime="2020-08-25T23:55:58+09:00">2020-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-31 16:01:02" itemprop="dateModified" datetime="2020-08-31T16:01:02+09:00">2020-08-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Amazon/" itemprop="url" rel="index"><span itemprop="name">Amazon</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="AWS-Day3"><a href="#AWS-Day3" class="headerlink" title="AWS Day3"></a>AWS Day3</h1><h2 id="Serverless-handson"><a href="#Serverless-handson" class="headerlink" title="Serverless handson"></a>Serverless handson</h2><p>サーバーレスとは何か？</p>
-<p>サーバーレスは何が嬉しいのか？</p>
-<p><img src="http://educationhub-188db500-dde9-11ea-96c8-f9f28ef59290.s3-website-us-east-1.amazonaws.com/images/wildrydes-complete-architecture.png" alt=""></p>
-<h3 id="AWSが提供するサービスの分類"><a href="#AWSが提供するサービスの分類" class="headerlink" title="AWSが提供するサービスの分類"></a>AWSが提供するサービスの分類</h3><ul>
-<li>仮想マシンサービス （Amazon EC2）</li>
-<li>サーバーベース</li>
-<li>サーバーレス</li>
-</ul>
-<h3 id="サーバーレスの主要コンポーネント"><a href="#サーバーレスの主要コンポーネント" class="headerlink" title="サーバーレスの主要コンポーネント"></a>サーバーレスの主要コンポーネント</h3><h4 id="外部I-F"><a href="#外部I-F" class="headerlink" title="外部I/F"></a>外部I/F</h4><p>REST API: Amazon API </p>
-<p>Gateway GraphQL: AWS AppSync</p>
-<h4 id="認証"><a href="#認証" class="headerlink" title="認証"></a>認証</h4><p>Amazon Cognito</p>
-<h4 id="処理ロジック"><a href="#処理ロジック" class="headerlink" title="処理ロジック"></a>処理ロジック</h4><p>Java/Go/Node.js/Python/ .Net C#/Ruby and more: AWS Lambda</p>
-<h4 id="データ保持-管理"><a href="#データ保持-管理" class="headerlink" title="データ保持/管理"></a>データ保持/管理</h4><p>NoSQL: Amazon DynamoDB </p>
-<p>RDB: Amazon </p>
-<p>RDS Amazon Aurora </p>
-<p>Queue: Amazon SQS </p>
-<p>File: Amazon S3</p>
-<h3 id="ハンズオンで利用するサービス-のご紹介"><a href="#ハンズオンで利用するサービス-のご紹介" class="headerlink" title="ハンズオンで利用するサービス のご紹介"></a>ハンズオンで利用するサービス のご紹介</h3><h4 id="Amazon-API-Gateway"><a href="#Amazon-API-Gateway" class="headerlink" title="Amazon API Gateway"></a>Amazon API Gateway</h4><p>Application Programming Interface: </p>
-<ul>
-<li>各プログラミング言語のAPI （SDK、ライブラリなど）</li>
-<li>ネットワーク 呼び出しAPI</li>
-<li>Web API</li>
-</ul>
-<p>Web Application programming interface (API)</p>
-<p>様々なWebサービスは、開発者のためにWeb APIを提供しています</p>
-<ul>
-<li>SNS: Facebook, Twitterなど</li>
-<li>決済: Amazon Pay, PayPalなど</li>
-</ul>
-<p>Web API 提供時の課題</p>
-<ol>
-<li>インフラの管理 (可用性とスケーラビリティ)</li>
-<li>APIの管理 (設定やデプロイの制御)</li>
-<li>認証と認可 (アクセスの制御)</li>
-<li>流量制御と保護 (スロットリング)</li>
-</ol>
-<p>APIの種類</p>
-<p>RESTful API</p>
-<ul>
-<li>REST= Representational state transfer</li>
-<li>リソースをHTTPメソッド(GET, POST, PUT, DELETE, …)で操作</li>
-<li>ステートレス（= 独⽴に実⾏できる）</li>
-<li>RESTful API = RESTの原則に則って構築されたWebサービスのAPI</li>
-</ul>
-<p>WebSocket API</p>
-<ul>
-<li>クライアントとサーバー間の双⽅向通信を実現する仕様</li>
-<li>⼀つのコネクションで継続的なデータ送受信が可能</li>
-<li>ステートフル</li>
-</ul>
-<h4 id="AWS-Lambda"><a href="#AWS-Lambda" class="headerlink" title="AWS Lambda"></a>AWS Lambda</h4><p>AWS における Compute サービス</p>
-<p>Amazon EC2</p>
-<ul>
-<li>自由度  高い</li>
-<li>管理の手間 多い</li>
-</ul>
-<p>AWS Lambda</p>
-<ul>
-<li>自由度 低い </li>
-<li>管理の手間 少ない </li>
-</ul>
-<p>サーバーのプロビジョニング/管理なしでプログラムを実行できるサービス コードの実行やスケーリングに必要なことは、Lambda 側で実施するので、 開発者の方はコードを書くことにより集中できる</p>
-<p>サポートされているランタイム言語</p>
-<p><a href="https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-runtimes.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-runtimes.html</a></p>
-<h4 id="Amazon-DynamoDB"><a href="#Amazon-DynamoDB" class="headerlink" title="Amazon DynamoDB"></a>Amazon DynamoDB</h4><p>AWSのデータベースサービス =“Purpose Built DB”</p>
-<p>Key-Value </p>
-<p>Relationalとは</p>
-<p>Amazon DynamoDB</p>
-<ul>
-<li>容量制限のない、完全マネージド型のNoSQL データベース</li>
-<li>ハイスケーラブル、3箇所のレプリケーション による高可用性</li>
-<li>10 ミリ秒未満のレイテンシとProvisioned-IOPS</li>
-</ul>
-<p>DynamoDB は No single point of failure (SPOF)</p>
-<p>Amazon DynamoDB の用語</p>
-<h4 id="Amazon-Cognito"><a href="#Amazon-Cognito" class="headerlink" title="Amazon Cognito"></a>Amazon Cognito</h4><p>認証(Authentication) と 認可(Authorization)</p>
-<p>“誰であるか”を識別する 「認証」(AuthN) </p>
-<p>“何ができるか(どの権限を持つか)”を決定する「認可」(AuthZ)</p>
-<h4 id="Amplify"><a href="#Amplify" class="headerlink" title="Amplify"></a>Amplify</h4><p>AWS Amplify</p>
-<p>AWSを用いたWeb/モバイルアプリを最速でリリースするための開発プラット フォーム</p>
-<p>Framework ライブラリやCLI、UIコンポーネントを含むOSSのク ライアントフレームワーク </p>
-<p>CLI AWS AppSyncやAmazon Pinpoint、Amazon DynamoDBなど、AWSのビルディングブロックを簡 単に利用することができるツールチェーン </p>
-<p>Developer Tools フロントエンドとバックエンドに対して ビルド、テスト、デプロイ、ホストを容易に 実現できるサービス群</p>
-<p>Auto Check In App</p>
-<p>ハンズオンで利用するサービスのご紹介</p>
-<h2 id="Amazon-Rekognition"><a href="#Amazon-Rekognition" class="headerlink" title="Amazon Rekognition"></a>Amazon Rekognition</h2><p>Amazonが取り組むイノベーション</p>
-<ul>
-<li>Amazon Robotics</li>
-<li>Amazon Go</li>
-<li>Amazon Echo</li>
-</ul>
-<p>AWS の AI/ML サービス群</p>
-<p>AI サービス</p>
-<p>データを用意するだけ, using API to do ML</p>
-<h3 id="Test-处理-没有在ppt上"><a href="#Test-处理-没有在ppt上" class="headerlink" title="Test 处理(没有在ppt上)"></a>Test 处理(没有在ppt上)</h3><p>Amazon Translate</p>
-<ul>
-<li>不同语言间的机器翻译</li>
-<li>包含日语在内25种语言对应</li>
-</ul>
-<p>Amazon Comprehend</p>
-<ul>
-<li>文章解析</li>
-<li>12种语言对应（日语不包含）</li>
-</ul>
-<p>Amazon Comprehend Medical 医疗化</p>
-<p>Amazon Comprehend-テキスト解析例</p>
-<p>1991年に、当時フィンランドのへルシンキ大学の学生であったリーナス·トーバルズはオペレーディグシステムに好奇心を抱くようになっていた。当時、近代的なOSを動作させる能力を持つIntel80386 CPUを搭載した32ピットPC/AT互換パーソナルコンピュータが登場していた。</p>
-<p>エンティティ</p>
-<ul>
-<li>1991年: DATE</li>
-<li>フィンランド:LOCATION</li>
-<li>ルシンキ大学</li>
-<li>ORGANIZATION</li>
-<li>リーナス·トーバルズ: Person</li>
-</ul>
-<p>キーフレーズ</p>
-<ul>
-<li>オベレーティングシステム</li>
-<li>好奇心</li>
-<li>当時</li>
-<li>能力</li>
-</ul>
-<p>感情</p>
-<ul>
-<li>NEUTRAL（中立）</li>
-</ul>
-<p>言語</p>
-<ul>
-<li>ja（日本語）</li>
-</ul>
-<p>出典: <a href="https://a.wikipedia.ora/wilki/Linux" target="_blank" rel="noopener">https://a.wikipedia.ora/wilki/Linux</a></p>
-<h3 id="Amazon-Rekognition-1"><a href="#Amazon-Rekognition-1" class="headerlink" title="Amazon Rekognition"></a>Amazon Rekognition</h3><p>Amazon Rekognition 機械学習を用いた画像と動画分析のサービス</p>
-<p>Amazon Rekognition で利用可能な主な特徴 画像と動画分析の様々なニーズに対応</p>
-<p>映像: Amazon Rekognition Video</p>
-<ul>
-<li>深層学習に基づく動画認識サービス</li>
-<li>Rekognition image の各種認識機能を動画に対して適⽤することが可能</li>
-<li>S3 上の mp4/mov ファイルと、Kinesis Video Stream のストリームにも対応</li>
-</ul>
-<p>Amazon Rekognition Custom Labels</p>
-<ul>
-<li>画像認識サービス Rekognition に、独⾃の 物体検出・シーン認識モデルを構築</li>
-<li>認識したい物体・シーンの画像を、以下の ⽅法でインポートして利⽤可能</li>
-<li>ラベリングのためのサービス SageMaker Ground Truth を利⽤した結果</li>
-<li>所定のフォーマットで保存された、S3 やローカルコンピュータのデータ</li>
-<li>Rekognition のモデルを活⽤することで 画像を⼤量に追加する必要はない</li>
-</ul>
-<p>デジタル・ショールーム：VR Commerce</p>
-<h3 id="AI-顔認証イベント受付サービス-Auto-Check-In-App-一般公開"><a href="#AI-顔認証イベント受付サービス-Auto-Check-In-App-一般公開" class="headerlink" title="AI 顔認証イベント受付サービス Auto Check-In App (一般公開)"></a>AI 顔認証イベント受付サービス Auto Check-In App (一般公開)</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/25/Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/25/Tree/" class="post-title-link" itemprop="url">Leetcode Tree</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-08-25 11:15:45 / 修改时间：11:18:26" itemprop="dateCreated datePublished" datetime="2020-08-25T11:15:45+09:00">2020-08-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Leetcode-Tree"><a href="#Leetcode-Tree" class="headerlink" title="Leetcode Tree"></a>Leetcode Tree</h1><h2 id="404-Sum-of-Left-Leaves"><a href="#404-Sum-of-Left-Leaves" class="headerlink" title="404. Sum of Left Leaves"></a><a href="https://leetcode.com/problems/sum-of-left-leaves/" target="_blank" rel="noopener">404. Sum of Left Leaves</a></h2><h3 id="solution1"><a href="#solution1" class="headerlink" title="solution1"></a>solution1</h3><p>Recursive method. </p>
-<p>For given node we check whether its left child is a leaf. If it is the case, we add its value to answer, otherwise recursively call method on left child. For right child we call method only if it has at least one nonnull child.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (root.left != <span class="keyword">null</span> &amp;&amp; root.left.left == <span class="keyword">null</span> &amp;&amp; root.left.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            sum += root.left.val;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            sum += sumOfLeftLeaves(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">        sum += sumOfLeftLeaves(root.right);</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Iterative method.</strong> </p>
-<p>Here for each node in the tree we check whether its left child is a leaf. If it is true, we add its value to answer, otherwise add left child to the stack to process it later. For right child we add it to stack only if it is not a leaf.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</span><br><span class="line">    stack.push(root);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!stack.empty()) &#123;</span><br><span class="line">        TreeNode node = stack.pop();</span><br><span class="line">        <span class="keyword">if</span>(node.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node.left.left == <span class="keyword">null</span> &amp;&amp; node.left.right == <span class="keyword">null</span>)</span><br><span class="line">                ans += node.left.val;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                stack.push(node.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node.right.left != <span class="keyword">null</span> || node.right.right != <span class="keyword">null</span>)</span><br><span class="line">                stack.push(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/25/Tree/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/24/AWS2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/24/AWS2/" class="post-title-link" itemprop="url">AWS Day02</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-24 17:02:25" itemprop="dateCreated datePublished" datetime="2020-08-24T17:02:25+09:00">2020-08-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-31 16:01:06" itemprop="dateModified" datetime="2020-08-31T16:01:06+09:00">2020-08-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Amazon/" itemprop="url" rel="index"><span itemprop="name">Amazon</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="AWS-Day2"><a href="#AWS-Day2" class="headerlink" title="AWS Day2"></a>AWS Day2</h1><h2 id="Explanation-towards-handson"><a href="#Explanation-towards-handson" class="headerlink" title="Explanation towards handson"></a>Explanation towards handson</h2><h2 id="第1部基本知識の振り返り"><a href="#第1部基本知識の振り返り" class="headerlink" title="第1部基本知識の振り返り"></a>第1部基本知識の振り返り</h2><h3 id="Webサービス超入門"><a href="#Webサービス超入門" class="headerlink" title="Webサービス超入門"></a>Webサービス超入門</h3><p>Web service</p>
-<h3 id="Web-application"><a href="#Web-application" class="headerlink" title="Web application"></a>Web application</h3><p>Many people using same file at the same time</p>
-<p>service-client(computer, smartphone…)</p>
-<ul>
-<li>stand alone application-Web application</li>
-<li>file-datebase</li>
-<li>window OS-servicer towards OS</li>
-<li>computer-物理servicer</li>
-</ul>
-<h3 id="Internet-and-Web"><a href="#Internet-and-Web" class="headerlink" title="Internet  and Web"></a>Internet  and Web</h3><h3 id="IP-HTTP"><a href="#IP-HTTP" class="headerlink" title="IP, HTTP"></a>IP, HTTP</h3><p>Internet Protocl(IP)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/24/AWS2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/24/AWS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/24/AWS/" class="post-title-link" itemprop="url">AWS Day01</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-24 15:30:34" itemprop="dateCreated datePublished" datetime="2020-08-24T15:30:34+09:00">2020-08-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-31 16:01:15" itemprop="dateModified" datetime="2020-08-31T16:01:15+09:00">2020-08-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Amazon/" itemprop="url" rel="index"><span itemprop="name">Amazon</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="AWS-Day1"><a href="#AWS-Day1" class="headerlink" title="AWS Day1"></a>AWS Day1</h1><h2 id="Amazon-Web-Services-Introduction"><a href="#Amazon-Web-Services-Introduction" class="headerlink" title="Amazon Web Services Introduction"></a>Amazon Web Services Introduction</h2><h3 id="クラウドとは︖"><a href="#クラウドとは︖" class="headerlink" title="クラウドとは︖"></a>クラウドとは︖</h3><p>クラウドとは、⾃社でハードウェアや設備を購⼊、準備することなく、インターネット経由でコン ピューティング、データベース、ストレージ、ソフトウェアといったさまざまな IT リソースをオン デマンドで利⽤することができるサービスの総称 利⽤までにかかる時間の圧倒的短縮、需要の縮⼩/拡張にあわせたリソースの利⽤、利⽤した分だけ の⽀払いという従量課⾦制、IT 資産の固定費から変動費への転換といった特徴がある</p>
-<h3 id="Our-Vision"><a href="#Our-Vision" class="headerlink" title="Our Vision"></a>Our Vision</h3><p>地球上でもっともお客様を⼤切にする企業であること</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/24/AWS/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/18/cs61b%20week8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/18/cs61b%20week8/" class="post-title-link" itemprop="url">cs61b week8</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-18 13:42:47" itemprop="dateCreated datePublished" datetime="2020-08-18T13:42:47+09:00">2020-08-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-20 23:52:46" itemprop="dateModified" datetime="2020-08-20T23:52:46+09:00">2020-08-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week8"><a href="#cs61b-week8" class="headerlink" title="cs61b week8"></a>cs61b week8</h1><h1 id="Disjoint-Sets"><a href="#Disjoint-Sets" class="headerlink" title="Disjoint Sets"></a>Disjoint Sets</h1><h2 id="Dynamic-Connectivity-Problem"><a href="#Dynamic-Connectivity-Problem" class="headerlink" title="Dynamic Connectivity Problem"></a>Dynamic Connectivity Problem</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Given a series of pairwise items connectedness declarations, determine if two items are connected. Two operations:</p>
-<ul>
-<li><code>connect(p, q)</code>: Connect items <code>p</code> and <code>q</code></li>
-<li><code>isConnected(p, q)</code>: Are <code>p</code> and <code>q</code> connected ?</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ds = DisjointSets(<span class="number">7</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">ds.connect(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">ds.isConnected(<span class="number">2</span>, <span class="number">4</span>) <span class="comment">// true</span></span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">6</span>)</span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Disjoint-Set-ADT"><a href="#Disjoint-Set-ADT" class="headerlink" title="Disjoint Set ADT"></a>Disjoint Set ADT</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">	<span class="comment">/** Connects two items P and Q. */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">/** Checks to see if two items are connected. */</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/18/cs61b%20week8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1616,6 +754,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week9"><span class="nav-number">1.</span> <span class="nav-text">cs61b week9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hashing"><span class="nav-number">2.</span> <span class="nav-text">Hashing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Storing-Data"><span class="nav-number">2.0.1.</span> <span class="nav-text">Storing Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-first-attempt-DataIndexedIntegerSet"><span class="nav-number">2.1.</span> <span class="nav-text">A first attempt: DataIndexedIntegerSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Limits-of-Search-Tree-Based-Sets"><span class="nav-number">2.1.1.</span> <span class="nav-text">Limits of Search Tree Based Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Data-as-an-Index"><span class="nav-number">2.1.2.</span> <span class="nav-text">Using Data as an Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation"><span class="nav-number">2.1.3.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">2.1.4.</span> <span class="nav-text">Performance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inserting-Words"><span class="nav-number">2.2.</span> <span class="nav-text">Inserting Words</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Attempt"><span class="nav-number">2.2.1.</span> <span class="nav-text">First Attempt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Avoiding-Collisions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Avoiding Collisions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inserting-Strings"><span class="nav-number">2.3.</span> <span class="nav-text">Inserting Strings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer-Overflow"><span class="nav-number">2.3.1.</span> <span class="nav-text">Integer Overflow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collision-Handling"><span class="nav-number">2.4.</span> <span class="nav-text">Collision Handling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Saving-Memory"><span class="nav-number">2.4.1.</span> <span class="nav-text">Saving Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Growth"><span class="nav-number">2.4.2.</span> <span class="nav-text">Dynamic Growth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Code-Algorithm"><span class="nav-number">2.4.3.</span> <span class="nav-text">Hash Code Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-Table"><span class="nav-number">2.5.</span> <span class="nav-text">Hash Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Function"><span class="nav-number">2.5.1.</span> <span class="nav-text">Hash Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">2.5.2.</span> <span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BST"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">BST</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Default-hashCode-Method"><span class="nav-number">2.5.3.</span> <span class="nav-text">Default hashCode() Method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">2.6.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix-Open-Addressing"><span class="nav-number">2.7.</span> <span class="nav-text">Appendix - Open Addressing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Heaps-and-Priority-Queues"><span class="nav-number">3.</span> <span class="nav-text">Heaps and Priority Queues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Priority-Queue-Interface"><span class="nav-number">3.1.</span> <span class="nav-text">Priority Queue Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Structure"><span class="nav-number">3.2.</span> <span class="nav-text">Heap Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Implementation"><span class="nav-number">3.3.</span> <span class="nav-text">Heap Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree-Representation"><span class="nav-number">3.3.1.</span> <span class="nav-text">Tree Representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-1a-1b-and-1c"><span class="nav-number">3.3.2.</span> <span class="nav-text">Approach 1a, 1b, and 1c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">Approach 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-3"><span class="nav-number">3.3.4.</span> <span class="nav-text">Approach 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#promote-Method"><span class="nav-number">3.3.4.1.</span> <span class="nav-text">promote Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tree-Representation-3b"><span class="nav-number">3.3.4.2.</span> <span class="nav-text">Tree Representation 3b</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-1"><span class="nav-number">3.4.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-Structure-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">Heap Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-Operations"><span class="nav-number">3.4.2.</span> <span class="nav-text">Heap Operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime"><span class="nav-number">3.4.3.</span> <span class="nav-text">Runtime</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Implementation-of-Priority-Queue"><span class="nav-number">3.5.</span> <span class="nav-text">Heap Implementation of Priority Queue</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structure-Summary"><span class="nav-number">4.</span> <span class="nav-text">Data Structure Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Search-Data-Structures"><span class="nav-number">4.1.</span> <span class="nav-text">Search Data Structures</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
