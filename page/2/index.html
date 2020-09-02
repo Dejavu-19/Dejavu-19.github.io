@@ -749,7 +749,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/05/Linked-List/" class="post-title-link" itemprop="url">Leetcode Linked List</a>
+            <a href="/2020/08/05/Linked-List/" class="post-title-link" itemprop="url">Linked List</a>
         </h2>
 
         <div class="post-meta">
@@ -766,7 +766,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-10 09:41:20" itemprop="dateModified" datetime="2020-08-10T09:41:20+09:00">2020-08-10</time>
+                <time title="修改时间：2020-09-02 10:55:50" itemprop="dateModified" datetime="2020-09-02T10:55:50+09:00">2020-09-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -789,7 +789,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Leetcode-Linked-List"><a href="#Leetcode-Linked-List" class="headerlink" title="Leetcode Linked List"></a>Leetcode Linked List</h1><h2 id="160-Intersection-of-Two-Linked-Lists"><a href="#160-Intersection-of-Two-Linked-Lists" class="headerlink" title="160. Intersection of Two Linked Lists"></a><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">160. Intersection of Two Linked Lists</a></h2><ol>
+          <h1 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h1><h2 id="160-Intersection-of-Two-Linked-Lists"><a href="#160-Intersection-of-Two-Linked-Lists" class="headerlink" title="160. Intersection of Two Linked Lists"></a><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">160. Intersection of Two Linked Lists</a></h2><ol>
 <li><p>解题思路：</p>
 <p>双指针+链表拼接</p>
 <p>两个指针i，j同时一起走，</p>
@@ -801,6 +801,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A:          a1 → a2</span><br><span class="line">                    ↘</span><br><span class="line">                      c1 → c2 → c3</span><br><span class="line">                    ↗</span><br><span class="line">B:    b1 → b2 → b3</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> </span>&#123;</span><br><span class="line">        ListNode l1 = headA, l2 = headB;</span><br><span class="line">        <span class="keyword">while</span> (l1 != l2) &#123;</span><br><span class="line">            l1 = l1 == <span class="keyword">null</span>? headB : l1.next;</span><br><span class="line">            l2 = l2 == <span class="keyword">null</span>? headA : l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="keyword">null</span> || headB == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode cur1 = headA;</span><br><span class="line">        ListNode cur2 = headB;</span><br><span class="line">        <span class="keyword">while</span> (cur1 != cur2) &#123;</span><br><span class="line">            cur1 = cur1 == <span class="keyword">null</span>? headB : cur1.next;</span><br><span class="line">            cur2 = cur2 == <span class="keyword">null</span>? headA : cur2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/08/05/Linked-List/#more" rel="contents">
