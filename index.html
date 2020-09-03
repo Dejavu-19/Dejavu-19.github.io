@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/02/cs61b%20week10/">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/03/cs61b%20week10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
@@ -185,7 +185,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/02/cs61b%20week10/" class="post-title-link" itemprop="url">cs61b week10</a>
+            <a href="/2020/09/03/cs61b%20week10/" class="post-title-link" itemprop="url">cs61b week10</a>
         </h2>
 
         <div class="post-meta">
@@ -195,7 +195,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-02 16:45:29" itemprop="dateCreated datePublished" datetime="2020-09-02T16:45:29+09:00">2020-09-02</time>
+              <time title="创建时间：2020-09-03 13:46:09" itemprop="dateCreated datePublished" datetime="2020-09-03T13:46:09+09:00">2020-09-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,7 +218,80 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="cs61b-week10"><a href="#cs61b-week10" class="headerlink" title="cs61b week10"></a>cs61b week10</h1><h1 id="Prefix-Operations-and-Tries"><a href="#Prefix-Operations-and-Tries" class="headerlink" title="Prefix Operations and Tries"></a>Prefix Operations and Tries</h1><p>Tries is an ordered tree data structure used to store keys which can be broken into “characters” and share prefixes with other keys.</p>
+          <h1 id="cs61b-week10"><a href="#cs61b-week10" class="headerlink" title="cs61b week10"></a>cs61b week10</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/02/cs61b%20week13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/02/cs61b%20week13/" class="post-title-link" itemprop="url">cs61b week13</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-02 16:45:29" itemprop="dateCreated datePublished" datetime="2020-09-02T16:45:29+09:00">2020-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-03 13:45:18" itemprop="dateModified" datetime="2020-09-03T13:45:18+09:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="cs61b-week13"><a href="#cs61b-week13" class="headerlink" title="cs61b week13"></a>cs61b week13</h1><h1 id="Prefix-Operations-and-Tries"><a href="#Prefix-Operations-and-Tries" class="headerlink" title="Prefix Operations and Tries"></a>Prefix Operations and Tries</h1><p>Tries is an ordered tree data structure used to store keys which can be broken into “characters” and share prefixes with other keys.</p>
 <ul>
 <li>Every node stores only one letter.</li>
 <li>Nodes can be shared by multiple keys.</li>
@@ -228,13 +301,58 @@
 <p>For example, the following trie contains <code>[&quot;sam&quot;, &quot;sad&quot;, &quot;sap&quot;, &quot;same&quot;, &quot;a&quot;, &quot;awls&quot;]</code>.</p>
 <p><a href="https://camo.githubusercontent.com/3cb59ab867b81c402c95a8251cb1209706887b61/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3134253230617425323031322e34372e3338253230414d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/3cb59ab867b81c402c95a8251cb1209706887b61/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3134253230617425323031322e34372e3338253230414d2e706e67" alt="Tries"></a></p>
 <ul>
-<li><code>contains(&quot;a)</code>: true, the final node is marked</li>
+<li><code>contains(&quot;a&quot;)</code>: true, the final node is marked</li>
 <li><code>contains(&quot;sa&quot;)</code>: false, the final node is not marked</li>
 <li><code>contains(&quot;saq&quot;)</code>: false, fell off tree</li>
 </ul>
-<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><h3 id="DataIndexedCharMap"><a href="#DataIndexedCharMap" class="headerlink" title="DataIndexedCharMap"></a>DataIndexedCharMap</h3><p>The <code>DataIndexedCharMap</code> class is efficient implementation for a map which takes in character keys. The value <code>R</code> represents the number of possible characters (128 for ASCII).</p>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><h3 id="DataIndexedCharMap"><a href="#DataIndexedCharMap" class="headerlink" title="DataIndexedCharMap"></a>DataIndexedCharMap</h3><p>The <code>DataIndexedCharMap</code> class is efficient implementation for a map which takes in character keys. </p>
+<p>The value <code>R</code> represents the number of possible characters (128 for ASCII).</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataIndexedCharMap</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> V[] items;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DataIndexedCharMap</span><span class="params">(<span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">        items = (V[]) <span class="keyword">new</span> Object[R];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">char</span> c, V val)</span> </span>&#123;</span><br><span class="line">        items[c] = val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> items[c];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>When building a trie, the <code>DataIndexedCharMap</code> class provides a map to all of a nodes’ children. However, the <code>DataIndexedCharMap</code> object of a node with relatively few children will have mostly null links, which is wasting excess memories.</p>
+<p>Since each link corresponds to a character if and only if that character exists, the character variable of each node can be removed. The value of the character is its position in the parent.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TrieSet</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> R = <span class="number">128</span>;</span><br><span class="line">   <span class="keyword">private</span> Node root;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">      <span class="comment">// private char ch;</span></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">boolean</span> isKey;</span><br><span class="line">      <span class="keyword">private</span> DataIndexedCharMap next;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//private Node(char c, boolean blue, int R) &#123;</span></span><br><span class="line">      <span class="comment">//  ch = c; </span></span><br><span class="line">      <span class="function"><span class="keyword">private</span> <span class="title">Node</span><span class="params">(<span class="keyword">boolean</span> blue, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">          isKey = blue;</span><br><span class="line">          next = <span class="keyword">new</span> DataIndexedCharMap&lt;Node&gt;(R);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Child-Tracking"><a href="#Child-Tracking" class="headerlink" title="Child Tracking"></a>Child Tracking</h3><p>The problem of the implementation above is that it wastes excess memories with lots of null spots that don’t contain any children. However, alternative ways to track children is available.</p>
+<ul>
+<li>Hash-Table based Trie: Initialize the default value and resize the array only when necessary with the load factor.</li>
+<li>BST based Trie: Create children pointers when necessary and store them in a BST. Runtime is not efficient.</li>
+</ul>
+<p>DataIndexedCharMap</p>
+<ul>
+<li>Space: 128 links per node</li>
+<li>Runtime: <code>Θ(1)</code></li>
+</ul>
+<p>BST</p>
+<ul>
+<li>Space: C links per node</li>
+<li>Runtime: <code>O(log R)</code></li>
+</ul>
+<p>Hash Table</p>
+<ul>
+<li>Space: C links per node</li>
+<li>Runtime: <code>O(R)</code></li>
+</ul>
+<p>(C is the number of children. R is the size of the alphabet.)</p>
+<h2 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h2><p>If a Trie has N keys, the runtime for our Map/Set operations are as follows:</p>
+<ul>
+<li>add: <code>Θ(1)</code></li>
+<li>contains: <code>Θ(1)</code></li>
+</ul>
+<p>The runtime is independent from the number of the keys, since the operations only traverse the length of one key in the worst case.</p>
+<h2 id="Trie-String-Operations"><a href="#Trie-String-Operations" class="headerlink" title="Trie String Operations"></a>Trie String Operations</h2><h3 id="Prefix-Matching"><a href="#Prefix-Matching" class="headerlink" title="Prefix Matching"></a>Prefix Matching</h3><p>Tries could efficiently support specific string operations like prefix matching.</p>
+<p>The following pseudocode of <code>collect</code> operation could return all keys in a trie.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">collect():</span><br><span class="line">    Create an empty list of results x</span><br><span class="line">    For character c in root.next.keys():</span><br><span class="line">        <span class="function">Call <span class="title">colHelp</span><span class="params">(c, x, root.next.get(c)</span>)</span></span><br><span class="line"><span class="function">    Return x</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">colHelp</span><span class="params">(String s, List&lt;String&gt; x, Node n)</span>:</span></span><br><span class="line"><span class="function">    <span class="keyword">if</span> n.isKey:</span></span><br><span class="line"><span class="function">        x.<span class="title">add</span><span class="params">(s)</span></span></span><br><span class="line"><span class="function">    For character c in n.next.<span class="title">keys</span><span class="params">()</span>:</span></span><br><span class="line"><span class="function">        Call <span class="title">colHelp</span><span class="params">(s + c, x, n.next.get(c)</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>The following pseudocode of <code>keyWithPrefix</code> operation could return all keys with specific prefix. (The <code>collect</code> operation begins from the node at the end of the prefix.)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">keysWithPrefix(String s):</span><br><span class="line">    Find the end of the prefix, alpha</span><br><span class="line">    Create an empty list x</span><br><span class="line">    For character in alpha.next.keys():</span><br><span class="line">        <span class="function">Call <span class="title">colHelp</span><span class="params">(<span class="string">"sa"</span> + c, x, alpha.next.get(c)</span>)</span></span><br><span class="line"><span class="function">    Return x</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Autocomplete"><a href="#Autocomplete" class="headerlink" title="Autocomplete"></a>Autocomplete</h3><p>The search suggestion of Google is a kind of autocomplete, which could be implemented with a trie.</p>
+<ul>
+<li>Values of nodes will represent the weight of the string.</li>
+<li>Trie could store billions of strings efficiently since they share nodes.</li>
+<li>When a user types a query, <code>keysWithPrefix</code> operation will return several strings with the highest value.</li>
+</ul>
 
       
     </div>
@@ -277,10 +395,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-02 12:26:16 / 修改时间：16:26:46" itemprop="dateCreated datePublished" datetime="2020-09-02T12:26:16+09:00">2020-09-02</time>
+              <time title="创建时间：2020-09-02 12:26:16" itemprop="dateCreated datePublished" datetime="2020-09-02T12:26:16+09:00">2020-09-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-03 19:47:29" itemprop="dateModified" datetime="2020-09-03T19:47:29+09:00">2020-09-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -306,8 +430,8 @@
 <thead>
 <tr>
 <th>Worst case runtimes</th>
-<th><code>contains(x)</code></th>
-<th><code>insert(x)</code></th>
+<th>contains(x)</th>
+<th>insert(x)</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -333,411 +457,14 @@
 <li>We can do better than Θ(logN) !</li>
 </ul>
 <p>=&gt; By using Hashing</p>
-<h2 id="A-first-attempt-DataIndexedIntegerSet"><a href="#A-first-attempt-DataIndexedIntegerSet" class="headerlink" title="A first attempt: DataIndexedIntegerSet"></a>A first attempt: <code>DataIndexedIntegerSet</code></h2><h3 id="Limits-of-Search-Tree-Based-Sets"><a href="#Limits-of-Search-Tree-Based-Sets" class="headerlink" title="Limits of Search Tree Based Sets"></a>Limits of Search Tree Based Sets</h3><ul>
-<li>Require items to be comparable.</li>
-<li>Have excellent performance, but could be better.</li>
-</ul>
-<h3 id="Using-Data-as-an-Index"><a href="#Using-Data-as-an-Index" class="headerlink" title="Using Data as an Index"></a>Using Data as an Index</h3><p>We could create an array of booleans indexed by data.</p>
-<ul>
-<li>Initially all values are <code>false</code>.</li>
-<li>When an item is added, set the index to <code>true</code>.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DataIndexedIntegerSet diis;</span><br><span class="line">diis = <span class="keyword">new</span> DataaIndexedIntegerSet();</span><br><span class="line">diis.add(<span class="number">0</span>); <span class="comment">// set 0 to true</span></span><br><span class="line">diis.add(<span class="number">5</span>); <span class="comment">// set 5 to true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataIndexedIntegerSet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] present;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DataIndexedIntegerSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        present = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">2000000000</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        prenent[i] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> present[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h3><ul>
-<li><code>contains(x)</code>: Theta(1);</li>
-<li><code>add(x)</code>: Theta(1);</li>
-<li>Extremely wasteful of memory.</li>
-<li>Need ways to generalize beyond integers.</li>
-</ul>
-<h2 id="Inserting-Words"><a href="#Inserting-Words" class="headerlink" title="Inserting Words"></a>Inserting Words</h2><h3 id="First-Attempt"><a href="#First-Attempt" class="headerlink" title="First Attempt"></a>First Attempt</h3><p>Suppose we want to insert “cat” to the data strucutre, we could use the first letter as index. (a = 1, b = 2, … , z = 26)</p>
-<p>However, other words may start with ‘c’ or special characters.</p>
-<h3 id="Avoiding-Collisions"><a href="#Avoiding-Collisions" class="headerlink" title="Avoiding Collisions"></a>Avoiding Collisions</h3><p>We could se all digits by multiplying each by a power of 27.</p>
-<ul>
-<li>a = 1, b = 2, … , z = 26</li>
-<li>The index of “cat” is (3 x 27^2) + (1 x 27^1) + (20 x 27^0) = 2234.</li>
-<li>The index of “bee” is (2 x 27^2) + (5 x 27^1) + (5 x 27^0) = 1598.</li>
-</ul>
-<p>As long as we pick a base &gt;= 26, this algorithm is guaranteed to give each lowercase English word a unqiue number. Thus, we will never have a collision.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// englishToInt() is a helper method which could turn string to index.</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataIndexedEnglishWordSet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] present;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DataIndexedEnglishWordSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        present = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">2000000000</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        present[englishToInt(s)] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> present[englishToInt(s)];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">letterNum</span><span class="params">(String s, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** Converts ith character of String to a letter number.</span></span><br><span class="line"><span class="comment">    * e.g. 'a' -&gt; 1, 'b' -&gt; 2, 'z' -&gt; 26 */</span></span><br><span class="line">    <span class="keyword">int</span> ithChar = s.charAt(i);</span><br><span class="line">    <span class="keyword">if</span> ((ithChar &lt; <span class="string">'a'</span>) || (ithChar &gt; <span class="string">'z'</span>)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ithChar - <span class="string">'a'</span> + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">englishToInt</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> intRep = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">        intRep = intRep * <span class="number">26</span>;</span><br><span class="line">        intRep += letterNum(s, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Inserting-Strings"><a href="#Inserting-Strings" class="headerlink" title="Inserting Strings"></a>Inserting Strings</h2><p>We need to change our base to 126 if we want to insert strings other than English word.</p>
-<p>The most basic character set used by computers is ASCII format.</p>
-<ul>
-<li>Each possible charaacter is assigned a value between 0 and 127.</li>
-<li>Characters 33 - 126 are “printable”.</li>
-<li>For example, <code>char c = &#39;D&#39;</code> is equivalent to <code>char c = 68</code>.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">asciiToInt</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> intRep = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">        intRep = intRep * <span class="number">126</span>;</span><br><span class="line">        intRep = intRep + s.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> intRep;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>However, if we want to represent character sets for other languages like Chinese, we could use unicode. For example, <code>char c = &quot;鳌&quot;</code> is equivalent to <code>char c = 40140</code>. The largest possible value for Chinese characters is 40959, so we need to use this as our base, but the index might be really large.</p>
-<h3 id="Integer-Overflow"><a href="#Integer-Overflow" class="headerlink" title="Integer Overflow"></a>Integer Overflow</h3><p>Because Java has a maximum integer (2,147,483,647), we will easily run into overflow for short strings and create collisions.</p>
-<p>For example, <code>asciiToInt(omens)</code> will return <code>-1,867,853,901</code> instead of <code>28,196,917,171</code>.</p>
-<p>From the smallest to the largest possible integers, there are a total of 4,294,967,296 integers in Java, which means that collision is inevitable, and we need to find a way to avoid it.</p>
-<p>Pigeonhole princeple tells us that if there are more than 4,294,967,296 possible items, multiple items will share the same hash code. (The official term of the number we are computing.)</p>
-<ul>
-<li>Resolve hash code collisions. (collision handling)</li>
-<li>Compute a hash code for arbitrary objects. (computing a hash code)</li>
-</ul>
-<h2 id="Collision-Handling"><a href="#Collision-Handling" class="headerlink" title="Collision Handling"></a>Collision Handling</h2><p>We know that a few items will share a same hash code due to integer overflow. However, we could store that bucket of these items into the position in the array instead of store <code>true</code> or <code>false</code>. We could implement the bucket with LinkedList, BST, and other data structures.</p>
-<p>Each bucket in our array is initially empty. Bucket h is a separate chain of all items that have a hash code h. When an item x gets added at h:</p>
-<ul>
-<li>If bucket h is empty, create a new list containing x and store it at h.</li>
-<li>If bucket h is already a list, add x to the list at h if it’s not already present.</li>
-</ul>
-<p>Worst case runtime will be proportional to length of longest list.</p>
-<ul>
-<li><code>contains(x)</code>: Theta(Q);</li>
-<li><code>add(x)</code>: Theta(Q);</li>
-</ul>
-<p>![](<a href="https://joshhug.gitbooks.io/hug61b/content/assets/Screen" target="_blank" rel="noopener">https://joshhug.gitbooks.io/hug61b/content/assets/Screen</a> Shot 2019-03-08 at 1.19.34 PM.png)</p>
-<h3 id="Saving-Memory"><a href="#Saving-Memory" class="headerlink" title="Saving Memory"></a>Saving Memory</h3><p>We can use modulus of hash code to reduce bucket count, but lists will be longer. If the hash code of “abomamora” is 111239443 and we have only 10 buckets, we will put that string into bucket 3, since 111239443 % 10 = 3.</p>
-<p>What we’ve just created is called a hash table.</p>
-<ul>
-<li>Data is converted by a hash function into an integer representation called a hash code.</li>
-<li>The hash code is then reduced to a valid index, usually using the modulus operator.</li>
-<li>data -&gt; hash function -&gt; hash code -&gt; reduce -&gt; index</li>
-</ul>
-<h3 id="Dynamic-Growth"><a href="#Dynamic-Growth" class="headerlink" title="Dynamic Growth"></a>Dynamic Growth</h3><p>We could dynamicly adjust the number of buckets to make the data structure more efficient. Suppose we have M buckets and N items, the load factor is <code>N/M</code>, and we need to keep that factor low. When the load factor reaches certain threshold, we double M:</p>
-<ul>
-<li>Create a new HashTable with 2M buckets.</li>
-<li>Iterate through all the items in the old HashTable, and add them into this new HashTable.</li>
-<li>Since the modulus changes, items may belong to different buckets.</li>
-</ul>
-<p>If all elements are evenly distributed, the runtime will be <code>Theta(N/M)</code>. Because <code>N/M</code> is lower than the threshold, <code>Theta(N/M)</code> is equal to <code>Theta(1)</code>.</p>
-<p>Item will be evenly distributed if we have a hash code algorithm that gives fairly random values for different items.</p>
-<p><img src="https://joshhug.gitbooks.io/hug61b/content/assets/Screen%20Shot%202019-03-08%20at%201.37.16%20PM.png" alt=""></p>
-<p><img src="https://joshhug.gitbooks.io/hug61b/content/assets/Screen%20Shot%202019-03-08%20at%201.44.43%20PM.png" alt=""></p>
-<h3 id="Hash-Code-Algorithm"><a href="#Hash-Code-Algorithm" class="headerlink" title="Hash Code Algorithm"></a>Hash Code Algorithm</h3><ul>
-<li>We could use the base strategy as we developed before.</li>
-<li>We could use a small prime base number, such as 31, since we don’t need to avoid collisions.</li>
-<li>Base 126 means that any string that ends in the same last 32 characters has the same hashcode.</li>
-</ul>
-<h2 id="Hash-Table"><a href="#Hash-Table" class="headerlink" title="Hash Table"></a>Hash Table</h2><p>The data structure we’ve designed is called a <strong>hash table</strong>:</p>
-<ul>
-<li>Every item is mapped to a bucket number using a hash function</li>
-<li>Typically, computing hash function consists of two steps:<ol>
-<li>Computing a <code>hashCode</code> (integer between −2^31)</li>
-<li>Computing index = hashCode modulo M<ul>
-<li>Note: <code>%</code> for negative numbers won’t work </li>
-</ul>
-</li>
-</ol>
-</li>
-<li>If <code>L = N / M</code> gets too large, increase <code>M</code></li>
-</ul>
-<p>If multiple items map to the same bucket, we have to resolve ambiguity somehow. Two common techniques:</p>
-<ul>
-<li><strong>External Chaining</strong>: Creating a <em>list</em> for each bucket</li>
-<li><strong>Open Addressing</strong>: Go to <a href="https://github.com/aviatesk/cs61b-sp18/blob/master/notes/week9.md#appendix-open-addressing" target="_blank" rel="noopener">Appendix</a></li>
-</ul>
-<h3 id="Hash-Function"><a href="#Hash-Function" class="headerlink" title="Hash Function"></a>Hash Function</h3><ul>
-<li>Hash code should spread things out nicely on real data:<ul>
-<li>e.g.1: Return 0 is a bad <code>hashCode</code> function</li>
-<li>e.g.2: Converting string to integer of 32 base<ul>
-<li>Bad: Top bits are totally ignored<ul>
-<li>Because multiplying by 32 is equivalent to left shifting by 5 bits =&gt; Top characters get pushed out completely</li>
-</ul>
-</li>
-<li>=&gt; Multiplying by powers of 31 !</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week9/hash-code.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/hash-code.png" alt="hash-code"></a></p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hashCode = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (Object o : <span class="keyword">this</span>) &#123;</span><br><span class="line">        hashCode *= <span class="number">31</span>;  <span class="comment">// elevate the current hash code</span></span><br><span class="line">        hashCode += o.hashCode();  <span class="comment">// add new item's hash code</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hashCode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>To save time hashing: Look at only first few items:</p>
-<ul>
-<li>Higher chance of collisions but things will still work</li>
-</ul>
-<h4 id="BST"><a href="#BST" class="headerlink" title="BST"></a>BST</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.value == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> hashCode = <span class="keyword">this</span>.value.hashCode() + <span class="keyword">this</span>.left.hashCode() * <span class="number">31</span> + <span class="keyword">this</span>.right.hashCode() * <span class="number">31</span> * <span class="number">31</span>;</span><br><span class="line">    <span class="keyword">return</span> hashCode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Default-hashCode-Method"><a href="#Default-hashCode-Method" class="headerlink" title="Default hashCode() Method"></a>Default <code>hashCode()</code> Method</h3><p>All <code>Object</code>s have <code>hashCode</code> function:</p>
-<ul>
-<li><p>Default: Returns this</p>
-<p>(i.e.: address of object)</p>
-<ul>
-<li>Can have strange consequences<ul>
-<li>E.g.: <code>&quot;hello&quot;.hashCode() !== (&quot;h&quot; + &quot;ello&quot;).hashCode()</code></li>
-</ul>
-</li>
-<li>Can override for our type</li>
-<li>Hash table (<code>HashSet</code>, <code>HashMap</code>, etc…) are so important that Java requires that all objects implement <code>hashCode()</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>With good <code>hashCode()</code> and resizing, operations are Θ(1) amortized:</p>
-<ul>
-<li>No need to maintain bushiness (but still need good <code>hashCode()</code>)</li>
-<li><em>Store and retrieval doesn’t require items to be comparable</em></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Worst case runtimes</th>
-<th><code>contains(x)</code></th>
-<th><code>insert(x)</code></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Linked List</td>
-<td>Θ(N)</td>
-<td>Θ(N)</td>
-</tr>
-<tr>
-<td>Bushy BSTs (<code>TreeSet</code>)</td>
-<td>Θ(logN)</td>
-<td>Θ(logN)</td>
-</tr>
-<tr>
-<td>Unordered Array</td>
-<td>Θ(N)</td>
-<td>Θ(N)</td>
-</tr>
-<tr>
-<td>Hash Table (<code>HashSet</code>)</td>
-<td>Θ(1)</td>
-<td>Θ(1)</td>
-</tr>
-</tbody></table>
-<h2 id="Appendix-Open-Addressing"><a href="#Appendix-Open-Addressing" class="headerlink" title="Appendix - Open Addressing"></a>Appendix - Open Addressing</h2><p>If target bucket is already occupied, use a different bucket:</p>
-<ul>
-<li>Linear probing: Use next address, and if already occupied, just keep scanning one by one</li>
-<li>Quadratic probing: Use next address, and if already occupied, try looking 4 ahead, then 9 ahead, then 16 ahead, and so on.</li>
-</ul>
-<h1 id="Heaps-and-Priority-Queues"><a href="#Heaps-and-Priority-Queues" class="headerlink" title="Heaps and Priority Queues"></a>Heaps and Priority Queues</h1><h2 id="Priority-Queue-Interface"><a href="#Priority-Queue-Interface" class="headerlink" title="Priority Queue Interface"></a>Priority Queue Interface</h2><p>The ADT(abstract data type) “priority queue” could be used to find the <strong><code>smallest or largest element</code></strong> quickly instead of searching through the whole tree. </p>
-<p>There can be <strong><code>memory benefits</code></strong> to using this data structure.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** (Min) Priority Queue: Allowing tracking and removal of </span></span><br><span class="line"><span class="comment">  * the smallest item in a priority queue. */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MinPQ</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/** Adds the item to the priority queue. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Item x)</span></span>;</span><br><span class="line">    <span class="comment">/** Returns the smallest item in the priority queue. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Item <span class="title">getSmallest</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/** Removes the smallest item from the priority queue. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Item <span class="title">removeSmallest</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/** Returns the size of the priority queue. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>We just want to save M smallest items from all N items only by using Θ(M) memory:</p>
-<table>
-<thead>
-<tr>
-<th>Worst case runtimes</th>
-<th>Ordered Array</th>
-<th>Bushy BST</th>
-<th>Hash Table</th>
-<th>Heap</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>add</code></td>
-<td>Θ(N)</td>
-<td>Θ(logN)</td>
-<td>Θ(1)</td>
-<td>Θ(logN)</td>
-</tr>
-<tr>
-<td><code>getSmallest</code></td>
-<td>Θ(1)</td>
-<td>Θ(logN)</td>
-<td>Θ(N)</td>
-<td>Θ(1)</td>
-</tr>
-<tr>
-<td><code>removeSmallest</code></td>
-<td>Θ(N)</td>
-<td>Θ(logN)</td>
-<td>Θ(N)</td>
-<td>Θ(logN)</td>
-</tr>
-<tr>
-<td>Caveats</td>
-<td>{&gt;&gt;nothing&lt;&lt;}</td>
-<td>Dups not allowed</td>
-<td>{&gt;&gt;nothing&lt;&lt;}</td>
-<td><strong>Dups allowed</strong></td>
-</tr>
-</tbody></table>
-<h2 id="Heap-Structure"><a href="#Heap-Structure" class="headerlink" title="Heap Structure"></a>Heap Structure</h2><p><strong>Binary Min-Heap</strong>: Binary tree that is <strong><em>complete</em></strong> and obeys <strong><em>min-heap property</em></strong>:</p>
-<ul>
-<li><strong>Complete</strong>: Missing items only at the bottom level (if any), all nodes are as far as possible</li>
-<li><strong>Min-Heap Property</strong>: Every node is less than or equal to both of its children</li>
-</ul>
-<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week9/heap-bad-and-good.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/heap-bad-and-good.png" alt="heap-bad-and-good"></a></p>
-<p><code>MinPQ</code> operations given a heap: <a href="https://docs.google.com/presentation/d/1VEd2Pm_3OuvkC1M8T5XAhsBTQFxVHs386L79hktkDRg/pub?start=false&loop=false&delayms=3000&slide=id.g11ecaeaf56_0_0" target="_blank" rel="noopener">Demo</a></p>
-<ul>
-<li><code>getSmallest()</code>: Just return the item in the root node</li>
-<li><code>add(x)</code>: Place <code>x</code> in the last position, and promote as high as possible</li>
-<li><code>removeSmallest()</code>: Delete the root and place item at the last position at the root, then demote it repeatedly</li>
-</ul>
-<h2 id="Heap-Implementation"><a href="#Heap-Implementation" class="headerlink" title="Heap Implementation"></a>Heap Implementation</h2><h3 id="Tree-Representation"><a href="#Tree-Representation" class="headerlink" title="Tree Representation"></a>Tree Representation</h3><p>There are many approaches to represent trees.</p>
-<h3 id="Approach-1a-1b-and-1c"><a href="#Approach-1a-1b-and-1c" class="headerlink" title="Approach 1a, 1b, and 1c"></a>Approach 1a, 1b, and 1c</h3><p>Create mappings between nodes and their children. <code>BSTMap</code>‘s approach</p>
-<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week9/tree-representation-1.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/tree-representation-1.png" alt="tree-representation-1"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree1A</span>&lt;<span class="title">Key</span>&gt; </span>&#123;</span><br><span class="line">  Key k;</span><br><span class="line">  Tree1A left;</span><br><span class="line">  Tree1A middle;</span><br><span class="line">  Tree1A right;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://camo.githubusercontent.com/072bd3c57194f337d5e8a26483207aefc2195446/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d30392532306174253230392e35342e3034253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/072bd3c57194f337d5e8a26483207aefc2195446/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d30392532306174253230392e35342e3034253230504d2e706e67" alt="Tree1A"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree1B</span>&lt;<span class="title">Key</span>&gt; </span>&#123;</span><br><span class="line">  Key k;</span><br><span class="line">  Tree1B[] children;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://camo.githubusercontent.com/67f74cb9623c12471414586ff06b6b876cfcec2b/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e30332e3135253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/67f74cb9623c12471414586ff06b6b876cfcec2b/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e30332e3135253230504d2e706e67" alt="Tree1B"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree1C</span>&lt;<span class="title">Key</span>&gt; </span>&#123;</span><br><span class="line">  Key k;</span><br><span class="line">  Tree1C favoredChild;</span><br><span class="line">  Tree1C sibling;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://camo.githubusercontent.com/d4ff4bfc88fb566693ce47c4b312e1b13321ef44/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e30382e3434253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/d4ff4bfc88fb566693ce47c4b312e1b13321ef44/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e30382e3434253230504d2e706e67" alt="Tree1C"></a></p>
-<h3 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach 2"></a>Approach 2</h3><p>Store the keys array as well as a parents array.</p>
-<ul>
-<li>If tree is complete, <code>parents</code> array is always like <code>[0, 0, 0, 1, 1, 1, ...]</code> =&gt; Tree representation 3</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree2</span>&lt;<span class="title">Key</span>&gt; </span>&#123;</span><br><span class="line">  Key[] keys;</span><br><span class="line">  <span class="keyword">int</span>[] parents;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://camo.githubusercontent.com/840c19783a7649cdf7e3e817a2a85c7ad57bb3fa/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e31352e3131253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/840c19783a7649cdf7e3e817a2a85c7ad57bb3fa/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e31352e3131253230504d2e706e67" alt="Tree2"></a></p>
-<h3 id="Approach-3"><a href="#Approach-3" class="headerlink" title="Approach 3"></a>Approach 3</h3><p>Assume that our tree is complete.</p>
-<ul>
-<li><strong>Obviously only works for complete trees</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree3</span>&lt;<span class="title">Key</span>&gt; </span>&#123;</span><br><span class="line">  Key[] keys;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://camo.githubusercontent.com/b70e0a36bc50f1dfd42f7b95673da50d5e7d2ab0/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3039253230617425323031302e32362e3035253230504d2e706e67" alt="Tree3"></p>
-<p>Store keys in an array, don’t store structure anywhere:</p>
-<ul>
-<li><strong>Obviously only works for complete trees</strong></li>
-</ul>
-<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week9/tree-representation-3.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/tree-representation-3.png" alt="tree-representation-3"></a></p>
-<h4 id="promote-Method"><a href="#promote-Method" class="headerlink" title="promote Method"></a><code>promote</code> Method</h4><p>Let’s write a method to <em>promote</em> a node to an appropriate position</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">promote</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> parentK = parent(k)</span><br><span class="line">    <span class="keyword">if</span> (keys[parentK] ≻ keys[k]) &#123;</span><br><span class="line">        swap(k, parentK);</span><br><span class="line">        promote(parentK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">parent</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (k - <span class="number">1</span>) / <span class="number">2</span>; <span class="comment">// Doesn't work for the root !!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>parent(int k)</code> method doesn’t work for the root node ! =&gt; Tree representation 3b</p>
-<h4 id="Tree-Representation-3b"><a href="#Tree-Representation-3b" class="headerlink" title="Tree Representation 3b"></a>Tree Representation 3b</h4><p>Store keys in an array, offset everything by 1 spot :</p>
-<ul>
-<li>Makes computation of children / parents nicer<ul>
-<li><code>parent(k)</code>: <code>k / 2</code></li>
-<li><code>leftChild(k)</code>: <code>k * 2</code></li>
-<li><code>rightChild(k)</code>: <code>k * 2 + 1</code></li>
-</ul>
-</li>
-</ul>
-<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week9/tree-representation-3b.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/tree-representation-3b.png" alt="tree-representaion-3b"></a></p>
-<h2 id="Implementation-1"><a href="#Implementation-1" class="headerlink" title="Implementation"></a>Implementation</h2><h3 id="Heap-Structure-1"><a href="#Heap-Structure-1" class="headerlink" title="Heap Structure"></a>Heap Structure</h3><p>Binary min-heap has the following properties:</p>
-<ul>
-<li>Min-heap: Every node is less than or equal to both of its children.</li>
-<li>Complete: Missing items only at the bottom level (if any), all nodes are as far left as possible.</li>
-</ul>
-<p><a href="https://camo.githubusercontent.com/17de6a6e36d262b962eea83320a88d8c39b5fdab/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f686561702d31332e322e312e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/17de6a6e36d262b962eea83320a88d8c39b5fdab/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f686561702d31332e322e312e706e67" alt="Heap"></a></p>
-<p>The <code>Tree3</code> could be used to implement the heap structure. Leave one empty spot at the beginning to simplify computation.</p>
-<ul>
-<li><code>leftChild(k)</code> = k * 2</li>
-<li><code>rightChild(k)</code> = k * 2 + 1</li>
-<li><code>parent(k)</code> = k / 2</li>
-</ul>
-<h3 id="Heap-Operations"><a href="#Heap-Operations" class="headerlink" title="Heap Operations"></a>Heap Operations</h3><ul>
-<li><code>add</code>: Add to the end of heap temporarily. Swim up the hierarchy to the proper place. (Swimming involves swapping nodes if child &lt; parent)</li>
-<li><code>getSmallest</code>: Return the root of the heap.</li>
-<li><code>removeSmallest</code>: Swap the last item in the heap into the root. Sink down the hierarchy to the proper place.</li>
-</ul>
-<p>Here’s the code of swim operation:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (keys[parent(k)] ≻ keys[k]) &#123;</span><br><span class="line">       swap(k, parent(k));</span><br><span class="line">       swim(parent(k));              </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p>Ordered Array</p>
-<ul>
-<li><code>add</code>: <code>Θ(N)</code></li>
-<li><code>getSmallest</code>: <code>Θ(1)</code></li>
-<li><code>removeSmallest</code>: <code>Θ(N)</code></li>
-</ul>
-<p>Bushy BST</p>
-<ul>
-<li><code>add</code>: <code>Θ(log N)</code></li>
-<li><code>getSmallest</code>: <code>Θ(log N)</code></li>
-<li><code>removeSmallest</code>: <code>Θ(log N)</code></li>
-</ul>
-<p>HashTable</p>
-<ul>
-<li><code>add</code>: <code>Θ(1)</code></li>
-<li><code>getSmallest</code>: <code>Θ(N)</code></li>
-<li><code>removeSmallest</code>: <code>Θ(N)</code></li>
-</ul>
-<p>Heap Structure</p>
-<ul>
-<li><code>add</code>: <code>Θ(log N)</code></li>
-<li><code>getSmallest</code>: <code>Θ(1)</code></li>
-<li><code>removeSmallest</code>: <code>Θ(log N)</code></li>
-</ul>
-<h2 id="Heap-Implementation-of-Priority-Queue"><a href="#Heap-Implementation-of-Priority-Queue" class="headerlink" title="Heap Implementation of Priority Queue"></a>Heap Implementation of Priority Queue</h2><table>
-<thead>
-<tr>
-<th>Worst case runtimes</th>
-<th>Ordered Array</th>
-<th>Bushy BST</th>
-<th>Hash Table</th>
-<th>Heap</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>add</code></td>
-<td>Θ(N)</td>
-<td>Θ(logN)</td>
-<td>Θ(1)</td>
-<td>Θ(logN)</td>
-</tr>
-<tr>
-<td><code>getSmallest</code></td>
-<td>Θ(1)</td>
-<td>Θ(logN)</td>
-<td>Θ(N)</td>
-<td>Θ(1)</td>
-</tr>
-<tr>
-<td><code>removeSmallest</code></td>
-<td>Θ(N)</td>
-<td>Θ(logN)</td>
-<td>Θ(N)</td>
-<td>Θ(logN)</td>
-</tr>
-</tbody></table>
-<p>Notes:</p>
-<ul>
-<li>Why “priority queue” ?: Can think of position in tree as its “priority”</li>
-<li>Heap is logN time AMORTIZED (with some resizing, but no big deal)</li>
-<li>BST can have constant <code>getSmallest()</code> if we keep a pointer to smallest</li>
-<li>Heaps handle duplicate priorities much more than BSTs</li>
-<li>Array based heaps take less memory: Very roughly about 1/3 the memory of representing a tree with approach 1a</li>
-</ul>
-<h1 id="Data-Structure-Summary"><a href="#Data-Structure-Summary" class="headerlink" title="Data Structure Summary"></a>Data Structure Summary</h1><h2 id="Search-Data-Structures"><a href="#Search-Data-Structures" class="headerlink" title="Search Data Structures"></a>Search Data Structures</h2><table>
-<thead>
-<tr>
-<th>ADT</th>
-<th>Storage Operation(s)</th>
-<th>Retrieval Operation</th>
-<th>Retrieve By:</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>List</td>
-<td>add(key) insert(key, index)</td>
-<td>get(index)</td>
-<td>index</td>
-</tr>
-<tr>
-<td>Set</td>
-<td>add(key)</td>
-<td>containsKey(key)</td>
-<td>key identity</td>
-</tr>
-<tr>
-<td>Map</td>
-<td>put(key, value)</td>
-<td>get(key)</td>
-<td>key identity</td>
-</tr>
-<tr>
-<td>Disjoint Sets</td>
-<td>connect(item1, item2)</td>
-<td>isConnected(item1, item2)</td>
-<td>two integer values</td>
-</tr>
-<tr>
-<td>PQ</td>
-<td>add(key)</td>
-<td>getSmallest()</td>
-<td>key order (key size)</td>
-</tr>
-</tbody></table>
-<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week9/my-own-summary.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/my-own-summary.png" alt="my-own-summary"></a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/02/cs61b%20week9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1472,94 +1199,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/18/cs61b%20week8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/18/cs61b%20week8/" class="post-title-link" itemprop="url">cs61b week8</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-18 13:42:47" itemprop="dateCreated datePublished" datetime="2020-08-18T13:42:47+09:00">2020-08-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-20 23:52:46" itemprop="dateModified" datetime="2020-08-20T23:52:46+09:00">2020-08-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week8"><a href="#cs61b-week8" class="headerlink" title="cs61b week8"></a>cs61b week8</h1><h1 id="Disjoint-Sets"><a href="#Disjoint-Sets" class="headerlink" title="Disjoint Sets"></a>Disjoint Sets</h1><h2 id="Dynamic-Connectivity-Problem"><a href="#Dynamic-Connectivity-Problem" class="headerlink" title="Dynamic Connectivity Problem"></a>Dynamic Connectivity Problem</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Given a series of pairwise items connectedness declarations, determine if two items are connected. Two operations:</p>
-<ul>
-<li><code>connect(p, q)</code>: Connect items <code>p</code> and <code>q</code></li>
-<li><code>isConnected(p, q)</code>: Are <code>p</code> and <code>q</code> connected ?</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ds = DisjointSets(<span class="number">7</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">ds.connect(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">ds.isConnected(<span class="number">2</span>, <span class="number">4</span>) <span class="comment">// true</span></span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">6</span>)</span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Disjoint-Set-ADT"><a href="#Disjoint-Set-ADT" class="headerlink" title="Disjoint Set ADT"></a>Disjoint Set ADT</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">	<span class="comment">/** Connects two items P and Q. */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">/** Checks to see if two items are connected. */</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/18/cs61b%20week8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1631,7 +1270,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

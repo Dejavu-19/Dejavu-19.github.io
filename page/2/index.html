@@ -171,6 +171,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/18/cs61b%20week8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/18/cs61b%20week8/" class="post-title-link" itemprop="url">cs61b week8</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-18 13:42:47" itemprop="dateCreated datePublished" datetime="2020-08-18T13:42:47+09:00">2020-08-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-20 23:52:46" itemprop="dateModified" datetime="2020-08-20T23:52:46+09:00">2020-08-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="cs61b-week8"><a href="#cs61b-week8" class="headerlink" title="cs61b week8"></a>cs61b week8</h1><h1 id="Disjoint-Sets"><a href="#Disjoint-Sets" class="headerlink" title="Disjoint Sets"></a>Disjoint Sets</h1><h2 id="Dynamic-Connectivity-Problem"><a href="#Dynamic-Connectivity-Problem" class="headerlink" title="Dynamic Connectivity Problem"></a>Dynamic Connectivity Problem</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Given a series of pairwise items connectedness declarations, determine if two items are connected. Two operations:</p>
+<ul>
+<li><code>connect(p, q)</code>: Connect items <code>p</code> and <code>q</code></li>
+<li><code>isConnected(p, q)</code>: Are <code>p</code> and <code>q</code> connected ?</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ds = DisjointSets(<span class="number">7</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">ds.connect(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line">ds.isConnected(<span class="number">2</span>, <span class="number">4</span>) <span class="comment">// true</span></span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">2</span>)</span><br><span class="line">ds.connect(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line">ds.connect(<span class="number">3</span>, <span class="number">6</span>)</span><br><span class="line">ds.isConnected(<span class="number">3</span>, <span class="number">0</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Disjoint-Set-ADT"><a href="#Disjoint-Set-ADT" class="headerlink" title="Disjoint Set ADT"></a>Disjoint Set ADT</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">	<span class="comment">/** Connects two items P and Q. */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">/** Checks to see if two items are connected. */</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/18/cs61b%20week8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/15/cs61b%20week7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1009,100 +1097,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/31/cs61b%20week4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/31/cs61b%20week4/" class="post-title-link" itemprop="url">cs61b week4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-31 23:47:51" itemprop="dateCreated datePublished" datetime="2020-07-31T23:47:51+09:00">2020-07-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-20 11:57:45" itemprop="dateModified" datetime="2020-08-20T11:57:45+09:00">2020-08-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week4"><a href="#cs61b-week4" class="headerlink" title="cs61b week4"></a>cs61b week4</h1><h2 id="Extends-Casting-Higher-Order-Functions"><a href="#Extends-Casting-Higher-Order-Functions" class="headerlink" title="Extends, Casting, Higher Order Functions"></a>Extends, Casting, Higher Order Functions</h2><p>Although interfaces provide us a way to define a hierarchical relationship, the <code>extends</code> key word let us define a hierarchical relationship between classes.</p>
-<p>If we want to define a new class which have all methods in the <code>SLList</code> but new ones such as <code>RotatingRight</code>.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RotatingSLList</span>&lt;<span class="title">Item</span>&gt; <span class="keyword">extends</span> <span class="title">SLList</span>&lt;<span class="title">Item</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>With <code>extends</code> key word, the subclass with inhert all these components:</p>
-<ul>
-<li>All instance and static variables</li>
-<li>All methods</li>
-<li>All nested classes</li>
-</ul>
-<h2 id="VengefulSLList"><a href="#VengefulSLList" class="headerlink" title="VengefulSLList"></a>VengefulSLList</h2><p>We could build a <code>VengefulSLList</code> class to make a list that could remeber the deleted items. <code>super</code> key word could be used to call the corresponding method in the super class.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VengefulSLList</span>&lt;<span class="title">Item</span>&gt; <span class="keyword">extends</span> <span class="title">SLList</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line">    SLList&lt;Item&gt; deletedItems;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">VengefulSLList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        deletedItems = <span class="keyword">new</span> SLList&lt;Item&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Item <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Item x = <span class="keyword">super</span>.removeLast();</span><br><span class="line">        deletedItems.addLast(x);</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Prints deleted items. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printLostItems</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        deletedItems.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/31/cs61b%20week4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1174,7 +1168,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

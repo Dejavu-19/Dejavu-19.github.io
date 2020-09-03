@@ -43,8 +43,22 @@
 <meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/tree-representation-3b.png">
 <meta property="og:image" content="https://camo.githubusercontent.com/17de6a6e36d262b962eea83320a88d8c39b5fdab/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f686561702d31332e322e312e706e67">
 <meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/my-own-summary.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/4a116ae8de71b14c3ba64902582274dbe8a3cedd/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d31372532306174253230332e35332e3233253230504d2e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/graph-types.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/adjacency-matrix-example.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/c47053640ad592831d341430c5718adb85129e83/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d32372532306174253230312e35382e3131253230414d2e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/91f3cac54b61d1e6c42f7dc7a28a4d1fcaeb1a55/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d32372532306174253230322e30332e3336253230414d2e706e67">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/adjacency-list-example.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/adjacency-list-example2.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/s-t-problem.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/dfs-traversal.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-example.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-demo-1.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-demo-2.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-diagram.png">
+<meta property="og:image" content="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-example.png">
 <meta property="article:published_time" content="2020-09-02T03:26:16.288Z">
-<meta property="article:modified_time" content="2020-09-02T07:26:46.781Z">
+<meta property="article:modified_time" content="2020-09-03T10:47:29.778Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
@@ -210,10 +224,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-02 12:26:16 / 修改时间：16:26:46" itemprop="dateCreated datePublished" datetime="2020-09-02T12:26:16+09:00">2020-09-02</time>
+              <time title="创建时间：2020-09-02 12:26:16" itemprop="dateCreated datePublished" datetime="2020-09-02T12:26:16+09:00">2020-09-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-03 19:47:29" itemprop="dateModified" datetime="2020-09-03T19:47:29+09:00">2020-09-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -239,8 +259,8 @@
 <thead>
 <tr>
 <th>Worst case runtimes</th>
-<th><code>contains(x)</code></th>
-<th><code>insert(x)</code></th>
+<th>contains(x)</th>
+<th>insert(x)</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -266,6 +286,8 @@
 <li>We can do better than Θ(logN) !</li>
 </ul>
 <p>=&gt; By using Hashing</p>
+<a id="more"></a>
+
 <h2 id="A-first-attempt-DataIndexedIntegerSet"><a href="#A-first-attempt-DataIndexedIntegerSet" class="headerlink" title="A first attempt: DataIndexedIntegerSet"></a>A first attempt: <code>DataIndexedIntegerSet</code></h2><h3 id="Limits-of-Search-Tree-Based-Sets"><a href="#Limits-of-Search-Tree-Based-Sets" class="headerlink" title="Limits of Search Tree Based Sets"></a>Limits of Search Tree Based Sets</h3><ul>
 <li>Require items to be comparable.</li>
 <li>Have excellent performance, but could be better.</li>
@@ -670,6 +692,378 @@
 </tr>
 </tbody></table>
 <p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week9/my-own-summary.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week9/my-own-summary.png" alt="my-own-summary"></a></p>
+<h1 id="Advanced-Trees"><a href="#Advanced-Trees" class="headerlink" title="Advanced Trees"></a>Advanced Trees</h1><h2 id="Tree-Definition-Review"><a href="#Tree-Definition-Review" class="headerlink" title="Tree Definition (Review)"></a>Tree Definition (Review)</h2><p>Tree</p>
+<ul>
+<li>A set of nodes (or vertices).</li>
+<li>A set of edges that connect those nodes.</li>
+<li>There is exactly one path between any two nodes.</li>
+</ul>
+<p>Rooted tree</p>
+<ul>
+<li>The tree has a designated root.</li>
+<li>Every node except the root has exactly one parent.</li>
+<li>A node can have 0 or more children.</li>
+</ul>
+<h2 id="Tree-Traversal"><a href="#Tree-Traversal" class="headerlink" title="Tree Traversal"></a>Tree Traversal</h2><p>“Traverse Tree”: Visit every node in a tree:</p>
+<ul>
+<li><p>Depth First Traversal</p>
+<p>: Traverse deep nodes before shallow ones</p>
+<ul>
+<li>Preorder, Inorder, Postorder</li>
+</ul>
+</li>
+<li><p><strong>Level Order Traversal</strong>: Traverse top-to-bottom, left-to-right</p>
+</li>
+</ul>
+<p>Tree traversal refers to the process of visiting each node in a tree data structure, exactly once. Traversals are classified by the order in which the nodes are visited.</p>
+<p><a href="https://camo.githubusercontent.com/4a116ae8de71b14c3ba64902582274dbe8a3cedd/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d31372532306174253230332e35332e3233253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/4a116ae8de71b14c3ba64902582274dbe8a3cedd/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d31372532306174253230332e35332e3233253230504d2e706e67" alt="Example Tree"></a></p>
+<h3 id="Level-Order-Traversal"><a href="#Level-Order-Traversal" class="headerlink" title="Level Order Traversal"></a>Level Order Traversal</h3><p>Iterate the tree by levels, from left to right.</p>
+<ul>
+<li>First level: D</li>
+<li>Second level: B F</li>
+<li>Third leve: A C E G</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D B F A C E G</span><br></pre></td></tr></table></figure>
+
+<h2 id="Depth-First-Traversal"><a href="#Depth-First-Traversal" class="headerlink" title="Depth First Traversal"></a>Depth First Traversal</h2><h3 id="Pre-order-Traversal"><a href="#Pre-order-Traversal" class="headerlink" title="Pre-order Traversal"></a>Pre-order Traversal</h3><ul>
+<li>Visit root node.</li>
+<li>Visit all the nodes in the left subtree.</li>
+<li>Visit all the nodes in the right subtree.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">preOrder(BSTNode x) &#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">    print(x.key)</span><br><span class="line">    preOrder(x.left)</span><br><span class="line">    preOrder(x.right)</span><br><span class="line">&#125;</span><br><span class="line">D B A C F E G</span><br></pre></td></tr></table></figure>
+
+<h3 id="In-order-Traversal"><a href="#In-order-Traversal" class="headerlink" title="In-order Traversal"></a>In-order Traversal</h3><ul>
+<li>Visit all the nodes in the left subtree.</li>
+<li>Visit the root node.</li>
+<li>Visit all the nodes in the right subtree.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">inOrder(BSTNode x) &#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span>;    </span><br><span class="line">    inOrder(x.left)</span><br><span class="line">    print(x.key)</span><br><span class="line">    inOrder(x.right)</span><br><span class="line">&#125;</span><br><span class="line">A B C D E F G</span><br></pre></td></tr></table></figure>
+
+<h3 id="Post-order-Traversal"><a href="#Post-order-Traversal" class="headerlink" title="Post-order Traversal"></a>Post-order Traversal</h3><ul>
+<li>Visit all the nodes in the left subtree.</li>
+<li>Visit all the nodes in the right subtree.</li>
+<li>Visit the root node.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">postOrder(BSTNode x) &#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span>;    </span><br><span class="line">    postOrder(x.left)</span><br><span class="line">    postOrder(x.right)</span><br><span class="line">    print(x.key)   </span><br><span class="line">&#125;</span><br><span class="line">A C B E G F D</span><br></pre></td></tr></table></figure>
+
+<h2 id="Graphs-Definition"><a href="#Graphs-Definition" class="headerlink" title="Graphs Definition"></a>Graphs Definition</h2><h3 id="Graph-Introduction"><a href="#Graph-Introduction" class="headerlink" title="Graph Introduction"></a>Graph Introduction</h3><p><strong><em>Graph</em></strong>: A set of nodes (a.k.a. vertices) connected pairwise by edges:</p>
+<ul>
+<li>Set of <strong><em>vertices</em></strong>, a.k.a. <strong><em>nodes</em></strong></li>
+<li>Set of <strong><em>edges</em></strong>: Pairs of vertices</li>
+<li>Vertices with an edge between are <strong><em>adjacent</em></strong></li>
+<li>Optional: Vertices or edges may have <strong><em>weights</em></strong> (or <strong><em>weights</em></strong>)</li>
+</ul>
+<p><strong><em>Path</em></strong>: A sequence of vertices connected by edges</p>
+<p><strong><em>Cycle</em></strong>: A path whose first and last vertices are the same:</p>
+<ul>
+<li>A graph with a cycle is called <em>cyclic</em></li>
+</ul>
+<p>Two vertices are <strong><em>connected</em></strong> if there is a path between them:</p>
+<ul>
+<li>If all vertices are connected, the graph is called connected</li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/graph-types.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/graph-types.png" alt="graph-types"></a></p>
+<h3 id="Simple-Graphs-and-Multigraphs"><a href="#Simple-Graphs-and-Multigraphs" class="headerlink" title="Simple Graphs and Multigraphs"></a>Simple Graphs and Multigraphs</h3><ul>
+<li>Only one edge between each of two nodes.</li>
+<li>No edge from a node to itself.</li>
+<li>The course will only focus on simple graphs.</li>
+</ul>
+<h3 id="Undirected-and-Directed-Graphs"><a href="#Undirected-and-Directed-Graphs" class="headerlink" title="Undirected and Directed Graphs"></a>Undirected and Directed Graphs</h3><ul>
+<li>Undirected graphs contain bidirectional edges.</li>
+<li>Directed graphs contain directed edges.</li>
+</ul>
+<h3 id="Acyclic-and-Cyclic-Graphs"><a href="#Acyclic-and-Cyclic-Graphs" class="headerlink" title="Acyclic and Cyclic Graphs"></a>Acyclic and Cyclic Graphs</h3><ul>
+<li>Cyclic graphs contain at least one graph cycle.</li>
+<li>Acyclic graphs do not have graph cycles.</li>
+</ul>
+<h3 id="More-Definitions"><a href="#More-Definitions" class="headerlink" title="More Definitions"></a>More Definitions</h3><ul>
+<li>Verticies with an edge between are adjacent.</li>
+<li>Vertices or edges may have lables or weights.</li>
+<li>A sequence of vertices connectted by edges is a path.</li>
+<li>A path of which first and last verticies are the same is a cycle.</li>
+<li>Two vertices are connected when there is a path between them.</li>
+<li>If all vertices are connected, the graph is connected.</li>
+</ul>
+<h2 id="Graph-Problems"><a href="#Graph-Problems" class="headerlink" title="Graph Problems"></a>Graph Problems</h2><h3 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h3><ul>
+<li><strong>s-t Path</strong>: Is there a path between vertices s and t ?</li>
+<li><strong>Shortest s-t Path</strong>: What is the shortest path between vertices s and t ?</li>
+<li><strong>Cycle</strong>: Does the graph contain any cycles ?</li>
+<li><strong>Euler Tour</strong>: Is there a cycle that uses every edge exactly once ?</li>
+<li><strong>Hamilton Tour</strong>: Is there a cycle that uses every vertex exactly once ?</li>
+<li><strong>Connectivity</strong>: Is the graph connected, i.e.: is there a path between all vertex pairs ?</li>
+<li><strong>Biconnectivity</strong>: Is there a vertex whose removal disconnects the graph ?</li>
+<li><strong>Planarity</strong>: Can we draw the graph on a piece of paper with no crossing edges ?</li>
+<li><strong>Isomorphism</strong>: Are two graphs isomorphic (the same graph in disguise) ?</li>
+</ul>
+<h3 id="s-t-Path"><a href="#s-t-Path" class="headerlink" title="s-t Path"></a>s-t Path</h3><p>Find whether there’s a path between vertices s and t.</p>
+<p>To solve this problem, an algorithm similar to the tree traversal is created.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">connected</span><span class="params">(s, t)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">mark s</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">if</span> <span class="params">(s == t)</span>:</span></span><br><span class="line"><span class="function">    return <span class="keyword">true</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">for</span> child in <span class="title">unmarked_neighbors</span><span class="params">(s)</span>:</span></span><br><span class="line"><span class="function">    <span class="keyword">if</span> <span class="title">isconnected</span><span class="params">(child, t)</span>:</span></span><br><span class="line"><span class="function">        return <span class="keyword">true</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
+
+<p>The algorithm marks the verticies it has already visited to avoid infinite loop.</p>
+<h2 id="Graph-Representation"><a href="#Graph-Representation" class="headerlink" title="Graph Representation"></a>Graph Representation</h2><h3 id="Graph-API"><a href="#Graph-API" class="headerlink" title="Graph API"></a>Graph API</h3><p>Common convention: Number nodes irrespective of label</p>
+<ul>
+<li>Use <code>Map&lt;Label, Integer&gt;</code> to lookup a vertex by label</li>
+</ul>
+<blockquote>
+<p>Graph API</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Graph</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(<span class="keyword">int</span> V)</span>:               <span class="comment">// Create empty graph with v vertices</span></span></span><br><span class="line"><span class="function">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span>: <span class="comment">// add an edge v-w</span></span></span><br><span class="line"><span class="function">  Iterable&lt;Integer&gt; <span class="title">adj</span><span class="params">(<span class="keyword">int</span> v)</span>:      <span class="comment">// vertices adjacent to v</span></span></span><br><span class="line"><span class="function">  <span class="keyword">int</span> <span class="title">V</span><span class="params">()</span>:                           <span class="comment">// number of vertices</span></span></span><br><span class="line"><span class="function">  <span class="keyword">int</span> <span class="title">E</span><span class="params">()</span>:                           <span class="comment">// number of edges</span></span></span><br><span class="line"><span class="function">...</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Number of vertices must be specified in advance.</li>
+<li>Does not support weights on nodes or edges.</li>
+<li>Has no method for getting the degree for a vertex.</li>
+</ul>
+<h3 id="degree-Graph-G-int-v"><a href="#degree-Graph-G-int-v" class="headerlink" title="degree(Graph G, int v)"></a>degree(Graph G, int v)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">degree</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> degree = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w: G.adj(v)) &#123;</span><br><span class="line">        degree += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> degree;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="print-Graph-G"><a href="#print-Graph-G" class="headerlink" title="print(Graph G)"></a>print(Graph G)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v += <span class="number">1</span>) &#123;</span><br><span class="line"> 	    <span class="keyword">for</span> (<span class="keyword">int</span> w : G.adj(v)) &#123;</span><br><span class="line">    	    System.out.println(v + “-” + w);</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Example client</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Returns the degree of vertex `v` in graph `G` */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">degree</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> degree = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w : G.adf()) &#123;</span><br><span class="line">        degree += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> degree;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Graph-Representations"><a href="#Graph-Representations" class="headerlink" title="Graph Representations"></a>Graph Representations</h3><h4 id="Representation-1-Adjacency-Matrix"><a href="#Representation-1-Adjacency-Matrix" class="headerlink" title="Representation 1: Adjacency Matrix"></a>Representation 1: Adjacency Matrix</h4><p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/adjacency-matrix-example.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/adjacency-matrix-example.png" alt="img"></a></p>
+<p>Use a 2D array. There is an edge connecting vertex <code>s</code> to <code>t</code> if that corresponding cell is 1, which represents <code>true</code>.</p>
+<p><a href="https://camo.githubusercontent.com/c47053640ad592831d341430c5718adb85129e83/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d32372532306174253230312e35382e3131253230414d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/c47053640ad592831d341430c5718adb85129e83/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d32372532306174253230312e35382e3131253230414d2e706e67" alt="Adjacency Matrix"></a></p>
+<h4 id="Representation-2-Edge-Set"><a href="#Representation-2-Edge-Set" class="headerlink" title="Representation 2: Edge Set"></a>Representation 2: Edge Set</h4><p>Collection of all edges:</p>
+<ul>
+<li>e.g.: <code>HashSet&lt;Edge&gt;</code> where each <code>Edge</code> is a pair of ints</li>
+</ul>
+<p>Use a single set to create a collection of all edges.</p>
+<p><a href="https://camo.githubusercontent.com/91f3cac54b61d1e6c42f7dc7a28a4d1fcaeb1a55/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d32372532306174253230322e30332e3336253230414d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/91f3cac54b61d1e6c42f7dc7a28a4d1fcaeb1a55/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d32372532306174253230322e30332e3336253230414d2e706e67" alt="Edge Sets"></a></p>
+<h4 id="Representation-3-Adjacency-List"><a href="#Representation-3-Adjacency-List" class="headerlink" title="Representation 3: Adjacency List"></a>Representation 3: Adjacency List</h4><p>Common approach: Maintain array of lists indexed by vertex number:</p>
+<ul>
+<li>Most popular approach for representing graphs</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Graph</th>
+<th>Representation</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{&gt;&gt;img&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/adjacency-list-example.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/adjacency-list-example.png" alt="img"></a></td>
+<td>{&gt;&gt;img&lt;&lt;}<a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/adjacency-list-example2.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/adjacency-list-example2.png" alt="img"></a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="Implementation-2"><a href="#Implementation-2" class="headerlink" title="Implementation"></a>Implementation</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Graph</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> V;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt;[] adj;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(<span class="keyword">int</span> V)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.V = V;</span><br><span class="line">        adj = (List&lt;Integer&gt;[]) <span class="keyword">new</span> ArrayList[V];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; V; v++) &#123;</span><br><span class="line">            adj[v] = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">	&#125; </span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">        adj[v].add(w);</span><br><span class="line">        adj[w].add(v);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Iterable&lt;Integer&gt; <span class="title">adj</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adj[v];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Runtimes"><a href="#Runtimes" class="headerlink" title="Runtimes"></a>Runtimes</h3><blockquote>
+<p>Printing an entire graph</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w : G.adj(v)) &#123;</span><br><span class="line">        System.out.println(v + <span class="string">"-"</span> + w);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>V: The number of Vertices</li>
+<li>E: The number of edges</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th>addEdge(s, t)</th>
+<th>for(w : adj(v))</th>
+<th>print()</th>
+<th>hasEdge(s, t)</th>
+<th>space used</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Adjacency Matrix</td>
+<td><code>Θ(1)</code></td>
+<td><code>Θ(V)</code></td>
+<td><code>Θ(V^2)</code></td>
+<td><code>Θ(1)</code></td>
+<td><code>Θ(V^2)</code></td>
+</tr>
+<tr>
+<td>Edge Sets</td>
+<td><code>Θ(1)</code></td>
+<td><code>Θ(E)</code></td>
+<td><code>Θ(E)</code></td>
+<td><code>Θ(E)</code></td>
+<td><code>Θ(E)</code></td>
+</tr>
+<tr>
+<td>Adjacency Lists</td>
+<td><code>Θ(1)</code></td>
+<td><code>Θ(1) to Θ(V)</code></td>
+<td><code>Θ(V+E)</code></td>
+<td><code>Θ(degree(v))</code></td>
+<td><code>Θ(V+E)</code></td>
+</tr>
+</tbody></table>
+<h2 id="Implementation-3"><a href="#Implementation-3" class="headerlink" title="Implementation"></a>Implementation</h2><p>Create a Paths API, which takes a Graph object and query the graph-processing for information.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Paths</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Paths</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span>    <span class="comment">// Find all paths from G</span></span></span><br><span class="line"><span class="function">    <span class="keyword">boolean</span> <span class="title">hasPathTo</span><span class="params">(<span class="keyword">int</span> v)</span>        <span class="comment">// is there a path from s to v?</span></span></span><br><span class="line"><span class="function">    Iterable&lt;Integer&gt; <span class="title">pathTo</span><span class="params">(<span class="keyword">int</span> v)</span> <span class="comment">// path from s to v (if any)</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="DFS-Depth-First-Search"><a href="#DFS-Depth-First-Search" class="headerlink" title="DFS (Depth First Search)"></a>DFS (Depth First Search)</h3><h3 id="Graph-Traversals"><a href="#Graph-Traversals" class="headerlink" title="Graph Traversals"></a>Graph Traversals</h3><ul>
+<li>DFS Preorder: Action is before DFS calls to neighbors. (The algorithm created above.)</li>
+<li>DFS Postorder: Action is after DFS calls to neighbors.</li>
+<li>BFS (Breadth First Search) Order: Act in order of distance from s. (Analogous to “level order.”)</li>
+</ul>
+<p>This algorithm of exploring a neighbor’s entire subgraph before moving on to the next neighbor is known as Depth First Traversal.</p>
+<p>This kind of traversal could help us to find a path from s to every other reachable vertex, visiting each vertex at most once.</p>
+<p>To implement this traversal algorithm, two arrays, <code>marked</code> and <code>edgeTo</code>, are required to record whether an vertex is marked and the parent of the vertex.</p>
+<ul>
+<li>Mark v.</li>
+<li>For each unmarked adjancent vertex w:</li>
+<li><ul>
+<li>Set <code>edgeTo[w] = v</code>.</li>
+</ul>
+</li>
+<li><ul>
+<li>Run these steps for w.</li>
+</ul>
+</li>
+</ul>
+<h3 id="s-t-Path-Problem"><a href="#s-t-Path-Problem" class="headerlink" title="s-t Path Problem"></a>s-t Path Problem</h3><p>Suppose we want to know if there exists a path from vertex <code>s</code> = 0 to vertex <code>t</code> = 7: </p>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/s-t-problem.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/s-t-problem.png" alt="s-t-problem"></a></p>
+<h5 id="Wrong-idea"><a href="#Wrong-idea" class="headerlink" title="Wrong idea"></a>Wrong idea</h5><ol>
+<li>Check <code>s == t</code>, if so, return true</li>
+<li>Check all of <code>s</code>‘s neighbors for connectivity to <code>t</code></li>
+</ol>
+<p>=&gt; Fail into infinite loop…</p>
+<h5 id="Improved-idea-demo"><a href="#Improved-idea-demo" class="headerlink" title="Improved idea: demo"></a>Improved idea: <a href="https://docs.google.com/presentation/d/1IJyC4cAogU2x3erW7E3hDz8jWDTLoaaot8u2ebHtpto/pub?start=false&loop=false&delayms=3000&slide=id.g76e0dad85_2_380" target="_blank" rel="noopener">demo</a></h5><ol>
+<li><em>Mark</em> <code>s</code></li>
+<li>Check <code>s == t</code>, if so, return true</li>
+<li>Check all of <code>s</code>‘s <em>unmarked</em> neighbors for connectivity to `t</li>
+</ol>
+<p>=&gt; This idea of exploring the entire subgraph for each neighbor is known as <strong><em>Depth First Search</em></strong> traversal.</p>
+<h3 id="Implementation-4"><a href="#Implementation-4" class="headerlink" title="Implementation"></a>Implementation</h3><p>Common design pattern in graph algorithms: <em>Decouple type from processing algorithm</em>:</p>
+<ul>
+<li>Create a <code>Graph</code> object</li>
+<li>Pass the graph to a graph-processing method (or constructor) in a client class</li>
+<li>Query the client class for information</li>
+</ul>
+<blockquote>
+<p>Recursive Implementation: <a href="https://docs.google.com/presentation/d/1lTo8LZUGi3XQ1VlOmBUF9KkJTW_JWsw_DOPq8VBiI3A/edit#slide=id.g76e0dad85_2_380" target="_blank" rel="noopener">demo</a></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DepthFirstPaths</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked; <span class="comment">// Tracks marked vertices</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] edgeTo; <span class="comment">// Tracks from which vertex the path came to an edge</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> s;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Finds all paths from `G`'s vertex `s` */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DepthFirstPaths</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">        ...  <span class="comment">// Data structure initialization</span></span><br><span class="line">        dfs(G, s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        marked[v] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> w : G.adj(v)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!markded[w]) &#123;</span><br><span class="line">                edgeTo[w] = v;</span><br><span class="line">                dfs(G, w);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Checks there is a path from `s` to `t` */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathTo</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> marked[t];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns path from `s` to `v` (if any) */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterable&lt;Integer&gt; <span class="title">pathTo</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Preorder-amp-Postorder-Traversal"><a href="#Preorder-amp-Postorder-Traversal" class="headerlink" title="Preorder &amp; Postorder Traversal"></a>Preorder &amp; Postorder Traversal</h3><p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/dfs-traversal.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/dfs-traversal.png" alt="dfs-traversal"></a></p>
+<h3 id="Topological-Sort"><a href="#Topological-Sort" class="headerlink" title="Topological Sort"></a>Topological Sort</h3><h4 id="Topological-Sort-Problem"><a href="#Topological-Sort-Problem" class="headerlink" title="Topological Sort Problem"></a>Topological Sort Problem</h4><p>Suppose we have tasks <code>0</code> through <code>7</code>, where an arrow from <code>v</code> to <code>w</code> indicates that <code>v</code> must happen before <code>w</code>:</p>
+<ul>
+<li>Valid ordering examples: <code>[0, 2, 1, 3, 5, 4, 7, 6]</code>, <code>[2, 0, 3, 5, 1, 4, 6, 7]</code></li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/topological-sort-example.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-example.png" alt="topological-sort-example"></a></p>
+<h5 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h5><p><strong><em>Perform DFS traversals from every vertex (with indegree 0), NOT clearing markings in between traversals</em></strong>:</p>
+<ul>
+<li>Record DFS post order in a list: <code>[7, 4, 1, 3, 0, 6, 5, 2]</code></li>
+<li>Topological ordering is given by the reverse of that list (reverse postorder): <code>[2, 5, 6, 0, 3, 1, 4, 7]</code></li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/topological-sort-demo-1.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-demo-1.png" alt="topological-sort-demo-1"></a> <a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/topological-sort-demo-2.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-demo-2.png" alt="topological-sort-demo-2"></a></p>
+<h5 id="Why-Topological-Sort"><a href="#Why-Topological-Sort" class="headerlink" title="Why Topological Sort"></a>Why Topological Sort</h5><p>Can think of this procedure as sorting our nodes so that they appear in an order consistent with edge:</p>
+<ul>
+<li>When nodes are sorted in diagram, arrows all point rightwards</li>
+</ul>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/topological-sort-diagram.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-diagram.png" alt="topological-sort-diagram"></a></p>
+<h4 id="Implementation-5"><a href="#Implementation-5" class="headerlink" title="Implementation"></a>Implementation</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DepthFirstPaths</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; reversePostorder;  <span class="comment">// Use a stack instead of a list</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DepthFirstPaths</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">        reversePostorder = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v += <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!marked[v]) &#123; dfs(G, v); &#125;  <span class="comment">// Perform DFS from all unmarked vertices</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        marked[v] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> w : G.adj(v)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!marked[w]) &#123; dfs(G, w); &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        reversePostorder.push(v);  <span class="comment">// 'Visit' vertex by pushing it in a stack</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterable&lt;Integer&gt; <span class="title">reversePostorder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reversePostorder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth First Search"></a>Breadth First Search</h2><h3 id="Shortest-Path-Problem"><a href="#Shortest-Path-Problem" class="headerlink" title="Shortest Path Problem"></a>Shortest Path Problem</h3><p>Given the graph below, find the shortest path from 0 to every other vertex: </p>
+<p><a href="https://github.com/aviatesk/cs61b-sp18/blob/master/assets/week10/topological-sort-example.png" target="_blank" rel="noopener"><img src="https://github.com/aviatesk/cs61b-sp18/raw/master/assets/week10/topological-sort-example.png" alt="shortest-path-example"></a></p>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>Level-order provides the shortest paths from 0 to every reachable vertex from 0 by definition !: *”Level order”* is referred as *”the order visited by <strong>Breadth First Search</strong>“*</p>
+<h5 id="Breadth-First-Search-demo"><a href="#Breadth-First-Search-demo" class="headerlink" title="Breadth First Search demo"></a>Breadth First Search <a href="https://docs.google.com/presentation/d/1EGco7EDfVtrqouiUCQr6iY7Lq5mZmvWrprWm5yIQZTQ/pub?start=false&loop=false&delayms=3000&slide=id.g76e0dad85_2_380" target="_blank" rel="noopener">demo</a></h5><ul>
+<li>Initialize a queue with a starting vertex s and mark that vertex<ul>
+<li>(A queue here is called <strong>fringe</strong>)</li>
+</ul>
+</li>
+<li>Repeat until queue is empty:<ul>
+<li>Remove vertex <code>v</code> from queue</li>
+<li>Add to the queue any unmarked vertices adjacent to <code>v</code> and mark them</li>
+</ul>
+</li>
+</ul>
+<h3 id="Implementation-6"><a href="#Implementation-6" class="headerlink" title="Implementation"></a>Implementation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BreadthFirstPaths</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] edgeTo;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">(Graph G, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">        Queue&lt;Integer&gt; fringe = <span class="keyword">new</span> Queue&lt;&gt;();</span><br><span class="line">        fringe.enqueue(s);</span><br><span class="line">        marked[s] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!fringe.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = fringe.dequeue();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> w : G.adj(v)) &#123;</span><br><span class="line">                fringe.enqueue(w);</span><br><span class="line">                marked[w] = <span class="keyword">true</span>;</span><br><span class="line">                edgeTo[w] = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Efficiency-of-Graph-Problems"><a href="#Efficiency-of-Graph-Problems" class="headerlink" title="Efficiency of Graph Problems"></a>Efficiency of Graph Problems</h2><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Description</th>
+<th>Efficiency</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s-t paths</td>
+<td>Find a path from <code>s</code> to every reachable vertex</td>
+<td>O(V+E) time Θ(V) space</td>
+</tr>
+<tr>
+<td>Topological sort</td>
+<td>Find an ordering of vertices consistent with directed edges</td>
+<td>^</td>
+</tr>
+<tr>
+<td>s-t shortest path</td>
+<td>Find a shortest path from <code>s</code> to every reachable vertex</td>
+<td>^</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Runs in O(V+E) time:<ul>
+<li>Cost model: Each vertex is visited once and each edge is used exactly once. Each visit costs constant time</li>
+<li>Note.1: we can’t say Θ(V+E), because some <code>Graph</code> can have no edges touching source</li>
+<li>Note.2: If we use adjacency-matrix, runtime will change to O(V2) (Need to iterate over the entire matrix)</li>
+</ul>
+</li>
+<li>Space is Θ(V):<ul>
+<li>A stack or queue need to store V vertices</li>
+</ul>
+</li>
+</ul>
+<h2 id="BFS-v-s-DFS-for-Path-Finding"><a href="#BFS-v-s-DFS-for-Path-Finding" class="headerlink" title="BFS v.s. DFS for Path Finding"></a>BFS v.s. DFS for Path Finding</h2><ul>
+<li>BFS returns path with shortest number of edges.</li>
+<li>Time efficiency is similar for both algorithms.</li>
+<li>Space Efficiency is quite different.</li>
+<li><ul>
+<li>DFS is worse for spindly graphs. (Call stack gets very deep.)</li>
+</ul>
+</li>
+<li><ul>
+<li>BFS is worse for bushy graphs. (Queue gets very large.)</li>
+</ul>
+</li>
+<li>Track the <code>distTo</code> and <code>edgeTo</code> arrays requires <code>Θ(V)</code> memory.</li>
+</ul>
+<h2 id="Shortest-Path-Tree"><a href="#Shortest-Path-Tree" class="headerlink" title="Shortest Path Tree"></a>Shortest Path Tree</h2><ul>
+<li>For every vertex v (which is not s) in the graph, find the shortest path from s to v.</li>
+<li>Combine all the edges that the algorithm found above.</li>
+</ul>
+<h2 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h2><p>Instead of BFS, an algorithm which takes into account edge distances (edge weights) is created.</p>
+<ul>
+<li>Create a priority queue.</li>
+<li>Add s to the priority queue with priority 0.</li>
+<li>Add all other vertices to the priority queue with priority infinity.</li>
+<li>While the priority queue is not empty, and relax all of the edges going out from the vertex.</li>
+</ul>
+<p>As long as the edges are all non-negative, Dijkstra’s is guaranteed to be optimal.</p>
+<h3 id="Relax"><a href="#Relax" class="headerlink" title="Relax"></a>Relax</h3><ul>
+<li>For the popped vertex v, iterate through its edges.</li>
+<li>For the edge (v,w), compare the <code>currentBestDistToV + weight(v,w)</code> and <code>currentBestDistToW</code>.</li>
+<li>If the former is smaller, set the <code>currentBestDistToW = currentBestDistToV + weight(v,w)</code>, and set <code>edgeTo[w] = v</code>.</li>
+<li>Never relax edges that point to already visited vertices.</li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def dijkstras(source):</span><br><span class="line">    PQ.add(source, 0)</span><br><span class="line">    For all other vertices, v, PQ.add(v, infinity)</span><br><span class="line">    while PQ is not empty:</span><br><span class="line">        p &#x3D; PQ.removeSmallest()</span><br><span class="line">        relax(all edges from p)</span><br><span class="line"></span><br><span class="line">def relax(edge p,q):</span><br><span class="line">   if q is visited (or q is not in PQ):</span><br><span class="line">       return</span><br><span class="line"></span><br><span class="line">   if distTo[p] + weight(edge) &lt; distTo[q]:</span><br><span class="line">       distTo[q] &#x3D; distTo[p] + w</span><br><span class="line">       edgeTo[q] &#x3D; p</span><br><span class="line">       PQ.changePriority(q, distTo[q])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h3><ul>
+<li>At start, <code>distTo[source] = 0</code>.</li>
+<li>After relaxing all edges from source, assume v1 is the closet vertex to the source.</li>
+<li>Suppose there’s another path <code>(s,va,vb,...,v1)</code>, which is shorter than <code>(s,v1)</code>.</li>
+<li>Since <code>(s,va)</code> is longer than <code>(s,v1)</code>, that path doesn’t exist.</li>
+<li>Thus, v1 is the closet vertex to the source, and that argument is still valid for all the edges of v1.</li>
+</ul>
+<h3 id="Runtime-1"><a href="#Runtime-1" class="headerlink" title="Runtime"></a>Runtime</h3><p>Dijkstra’s Algorithm is based on the PQ.</p>
+<p>Overall runtime: <code>O(V log(V) + V log(V) + E log(V))</code></p>
+<p>Connected graph: <code>O(E log V)</code> (E &gt; V)</p>
+<ul>
+<li><code>add</code>: V, each costing <code>O(log V)</code> time.</li>
+<li><code>removeSmallest</code>: V, each costing <code>O(log V)</code> time.</li>
+<li><code>changePriority</code>: E, each costing <code>O(log V)</code> time.</li>
+</ul>
 
     </div>
 
@@ -693,8 +1087,8 @@
       <i class="fa fa-chevron-left"></i> Lab2setup, Lab2 ,Proj1A,proj1B,Discussion 3,Exam Prep,Discussion 4,Midterm 1
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/09/02/cs61b%20week10/" rel="next" title="cs61b week10">
-      cs61b week10 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/09/02/cs61b%20week13/" rel="next" title="cs61b week13">
+      cs61b week13 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -754,7 +1148,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week9"><span class="nav-number">1.</span> <span class="nav-text">cs61b week9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hashing"><span class="nav-number">2.</span> <span class="nav-text">Hashing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Storing-Data"><span class="nav-number">2.0.1.</span> <span class="nav-text">Storing Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-first-attempt-DataIndexedIntegerSet"><span class="nav-number">2.1.</span> <span class="nav-text">A first attempt: DataIndexedIntegerSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Limits-of-Search-Tree-Based-Sets"><span class="nav-number">2.1.1.</span> <span class="nav-text">Limits of Search Tree Based Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Data-as-an-Index"><span class="nav-number">2.1.2.</span> <span class="nav-text">Using Data as an Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation"><span class="nav-number">2.1.3.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">2.1.4.</span> <span class="nav-text">Performance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inserting-Words"><span class="nav-number">2.2.</span> <span class="nav-text">Inserting Words</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Attempt"><span class="nav-number">2.2.1.</span> <span class="nav-text">First Attempt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Avoiding-Collisions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Avoiding Collisions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inserting-Strings"><span class="nav-number">2.3.</span> <span class="nav-text">Inserting Strings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer-Overflow"><span class="nav-number">2.3.1.</span> <span class="nav-text">Integer Overflow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collision-Handling"><span class="nav-number">2.4.</span> <span class="nav-text">Collision Handling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Saving-Memory"><span class="nav-number">2.4.1.</span> <span class="nav-text">Saving Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Growth"><span class="nav-number">2.4.2.</span> <span class="nav-text">Dynamic Growth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Code-Algorithm"><span class="nav-number">2.4.3.</span> <span class="nav-text">Hash Code Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-Table"><span class="nav-number">2.5.</span> <span class="nav-text">Hash Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Function"><span class="nav-number">2.5.1.</span> <span class="nav-text">Hash Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">2.5.2.</span> <span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BST"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">BST</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Default-hashCode-Method"><span class="nav-number">2.5.3.</span> <span class="nav-text">Default hashCode() Method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">2.6.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix-Open-Addressing"><span class="nav-number">2.7.</span> <span class="nav-text">Appendix - Open Addressing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Heaps-and-Priority-Queues"><span class="nav-number">3.</span> <span class="nav-text">Heaps and Priority Queues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Priority-Queue-Interface"><span class="nav-number">3.1.</span> <span class="nav-text">Priority Queue Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Structure"><span class="nav-number">3.2.</span> <span class="nav-text">Heap Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Implementation"><span class="nav-number">3.3.</span> <span class="nav-text">Heap Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree-Representation"><span class="nav-number">3.3.1.</span> <span class="nav-text">Tree Representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-1a-1b-and-1c"><span class="nav-number">3.3.2.</span> <span class="nav-text">Approach 1a, 1b, and 1c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">Approach 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-3"><span class="nav-number">3.3.4.</span> <span class="nav-text">Approach 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#promote-Method"><span class="nav-number">3.3.4.1.</span> <span class="nav-text">promote Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tree-Representation-3b"><span class="nav-number">3.3.4.2.</span> <span class="nav-text">Tree Representation 3b</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-1"><span class="nav-number">3.4.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-Structure-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">Heap Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-Operations"><span class="nav-number">3.4.2.</span> <span class="nav-text">Heap Operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime"><span class="nav-number">3.4.3.</span> <span class="nav-text">Runtime</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Implementation-of-Priority-Queue"><span class="nav-number">3.5.</span> <span class="nav-text">Heap Implementation of Priority Queue</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structure-Summary"><span class="nav-number">4.</span> <span class="nav-text">Data Structure Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Search-Data-Structures"><span class="nav-number">4.1.</span> <span class="nav-text">Search Data Structures</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week9"><span class="nav-number">1.</span> <span class="nav-text">cs61b week9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hashing"><span class="nav-number">2.</span> <span class="nav-text">Hashing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Storing-Data"><span class="nav-number">2.0.1.</span> <span class="nav-text">Storing Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-first-attempt-DataIndexedIntegerSet"><span class="nav-number">2.1.</span> <span class="nav-text">A first attempt: DataIndexedIntegerSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Limits-of-Search-Tree-Based-Sets"><span class="nav-number">2.1.1.</span> <span class="nav-text">Limits of Search Tree Based Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Data-as-an-Index"><span class="nav-number">2.1.2.</span> <span class="nav-text">Using Data as an Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation"><span class="nav-number">2.1.3.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">2.1.4.</span> <span class="nav-text">Performance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inserting-Words"><span class="nav-number">2.2.</span> <span class="nav-text">Inserting Words</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Attempt"><span class="nav-number">2.2.1.</span> <span class="nav-text">First Attempt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Avoiding-Collisions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Avoiding Collisions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inserting-Strings"><span class="nav-number">2.3.</span> <span class="nav-text">Inserting Strings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer-Overflow"><span class="nav-number">2.3.1.</span> <span class="nav-text">Integer Overflow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collision-Handling"><span class="nav-number">2.4.</span> <span class="nav-text">Collision Handling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Saving-Memory"><span class="nav-number">2.4.1.</span> <span class="nav-text">Saving Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Growth"><span class="nav-number">2.4.2.</span> <span class="nav-text">Dynamic Growth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Code-Algorithm"><span class="nav-number">2.4.3.</span> <span class="nav-text">Hash Code Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-Table"><span class="nav-number">2.5.</span> <span class="nav-text">Hash Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Function"><span class="nav-number">2.5.1.</span> <span class="nav-text">Hash Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">2.5.2.</span> <span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BST"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">BST</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Default-hashCode-Method"><span class="nav-number">2.5.3.</span> <span class="nav-text">Default hashCode() Method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">2.6.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix-Open-Addressing"><span class="nav-number">2.7.</span> <span class="nav-text">Appendix - Open Addressing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Heaps-and-Priority-Queues"><span class="nav-number">3.</span> <span class="nav-text">Heaps and Priority Queues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Priority-Queue-Interface"><span class="nav-number">3.1.</span> <span class="nav-text">Priority Queue Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Structure"><span class="nav-number">3.2.</span> <span class="nav-text">Heap Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Implementation"><span class="nav-number">3.3.</span> <span class="nav-text">Heap Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree-Representation"><span class="nav-number">3.3.1.</span> <span class="nav-text">Tree Representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-1a-1b-and-1c"><span class="nav-number">3.3.2.</span> <span class="nav-text">Approach 1a, 1b, and 1c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">Approach 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-3"><span class="nav-number">3.3.4.</span> <span class="nav-text">Approach 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#promote-Method"><span class="nav-number">3.3.4.1.</span> <span class="nav-text">promote Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tree-Representation-3b"><span class="nav-number">3.3.4.2.</span> <span class="nav-text">Tree Representation 3b</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-1"><span class="nav-number">3.4.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-Structure-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">Heap Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-Operations"><span class="nav-number">3.4.2.</span> <span class="nav-text">Heap Operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime"><span class="nav-number">3.4.3.</span> <span class="nav-text">Runtime</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Implementation-of-Priority-Queue"><span class="nav-number">3.5.</span> <span class="nav-text">Heap Implementation of Priority Queue</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structure-Summary"><span class="nav-number">4.</span> <span class="nav-text">Data Structure Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Search-Data-Structures"><span class="nav-number">4.1.</span> <span class="nav-text">Search Data Structures</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Advanced-Trees"><span class="nav-number">5.</span> <span class="nav-text">Advanced Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree-Definition-Review"><span class="nav-number">5.1.</span> <span class="nav-text">Tree Definition (Review)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree-Traversal"><span class="nav-number">5.2.</span> <span class="nav-text">Tree Traversal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Level-Order-Traversal"><span class="nav-number">5.2.1.</span> <span class="nav-text">Level Order Traversal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Depth-First-Traversal"><span class="nav-number">5.3.</span> <span class="nav-text">Depth First Traversal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre-order-Traversal"><span class="nav-number">5.3.1.</span> <span class="nav-text">Pre-order Traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#In-order-Traversal"><span class="nav-number">5.3.2.</span> <span class="nav-text">In-order Traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Post-order-Traversal"><span class="nav-number">5.3.3.</span> <span class="nav-text">Post-order Traversal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graphs-Definition"><span class="nav-number">5.4.</span> <span class="nav-text">Graphs Definition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph-Introduction"><span class="nav-number">5.4.1.</span> <span class="nav-text">Graph Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Graphs-and-Multigraphs"><span class="nav-number">5.4.2.</span> <span class="nav-text">Simple Graphs and Multigraphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Undirected-and-Directed-Graphs"><span class="nav-number">5.4.3.</span> <span class="nav-text">Undirected and Directed Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Acyclic-and-Cyclic-Graphs"><span class="nav-number">5.4.4.</span> <span class="nav-text">Acyclic and Cyclic Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#More-Definitions"><span class="nav-number">5.4.5.</span> <span class="nav-text">More Definitions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Problems"><span class="nav-number">5.5.</span> <span class="nav-text">Graph Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problems"><span class="nav-number">5.5.1.</span> <span class="nav-text">Problems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-t-Path"><span class="nav-number">5.5.2.</span> <span class="nav-text">s-t Path</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Representation"><span class="nav-number">5.6.</span> <span class="nav-text">Graph Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph-API"><span class="nav-number">5.6.1.</span> <span class="nav-text">Graph API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#degree-Graph-G-int-v"><span class="nav-number">5.6.2.</span> <span class="nav-text">degree(Graph G, int v)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#print-Graph-G"><span class="nav-number">5.6.3.</span> <span class="nav-text">print(Graph G)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph-Representations"><span class="nav-number">5.6.4.</span> <span class="nav-text">Graph Representations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Representation-1-Adjacency-Matrix"><span class="nav-number">5.6.4.1.</span> <span class="nav-text">Representation 1: Adjacency Matrix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Representation-2-Edge-Set"><span class="nav-number">5.6.4.2.</span> <span class="nav-text">Representation 2: Edge Set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Representation-3-Adjacency-List"><span class="nav-number">5.6.4.3.</span> <span class="nav-text">Representation 3: Adjacency List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Implementation-2"><span class="nav-number">5.6.4.4.</span> <span class="nav-text">Implementation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtimes"><span class="nav-number">5.6.5.</span> <span class="nav-text">Runtimes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-3"><span class="nav-number">5.7.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFS-Depth-First-Search"><span class="nav-number">5.7.1.</span> <span class="nav-text">DFS (Depth First Search)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph-Traversals"><span class="nav-number">5.7.2.</span> <span class="nav-text">Graph Traversals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-t-Path-Problem"><span class="nav-number">5.7.3.</span> <span class="nav-text">s-t Path Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Wrong-idea"><span class="nav-number">5.7.3.0.1.</span> <span class="nav-text">Wrong idea</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Improved-idea-demo"><span class="nav-number">5.7.3.0.2.</span> <span class="nav-text">Improved idea: demo</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation-4"><span class="nav-number">5.7.4.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preorder-amp-Postorder-Traversal"><span class="nav-number">5.7.5.</span> <span class="nav-text">Preorder &amp; Postorder Traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topological-Sort"><span class="nav-number">5.7.6.</span> <span class="nav-text">Topological Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Topological-Sort-Problem"><span class="nav-number">5.7.6.1.</span> <span class="nav-text">Topological Sort Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Solution"><span class="nav-number">5.7.6.1.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Why-Topological-Sort"><span class="nav-number">5.7.6.1.2.</span> <span class="nav-text">Why Topological Sort</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Implementation-5"><span class="nav-number">5.7.6.2.</span> <span class="nav-text">Implementation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Breadth-First-Search"><span class="nav-number">5.8.</span> <span class="nav-text">Breadth First Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shortest-Path-Problem"><span class="nav-number">5.8.1.</span> <span class="nav-text">Shortest Path Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">5.8.2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Breadth-First-Search-demo"><span class="nav-number">5.8.2.0.1.</span> <span class="nav-text">Breadth First Search demo</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation-6"><span class="nav-number">5.8.3.</span> <span class="nav-text">Implementation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Efficiency-of-Graph-Problems"><span class="nav-number">5.9.</span> <span class="nav-text">Efficiency of Graph Problems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFS-v-s-DFS-for-Path-Finding"><span class="nav-number">5.10.</span> <span class="nav-text">BFS v.s. DFS for Path Finding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shortest-Path-Tree"><span class="nav-number">5.11.</span> <span class="nav-text">Shortest Path Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dijkstra’s-Algorithm"><span class="nav-number">5.12.</span> <span class="nav-text">Dijkstra’s Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Relax"><span class="nav-number">5.12.1.</span> <span class="nav-text">Relax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">5.12.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proof"><span class="nav-number">5.12.3.</span> <span class="nav-text">Proof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-1"><span class="nav-number">5.12.4.</span> <span class="nav-text">Runtime</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -770,7 +1164,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
