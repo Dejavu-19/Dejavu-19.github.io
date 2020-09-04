@@ -620,10 +620,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-01 11:27:06 / 修改时间：14:11:40" itemprop="dateCreated datePublished" datetime="2020-09-01T11:27:06+09:00">2020-09-01</time>
+              <time title="创建时间：2020-09-01 11:27:06" itemprop="dateCreated datePublished" datetime="2020-09-01T11:27:06+09:00">2020-09-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-04 16:37:02" itemprop="dateModified" datetime="2020-09-04T16:37:02+09:00">2020-09-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -646,7 +652,7 @@
 
       
           <h1 id="Lab2-Setup"><a href="#Lab2-Setup" class="headerlink" title="Lab2 Setup"></a>Lab2 Setup</h1><h2 id="Setting-Up-IntelliJ"><a href="#Setting-Up-IntelliJ" class="headerlink" title="Setting Up IntelliJ"></a>Setting Up IntelliJ</h2><p>Already finished.</p>
-<h1 id="Lab2-Unit-Testing-with-JUnit-and-IntLists"><a href="#Lab2-Unit-Testing-with-JUnit-and-IntLists" class="headerlink" title="Lab2 Unit Testing with JUnit and IntLists"></a>Lab2 Unit Testing with JUnit and IntLists</h1><h3 id="Application-IntList"><a href="#Application-IntList" class="headerlink" title="Application IntList"></a>Application IntList</h3><h3 id="dSquareList"><a href="#dSquareList" class="headerlink" title="dSquareList"></a>dSquareList</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns a list equal to L with all elements squared. Destructive.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dSquareList</span><span class="params">(IntList L)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (L != <span class="keyword">null</span>) &#123;</span><br><span class="line">        L.first = L.first * L.first;</span><br><span class="line">        L = L.rest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Lab2-Unit-Testing-with-JUnit-and-IntLists"><a href="#Lab2-Unit-Testing-with-JUnit-and-IntLists" class="headerlink" title="Lab2 Unit Testing with JUnit and IntLists"></a>Lab2 Unit Testing with JUnit and IntLists</h1><h3 id="Application-IntList"><a href="#Application-IntList" class="headerlink" title="Application IntList"></a>Application IntList</h3><h3 id="dSquareList"><a href="#dSquareList" class="headerlink" title="dSquareList"></a>dSquareList</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns a list equal to L with all elements squared. Destructive.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dSquareList</span><span class="params">(IntList L)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (L != <span class="keyword">null</span>) &#123;</span><br><span class="line">        L.first = L.first * L.first;</span><br><span class="line">        L = L.rest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/09/01/Lab-2setup,-Lab2/#more" rel="contents">
