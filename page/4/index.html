@@ -171,6 +171,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/08/Lab3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/08/Lab3/" class="post-title-link" itemprop="url">Lab3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-08 15:33:30" itemprop="dateCreated datePublished" datetime="2020-07-08T15:33:30+09:00">2020-07-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-02 11:12:44" itemprop="dateModified" datetime="2020-09-02T11:12:44+09:00">2020-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Lab-3-Unit-Testing-with-JUnit-Debugging"><a href="#Lab-3-Unit-Testing-with-JUnit-Debugging" class="headerlink" title="Lab 3: Unit Testing with JUnit, Debugging"></a>Lab 3: Unit Testing with JUnit, Debugging</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong><code>Unit Testing</code></strong>, <strong><code>JUnit</code></strong>, the 61B style checker, and get a bit more <strong><code>debugging experience</code></strong>.</p>
+<h4 id="What-is-JUnit"><a href="#What-is-JUnit" class="headerlink" title="What is JUnit?"></a>What is JUnit?</h4><p><a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a> is a Unit Testing Framework for Java.</p>
+<h4 id="JUnit-Syntax"><a href="#JUnit-Syntax" class="headerlink" title="JUnit Syntax"></a>JUnit Syntax</h4><p>JUnit tests are written in Java.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    assertEquals(&lt;expected&gt;, &lt;actual&gt;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>assertEquals</code> is a common method used in JUnit tests. It tests whether a variable’s actual value is equivalent to its expected value.</p>
+<p>When you create JUnit test files, you should precede each test method with a <code>@Test</code> annotation, and can have one or more <code>assertEquals</code> or <code>assertTrue</code> methods (provided by the JUnit library). ** All tests must be non-static. ** </p>
+<h2 id="Running-JUnit-Tests-in-IntelliJ"><a href="#Running-JUnit-Tests-in-IntelliJ" class="headerlink" title="Running JUnit Tests in IntelliJ"></a>Running JUnit Tests in IntelliJ</h2><p><strong><code>alt+shift+F10</code></strong></p>
+<h2 id="Intlists"><a href="#Intlists" class="headerlink" title="Intlists"></a>Intlists</h2><p> <strong><code>‘of’</code></strong> method</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IntList myList = IntList.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Which will create the IntList <code>0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; null</code>.</p>
+<h4 id="Test-a-Reverse-Method"><a href="#Test-a-Reverse-Method" class="headerlink" title="Test a Reverse Method"></a>Test a Reverse Method</h4><p>Write a unit test even before we write the new method.</p>
+<p>Add a new test to IntListTest.java that tests the <code>.reverse()</code> method.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IntList <span class="title">testReverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    IntList one = IntList.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">    IntList two = IntList.of();</span><br><span class="line">    assertEquals(IntList.of(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>),IntList.reverse(one));</span><br><span class="line">    assertNotEquals(one,IntList.reverse(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>));</span><br><span class="line">    assertEquals(two,IntList.reverse(<span class="keyword">null</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/08/ML%20note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -924,96 +1011,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/01/cs61b%20week1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/01/cs61b%20week1/" class="post-title-link" itemprop="url">cs61b week 01</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-01 01:47:49" itemprop="dateCreated datePublished" datetime="2020-07-01T01:47:49+09:00">2020-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-06 11:02:42" itemprop="dateModified" datetime="2020-08-06T11:02:42+09:00">2020-08-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week-01"><a href="#cs61b-week-01" class="headerlink" title="cs61b week 01"></a>cs61b week 01</h1><h2 id="1-1-Intro-Hello-World-Java"><a href="#1-1-Intro-Hello-World-Java" class="headerlink" title="1.1 Intro, Hello World Java"></a>1.1 Intro, Hello World Java</h2><h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p><strong>What is 61B about?</strong></p>
-<blockquote>
-<p> Writing code that runs efficiently.  </p>
-<p> Writing code efficiently.</p>
-</blockquote>
-<p><strong>Required:</strong></p>
-<p>Solid foundation in programming fundamentals, including:</p>
-<p>Object oriented programming, recursion, lists, and trees.</p>
-<p><strong>Learning Philosophy</strong></p>
-<p><code>Practice make perfect.</code>(eg. dancing example)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/01/cs61b%20week1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1085,7 +1082,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

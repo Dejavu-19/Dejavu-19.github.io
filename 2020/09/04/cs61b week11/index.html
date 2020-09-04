@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="cs61b week11Shortest PathsBFS v.s. DFS for Path Finding BFS returns path with shortest number of edges. Time efficiency is similar for both algorithms. Space Efficiency is quite different.  DFS is wor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs61b week11">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/09/04/cs61b%20week11/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="cs61b week11Shortest PathsBFS v.s. DFS for Path Finding BFS returns path with shortest number of edges. Time efficiency is similar for both algorithms. Space Efficiency is quite different.  DFS is wor">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://camo.githubusercontent.com/5ba7ebd985522413fc41d67a5e703cdd0404aa02/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30342d31342532306174253230382e35372e3232253230504d2e706e67">
+<meta property="article:published_time" content="2020-09-04T01:18:09.483Z">
+<meta property="article:modified_time" content="2020-09-04T02:46:07.036Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="cs">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/5ba7ebd985522413fc41d67a5e703cdd0404aa02/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30342d31342532306174253230382e35372e3232253230504d2e706e67">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2020/09/04/cs61b%20week11/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>cs61b week11 | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/04/cs61b%20week11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cs61b week11
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-04 10:18:09 / 修改时间：11:46:07" itemprop="dateCreated datePublished" datetime="2020-09-04T10:18:09+09:00">2020-09-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="cs61b-week11"><a href="#cs61b-week11" class="headerlink" title="cs61b week11"></a>cs61b week11</h1><h1 id="Shortest-Paths"><a href="#Shortest-Paths" class="headerlink" title="Shortest Paths"></a>Shortest Paths</h1><h2 id="BFS-v-s-DFS-for-Path-Finding"><a href="#BFS-v-s-DFS-for-Path-Finding" class="headerlink" title="BFS v.s. DFS for Path Finding"></a>BFS v.s. DFS for Path Finding</h2><ul>
+<li>BFS returns path with shortest number of edges.</li>
+<li>Time efficiency is similar for both algorithms.</li>
+<li>Space Efficiency is quite different.</li>
+<li><ul>
+<li>DFS is worse for spindly graphs. (Call stack gets very deep.)</li>
+</ul>
+</li>
+<li><ul>
+<li>BFS is worse for bushy graphs. (Queue gets very large.)</li>
+</ul>
+</li>
+<li>Track the <code>distTo</code> and <code>edgeTo</code> arrays requires <code>Θ(V)</code> memory.</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="Shortest-Path-Tree"><a href="#Shortest-Path-Tree" class="headerlink" title="Shortest Path Tree"></a>Shortest Path Tree</h2><ul>
+<li>For every vertex v (which is not s) in the graph, find the shortest path from s to v.</li>
+<li>Combine all the edges that the algorithm found above.</li>
+</ul>
+<h2 id="Dijkstra’s-Algorithm-ˈdaɪkstrə"><a href="#Dijkstra’s-Algorithm-ˈdaɪkstrə" class="headerlink" title="Dijkstra’s Algorithm[[/ˈdaɪkstrə/]]"></a>Dijkstra’s Algorithm[[/ˈdaɪkstrə/]]</h2><p>Instead of BFS, an algorithm which takes into account edge distances (edge weights) is created.</p>
+<ul>
+<li>Create a priority queue.</li>
+<li>Add s to the priority queue with priority 0.</li>
+<li>Add all other vertices to the priority queue with priority infinity.</li>
+<li>While the priority queue is not empty, and relax all of the edges going out from the vertex.</li>
+</ul>
+<p>As long as the edges are all non-negative, Dijkstra’s is guaranteed to be optimal.</p>
+<p>![](<a href="https://joshhug.gitbooks.io/hug61b/content/assets/Screen" target="_blank" rel="noopener">https://joshhug.gitbooks.io/hug61b/content/assets/Screen</a> Shot 2019-03-23 at 7.25.41 PM.png))</p>
+<h3 id="Relax"><a href="#Relax" class="headerlink" title="Relax"></a>Relax</h3><ul>
+<li>For the popped vertex v, iterate through its edges.</li>
+<li>For the edge (v,w), compare the <code>currentBestDistToV + weight(v,w)</code> and <code>currentBestDistToW</code>.</li>
+<li>If the former is smaller, set the <code>currentBestDistToW = currentBestDistToV + weight(v,w)</code>, and set <code>edgeTo[w] = v</code>.</li>
+<li>Never relax edges that point to already visited vertices.</li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def dijkstras(source):</span><br><span class="line">    PQ.add(source, 0)</span><br><span class="line">    For all other vertices, v, PQ.add(v, infinity)</span><br><span class="line">    while PQ is not empty:</span><br><span class="line">        p &#x3D; PQ.removeSmallest()</span><br><span class="line">        relax(all edges from p)</span><br><span class="line"></span><br><span class="line">def relax(edge p,q):</span><br><span class="line">   if q is visited (or q is not in PQ):</span><br><span class="line">       return</span><br><span class="line"></span><br><span class="line">   if distTo[p] + weight(edge) &lt; distTo[q]:</span><br><span class="line">       distTo[q] &#x3D; distTo[p] + w</span><br><span class="line">       edgeTo[q] &#x3D; p</span><br><span class="line">       PQ.changePriority(q, distTo[q])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h3><ul>
+<li>At start, <code>distTo[source] = 0</code>.</li>
+<li>After relaxing all edges from source, assume v1 is the closet vertex to the source.</li>
+<li>Suppose there’s another path <code>(s,va,vb,...,v1)</code>, which is shorter than <code>(s,v1)</code>.</li>
+<li>Since <code>(s,va)</code> is longer than <code>(s,v1)</code>, that path doesn’t exist.</li>
+<li>Thus, v1 is the closet vertex to the source, and that argument is still valid for all the edges of v1.</li>
+</ul>
+<h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p>Dijkstra’s Algorithm is based on the PQ.</p>
+<p>Overall runtime: <code>O(V log(V) + V log(V) + E log(V))</code></p>
+<p>Connected graph: <code>O(E log V)</code> (E &gt; V)</p>
+<ul>
+<li><code>add</code>: V, each costing <code>O(log V)</code> time.</li>
+<li><code>removeSmallest</code>: V, each costing <code>O(log V)</code> time.</li>
+<li><code>changePriority</code>: E, each costing <code>O(log V)</code> time.</li>
+</ul>
+<h1 id="Minimum-Spanning-Trees-MST"><a href="#Minimum-Spanning-Trees-MST" class="headerlink" title="Minimum Spanning Trees(MST)"></a>Minimum Spanning Trees(MST)</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>Given an undirected graph, a spanning tree T is a subgraph of G, which has the following properties.</p>
+<ul>
+<li>Is connected.</li>
+<li>Is acyclic.</li>
+<li>Includes all of the vertices.</li>
+</ul>
+<p>A minimum spanning tree is a spanning tree of minimum total weight. </p>
+<p>A shortest paths tree depends on the start vertex, while there is no source for a minimum spanning tree.</p>
+<h2 id="Cut-Property"><a href="#Cut-Property" class="headerlink" title="Cut Property"></a>Cut Property</h2><ul>
+<li>A cut is an assignment of a graph’s nodes to two non-empty sets.</li>
+<li>A crossing edge is an edge which connects a node from one set to a node from the other set.</li>
+<li>Given any cut, minimum weight crossing edge is in the MST.</li>
+</ul>
+<p><a href="https://camo.githubusercontent.com/5ba7ebd985522413fc41d67a5e703cdd0404aa02/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30342d31342532306174253230382e35372e3232253230504d2e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/5ba7ebd985522413fc41d67a5e703cdd0404aa02/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30342d31342532306174253230382e35372e3232253230504d2e706e67" alt="Cut Property"></a></p>
+<h2 id="Generic-MST-Finding-Algorithm"><a href="#Generic-MST-Finding-Algorithm" class="headerlink" title="Generic MST Finding Algorithm"></a>Generic MST Finding Algorithm</h2><ul>
+<li>Start with no edges in the MST.</li>
+<li>Find a cut that has no crossing edges in the MST.</li>
+<li>Add smallest crossing edge to the MST.</li>
+<li>Repeat until V-1 edges.</li>
+</ul>
+<h2 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h2><ul>
+<li>Start from some arbitrary start node.</li>
+<li>Repeatedly add shortest edge that has one node inside the MST under construction.</li>
+<li>Repeat until V-1 edges.</li>
+</ul>
+<h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><p>Prim’s and Dijkstra’s algorithms are similar, however:</p>
+<ul>
+<li>Dijkstra’s considers “distance from the source”.</li>
+<li>Prim’s considers “distance from the tree.”</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrimMST</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PrimMST</span><span class="params">(EdgeWeightedGraph G)</span> </span>&#123;</span><br><span class="line">        edgeTo = <span class="keyword">new</span> Edge[G.V()];</span><br><span class="line">        distTo = <span class="keyword">new</span> <span class="keyword">double</span>[G.V()];</span><br><span class="line">        marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">        fringe = <span class="keyword">new</span> SpecialPQ &lt; Double &gt; (G.V());</span><br><span class="line"></span><br><span class="line">        distTo[s] = <span class="number">0.0</span>;</span><br><span class="line">        setDistancesToInfinityExceptS(s);</span><br><span class="line">        insertAllVertices(fringe);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* Get vertices in order of distance from tree. */</span></span><br><span class="line">        <span class="keyword">while</span> (!fringe.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = fringe.delMin();</span><br><span class="line">            scan(G, v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">scan</span><span class="params">(EdgeWeightedGraph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        marked[v] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (Edge e: G.adj(v)) &#123;</span><br><span class="line">            <span class="keyword">int</span> w = e.other(v);</span><br><span class="line">            <span class="keyword">if</span> (marked[w]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (e.weight() &lt; distTo[w]) &#123;</span><br><span class="line">                distTo[w] = e.weight();</span><br><span class="line">                edgeTo[w] = e;</span><br><span class="line">                pq.decreasePriority(w, distTo[w]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Runtime-1"><a href="#Runtime-1" class="headerlink" title="Runtime"></a>Runtime</h3><p>Priority Queue operation count, assuming binary heap based PQ.</p>
+<ul>
+<li>Insertion: V, each costing <code>O(log V)</code> time.</li>
+<li>Delete-min: V, each costing <code>O(log V)</code> time.</li>
+<li>Decrease priority: <code>O(E)</code>, each costing <code>O(log V)</code> time.</li>
+</ul>
+<p>Overall runtime: <code>O(V * log(V) + V * log(V) + E * logV)</code>. Assuming E &gt; V, this is just <code>O(E log V)</code>.</p>
+<h2 id="Kruskal’s-Algorithm"><a href="#Kruskal’s-Algorithm" class="headerlink" title="Kruskal’s Algorithm"></a>Kruskal’s Algorithm</h2><ul>
+<li>Consider edges in increasing order of weight.</li>
+<li>Add edge to MST unless doing so creates a cycle.</li>
+<li>Repeat until V-1 edges.</li>
+</ul>
+<h3 id="Implementation-1"><a href="#Implementation-1" class="headerlink" title="Implementation"></a>Implementation</h3><p>Adding an edge to MST means that add the edge to the ArrayList and connect the two vertices in the <code>WeightedQuickUnion</code>. If the two vertices are already connected, the edge should be ingored since adding it will create a cycle.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KruskalMST</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List &lt; Edge &gt; mst = <span class="keyword">new</span> ArrayList &lt; Edge &gt; ();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KruskalMST</span><span class="params">(EdgeWeightedGraph G)</span> </span>&#123;</span><br><span class="line">        MinPQ &lt; Edge &gt; pq = <span class="keyword">new</span> MinPQ &lt; Edge &gt; ();</span><br><span class="line">        <span class="keyword">for</span> (Edge e: G.edges()) &#123;</span><br><span class="line">            pq.insert(e);</span><br><span class="line">        &#125;</span><br><span class="line">        WeightedQuickUnionPC uf =</span><br><span class="line">            <span class="keyword">new</span> WeightedQuickUnionPC(G.V());</span><br><span class="line">        <span class="keyword">while</span> (!pq.isEmpty() &amp;&amp; mst.size() &lt; G.V() - <span class="number">1</span>) &#123;</span><br><span class="line">            Edge e = pq.delMin();</span><br><span class="line">            <span class="keyword">int</span> v = e.from();</span><br><span class="line">            <span class="keyword">int</span> w = e.to();</span><br><span class="line">            <span class="keyword">if</span> (!uf.connected(v, w)) &#123;</span><br><span class="line">                uf.union(v, w);</span><br><span class="line">                mst.add(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Runtime-2"><a href="#Runtime-2" class="headerlink" title="Runtime"></a>Runtime</h3><ul>
+<li>Insertion: E, each costing <code>O(log E)</code> time.</li>
+<li>Delete-min: <code>O(E)</code>, each costing <code>O(log E)</code> time.</li>
+<li>Union: <code>O(V)</code>, each costing <code>O(log V)</code> time.</li>
+<li>IsConnected: <code>O(E)</code>, each costing <code>O(log V)</code> time. Overall runtime: <code>O(E + V log * V + E log * V)</code>. Assuming E &gt; V, this is just <code>O(E log V)</code>.</li>
+</ul>
+<h1 id="Reductions-and-Decomposition"><a href="#Reductions-and-Decomposition" class="headerlink" title="Reductions and Decomposition"></a>Reductions and Decomposition</h1><h2 id="Topological-Sort"><a href="#Topological-Sort" class="headerlink" title="Topological Sort"></a>Topological Sort</h2><ul>
+<li>Topological Sort is an ordering of a graph’s vertices such that for every directed edge u→v, u comes beforev in the ordering.</li>
+<li>Topological sorts only apply to directed, acyclic (no cycles) graphs (DAG).</li>
+<li>Topological sort is called a linearization of the graph, since all the vertices in the graph could be redrawn in one line.</li>
+</ul>
+<h3 id="Topological-Sort-Algorithm"><a href="#Topological-Sort-Algorithm" class="headerlink" title="Topological Sort Algorithm"></a>Topological Sort Algorithm</h3><ul>
+<li>Perform a DFS traversal from every vertex in the graph, not clearing markings in between traversals.</li>
+<li>Record DFS postorder along the way.</li>
+<li>Topological ordering is the reverse of the postorder.</li>
+</ul>
+<p>The total runtime of DFS is <code>O(V + E)</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">topological(DAG):</span><br><span class="line">    initialize marked array</span><br><span class="line">    initialize postOrder list</span><br><span class="line">    <span class="keyword">for</span> all vertices in DAG:</span><br><span class="line">        <span class="keyword">if</span> vertex is not marked:</span><br><span class="line">            dfs(vertex, marked, postOrder)</span><br><span class="line">    <span class="keyword">return</span> postOrder reversed</span><br><span class="line"></span><br><span class="line">dfs(vertex, marked, postOrder):</span><br><span class="line">    marked[vertex] = <span class="keyword">true</span></span><br><span class="line">    <span class="keyword">for</span> neighbor of vertex:</span><br><span class="line">        dfs(neighbor, marked, postOrder)</span><br><span class="line">    postOrder.add(vertex)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shortest-Path-Algorithm-for-DAGs"><a href="#Shortest-Path-Algorithm-for-DAGs" class="headerlink" title="Shortest Path Algorithm for DAGs"></a>Shortest Path Algorithm for DAGs</h2><ul>
+<li>Visit vertices in topological order.</li>
+<li>On each visit, relax all outgoing edges.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/03/cs61b%20week10/" rel="prev" title="cs61b week10">
+      <i class="fa fa-chevron-left"></i> cs61b week10
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week11"><span class="nav-number">1.</span> <span class="nav-text">cs61b week11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shortest-Paths"><span class="nav-number">2.</span> <span class="nav-text">Shortest Paths</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BFS-v-s-DFS-for-Path-Finding"><span class="nav-number">2.1.</span> <span class="nav-text">BFS v.s. DFS for Path Finding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shortest-Path-Tree"><span class="nav-number">2.2.</span> <span class="nav-text">Shortest Path Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dijkstra’s-Algorithm-ˈdaɪkstrə"><span class="nav-number">2.3.</span> <span class="nav-text">Dijkstra’s Algorithm[[&#x2F;ˈdaɪkstrə&#x2F;]]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Relax"><span class="nav-number">2.3.1.</span> <span class="nav-text">Relax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">2.3.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proof"><span class="nav-number">2.3.3.</span> <span class="nav-text">Proof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime"><span class="nav-number">2.3.4.</span> <span class="nav-text">Runtime</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Minimum-Spanning-Trees-MST"><span class="nav-number">3.</span> <span class="nav-text">Minimum Spanning Trees(MST)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-number">3.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cut-Property"><span class="nav-number">3.2.</span> <span class="nav-text">Cut Property</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generic-MST-Finding-Algorithm"><span class="nav-number">3.3.</span> <span class="nav-text">Generic MST Finding Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prim’s-Algorithm"><span class="nav-number">3.4.</span> <span class="nav-text">Prim’s Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation"><span class="nav-number">3.4.1.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">Runtime</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kruskal’s-Algorithm"><span class="nav-number">3.5.</span> <span class="nav-text">Kruskal’s Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-2"><span class="nav-number">3.5.2.</span> <span class="nav-text">Runtime</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reductions-and-Decomposition"><span class="nav-number">4.</span> <span class="nav-text">Reductions and Decomposition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Topological-Sort"><span class="nav-number">4.1.</span> <span class="nav-text">Topological Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Topological-Sort-Algorithm"><span class="nav-number">4.1.1.</span> <span class="nav-text">Topological Sort Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shortest-Path-Algorithm-for-DAGs"><span class="nav-number">4.2.</span> <span class="nav-text">Shortest Path Algorithm for DAGs</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
