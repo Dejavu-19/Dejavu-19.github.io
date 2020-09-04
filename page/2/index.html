@@ -835,7 +835,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/09/Binary-Search/" class="post-title-link" itemprop="url">Leetcode Binary Search</a>
+            <a href="/2020/08/09/Binary-Search/" class="post-title-link" itemprop="url">Binary Search</a>
         </h2>
 
         <div class="post-meta">
@@ -852,7 +852,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 10:31:12" itemprop="dateModified" datetime="2020-08-11T10:31:12+09:00">2020-08-11</time>
+                <time title="修改时间：2020-09-04 08:24:51" itemprop="dateModified" datetime="2020-09-04T08:24:51+09:00">2020-09-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -881,6 +881,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= h) &#123;</span><br><span class="line">        <span class="keyword">int</span> m = l + (h - l) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[m] == key) &#123;</span><br><span class="line">            <span class="keyword">return</span> m;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[m] &gt; key) &#123;</span><br><span class="line">            h = m - <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l = m + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度为 O(logN)</p>
+<p><a href="https://leetcode-cn.com/problems/binary-search/solution/er-fen-cha-zhao-xiang-jie-by-labuladong/" target="_blank" rel="noopener">各种写法</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/08/09/Binary-Search/#more" rel="contents">
