@@ -171,6 +171,208 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/07/Lab5,D5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/07/Lab5,D5/" class="post-title-link" itemprop="url">Lab5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-07 16:46:55" itemprop="dateCreated datePublished" datetime="2020-09-07T16:46:55+09:00">2020-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-08 02:00:08" itemprop="dateModified" datetime="2020-09-08T02:00:08+09:00">2020-09-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Lab-5-Getting-Started-on-Project-2"><a href="#Lab-5-Getting-Started-on-Project-2" class="headerlink" title="Lab 5: Getting Started on Project 2"></a>Lab 5: Getting Started on Project 2</h1><h1 id="Discussion-5、Exam-Prep-5"><a href="#Discussion-5、Exam-Prep-5" class="headerlink" title="Discussion 5、Exam Prep 5"></a>Discussion 5、Exam Prep 5</h1><h2 id="Assorted-ADTs-abstract-data-types"><a href="#Assorted-ADTs-abstract-data-types" class="headerlink" title="Assorted ADTs(abstract data types)"></a>Assorted ADTs(abstract data types)</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>A list is an ordered collection, or sequence</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E element)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">add(element); <span class="comment">// adds element to the end of the list</span></span><br><span class="line">add(index, element); <span class="comment">// adds element at the given index</span></span><br><span class="line">get(index); <span class="comment">// returns element at the given index</span></span><br><span class="line">size(); <span class="comment">// the number of elements in the list</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>A set is a (usually unordered) collection of unique elements.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Set</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E element)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object object)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object object)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">add(element); <span class="comment">// adds element to the collection</span></span><br><span class="line">contains(object); <span class="comment">// checks if set contains object</span></span><br><span class="line">size(); <span class="comment">// number of elements in the set</span></span><br><span class="line">remove(object); <span class="comment">// removes specified object from set</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>A map is a collection of key-value mappings, like a dictionary in Python. </p>
+<p>Like a set, the keys in a map are unique</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Map</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">V <span class="title">pup</span><span class="params">(K key, V value)</span></span>;</span><br><span class="line">    <span class="function">V <span class="title">get</span><span class="params">(K key)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">containsKey</span><span class="params">(Object key)</span></span>;</span><br><span class="line">    <span class="function">Set&lt;K&gt; <span class="title">keySet</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">put(key, value); <span class="comment">// adds key-value pair to the map</span></span><br><span class="line">get(key); <span class="comment">// returns value for the corresponding key</span></span><br><span class="line">containsKey(key); <span class="comment">// checks if map contains the specified key</span></span><br><span class="line">keySet(); <span class="comment">// returns set of all keys in map</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Stack-and-Queue"><a href="#Stack-and-Queue" class="headerlink" title="Stack and Queue"></a>Stack and Queue</h3><p>Stacks and queues are two similar types of linear collections with special behavior. </p>
+<p>A stack is a last-in, first-out ADT: elements are always added or removed from one end of the data structure. </p>
+<p>A queue is a first-in, first-out ADT. </p>
+<p>Both data types support three basic operations: </p>
+<p><code>push(e)</code> which adds an element, <code>peek()</code> which returns the next element, and <code>poll()</code> which returns and removes the next element. </p>
+<p>Java defines an interface that combines both stacks and queues in the Deque. </p>
+<p>A deque (double ended queue, pronounced “deck”) is a linear collection that supports element insertion and removal at both ends.</p>
+<h3 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Deque</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">adFirst</span><span class="params">(E e)</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">removeFirst</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">getFirst</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addLast</span><span class="params">(E e)</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">removeLast</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">getLast</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">addFirst(e); <span class="comment">// adds e to front of deque</span></span><br><span class="line">removeFirst(); <span class="comment">// removes and returns front element of deque</span></span><br><span class="line">getFirst(); <span class="comment">// returns front element of deque</span></span><br><span class="line">addLast(e); <span class="comment">// adds e to end of deque</span></span><br><span class="line">removeLast(); <span class="comment">// removes and returns last element of deque</span></span><br><span class="line">getLast(); <span class="comment">// returns last element of deque</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h3><p>Generally-speaking, a <strong><code>priority queue</code></strong> is like a regular queue except each element has a priority associated with it which determines in what order elements are removed from the queue</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriorityQueue</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">peek</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">poll</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add(e); <span class="comment">// adds element e to the priority queue</span></span><br><span class="line">peek(); <span class="comment">// looks at the highest priority element, but does not remove it from the PQ</span></span><br><span class="line">poll(); <span class="comment">// pops the highest priority element from the PQ</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Solving-Problems-with-ADTs"><a href="#Solving-Problems-with-ADTs" class="headerlink" title="Solving Problems with ADTs"></a>Solving Problems with ADTs</h2><h3 id="Q-Given-a-article-find-the-frequency-of-each-word-used-in-the-article"><a href="#Q-Given-a-article-find-the-frequency-of-each-word-used-in-the-article" class="headerlink" title="Q : Given a article, find the frequency of each word used in the article."></a>Q : Given a article, find the frequency of each word used in the article.</h3><ul>
+<li>Use a map. When you encounter a word for the first time, put the key into the map with a value of 1. For every subsequent time you encounter a word, get the value, and put the key back into the map with its value you just got, plus 1.</li>
+</ul>
+<h3 id="Q-Given-an-unsorted-array-of-integers-return-the-array-sorted-from-least-to-greatest"><a href="#Q-Given-an-unsorted-array-of-integers-return-the-array-sorted-from-least-to-greatest" class="headerlink" title="Q: Given an unsorted array of integers, return the array sorted from least to greatest."></a>Q: Given an unsorted array of integers, return the array sorted from least to greatest.</h3><ul>
+<li>Use a priority queue. For each integer in the unsorted array, enqueue the integer with a priority equal to its value. Calling dequeue will return the largest integer; therefore, we can insert these values from index length-1 to 0 into our array to sort from least to greatest.</li>
+</ul>
+<h3 id="Q-Implement-the-forward-and-back-buttons-for-a-web-browser"><a href="#Q-Implement-the-forward-and-back-buttons-for-a-web-browser" class="headerlink" title="Q: Implement the forward and back buttons for a web browser."></a>Q: Implement the forward and back buttons for a web browser.</h3><ul>
+<li>Use two stacks, one for each button. Each time you visit a new web page, add the previous page to the back button’s stack. When you click the back button, add the current page to the forward button stack, and pop a page from the back button stack. When you click the forward button, add the current page to the back button stack, and pop a page from the forward button stack. Finally, when you visit a new page, clear the forward button stack.</li>
+</ul>
+<h3 id="Q-Two-Sum-problem"><a href="#Q-Two-Sum-problem" class="headerlink" title="Q: Two Sum problem"></a>Q: Two Sum problem</h3><ul>
+<li>The fastest way to do this is with the help of a set (specifically, a HashSet, which has constant time add() and contains()). The key insight is that if a + b = x, then b = x - a. This means that we can look to see whether or not x - (current element) has been seen already. We can store every element that we look through in a set, and do a single pass through the array</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    Set&lt;Integer&gt; prevSeen = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (prevSeen.contains(k - num) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        prevSeen.add(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Implement-queue-with-stack"><a href="#Implement-queue-with-stack" class="headerlink" title="Implement queue with stack"></a>Implement queue with stack</h2><p>Define a Queue class that implements the push and poll methods of a queue ADT using only a Stack class which implements the stack ADT.</p>
+<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1:"></a>Solution1:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Queue</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;E&gt; stack = <span class="keyword">new</span> Stack&lt;E&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E element)</span> </span>&#123;</span><br><span class="line">        stack.push(element);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Stack&lt;E&gt; temp = <span class="keyword">new</span> Stack&lt;E&gt;;</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">            temp.push(stack.pop());</span><br><span class="line">        &#125;</span><br><span class="line">        E toPop = temp.pop();</span><br><span class="line">        <span class="keyword">while</span> (!temp.isEmpty()) &#123;</span><br><span class="line">            stack.push(temp.pop());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> toPop;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2:"></a>Solution2:</h3><p>It can also be done using only one stack instance and <code>recursion</code> (which itself is a call stack).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;E&gt; stack = <span class="keyword">new</span> Stack&lt;E&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E element)</span> </span>&#123;</span><br><span class="line">        stack.push(element);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pop(stack.pop());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> E <span class="title">pop</span><span class="params">(E previous)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (stack.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> previous;</span><br><span class="line">        &#125;</span><br><span class="line">        E current = stack.pop();</span><br><span class="line">        E toReturn = pop(current);</span><br><span class="line">        push(previous);</span><br><span class="line">        <span class="keyword">return</span> toReturn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Exam-Prep-5"><a href="#Exam-Prep-5" class="headerlink" title="Exam Prep 5"></a>Exam Prep 5</h1><h2 id="Assorted-ADTs"><a href="#Assorted-ADTs" class="headerlink" title="Assorted ADTs"></a>Assorted ADTs</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/07/Project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/07/Project/" class="post-title-link" itemprop="url">Project</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-07 14:37:39" itemprop="dateCreated datePublished" datetime="2020-09-07T14:37:39+09:00">2020-09-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="proj1A"><a href="#proj1A" class="headerlink" title="proj1A"></a>proj1A</h1><h2 id="LinkedListDeque"><a href="#LinkedListDeque" class="headerlink" title="LinkedListDeque"></a>LinkedListDeque</h2><p>deque双端队列，元素可以从两端弹出，插入和删除操作限定在队列的两边进行</p>
+<p>double-ended queue</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> proj1a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedListDeque</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TNode sentinel;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> T item;</span><br><span class="line">        <span class="keyword">public</span> TNode prev;</span><br><span class="line">        <span class="keyword">public</span> TNode next;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">TNode</span><span class="params">(T t, TNode p, TNode n)</span> </span>&#123;</span><br><span class="line">            item = t;</span><br><span class="line">            prev = p;</span><br><span class="line">            next = n;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(T item)</span> </span>&#123;</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">        sentinel.next = <span class="keyword">new</span> TNode(item, sentinel, sentinel.next);</span><br><span class="line">        sentinel.next.next.prev = sentinel.next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLast</span><span class="params">(T item)</span> </span>&#123;</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">        sentinel.prev = <span class="keyword">new</span> TNode(item, sentinel.prev, sentinel);</span><br><span class="line">        sentinel.prev.prev.next = sentinel.prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TNode cur = sentinel.next;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            System.out.print(cur.item +  <span class="string">" "</span>);</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        T remove = sentinel.next.item;</span><br><span class="line">        size -= <span class="number">1</span>;</span><br><span class="line">        sentinel.next.next.prev = sentinel;</span><br><span class="line">        sentinel.next = sentinel.next.next;</span><br><span class="line">        <span class="keyword">return</span> remove;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        T remove = sentinel.prev.item;</span><br><span class="line">        size -= <span class="number">1</span>;</span><br><span class="line">        sentinel.prev.prev.next = sentinel;</span><br><span class="line">        sentinel.prev = sentinel.prev.prev;</span><br><span class="line">        <span class="keyword">return</span> remove;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        TNode cur = sentinel.next;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = index; i &gt; <span class="number">0</span>; --i) &#123;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur.item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getRecursive</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getRecursive(index, sentinel.next);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> T <span class="title">getRecursive</span><span class="params">(<span class="keyword">int</span> index, TNode t)</span> </span>&#123;</span><br><span class="line">        TNode cur = sentinel.next;</span><br><span class="line">        <span class="keyword">if</span> (index == <span class="number">0</span>) <span class="keyword">return</span> cur.item;</span><br><span class="line">        <span class="keyword">return</span> getRecursive(index - <span class="number">1</span>, cur.next);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinkedListDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sentinel = <span class="keyword">new</span> TNode(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">        sentinel.next = sentinel;</span><br><span class="line">        sentinel.prev = sentinel;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinkedListDeque</span><span class="params">(LinkedListDeque other)</span> </span>&#123;</span><br><span class="line">        sentinel = <span class="keyword">new</span> TNode(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">        sentinel.next = sentinel;</span><br><span class="line">        sentinel.prev = sentinel;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; other.size(); i++) &#123;</span><br><span class="line">            addLast((T) other.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ArrayDeque"><a href="#ArrayDeque" class="headerlink" title="ArrayDeque"></a>ArrayDeque</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> proj1a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayDeque</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T[] items;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextFirst;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextLast;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArrayDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        items = (T[]) <span class="keyword">new</span> Object(<span class="number">8</span>);</span><br><span class="line">        nextFirst = <span class="number">0</span>;</span><br><span class="line">        nextLast = <span class="number">1</span>;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size == items.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isSparse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> items.length &gt;= <span class="number">16</span> &amp;&amp; size &lt; items.length/<span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">plusOne</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (index + <span class="number">1</span>) % items.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">minusOne</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (index - <span class="number">1</span> + items.length) % items.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        T[] newDeque = (T[]) <span class="keyword">new</span> Object[capacity];</span><br><span class="line">        <span class="keyword">int</span> oldIndex = plusOne(nextFirst); <span class="comment">// the index of the first item in original deque</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> newIndex = <span class="number">0</span>; newIndex &lt; size; newIndex++) &#123;</span><br><span class="line">            newDeque[newIndex] = items[oldIndex];</span><br><span class="line">            oldIndex = plusOne(oldIndex);</span><br><span class="line">        &#125;</span><br><span class="line">        items = newDeque;</span><br><span class="line">        nextFirst = capacity - <span class="number">1</span>; <span class="comment">// since the new deque is starting from true 0 index.</span></span><br><span class="line">        nextLast = size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">upSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        resize(size * <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">downSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        resize(items.length / <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = plusOne(nextFirst); i != nextLast; i = plusOne(i)) &#123;</span><br><span class="line">            System.out.print(items[i] + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isFull()) &#123;</span><br><span class="line">            upSize();</span><br><span class="line">        &#125;</span><br><span class="line">        items[nextFirst] = x;</span><br><span class="line">        nextFirst = minusOne(nextFirst);</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLast</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isFull()) &#123;</span><br><span class="line">            upSize();</span><br><span class="line">        &#125;</span><br><span class="line">        items[nextLast] = x;</span><br><span class="line">        nextLast = plusOne(nextLast);</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isSparse()) &#123;</span><br><span class="line">            downSize();</span><br><span class="line">        &#125;</span><br><span class="line">        nextFirst = plusOne(nextFirst);</span><br><span class="line">        T toRemove = items[nextFirst];</span><br><span class="line">        items[nextFirst] = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (!isEmpty()) &#123;</span><br><span class="line">            size -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> toRemove;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isSparse()) &#123;</span><br><span class="line">            downSize();</span><br><span class="line">        &#125;</span><br><span class="line">        nextLast = minusOne(nextLast);</span><br><span class="line">        T toRemove = items[nextLast];</span><br><span class="line">        items[nextLast] = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (!isEmpty()) &#123;</span><br><span class="line">            size -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> toRemove;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= size) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> start = plusOne(nextFirst);</span><br><span class="line">        <span class="keyword">return</span> items[(start + index) % items.length];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArrayDeque</span><span class="params">(ArrayDeque other)</span> </span>&#123;</span><br><span class="line">        items = (T[]) <span class="keyword">new</span> Object[other.size];</span><br><span class="line">        nextFirst = other.nextFirst;</span><br><span class="line">        nextLast = other.nextLast;</span><br><span class="line">        size = other.size;</span><br><span class="line"></span><br><span class="line">        System.arraycopy(other.items, <span class="number">0</span>, items, <span class="number">0</span>, other.size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="proj1B"><a href="#proj1B" class="headerlink" title="proj1B"></a>proj1B</h1><h2 id="Deque-Interface"><a href="#Deque-Interface" class="headerlink" title="Deque Interface"></a>Deque Interface</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Deque</span>&lt;<span class="title">T</span>&gt; </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(T item)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addLast</span><span class="params">(T item)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">printDeque</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">T <span class="title">removeFirst</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">T <span class="title">removeLast</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">T <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size() == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="wordToDeque"><a href="#wordToDeque" class="headerlink" title="wordToDeque"></a>wordToDeque</h2><p>isPalindrome</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Palindrome</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Return a Deque where the characters appear in the same</span></span><br><span class="line"><span class="comment">     * order as in the String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Deque&lt;Character&gt; <span class="title">wordToDeque</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        Deque&lt;Character&gt; wordInDeque = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++) &#123;</span><br><span class="line">            wordInDeque.addLast(word.charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> wordInDeque;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * To determine whether a word is palindrome or not</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(Deque&lt;Character&gt; wordInDeque)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (wordInDeque.size() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> wordInDeque.removeFirst() == wordInDeque.removeLast() &amp;&amp; isPalindrome(wordInDeque);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isPalindrome(wordToDeque(word));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * TO determine whether a word is a off-by-one palindrome</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(Deque&lt;Character&gt; wordInDeque, CharacterComparator cc)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (wordInDeque.size() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> cc.equalChars(wordInDeque.removeFirst(), wordInDeque.removeLast()) &amp;&amp; isPalindrome(wordInDeque, cc);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String word, CharacterComparator cc)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isPalindrome(wordToDeque(word), cc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/04/cs61b%20week11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1066,177 +1268,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/25/Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/25/Tree/" class="post-title-link" itemprop="url">Leetcode Tree</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-08-25 11:15:45 / 修改时间：11:18:26" itemprop="dateCreated datePublished" datetime="2020-08-25T11:15:45+09:00">2020-08-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Leetcode-Tree"><a href="#Leetcode-Tree" class="headerlink" title="Leetcode Tree"></a>Leetcode Tree</h1><h2 id="404-Sum-of-Left-Leaves"><a href="#404-Sum-of-Left-Leaves" class="headerlink" title="404. Sum of Left Leaves"></a><a href="https://leetcode.com/problems/sum-of-left-leaves/" target="_blank" rel="noopener">404. Sum of Left Leaves</a></h2><h3 id="solution1"><a href="#solution1" class="headerlink" title="solution1"></a>solution1</h3><p>Recursive method. </p>
-<p>For given node we check whether its left child is a leaf. If it is the case, we add its value to answer, otherwise recursively call method on left child. For right child we call method only if it has at least one nonnull child.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (root.left != <span class="keyword">null</span> &amp;&amp; root.left.left == <span class="keyword">null</span> &amp;&amp; root.left.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            sum += root.left.val;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            sum += sumOfLeftLeaves(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">        sum += sumOfLeftLeaves(root.right);</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Iterative method.</strong> </p>
-<p>Here for each node in the tree we check whether its left child is a leaf. If it is true, we add its value to answer, otherwise add left child to the stack to process it later. For right child we add it to stack only if it is not a leaf.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</span><br><span class="line">    stack.push(root);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!stack.empty()) &#123;</span><br><span class="line">        TreeNode node = stack.pop();</span><br><span class="line">        <span class="keyword">if</span>(node.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node.left.left == <span class="keyword">null</span> &amp;&amp; node.left.right == <span class="keyword">null</span>)</span><br><span class="line">                ans += node.left.val;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                stack.push(node.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node.right.left != <span class="keyword">null</span> || node.right.right != <span class="keyword">null</span>)</span><br><span class="line">                stack.push(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/25/Tree/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/24/AWS2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/24/AWS2/" class="post-title-link" itemprop="url">AWS Day02</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-24 17:02:25" itemprop="dateCreated datePublished" datetime="2020-08-24T17:02:25+09:00">2020-08-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-31 16:01:06" itemprop="dateModified" datetime="2020-08-31T16:01:06+09:00">2020-08-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Amazon/" itemprop="url" rel="index"><span itemprop="name">Amazon</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="AWS-Day2"><a href="#AWS-Day2" class="headerlink" title="AWS Day2"></a>AWS Day2</h1><h2 id="Explanation-towards-handson"><a href="#Explanation-towards-handson" class="headerlink" title="Explanation towards handson"></a>Explanation towards handson</h2><h2 id="第1部基本知識の振り返り"><a href="#第1部基本知識の振り返り" class="headerlink" title="第1部基本知識の振り返り"></a>第1部基本知識の振り返り</h2><h3 id="Webサービス超入門"><a href="#Webサービス超入門" class="headerlink" title="Webサービス超入門"></a>Webサービス超入門</h3><p>Web service</p>
-<h3 id="Web-application"><a href="#Web-application" class="headerlink" title="Web application"></a>Web application</h3><p>Many people using same file at the same time</p>
-<p>service-client(computer, smartphone…)</p>
-<ul>
-<li>stand alone application-Web application</li>
-<li>file-datebase</li>
-<li>window OS-servicer towards OS</li>
-<li>computer-物理servicer</li>
-</ul>
-<h3 id="Internet-and-Web"><a href="#Internet-and-Web" class="headerlink" title="Internet  and Web"></a>Internet  and Web</h3><h3 id="IP-HTTP"><a href="#IP-HTTP" class="headerlink" title="IP, HTTP"></a>IP, HTTP</h3><p>Internet Protocl(IP)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/24/AWS2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1308,7 +1339,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
