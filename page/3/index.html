@@ -171,6 +171,179 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/11/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/11/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="post-title-link" itemprop="url">位运算</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-11 01:11:06" itemprop="dateCreated datePublished" datetime="2020-08-11T01:11:06+09:00">2020-08-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-14 02:11:14" itemprop="dateModified" datetime="2020-08-14T02:11:14+09:00">2020-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><h2 id="0-原理"><a href="#0-原理" class="headerlink" title="0. 原理"></a>0. 原理</h2><p>0s 表示一串 0，1s 表示一串 1。 <strong><code>^</code></strong>抑或(XOR)，相同则消 A XOR A = 0</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x ^ <span class="number">0</span>s = x      x &amp; <span class="number">0</span>s = <span class="number">0</span>      x | <span class="number">0</span>s = x</span><br><span class="line">x ^ <span class="number">1</span>s = ~x     x &amp; <span class="number">1</span>s = x      x | <span class="number">1</span>s = <span class="number">1</span>s</span><br><span class="line">x ^ x = <span class="number">0</span>       x &amp; x = x       x | x = x</span><br></pre></td></tr></table></figure>
+
+<p>利用 <strong><code>x ^ 1s = ~x</code></strong> ，可以将一个数的位级表示翻转；</p>
+<p>利用 <strong><code>x ^ x = 0</code></strong> 的特点，可以将三个数中重复的两个数去除，只留下另一个数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>^<span class="number">1</span>^<span class="number">2</span> = <span class="number">2</span>  <span class="comment">//1 ^ 1 = 0</span></span><br></pre></td></tr></table></figure>
+
+<p>利用 <strong><code>x &amp; 0s = 0</code></strong> 和 <strong><code>x &amp; 1s = x</code></strong> 的特点，可以实现掩码操作。</p>
+<p>一个数 num 与 mask：00111100 进行位与操作，只保留 num 中与 mask 的 1 部分相对应的位。    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">01011011</span> &amp;</span><br><span class="line"><span class="number">00111100</span></span><br><span class="line">--------</span><br><span class="line"><span class="number">00011000</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/11/%E4%BD%8D%E8%BF%90%E7%AE%97/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/10/%E6%95%B0%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/10/%E6%95%B0%E5%AD%A6/" class="post-title-link" itemprop="url">Leetcode 数学</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 01:06:50" itemprop="dateCreated datePublished" datetime="2020-08-10T01:06:50+09:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-14 02:27:35" itemprop="dateModified" datetime="2020-08-14T02:27:35+09:00">2020-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="204-Count-Primes"><a href="#204-Count-Primes" class="headerlink" title="204.Count Primes"></a><a href="https://leetcode.com/problems/count-primes/description/" target="_blank" rel="noopener">204.Count Primes</a></h2><p>it starts from 2, the first prime, then mark the multip of 2 as true in notPrime, so the loop of i will skip them. the next prime is 3, do the same thing. Then it is 4, which 2*2, so the not prime is true, and will skip to next.</p>
+<p>埃拉托斯特尼筛法在每次找到一个素数时，将能被素数整除的数排除掉。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[] notPrimes = <span class="keyword">new</span> <span class="keyword">boolean</span>[n + <span class="number">1</span>];  <span class="comment">//创建一个布尔值数组，判断每个元素是否为素数，default false</span></span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (notPrimes[i]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">long</span> j = (<span class="keyword">long</span>) (i) * i; j &lt; n; j += i) &#123;</span><br><span class="line">                notPrimes[(<span class="keyword">int</span>) j] = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/10/%E6%95%B0%E5%AD%A6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/09/Binary-Search/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -655,7 +828,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-10 14:51:11" itemprop="dateModified" datetime="2020-09-10T14:51:11+09:00">2020-09-10</time>
+                <time title="修改时间：2020-09-14 15:27:43" itemprop="dateModified" datetime="2020-09-14T15:27:43+09:00">2020-09-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -679,7 +852,7 @@
 
       
           <h1 id="Discussion1"><a href="#Discussion1" class="headerlink" title="Discussion1"></a>Discussion1</h1><h3 id="Intro-to-Java"><a href="#Intro-to-Java" class="headerlink" title="Intro to Java"></a>Intro to Java</h3><h1 id="Discussion2"><a href="#Discussion2" class="headerlink" title="Discussion2"></a>Discussion2</h1><h3 id="Pass-by-What"><a href="#Pass-by-What" class="headerlink" title="Pass-by-What"></a>Pass-by-What</h3><p>Pokemon class</p>
-<h3 id="Static-Methods-and-Variables"><a href="#Static-Methods-and-Variables" class="headerlink" title="Static Methods and Variables"></a>Static Methods and Variables</h3><h3 id="Practice-with-Linked-Lists"><a href="#Practice-with-Linked-Lists" class="headerlink" title="Practice with Linked Lists"></a>Practice with Linked Lists</h3><h3 id="Squaring-a-List"><a href="#Squaring-a-List" class="headerlink" title="Squaring a List"></a>Squaring a List</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IntList <span class="title">square</span><span class="params">(IntList L)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (L == <span class="keyword">null</span>) &#123;  <span class="comment">//edge case</span></span><br><span class="line">		<span class="keyword">return</span> L;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		IntList rest = square(L.rest);  <span class="comment">//递归调用quare方法</span></span><br><span class="line">		IntList M = <span class="keyword">new</span> IntList(L.first * L.first, rest);</span><br><span class="line">		<span class="keyword">return</span> M;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//iteratively</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IntList <span class="title">square</span><span class="params">(IntList L)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (L == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> L;</span><br><span class="line">    &#125;</span><br><span class="line">    IntList B = L.rest;</span><br><span class="line">    IntList LSquared = <span class="keyword">new</span> IntList(L.first * L.first, <span class="keyword">null</span>);</span><br><span class="line">    IntList C = LSquared;</span><br><span class="line">	<span class="keyword">while</span> (B != <span class="keyword">null</span>) &#123;</span><br><span class="line">        C.rest = <span class="keyword">new</span> IntList(B.first * B.first, <span class="keyword">null</span>);</span><br><span class="line">        B = B.rest;</span><br><span class="line">		C = C.rest;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> LSquared;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Static-Methods-and-Variables"><a href="#Static-Methods-and-Variables" class="headerlink" title="Static Methods and Variables"></a>Static Methods and Variables</h3><h3 id="Practice-with-Linked-Lists"><a href="#Practice-with-Linked-Lists" class="headerlink" title="Practice with Linked Lists"></a>Practice with Linked Lists</h3><h3 id="Squaring-a-List"><a href="#Squaring-a-List" class="headerlink" title="Squaring a List"></a>Squaring a List</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IntList <span class="title">square</span><span class="params">(IntList L)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (L == <span class="keyword">null</span>) &#123;  <span class="comment">//edge case</span></span><br><span class="line">		<span class="keyword">return</span> L;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		IntList rest = square(L.rest);  <span class="comment">//递归调用square方法</span></span><br><span class="line">		IntList M = <span class="keyword">new</span> IntList(L.first * L.first, rest);</span><br><span class="line">		<span class="keyword">return</span> M;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//iteratively</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IntList <span class="title">square</span><span class="params">(IntList L)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (L == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> L;</span><br><span class="line">    &#125;</span><br><span class="line">    IntList B = L.rest;</span><br><span class="line">    IntList LSquared = <span class="keyword">new</span> IntList(L.first * L.first, <span class="keyword">null</span>);</span><br><span class="line">    IntList C = LSquared;</span><br><span class="line">	<span class="keyword">while</span> (B != <span class="keyword">null</span>) &#123;</span><br><span class="line">        C.rest = <span class="keyword">new</span> IntList(B.first * B.first, <span class="keyword">null</span>);</span><br><span class="line">        B = B.rest;</span><br><span class="line">		C = C.rest;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> LSquared;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -809,6 +982,101 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortedStack</span>&lt;<span class="title">Item</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Item</span>&gt;&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Item&gt; a;</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Item&gt; b;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SortedStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        a = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        b = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(Item t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (!a.empty() &amp;&amp; a.peek().compareTo(t) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            b.push(a.poll());</span><br><span class="line">        &#125;</span><br><span class="line">        a.push(t);</span><br><span class="line">        <span class="keyword">while</span> (!b.empty()) &#123;</span><br><span class="line">            a.push(b.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Item <span class="title">poll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.poll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="Discussion-6"><a href="#Discussion-6" class="headerlink" title="Discussion 6"></a>Discussion 6</h1><h2 id="Immutable-Rocks"><a href="#Immutable-Rocks" class="headerlink" title="Immutable Rocks"></a>Immutable Rocks</h2><p>Access control allows us to restrict the use of fields, methods, and classes.</p>
+<ul>
+<li><strong><code>public</code></strong>: Accessible by everyone. </li>
+<li><strong><code>protected</code></strong>: Accessible by the class itself, the package, and any subclasses.</li>
+<li><strong><code>default</code></strong> (no modifier): Accessible by the class itself and the package.</li>
+<li><strong><code>private</code></strong>: Accessible only by the class itself</li>
+</ul>
+<p>A class is immutable if nothing about its instances can change after they are constructed. Which of the following classes are immutable?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pebble</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> weight;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Pebble</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        weight = <span class="number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//This class is mutable. Pebble’s weight field is public, and thus a pebble’s state can easily be changed.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rock</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> weight;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rock</span> <span class="params">(<span class="keyword">int</span> w)</span> </span>&#123; </span><br><span class="line">        weight = w; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//This class is immutable. Rock’s weight field is final, so it cannot be reassigned once a rock is initialized.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rocks</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> Rock[] rocks;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rocks</span> <span class="params">(Rock[] rox)</span> </span>&#123; </span><br><span class="line">        rocks = rox; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Though rocks cannot be reassigned, we can still change what the array holds and thus Rocks is mutable.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecretRocks</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Rock[] rocks;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SecretRocks</span><span class="params">(Rock[] rox)</span> </span>&#123; </span><br><span class="line">        rocks = rox; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//The rocks variable is private, so no outside variable can reassign it or its elements. However, rox can be edited externally after it is passed in, so SecretRocks is technically mutable. This class can be made immutable by using Arrays.copyOf.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PunkRock</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Rock[] band;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PunkRock</span> <span class="params">(Rock yRoad)</span> </span>&#123; </span><br><span class="line">        band = &#123;yRoad&#125;; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Rock[] myBand() &#123;</span><br><span class="line">        <span class="keyword">return</span> band;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//It is possible to access and modify the contents of PunkRock’s private array through its public myBand() method, so this class is mutable.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MommaRock</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Pebble baby = <span class="keyword">new</span> Pebble();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//This class is mutable since Pebble has public variables that can be changed. For instance, given a MommaRock mr, you could mutate mr with mr.baby.weight = 5.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Breaking-the-System"><a href="#Breaking-the-System" class="headerlink" title="Breaking the System"></a>Breaking the System</h2><p>Below is a flawed implementation of the stack ADT.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BadIntegerStack</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> class <span class="title">Node</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> Integer value;</span><br><span class="line">        <span class="keyword">public</span> Node prev;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(Integer v, Node p)</span> </span>&#123;</span><br><span class="line">            value = v;</span><br><span class="line">            prev = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Node top;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> top == <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(Integer num)</span> </span>&#123;</span><br><span class="line">        top = <span class="keyword">new</span> Node(num, top));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Integer ans = top.value;</span><br><span class="line">        top = top.prev;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> top.value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Exploit the flaw by filling in the main method below so that it prints “Success” by causing BadIntegerStack to produce a NullPointerException.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        BadIntegerStack stack = <span class="keyword">new</span> BadIntegerStack();</span><br><span class="line">        stack.pop();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">        System.out.println(<span class="string">"Success!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Exploit another flaw in the stack by completing the main method below so that the stack appears infinitely tall.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    BadIntegerStack stack = <span class="keyword">new</span> BadIntegerStack();</span><br><span class="line">    stack.push(<span class="number">1</span>);</span><br><span class="line">    stack.top.prev = stack.top;</span><br><span class="line">    <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">        stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">"This print statement is unreachable!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>How can we change the BadIntegerStack class so that it won’t throw NullPointerExceptions or allow ne’er-do-wells to produce endless stacks?</p>
+<ul>
+<li>Make top private.</li>
+</ul>
+<h2 id="Design-a-Parking-Lot"><a href="#Design-a-Parking-Lot" class="headerlink" title="Design a Parking Lot!"></a>Design a Parking Lot!</h2><p>Design a ParkingLot package that allocates specific parking spaces to cars in a smart way. Decide what classes you’ll need, and design the API for each. Time permitting, select data structures to implement the API for each class. Try to deal with annoying cases (like disobedient humans).</p>
+<ul>
+<li>Parking spaces can be either regular, compact, or handicapped-only.</li>
+<li>When a new car arrives, the system should assign a specific space based on the type of car.</li>
+<li>All cars are allowed to park in regular spots. Thus, compact cars can park in both compact spaces and regular spaces.</li>
+<li>When a car leaves, the system should record that the space is free</li>
+<li>Your package should be designed in a manner that allows different parking lots to have different numbers of spaces for each of the 3 types.</li>
+<li>Parking spots should have a sense of closeness to the entrance. When parking a car, place it as close to the entrance as possible. Assume these distances are distinct.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span></span></span><br><span class="line">    public Car(boolean isCompact, boolean isHandicapped): creates a car with</span><br><span class="line">given size and permissions.</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCompact</span><span class="params">()</span>: returns whether or not a car can fit in a compact space.</span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHandicapped</span><span class="params">()</span>: returns whether or not a car may park in</span></span><br><span class="line"><span class="function">a handicapped space.</span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findSpotAndPark</span><span class="params">(ParkingLot lot)</span>: attempts to park <span class="keyword">this</span></span></span><br><span class="line"><span class="function">car in a spot, returning <span class="keyword">true</span> <span class="keyword">if</span> successful.</span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">leaveSpot</span><span class="params">()</span>: vacates <span class="keyword">this</span> car’s spot.</span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function"><span class="keyword">private</span> class Spot</span></span><br><span class="line"><span class="function">• The Spot class can be declared <span class="keyword">private</span> and encapsulated by the ParkingLot</span></span><br><span class="line"><span class="function">class. Though it is <span class="keyword">private</span>, and therefore not a part of our parking lot API,</span></span><br><span class="line"><span class="function">its methods are described here to give you an idea of how a Spot class might</span></span><br><span class="line"><span class="function">be implemented.</span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> <span class="title">Spot</span><span class="params">(String type, <span class="keyword">int</span> proximity)</span>: creates a spot of a given type</span></span><br><span class="line"><span class="function">and proximity.</span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isHandicapped</span><span class="params">()</span>: returns <span class="keyword">true</span> <span class="keyword">if</span> <span class="keyword">this</span> spot is reserved <span class="keyword">for</span></span></span><br><span class="line"><span class="function">handicapped drivers.</span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isCompact</span><span class="params">()</span>: returns <span class="keyword">true</span> <span class="keyword">if</span> <span class="keyword">this</span> parking space can only</span></span><br><span class="line"><span class="function">accomodate compact cars.</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class ParkingLot</span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="title">ParkingLot</span><span class="params">(<span class="keyword">int</span>[] handicappedDistances, <span class="keyword">int</span>[] compactDistances</span></span></span><br><span class="line"><span class="function"><span class="params">, <span class="keyword">int</span>[] regularDistances)</span>: creates a parking lot containing handicappedDistances</span></span><br><span class="line"><span class="function">.length handicapped spaces, each with a distance corresponding to an element of handicappedDistances. Also initializes the appropriate compact and</span></span><br><span class="line"><span class="function">regular spaces.</span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findSpotAndPark</span><span class="params">(Car toPark)</span>: attempts to find a spot and</span></span><br><span class="line"><span class="function">park the given car. Returns <span class="keyword">false</span> <span class="keyword">if</span> no spots are available.</span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeCarFromSpot</span><span class="params">(Car toRemove)</span>: records when a spot has</span></span><br><span class="line"><span class="function">been vacated, and makes the spot available <span class="keyword">for</span> parking again.</span></span><br><span class="line"><span class="function">    Prioritization of closeness in parking space selection can be handled using several</span></span><br><span class="line"><span class="function">priority <span class="title">queues</span> <span class="params">(one <span class="keyword">for</span> each kind of parking space)</span>. Occupied <span class="title">spaces</span> <span class="params">(which are</span></span></span><br><span class="line"><span class="function"><span class="params">dequeued when they are assigned)</span> can be tracked with a Map&lt;Car, Spot&gt;.</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Exam-Prep-6"><a href="#Exam-Prep-6" class="headerlink" title="Exam Prep 6"></a>Exam Prep 6</h1><h2 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">checkIfZero</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"x was zero!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(x); <span class="comment">// PRINT STATEMENT</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">mystery</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> counter = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            x = x / <span class="number">2</span>;</span><br><span class="line">            checkIfZero(x);</span><br><span class="line">            counter += <span class="number">1</span>;</span><br><span class="line">            System.out.println(<span class="string">"counter is "</span> + counter); <span class="comment">// PRINT STATEMENT</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">        <span class="keyword">return</span> counter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"mystery of 1 is "</span> + mystery(<span class="number">1</span>));</span><br><span class="line">    System.out.println(<span class="string">"mystery of 6 is "</span> + mystery(<span class="number">6</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>What will be the output when main is run? You may not need all lines.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//answer</span></span><br><span class="line">mystery of <span class="number">1</span> is <span class="number">0</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line">counter is <span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line">counter is <span class="number">2</span></span><br><span class="line">mystery of <span class="number">6</span> is <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="AltList"><a href="#AltList" class="headerlink" title="AltList"></a>AltList</h2><p>A normal generic linked list contains objects of only one type. But we can imagine a generic linked list where entries alternate between two types. AltList is an implementation of such a data structure:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AltList</span>&lt;<span class="title">X</span>, <span class="title">Y</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> X item;</span><br><span class="line">    <span class="keyword">private</span> AltList&lt;Y, X&gt; next;</span><br><span class="line">    AltList(X item, AltList&lt;Y, X&gt; next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.item = item;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>construct an AltList instance:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AltList&lt;Integer, String&gt; list =</span><br><span class="line">    <span class="keyword">new</span> AltList&lt;Integer, String&gt;(<span class="number">5</span>,</span><br><span class="line">        <span class="keyword">new</span> AltList&lt;String, Integer&gt;(<span class="string">"cat"</span>,</span><br><span class="line">            <span class="keyword">new</span> AltList&lt;Integer, String&gt;(<span class="number">10</span>,</span><br><span class="line">                <span class="keyword">new</span> AltList&lt;String, Integer&gt;(<span class="string">"dog"</span>, <span class="keyword">null</span>))));</span><br></pre></td></tr></table></figure>
+
+<p>This list represents [5 cat 10 dog]. In this list, assuming indexing begins at 0, all even-index items are Integers and all odd-index items are Strings. </p>
+<p>Write an instance method called pairsSwapped() for the AltList class that returns a copy of the original list, but with adjacent pairs swapped. Each item should only be swapped once. This method should be non-destructive: it should not modify the original AltList instance. </p>
+<p>For example, calling list.pairsSwapped() should yield the list [cat 5 dog 10]. There were two swaps: “cat” and 5 were swapped, then “dog” and 10 were swapped. You may assume that the list on which pairsSwapped() is called has an even non-zero length. Your code should maintain this invariant.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AltList</span>&lt;<span class="title">X</span>, <span class="title">Y</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// ... continued from above</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AltList&lt;Y, X&gt; <span class="title">pairsSwapped</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AltList&lt;Y, X&gt; ret = <span class="keyword">new</span> AltList&lt;Y, X&gt;(next.item, <span class="keyword">new</span> AltList&lt;X,Y&gt;(item, <span class="keyword">null</span>));</span><br><span class="line">        <span class="keyword">if</span> (next.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ret.next.next = next.next.pairsSwapped();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Every-Kth-Element"><a href="#Every-Kth-Element" class="headerlink" title="Every Kth Element"></a>Every Kth Element</h2><p>Fill in the next() method in the following class. Do not modify anything outside of next.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.NoSuchElementException;</span><br><span class="line"><span class="comment">/** Iterates over every Kth element of the IntList given to the constructor.</span></span><br><span class="line"><span class="comment">* For example, if L is an IntList containing elements</span></span><br><span class="line"><span class="comment">* [0, 1, 2, 3, 4, 5, 6, 7] with K = 2, then</span></span><br><span class="line"><span class="comment">* for (Iterator&lt;Integer&gt; p = new KthIntList(L, 2); p.hasNext(); ) &#123;</span></span><br><span class="line"><span class="comment">* System.out.println(p.next());</span></span><br><span class="line"><span class="comment">* &#125;</span></span><br><span class="line"><span class="comment">* would print get 0, 2, 4, 6. */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KthIntList</span> <span class="keyword">implements</span> <span class="title">Iterator</span> &lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">private</span> IntList curList;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> hasNext;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KthIntList</span><span class="params">(IntList I, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.k = k;</span><br><span class="line">        <span class="keyword">this</span>.curList = I;</span><br><span class="line">        <span class="keyword">this</span>.hasNext = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** Returns true if there is a next Kth element. Do not modify. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.hasNext;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/** Returns the next Kth element of the IntList given in the constructor.</span></span><br><span class="line"><span class="comment">* Returns the 0th element first. Throws a NoSuchElementException if</span></span><br><span class="line"><span class="comment">* there are no Integers available to return. */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Answer below</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (curList == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">        &#125;</span><br><span class="line">        Integer toReturn = curList.head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k &amp;&amp; curList != <span class="keyword">null</span>; i++) &#123;</span><br><span class="line">            curList = curList.tail;</span><br><span class="line">        &#125;</span><br><span class="line">        hasNext = (curList != <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">return</span> toReturn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Discussion-7"><a href="#Discussion-7" class="headerlink" title="Discussion 7"></a>Discussion 7</h1><h2 id="Asymptotic-Notation"><a href="#Asymptotic-Notation" class="headerlink" title="Asymptotic Notation"></a>Asymptotic Notation</h2><p>Order the following big-O runtimes from smallest to largest.</p>
+<p>O(1) ⊂ O(log n) ⊂ O(n) ⊂ O(n log n) ⊂ O(n ^2^ log n) ⊂ O(n ^3^ ) ⊂ O(2^n^ ) ⊂ O(n!) ⊂ O(n ^n^ )</p>
+<h2 id="Analyzing-Runtime"><a href="#Analyzing-Runtime" class="headerlink" title="Analyzing Runtime"></a>Analyzing Runtime</h2><p>Give the worst case and best case runtime in terms of M and N.Assume ping is in Θ(1) and returns an int.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = N; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="keyword">for</span> (; j &lt;= M; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ping(i, j) &gt; <span class="number">64</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Worst: Θ(M + N), Best: Θ(N) The trick is that j is initialized outside the loops!</p>
+<h2 id="Have-You-Ever-Went-Fast"><a href="#Have-You-Ever-Went-Fast" class="headerlink" title="Have You Ever Went Fast?"></a>Have You Ever Went Fast?</h2><p>Given an int x and a sorted array A of N distinct integers, design an algorithm to find if there exists indices i and j such that A[i] + A[j] == x.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">findSum</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; A.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (A[i] + A[j] == x) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>How can we improve this solution?</p>
+<p>two pointers</p>
+<p>What is the runtime of both the original and improved algorithm?</p>
+<p>Naive: Worst = Θ(N2 ), Best = Θ(1). Optimized: Worst = Θ(N), Best = Θ(1)</p>
+<h2 id="CTCI-Extra"><a href="#CTCI-Extra" class="headerlink" title="CTCI Extra"></a>CTCI Extra</h2><p>Write the code that returns an array that is the union between two given arrays. The union of two arrays is a list that includes everything that is in both arrays, with no duplicates. Assume the given arrays do not contain duplicates. For example, the union of {1, 2, 3, 4} and {3, 4, 5, 6} is {1, 2, 3, 4, 5, 6}. </p>
+<p>Hint: The method should run in O(M + N) time where M and N is the size of each array</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] union(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B) &#123;</span><br><span class="line">    HashSet&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : A) &#123;</span><br><span class="line">        set.add(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : B) &#123;</span><br><span class="line">        set.add(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span>[] unionArray = <span class="keyword">new</span> <span class="keyword">int</span>[set.size()];</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : set) &#123;</span><br><span class="line">        unionArray[index] = num;</span><br><span class="line">        index += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> unionArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Intersect Now do the same as above, but find the intersection between both arrays. The intersection of two arrays is the list of all elements that are in both arrays. Again assume that neither array has duplicates. For example, the intersection of {1, 2, 3, 4} and {3, 4, 5, 6} is {3, 4}. </p>
+<p>Hint: Think about using ADTs other than arrays to make the code more efficient.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] intersection(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B) &#123;</span><br><span class="line">    HashSet&lt;Integer&gt; setOfA = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">    HashSet&lt;Integer&gt; intersectionSet = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : A) &#123;</span><br><span class="line">        setOfA.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : B) &#123;</span><br><span class="line">            <span class="keyword">if</span> (setOfA.contains(num)) &#123;</span><br><span class="line">                intersectionSet.add(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] intersectionArray = <span class="keyword">new</span> <span class="keyword">int</span>[intersectionSet.size()];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : intersectionSet) &#123;</span><br><span class="line">            intersectionArray[index] = num;</span><br><span class="line">            index += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> intersectionArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Exam-Prep-7"><a href="#Exam-Prep-7" class="headerlink" title="Exam Prep 7"></a>Exam Prep 7</h1><p>etc</p>
+<h1 id="Discussion-8"><a href="#Discussion-8" class="headerlink" title="Discussion 8"></a>Discussion 8</h1><p>等差数列求和1+2+3+4+…+n = 1/2 x(n(n + 1)) = (n^2^+n)/2</p>
+<p>等比数列1+2+4+8+16+…+2^n^ = 2x2^n-1^- 1 = 2^n^ - 1</p>
+<h2 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition"></a>Intuition</h2><p>The meta-strat on this problem is to explore a rigourous framework to analyze running time for recursive procedures. Specifically, one can derive the running time by drawing the recursive tree and accounting for three pieces of information. </p>
+<ul>
+<li>The height of the tree. </li>
+<li>The branching factor of each node. </li>
+<li>The amount of work each node contributes relative to its input size.</li>
+</ul>
+<p>etc</p>
+<h1 id="Exam-Prep-8"><a href="#Exam-Prep-8" class="headerlink" title="Exam Prep 8"></a>Exam Prep 8</h1><p>etc</p>
 
       
     </div>
@@ -1004,168 +1272,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/15/two-pointer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/15/two-pointer/" class="post-title-link" itemprop="url">Two Pointer</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-15 15:53:16" itemprop="dateCreated datePublished" datetime="2020-07-15T15:53:16+09:00">2020-07-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-07 11:16:43" itemprop="dateModified" datetime="2020-09-07T11:16:43+09:00">2020-09-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>T</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/15/two-pointer/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/15/Math/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/15/Math/" class="post-title-link" itemprop="url">Leetcode Math</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-15 14:48:07" itemprop="dateCreated datePublished" datetime="2020-07-15T14:48:07+09:00">2020-07-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 16:26:32" itemprop="dateModified" datetime="2020-08-11T16:26:32+09:00">2020-08-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Leetcode-Math"><a href="#Leetcode-Math" class="headerlink" title="Leetcode Math"></a>Leetcode Math</h1><h2 id="素数分解"><a href="#素数分解" class="headerlink" title="素数分解"></a>素数分解</h2><p>每一个数都可以分解成素数的乘积，例如 84 = 2^2^ * 3^1^ * 5^0^ * 7^1^ * 11^0^ * 13^0^ * 17^0^ * …</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/15/Math/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1237,20 +1343,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
