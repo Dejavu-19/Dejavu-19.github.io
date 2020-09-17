@@ -171,106 +171,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/07/Amazon%E9%A2%98%E5%BA%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/07/Amazon%E9%A2%98%E5%BA%93/" class="post-title-link" itemprop="url">Amazon题库</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-07 00:59:14" itemprop="dateCreated datePublished" datetime="2020-08-07T00:59:14+09:00">2020-08-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-11 14:33:52" itemprop="dateModified" datetime="2020-09-11T14:33:52+09:00">2020-09-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Amazon/" itemprop="url" rel="index"><span itemprop="name">Amazon</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Intern"><a href="#Intern" class="headerlink" title="Intern"></a>Intern</h1><h2 id="1-Find-Pair-With-Given-Sum⭐⭐"><a href="#1-Find-Pair-With-Given-Sum⭐⭐" class="headerlink" title="1. Find Pair With Given Sum⭐⭐"></a><a href="https://leetcode.com/discuss/interview-question/356960" target="_blank" rel="noopener">1. Find Pair With Given Sum</a>⭐⭐</h2><p>Given a list of positive integers <code>nums</code> and an int <code>target</code>, return indices of the two numbers such that they add up to a <code>target - 30</code>.</p>
-<p>Conditions:</p>
-<ul>
-<li>You will pick exactly 2 numbers.</li>
-<li>You cannot pick the same element twice.</li>
-<li>If you have multiple pairs, select the pair with the largest number.</li>
-</ul>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">1</span>, <span class="number">10</span>, <span class="number">25</span>, <span class="number">35</span>, <span class="number">60</span>], target = <span class="number">90</span></span><br><span class="line">Output: [<span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">Explanation:</span><br><span class="line">nums[<span class="number">2</span>] + nums[<span class="number">3</span>] = <span class="number">25</span> + <span class="number">35</span> = <span class="number">60</span> = <span class="number">90</span> - <span class="number">30</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">20</span>, <span class="number">50</span>, <span class="number">40</span>, <span class="number">25</span>, <span class="number">30</span>, <span class="number">10</span>], target = <span class="number">90</span></span><br><span class="line">Output: [<span class="number">1</span>, <span class="number">5</span>]</span><br><span class="line">Explanation:</span><br><span class="line">nums[<span class="number">0</span>] + nums[<span class="number">2</span>] = <span class="number">20</span> + <span class="number">40</span> = <span class="number">60</span> = <span class="number">90</span> - <span class="number">30</span></span><br><span class="line">nums[<span class="number">1</span>] + nums[<span class="number">5</span>] = <span class="number">50</span> + <span class="number">10</span> = <span class="number">60</span> = <span class="number">90</span> - <span class="number">30</span></span><br><span class="line">You should <span class="keyword">return</span> the pair with the largest number.</span><br></pre></td></tr></table></figure>
-
-<p>The corresponding problem is “Truck Package”. </p>
-<p>If you suffer from <code>11/13</code> passed test cases, try to consider the following aspects:</p>
-<ol>
-<li>Return <code>null</code> or <code>empty list</code>. You can test it out.</li>
-<li>Consider when there is no such a pair, return <code>null</code> or <code>empty list</code>. Again, one of them is correct~</li>
-<li>Consider a test case like <code>[0, 0]</code> and <code>target = 30</code>. Do you think it is a valid pair? YES!<br>I had been trying for 30 mins this morning. Please upvote. </li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/07/Amazon%E9%A2%98%E5%BA%93/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/05/Linked-List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1306,6 +1206,91 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/07/08/ML%20note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/08/ML%20note/" class="post-title-link" itemprop="url">ML-AndrewNg-Notes</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-08 14:12:18" itemprop="dateCreated datePublished" datetime="2020-07-08T14:12:18+09:00">2020-07-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-13 03:47:39" itemprop="dateModified" datetime="2020-07-13T03:47:39+09:00">2020-07-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coursera/" itemprop="url" rel="index"><span itemprop="name">Coursera</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="week1"><a href="#week1" class="headerlink" title="week1"></a>week1</h1><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><h3 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning"></a>What is Machine Learning</h3><blockquote>
+<p>Arthur Samuel (1959). Machine Learning: Field of study that gives computers the ability to learn without being explicitly programmed.</p>
+<p>Tom Mitchell (1998) Well-posed Learning Problem: A computer program is said to learn from experience E with respect to some <strong><code>task T</code></strong> and some <strong><code>performance measure P</code></strong>, if its performance on T, as measured by P, improves with <strong><code>experience E</code></strong>.</p>
+</blockquote>
+<h3 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h3><h4 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h4><p><img src="https://scruel.gitee.io/ml-andrewng-notes/images/20180105_194712.png" alt=""></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/08/ML%20note/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1377,7 +1362,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
