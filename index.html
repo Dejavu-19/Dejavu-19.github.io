@@ -171,6 +171,330 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Dynamic%20Programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/17/Dynamic%20Programming/" class="post-title-link" itemprop="url">Dynamic Programming</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-17 13:16:45" itemprop="dateCreated datePublished" datetime="2020-09-17T13:16:45+09:00">2020-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h1><h2 id="Max-Subset-Sum-No-Adjacent-AE"><a href="#Max-Subset-Sum-No-Adjacent-AE" class="headerlink" title="Max Subset Sum No Adjacent(AE)"></a>Max Subset Sum No Adjacent(AE)</h2><ol>
+<li>Given a no negative integer array</li>
+<li>Create a maxSums array to storing the greatest number with no adjacent numbers</li>
+<li>maxSums[i] = max(maxSums[i - 1], maxSums[i - 2] + array[i])</li>
+<li>time O(N), space O(N), because we build an array in length N</li>
+</ol>
+<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1:"></a>Solution1:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//O(n) time | O(n) space</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxSubsetSumNoAdjacent</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (array.length == <span class="number">0</span>) &#123;  <span class="comment">//edge case, the array is empty</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (array.length = <span class="number">1</span>) &#123;  <span class="comment">//edge case, the array only have one value</span></span><br><span class="line">        <span class="keyword">return</span> array[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span>[] maxSums = array.clone();  <span class="comment">//copy the main array,because maxSums[0] = array[0]</span></span><br><span class="line">    maxSums[<span class="number">1</span>] = Math.max(array[<span class="number">0</span>], array[<span class="number">1</span>]);  <span class="comment">//set the second value</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; array.length; ++i) &#123;</span><br><span class="line">        maxSums[i] = Math.max(amxSums[i - <span class="number">1</span>], maxSums[i - <span class="number">2</span>] + array[i]);  <span class="comment">//apply the foluma</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxSums[array.length - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/17/Dynamic%20Programming/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Recursion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/17/Recursion/" class="post-title-link" itemprop="url">Recursion</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-17 13:05:50" itemprop="dateCreated datePublished" datetime="2020-09-17T13:05:50+09:00">2020-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h1><h2 id="Nth-Fibonacci-AE"><a href="#Nth-Fibonacci-AE" class="headerlink" title="Nth Fibonacci(AE)"></a>Nth Fibonacci(AE)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>) </span><br><span class="line"><span class="comment">//bad O(2^n)T, cause do many unncessary compute</span></span><br><span class="line"><span class="comment">//eg. fib(6)-&gt; fib(5)+fib(4)-&gt;fib(4)+fib(3)+fib(3)+fib(2)   </span></span><br><span class="line"><span class="comment">//O(N) S call the stack</span></span><br><span class="line"><span class="comment">//eg.in the stack maximum </span></span><br><span class="line"><span class="comment">//fib(6)</span></span><br><span class="line"><span class="comment">//fib(5) </span></span><br><span class="line"><span class="comment">//fib(4)</span></span><br><span class="line"><span class="comment">//fib(3)</span></span><br><span class="line"><span class="comment">//fib(2)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="solution1"><a href="#solution1" class="headerlink" title="solution1:"></a>solution1:</h3><p>first fib = 0, second fib = 1…</p>
+<p>However this solution may cause stack overflow</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//O(2^n) T O(n) S</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNthFib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getNthFib(n - <span class="number">1</span>) + getNthFib(n - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="solution2"><a href="#solution2" class="headerlink" title="solution2:"></a>solution2:</h3><ol>
+<li><p>Using HashMap, do not have to recalculate many times, and get the calculated value in constant time</p>
+</li>
+<li><p><strong><code>Map&lt;Integer,Integer&gt; map = new HasMap&lt;Integer,Integer&gt;();</code></strong></p>
+</li>
+<li><p><strong><code>map.put(key,value)</code></strong></p>
+<p><strong><code>map.get(key)</code></strong></p>
+<p><strong><code>map.containsKey(key)</code></strong></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//O(n) T O(n) S</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNthFib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Write your code here.</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        map.put(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        map.put(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> getNthFib(n, map);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNthFib</span><span class="params">(<span class="keyword">int</span> n, Map&lt;Integer,Integer&gt; map)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(n)) &#123;</span><br><span class="line">            <span class="keyword">return</span> map.get(n);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            map.put(n, getNthFib(n - <span class="number">1</span>, map) + getNthFib(n - <span class="number">2</span>, map));  <span class="comment">//nth Fib = (n-1)+(n-2),call it recursively</span></span><br><span class="line">            <span class="keyword">return</span> map.get(n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="solution3"><a href="#solution3" class="headerlink" title="solution3:"></a>solution3:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//滑动窗口lastTwo [0, 1]</span></span><br><span class="line"><span class="comment">//O(n) T O(1) S</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNthFib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Write your code here.</span></span><br><span class="line">        <span class="keyword">int</span>[] twoFib = &#123;<span class="number">0</span> , <span class="number">1</span>&#125;;  <span class="comment">//creat an array</span></span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">3</span>;  <span class="comment">//if nth &gt;= 3, sliding the window</span></span><br><span class="line">        <span class="keyword">while</span> (cnt &lt;= n) &#123;</span><br><span class="line">            <span class="keyword">int</span> nextFib = twoFib[<span class="number">0</span>] + twoFib[<span class="number">1</span>];</span><br><span class="line">            twoFib[<span class="number">0</span>] = twoFib[<span class="number">1</span>];</span><br><span class="line">            twoFib[<span class="number">1</span>] = nextFib;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n &gt; <span class="number">1</span> ? twoFib[<span class="number">1</span>] : twoFib[<span class="number">0</span>];  <span class="comment">//if n=1, return the 1th element, else 2th element</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Product-Sum-AE"><a href="#Product-Sum-AE" class="headerlink" title="Product Sum(AE)"></a>Product Sum(AE)</h2><h3 id="solution1-1"><a href="#solution1-1" class="headerlink" title="solution1:"></a>solution1:</h3><p>Use <strong><code>recursion</code></strong> method product sum to deal with array in this question, return the sum multiplied by the current depth</p>
+<p>O(N) T every elements in the array</p>
+<p>O(D) S recursive call stack, maximum case of depth(D) 3</p>
+<p>explain N, D meaning</p>
+<p>If u forget the built in method, you can just say to your interviewer: there is a way to do this built in to my language, I forget it but I think is is <code>array.isarray</code>, point is make a voice </p>
+<p>Stack Overflow or the documentation online</p>
+<p><strong><code>instanceof语句</code></strong> 判断类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Tip: You can use `element instanceof ArrayList` to check whether an item</span></span><br><span class="line">  <span class="comment">// is an array or an integer.</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">productSum</span><span class="params">(List&lt;Object&gt; array)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Write your code here.</span></span><br><span class="line">    <span class="keyword">return</span> productSumHelper(array, <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">productSumHelper</span><span class="params">(List&lt;Object&gt; array, <span class="keyword">int</span> multiplier)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (Object el : array) &#123;  <span class="comment">//because object can represent to be List or Integer</span></span><br><span class="line">			<span class="keyword">if</span> (el <span class="keyword">instanceof</span> ArrayList) &#123;</span><br><span class="line">				ArrayList ls = (ArrayList)el;  <span class="comment">//Casting Object to ArrayList</span></span><br><span class="line">				sum += productSumHelper(ls, multiplier + <span class="number">1</span>);  <span class="comment">//如果是ArrayList递归重新调用</span></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				sum += (<span class="keyword">int</span>)el;  <span class="comment">//Casting Object to Integer</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sum * multiplier;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Graphs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/17/Graphs/" class="post-title-link" itemprop="url">Graphs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-17 13:03:03" itemprop="dateCreated datePublished" datetime="2020-09-17T13:03:03+09:00">2020-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Graphs"><a href="#Graphs" class="headerlink" title="Graphs"></a>Graphs</h1><h2 id="Depth-first-Search-AE"><a href="#Depth-first-Search-AE" class="headerlink" title="Depth-first Search(AE)"></a>Depth-first Search(AE)</h2><p>traverse the tree-like graph</p>
+<p>V-vertex nodes</p>
+<p>E-edges the line between node</p>
+<p>call a bunch of stack</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//O(V+E) T</span></span><br><span class="line"><span class="comment">//O(V) S</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Do not edit the class below except</span></span><br><span class="line">    <span class="comment">// for the depthFirstSearch method.</span></span><br><span class="line">    <span class="comment">// Feel free to add new properties</span></span><br><span class="line">    <span class="comment">// and methods to the class.</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        String name;</span><br><span class="line">        List&lt;Node&gt; children = <span class="keyword">new</span> ArrayList&lt;Node&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">depthFirstSearch</span><span class="params">(List&lt;String&gt; array)</span> </span>&#123;</span><br><span class="line">            array.add(<span class="keyword">this</span>.name);  <span class="comment">//add the node to the return list</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chileren.size(); ++i) &#123;  <span class="comment">//traverse each children node and call DFS recursively</span></span><br><span class="line">                children.get(i).depthFirstSearch(array);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> array;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Node <span class="title">addChild</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            Node child = <span class="keyword">new</span> Node(name);</span><br><span class="line">            children.add(child);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Sorting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/17/Sorting/" class="post-title-link" itemprop="url">Sorting</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-17 12:59:11" itemprop="dateCreated datePublished" datetime="2020-09-17T12:59:11+09:00">2020-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Sorting"><a href="#Sorting" class="headerlink" title="Sorting"></a>Sorting</h1><h2 id="Bubble-Sort-AE"><a href="#Bubble-Sort-AE" class="headerlink" title="Bubble Sort(AE)"></a>Bubble Sort(AE)</h2><p>Bubble sort do not use other helper array</p>
+<p>O(N^2^) T</p>
+<p>O(1) S</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] bubbleSort(<span class="keyword">int</span>[] array) &#123;</span><br><span class="line">        <span class="comment">// Write your code here.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length - <span class="number">1</span>; i++) &#123;  <span class="comment">//&lt; array.length - 1</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; array.length - <span class="number">1</span> - i; j++) &#123;  <span class="comment">//i表示右侧排序后的固定的长度，逐渐增加</span></span><br><span class="line">                <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">int</span> temp = array[j];</span><br><span class="line">                    array[j] = array[j + <span class="number">1</span>];</span><br><span class="line">                    array[j + <span class="number">1</span>] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Insertion-Sort-AE"><a href="#Insertion-Sort-AE" class="headerlink" title="Insertion Sort(AE)"></a>Insertion Sort(AE)</h2><p><img src="https://static.javatpoint.com/corebasic/programs/images/insertion-sort.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] insertionSort(<span class="keyword">int</span>[] array) &#123;</span><br><span class="line">        <span class="comment">// Write your code here.</span></span><br><span class="line">        <span class="keyword">if</span> (array.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;&#125;;  <span class="comment">//edge case</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; array.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; array[j] &lt; array[j - <span class="number">1</span>]) &#123;  <span class="comment">//以j = i为起点向前进行比较交换</span></span><br><span class="line">                <span class="keyword">int</span> temp = array[j - <span class="number">1</span>];</span><br><span class="line">                array[j - <span class="number">1</span>] = array[j];</span><br><span class="line">                array[j] = temp;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Selection-Sort-AE"><a href="#Selection-Sort-AE" class="headerlink" title="Selection Sort(AE)"></a>Selection Sort(AE)</h2><p>traverse整个array， 把最小的元素更新到ponter处，traverse完的左边部分就是sorted的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] selectionSort(<span class="keyword">int</span>[] array) &#123;</span><br><span class="line">        <span class="comment">// Write your code here.</span></span><br><span class="line">        <span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;&#125;;  <span class="comment">//edge case</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; ++i) &#123;</span><br><span class="line">			<span class="keyword">int</span> min = array[i];  <span class="comment">//mark the first element in unsorted array</span></span><br><span class="line">			<span class="keyword">int</span> minIdx = i;  <span class="comment">//mark the index</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; array.length; j++) &#123;  <span class="comment">//find the smallest in the unsorted array</span></span><br><span class="line">				<span class="keyword">if</span> (min &gt; array[j]) &#123;</span><br><span class="line">					min = array[j];</span><br><span class="line">					minIdx = j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (minIdx != i) &#123;</span><br><span class="line">                array[minIdx] = array[i];</span><br><span class="line">				array[i] = min;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/cs61b%20week14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -677,17 +1001,8 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 13:42:31" itemprop="dateModified" datetime="2020-09-13T13:42:31+09:00">2020-09-13</time>
+                <time title="修改时间：2020-09-17 13:16:26" itemprop="dateModified" datetime="2020-09-17T13:16:26+09:00">2020-09-17</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AE/" itemprop="url" rel="index"><span itemprop="name">AE</span></a>
-                </span>
-            </span>
 
           
 
@@ -700,377 +1015,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="AE-Medium-31"><a href="#AE-Medium-31" class="headerlink" title="AE Medium 31"></a>AE Medium 31</h1><h2 id="1-Three-Number-Sum"><a href="#1-Three-Number-Sum" class="headerlink" title="1. Three Number Sum"></a>1. Three Number Sum</h2><ol>
-<li>First make the array sorted in ascending order. </li>
-<li>Iterate the array, fix the current number, use left and right pointers to the immediately after and far end of the array, at the very end </li>
-<li>Move two pointers in the rest of the array compare to Sum - current number,  find all possible combination</li>
-<li>Time O(N^2^),  Space O(N), might end up storing every single number in the array</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Integer[]&gt; threeNumberSum(<span class="keyword">int</span>[] array, <span class="keyword">int</span> targetSum) &#123;</span><br><span class="line">    <span class="comment">// Write your code here.</span></span><br><span class="line">    Arrays.sort(array);</span><br><span class="line">    List&lt;Integer[]&gt; triplets = <span class="keyword">new</span> ArrayList&lt;Integer[]&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length - <span class="number">2</span>; ++i) &#123;  <span class="comment">//-2 beacuse we always have 3 number, cur, left, right</span></span><br><span class="line">        <span class="keyword">int</span> left = i + <span class="number">1</span>;  <span class="comment">//left pointer</span></span><br><span class="line">        <span class="keyword">int</span> right = array.length - <span class="number">1</span>;  <span class="comment">//right pointer</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;  <span class="comment">//while they are not either overlapping each other</span></span><br><span class="line">            <span class="keyword">int</span> currentSum = array[i] + array[left] + array[right];</span><br><span class="line">            <span class="keyword">if</span> (currentSum == targetSum) &#123;</span><br><span class="line">                Integer[] newTriplet = &#123;array[i], array[left], array[right]&#125;;</span><br><span class="line">                triplets.add(newTriplets);</span><br><span class="line">                left++;  <span class="comment">//keep searching other combination</span></span><br><span class="line">                right--;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentSum &lt; targetSum) &#123;</span><br><span class="line">            left++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right--;  </span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> triplets;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/11/AE%20Medium%2031/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/09/Lab/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/09/Lab/" class="post-title-link" itemprop="url">Lab</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-09 13:30:41" itemprop="dateCreated datePublished" datetime="2020-09-09T13:30:41+09:00">2020-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 11:25:58" itemprop="dateModified" datetime="2020-09-15T11:25:58+09:00">2020-09-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Lab-1-Setup-Setting-Up-Your-Computer"><a href="#Lab-1-Setup-Setting-Up-Your-Computer" class="headerlink" title="Lab 1 Setup: Setting Up Your Computer"></a>Lab 1 Setup: Setting Up Your Computer</h1><h1 id="Lab1-Lab1B"><a href="#Lab1-Lab1B" class="headerlink" title="Lab1, Lab1B"></a>Lab1, Lab1B</h1><h2 id="Lab1-Setup"><a href="#Lab1-Setup" class="headerlink" title="Lab1 Setup"></a>Lab1 Setup</h2><h4 id="A-Configure-Your-Computer"><a href="#A-Configure-Your-Computer" class="headerlink" title="A. Configure Your Computer"></a>A. Configure Your Computer</h4><ul>
-<li><h3 id="A-Install-Java"><a href="#A-Install-Java" class="headerlink" title="A. Install Java"></a>A. Install Java</h3></li>
-</ul>
-<h4 id="B-Learn-to-Use-the-Terminal"><a href="#B-Learn-to-Use-the-Terminal" class="headerlink" title="B. Learn to Use the Terminal"></a>B. Learn to Use the Terminal</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/09/Lab/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/04/cs61b%20week11/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/04/cs61b%20week11/" class="post-title-link" itemprop="url">cs61b week11</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-04 10:18:09" itemprop="dateCreated datePublished" datetime="2020-09-04T10:18:09+09:00">2020-09-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-16 21:31:45" itemprop="dateModified" datetime="2020-09-16T21:31:45+09:00">2020-09-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week11"><a href="#cs61b-week11" class="headerlink" title="cs61b week11"></a>cs61b week11</h1><h1 id="Shortest-Paths"><a href="#Shortest-Paths" class="headerlink" title="Shortest Paths"></a>Shortest Paths</h1><h2 id="BFS-v-s-DFS-for-Path-Finding"><a href="#BFS-v-s-DFS-for-Path-Finding" class="headerlink" title="BFS v.s. DFS for Path Finding"></a>BFS v.s. DFS for Path Finding</h2><ul>
-<li>BFS returns path with shortest number of edges.</li>
-<li>Time efficiency is similar for both algorithms.</li>
-<li>Space Efficiency is quite different.</li>
-<li><ul>
-<li>DFS is worse for spindly graphs. (Call stack gets very deep.)</li>
-</ul>
-</li>
-<li><ul>
-<li>BFS is worse for bushy graphs. (Queue gets very large.)</li>
-</ul>
-</li>
-<li>Track the <code>distTo</code> and <code>edgeTo</code> arrays requires <code>Θ(V)</code> memory.</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/04/cs61b%20week11/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/03/cs61b%20week10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/03/cs61b%20week10/" class="post-title-link" itemprop="url">cs61b week10</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-03 13:46:09" itemprop="dateCreated datePublished" datetime="2020-09-03T13:46:09+09:00">2020-09-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 11:29:36" itemprop="dateModified" datetime="2020-09-17T11:29:36+09:00">2020-09-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week10"><a href="#cs61b-week10" class="headerlink" title="cs61b week10"></a>cs61b week10</h1><h1 id="Advanced-Trees"><a href="#Advanced-Trees" class="headerlink" title="Advanced Trees"></a>Advanced Trees</h1><h2 id="Tree-Definition-Review"><a href="#Tree-Definition-Review" class="headerlink" title="Tree Definition (Review)"></a>Tree Definition (Review)</h2><p>Tree</p>
-<ul>
-<li>A set of nodes (or vertices).</li>
-<li>A set of edges that connect those nodes.</li>
-<li>There is exactly one path between any two nodes.</li>
-</ul>
-<p>Rooted tree</p>
-<ul>
-<li>The tree has a designated root.</li>
-<li>Every node except the root has exactly one parent.</li>
-<li>A node can have 0 or more children.</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/03/cs61b%20week10/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/02/cs61b%20week13/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/02/cs61b%20week13/" class="post-title-link" itemprop="url">cs61b week13</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-02 16:45:29" itemprop="dateCreated datePublished" datetime="2020-09-02T16:45:29+09:00">2020-09-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 11:54:58" itemprop="dateModified" datetime="2020-09-17T11:54:58+09:00">2020-09-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="cs61b-week13"><a href="#cs61b-week13" class="headerlink" title="cs61b week13"></a>cs61b week13</h1><h1 id="Sorting-and-Algorithmic-Bounds"><a href="#Sorting-and-Algorithmic-Bounds" class="headerlink" title="Sorting and Algorithmic Bounds"></a>Sorting and Algorithmic Bounds</h1><h2 id="Theoretical-Bounds-on-Sorting"><a href="#Theoretical-Bounds-on-Sorting" class="headerlink" title="Theoretical Bounds on Sorting"></a>Theoretical Bounds on Sorting</h2><p>Let the ultimate comparison sort (TUCS) be the asymptotically fastest possible comparison sorting algorithm, and let R(N) be its worst case runtime.</p>
-<ul>
-<li>Worst case run-time of TUCS, R(N) is <code>O(N log N)</code>. (Not worse than Mergesort.)</li>
-<li>Worst case run-time of TUCS, R(N) is <code>Ω(N)</code>. (Have to at least look at every item.)</li>
-</ul>
-<p>A stronger statement of the lower bound is <code>Ω(N log N)</code>, which means that there’s no sorting algorithm that could have a worst case runtime better than <code>Θ(N log N)</code>.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/02/cs61b%20week13/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
@@ -1156,7 +1101,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
