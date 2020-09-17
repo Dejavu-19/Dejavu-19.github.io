@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="cs61b week12Basic Sorting AlgorithmsDefinition of SortingAn ordering relation &lt; for keys a, b, and c has the following properties:  Law of Trichotomy: Exactly one of a &lt; b, a &#x3D; b, b &lt; a is tr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs61b week12">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/09/17/cs61b%20week12/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="cs61b week12Basic Sorting AlgorithmsDefinition of SortingAn ordering relation &lt; for keys a, b, and c has the following properties:  Law of Trichotomy: Exactly one of a &lt; b, a &#x3D; b, b &lt; a is tr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-17T02:50:24.985Z">
+<meta property="article:modified_time" content="2020-09-17T02:54:46.189Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="cs">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2020/09/17/cs61b%20week12/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>cs61b week12 | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/cs61b%20week12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cs61b week12
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-17 11:50:24 / 修改时间：11:54:46" itemprop="dateCreated datePublished" datetime="2020-09-17T11:50:24+09:00">2020-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="cs61b-week12"><a href="#cs61b-week12" class="headerlink" title="cs61b week12"></a>cs61b week12</h1><h1 id="Basic-Sorting-Algorithms"><a href="#Basic-Sorting-Algorithms" class="headerlink" title="Basic Sorting Algorithms"></a>Basic Sorting Algorithms</h1><h2 id="Definition-of-Sorting"><a href="#Definition-of-Sorting" class="headerlink" title="Definition of Sorting"></a>Definition of Sorting</h2><p>An ordering relation &lt; for keys a, b, and c has the following properties:</p>
+<ul>
+<li>Law of Trichotomy: Exactly one of a &lt; b, a = b, b &lt; a is true.</li>
+<li>Law of Transitivity: If a &lt; b, and b &lt; c, then a &lt; c.</li>
+</ul>
+<p>A sort is a permutation (re-arrangement) of a sequence of elements that puts the keys into non-decreasing order relative to a given ordering relation. </p>
+<p>In Java, ordering relations are typically given in the form of <code>compareTo</code> or <code>compare</code> methods.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LengthComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String x, String b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x.length() - b.length();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="Performance-of-Algorithms"><a href="#Performance-of-Algorithms" class="headerlink" title="Performance of Algorithms"></a>Performance of Algorithms</h2><p>The <strong>Time Complexity</strong> of an algorithm is the characterization of its runtime efficiency. Dijkstra’s has time complexity <code>O(E log V)</code>.</p>
+<p>The <strong>Space Complexity</strong> of an algorithm is the characterization of its <strong>extra</strong> memory usage. Dijkstra’s has space complexity <code>Θ(V)</code>.</p>
+<h2 id="Selection-Sort"><a href="#Selection-Sort" class="headerlink" title="Selection Sort"></a>Selection Sort</h2><h3 id="Steps-of-Selection-Sort"><a href="#Steps-of-Selection-Sort" class="headerlink" title="Steps of Selection Sort"></a>Steps of Selection Sort</h3><ul>
+<li>Find the smallest item.</li>
+<li>Swap the item to the front and fix it.</li>
+<li>Repeat for unfixed items until all items are fixed.</li>
+</ul>
+<h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p><code>Θ(N^2)</code> time if an array is used to store the items.</p>
+<h2 id="Heap-Sort"><a href="#Heap-Sort" class="headerlink" title="Heap Sort"></a>Heap Sort</h2><h3 id="Naive"><a href="#Naive" class="headerlink" title="Naive"></a>Naive</h3><p>Maintain a max-oriented heap to get the maximum item fast.</p>
+<ul>
+<li>Insert all items into a max heap, and discard input array. Create output array.</li>
+<li>Delete largest item from the max heap.</li>
+<li>Put largest item at the end of the unused part of the output array.</li>
+</ul>
+<h4 id="Runtime-1"><a href="#Runtime-1" class="headerlink" title="Runtime"></a>Runtime</h4><ul>
+<li>Getting items into the heap <code>O(N log N)</code> time.</li>
+<li>Selecting largest item: <code>Θ(1)</code> time.</li>
+<li>Removing largest item: <code>O(log N)</code> for each removal. The overall runtime is <code>O(N log N)</code>.</li>
+</ul>
+<h3 id="In-Place"><a href="#In-Place" class="headerlink" title="In-Place"></a>In-Place</h3><p>Rather than inserting into a new array of length N + 1, use a process known as “bottom-up heapification” to convert the array into a heap. </p>
+<p>This approach could avoid the need for extra copy of all data.</p>
+<h4 id="Runtime-2"><a href="#Runtime-2" class="headerlink" title="Runtime"></a>Runtime</h4><ul>
+<li>The Time Complexity of In-Place Heap Sort is the same as the Naive Heap Sort.</li>
+<li>The Space Complexity of In-Place Heap Sort is <code>Θ(1)</code>.</li>
+</ul>
+<h2 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge Sort"></a>Merge Sort</h2><ul>
+<li>Split items into 2 roughly even pieces.</li>
+<li>Mergesort each half recursively.</li>
+<li>Merge the two sorted halves to form the final result.</li>
+</ul>
+<h4 id="Runtime-3"><a href="#Runtime-3" class="headerlink" title="Runtime"></a>Runtime</h4><ul>
+<li>The Time Complexity of Merge Sort is <code>Θ(N log N)</code>.</li>
+<li>The Space Complexity of Merge Sort is <code>Θ(N)</code>.</li>
+</ul>
+<h2 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion Sort"></a>Insertion Sort</h2><ul>
+<li>Starting with an empty output sequence.</li>
+<li>Add each item from input, inserting into output at right point.</li>
+<li>Perform these steps in place by swapping with previous items.</li>
+</ul>
+<p>Example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">P O T A T <span class="title">O</span> <span class="params">(<span class="number">0</span> swap)</span></span></span><br><span class="line"><span class="function">O P T A T <span class="title">O</span> <span class="params">(<span class="number">1</span> swap)</span></span></span><br><span class="line"><span class="function">O P T A T <span class="title">O</span> <span class="params">(<span class="number">0</span> swap)</span></span></span><br><span class="line"><span class="function">A O P T T <span class="title">O</span> <span class="params">(<span class="number">3</span> swaps)</span></span></span><br><span class="line"><span class="function">A O P T T <span class="title">O</span> <span class="params">(<span class="number">0</span> swap)</span></span></span><br><span class="line"><span class="function">A O O P T <span class="title">T</span> <span class="params">(<span class="number">3</span> swaps)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>On arrays with a small number of inversions, insertion sort is extremely fast. For small arrays (N &lt; 15 or so), insertion sort is fastest.</p>
+<h4 id="Runtime-4"><a href="#Runtime-4" class="headerlink" title="Runtime"></a>Runtime</h4><ul>
+<li>The best case for insertion sort is <code>Θ(N)</code>.</li>
+<li>The worst case of insertion sort is <code>Θ(N ^ 2)</code>.</li>
+</ul>
+<h1 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h1><h2 id="Partitoning"><a href="#Partitoning" class="headerlink" title="Partitoning"></a>Partitoning</h2><p>To partition an array a[] on element x = a[i] is to rearrange a[] so that:</p>
+<ul>
+<li>x moves to position j. (probably the same as i)</li>
+<li>All entries to the left of x are &lt;= x.</li>
+<li>All entries to the right of x are &gt;= x.</li>
+</ul>
+<h2 id="Partiton-Sort-Quick-Sort"><a href="#Partiton-Sort-Quick-Sort" class="headerlink" title="Partiton Sort (Quick Sort)"></a>Partiton Sort (Quick Sort)</h2><p>Quicksorting N items:</p>
+<ul>
+<li>Partition on leftmost item.</li>
+<li>Quicksort left half.</li>
+<li>Quicksort right half. For most common situations, <strong><code>Quick Sort is empirically the fastest sort</code></strong>.</li>
+</ul>
+<h3 id="Runtime-5"><a href="#Runtime-5" class="headerlink" title="Runtime"></a>Runtime</h3><p>Best Case: Pivot Always Lands in the Middle.</p>
+<p>Runtime for the best case: <code>Θ(N log N)</code>.</p>
+<p>Worst Case: Pivot Always Lands at Beginning of Array.</p>
+<p>Runtime for the worst case: <code>Θ(N ^ 2)</code>.</p>
+<p>The average runtime is <code>Θ(N log N)</code>.</p>
+<h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h3><p>The performance of Quick Sort depend critically on:</p>
+<ul>
+<li>How the pivot is selected.</li>
+<li>How the partition is performed around that pivot.</li>
+<li>Other optimizations.</li>
+</ul>
+<p>The rare worst case will happen when:</p>
+<ul>
+<li>Bad ordering: Array already in sorted order or almost sorted order.</li>
+<li>Bad elements: Array with all duplicates.</li>
+</ul>
+<p>Methods to avoid the worst case:</p>
+<ul>
+<li>Always use the median as the pivot.</li>
+<li>Randomly swap two indices occasionally.</li>
+<li>Shuffle before sorting.</li>
+<li>Partition from the center of the array.</li>
+</ul>
+<h1 id="More-Quick-Sort-Sorting-Summary"><a href="#More-Quick-Sort-Sorting-Summary" class="headerlink" title="More Quick Sort, Sorting Summary"></a>More Quick Sort, Sorting Summary</h1><h2 id="Worst-Case-of-Quicksort"><a href="#Worst-Case-of-Quicksort" class="headerlink" title="Worst Case of Quicksort"></a>Worst Case of Quicksort</h2><p>There are four philosophies to avoid the worst case of Quicksort.</p>
+<h3 id="Randomness"><a href="#Randomness" class="headerlink" title="Randomness"></a>Randomness</h3><p>The worst cases do happen in practice:</p>
+<ul>
+<li>Bad ordering: Array already in sorted order.</li>
+<li>Bad elements: Array with all duplicates.</li>
+</ul>
+<p>Dealing with bad ordering:</p>
+<ul>
+<li>Strategy #1: Pick pivots randomly.</li>
+<li>Strategy #2: Shuffle before sorting.</li>
+</ul>
+<h3 id="Smarter-Pivot-Selection"><a href="#Smarter-Pivot-Selection" class="headerlink" title="Smarter Pivot Selection"></a>Smarter Pivot Selection</h3><h4 id="Constant-Time"><a href="#Constant-Time" class="headerlink" title="Constant Time"></a>Constant Time</h4><p>For any pivot selection procedure that is deterministic and costs constant time, there is a family of dangerous inputs that an adversary could easily generate.</p>
+<h4 id="Linear-Time"><a href="#Linear-Time" class="headerlink" title="Linear Time"></a>Linear Time</h4><p>Exact median Quicksort is safe: Worst case <code>Θ(N log N)</code>, but it is slower than Mergesort.</p>
+<p>The method to find the exact median is called the Quick Select.</p>
+<h3 id="Introspection"><a href="#Introspection" class="headerlink" title="Introspection"></a>Introspection</h3><p>If Quicksort exceeds some critical value (such as 10 ln N), switch to Mergesort.</p>
+<h3 id="Preprocess"><a href="#Preprocess" class="headerlink" title="Preprocess"></a>Preprocess</h3><p>Could analyze array to see if Quicksort will be slow. No obvious way to do this, though.</p>
+<h2 id="Quicksort-v-s-Mergesort"><a href="#Quicksort-v-s-Mergesort" class="headerlink" title="Quicksort v.s. Mergesort"></a>Quicksort v.s. Mergesort</h2><h3 id="Quicksort-Flavors"><a href="#Quicksort-Flavors" class="headerlink" title="Quicksort Flavors"></a>Quicksort Flavors</h3><p>Using this scheme (L3S) yields a Quicksort algorithm that is slower than the Mergesort.</p>
+<ul>
+<li>Pivot selection: Always use leftmost.</li>
+<li>Partition algorithm: Make an array copy then do three scans for red, white, and blue items (white scan trivially finishes in one compare).</li>
+<li>Shuffle before starting to avoid worst case.</li>
+</ul>
+<h3 id="Tony-Hoare’s-In-place-Partitioning-Scheme"><a href="#Tony-Hoare’s-In-place-Partitioning-Scheme" class="headerlink" title="Tony Hoare’s In-place Partitioning Scheme"></a>Tony Hoare’s In-place Partitioning Scheme</h3><p>Using this partitioning scheme (LTHS) yields a very fast Quicksort.</p>
+<ul>
+<li>Left pointer loves small items.</li>
+<li>Right pointer loves large items.</li>
+<li>Big idea: Walk towards each other, swapping anything they don’t like.</li>
+<li>End result is that things on left are “small” and things on the right are “large”.</li>
+</ul>
+<p>More recent pivot/partitioning schemes do somewhat better. The best known Quicksort uses a two-pivot scheme.</p>
+<h2 id="Quick-Select"><a href="#Quick-Select" class="headerlink" title="Quick Select"></a>Quick Select</h2><p>Computing the exact median would be great for picking an item to partition around, which could avoid the worst case of Quicksort. However, computing that exact median is inefficient.</p>
+<p>However, partitioning can be used to find the exact median, which results in the median identification algorithm.</p>
+<h3 id="Performance-1"><a href="#Performance-1" class="headerlink" title="Performance"></a>Performance</h3><p>On average, Quick Select will take <code>Θ(N)</code> time.</p>
+<p>The worst case runtime is <code>Θ(N ^ 2)</code> when the array is in sorted order.</p>
+<p>However, the Quicksort algorithm with Quick Select to find the exact median is quite slow.</p>
+<h2 id="Stability-Adaptiveness-Optimization"><a href="#Stability-Adaptiveness-Optimization" class="headerlink" title="Stability, Adaptiveness, Optimization"></a>Stability, Adaptiveness, Optimization</h2><h3 id="Stability"><a href="#Stability" class="headerlink" title="Stability"></a>Stability</h3><p>A sort is said to be stable if order of equivalent items is preserved.</p>
+<p>For example, if an array is sorted by name and then sorted by grades, the relative order of name is preserved if the sorting algorithm is stable.</p>
+<ul>
+<li>Stable: Mergesort and Insertion Sort</li>
+<li>Unstable: Heapsort and Quicksort</li>
+</ul>
+<h3 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h3><ul>
+<li>Switch to insertion sort when a subproblem reaches size 15 or lower.</li>
+<li>Make sort adaptive.</li>
+<li>Exploit restrictions on set of keys.</li>
+<li>For Quicksort, make the algorithm introspective, switching to a different sorting method if recursion goes too deep.</li>
+</ul>
+<h3 id="Arrays-sort"><a href="#Arrays-sort" class="headerlink" title="Arrays.sort"></a>Arrays.sort</h3><p>In Java, <code>Arrays.sort(someArray)</code> uses:</p>
+<ul>
+<li>Mergesort (specifically the TimSort variant) if <code>someArray</code> consists of Objects.</li>
+<li>Quicksort if <code>someArray</code> consists of primitives.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/15/Mock%20Interview/" rel="prev" title="Mock Interview">
+      <i class="fa fa-chevron-left"></i> Mock Interview
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/17/cs61b%20week14/" rel="next" title="cs61b week14">
+      cs61b week14 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week12"><span class="nav-number">1.</span> <span class="nav-text">cs61b week12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Sorting-Algorithms"><span class="nav-number">2.</span> <span class="nav-text">Basic Sorting Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition-of-Sorting"><span class="nav-number">2.1.</span> <span class="nav-text">Definition of Sorting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-of-Algorithms"><span class="nav-number">2.2.</span> <span class="nav-text">Performance of Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Selection-Sort"><span class="nav-number">2.3.</span> <span class="nav-text">Selection Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps-of-Selection-Sort"><span class="nav-number">2.3.1.</span> <span class="nav-text">Steps of Selection Sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime"><span class="nav-number">2.3.2.</span> <span class="nav-text">Runtime</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Sort"><span class="nav-number">2.4.</span> <span class="nav-text">Heap Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Naive"><span class="nav-number">2.4.1.</span> <span class="nav-text">Naive</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Runtime-1"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">Runtime</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#In-Place"><span class="nav-number">2.4.2.</span> <span class="nav-text">In-Place</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Runtime-2"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">Runtime</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Merge-Sort"><span class="nav-number">2.5.</span> <span class="nav-text">Merge Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Runtime-3"><span class="nav-number">2.5.0.1.</span> <span class="nav-text">Runtime</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insertion-Sort"><span class="nav-number">2.6.</span> <span class="nav-text">Insertion Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Runtime-4"><span class="nav-number">2.6.0.1.</span> <span class="nav-text">Runtime</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-Sort"><span class="nav-number">3.</span> <span class="nav-text">Quick Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Partitoning"><span class="nav-number">3.1.</span> <span class="nav-text">Partitoning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partiton-Sort-Quick-Sort"><span class="nav-number">3.2.</span> <span class="nav-text">Partiton Sort (Quick Sort)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-5"><span class="nav-number">3.2.1.</span> <span class="nav-text">Runtime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">3.2.2.</span> <span class="nav-text">Performance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#More-Quick-Sort-Sorting-Summary"><span class="nav-number">4.</span> <span class="nav-text">More Quick Sort, Sorting Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Worst-Case-of-Quicksort"><span class="nav-number">4.1.</span> <span class="nav-text">Worst Case of Quicksort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Randomness"><span class="nav-number">4.1.1.</span> <span class="nav-text">Randomness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Smarter-Pivot-Selection"><span class="nav-number">4.1.2.</span> <span class="nav-text">Smarter Pivot Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Constant-Time"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">Constant Time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-Time"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">Linear Time</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introspection"><span class="nav-number">4.1.3.</span> <span class="nav-text">Introspection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preprocess"><span class="nav-number">4.1.4.</span> <span class="nav-text">Preprocess</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quicksort-v-s-Mergesort"><span class="nav-number">4.2.</span> <span class="nav-text">Quicksort v.s. Mergesort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Quicksort-Flavors"><span class="nav-number">4.2.1.</span> <span class="nav-text">Quicksort Flavors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tony-Hoare’s-In-place-Partitioning-Scheme"><span class="nav-number">4.2.2.</span> <span class="nav-text">Tony Hoare’s In-place Partitioning Scheme</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Select"><span class="nav-number">4.3.</span> <span class="nav-text">Quick Select</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance-1"><span class="nav-number">4.3.1.</span> <span class="nav-text">Performance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stability-Adaptiveness-Optimization"><span class="nav-number">4.4.</span> <span class="nav-text">Stability, Adaptiveness, Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stability"><span class="nav-number">4.4.1.</span> <span class="nav-text">Stability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimization"><span class="nav-number">4.4.2.</span> <span class="nav-text">Optimization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arrays-sort"><span class="nav-number">4.4.3.</span> <span class="nav-text">Arrays.sort</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>

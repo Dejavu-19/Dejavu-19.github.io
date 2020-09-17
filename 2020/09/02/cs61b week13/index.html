@@ -22,16 +22,16 @@
     var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="cs61b week13Prefix Operations and TriesTries is an ordered tree data structure used to store keys which can be broken into “characters” and share prefixes with other keys.  Every node stores only one">
+  <meta name="description" content="cs61b week13Sorting and Algorithmic BoundsTheoretical Bounds on SortingLet the ultimate comparison sort (TUCS) be the asymptotically fastest possible comparison sorting algorithm, and let R(N) be its">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs61b week13">
 <meta property="og:url" content="https://dejavi-19.github.io/2020/09/02/cs61b%20week13/index.html">
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
-<meta property="og:description" content="cs61b week13Prefix Operations and TriesTries is an ordered tree data structure used to store keys which can be broken into “characters” and share prefixes with other keys.  Every node stores only one">
+<meta property="og:description" content="cs61b week13Sorting and Algorithmic BoundsTheoretical Bounds on SortingLet the ultimate comparison sort (TUCS) be the asymptotically fastest possible comparison sorting algorithm, and let R(N) be its">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://camo.githubusercontent.com/3cb59ab867b81c402c95a8251cb1209706887b61/68747470733a2f2f6a6f73686875672e676974626f6f6b732e696f2f6875673631622f636f6e74656e742f6173736574732f53637265656e25323053686f74253230323031392d30332d3134253230617425323031322e34372e3338253230414d2e706e67">
 <meta property="article:published_time" content="2020-09-02T07:45:29.196Z">
-<meta property="article:modified_time" content="2020-09-03T04:45:18.471Z">
+<meta property="article:modified_time" content="2020-09-17T02:54:58.503Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
@@ -205,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 13:45:18" itemprop="dateModified" datetime="2020-09-03T13:45:18+09:00">2020-09-03</time>
+                <time title="修改时间：2020-09-17 11:54:58" itemprop="dateModified" datetime="2020-09-17T11:54:58+09:00">2020-09-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,7 +228,121 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="cs61b-week13"><a href="#cs61b-week13" class="headerlink" title="cs61b week13"></a>cs61b week13</h1><h1 id="Prefix-Operations-and-Tries"><a href="#Prefix-Operations-and-Tries" class="headerlink" title="Prefix Operations and Tries"></a>Prefix Operations and Tries</h1><p>Tries is an ordered tree data structure used to store keys which can be broken into “characters” and share prefixes with other keys.</p>
+        <h1 id="cs61b-week13"><a href="#cs61b-week13" class="headerlink" title="cs61b week13"></a>cs61b week13</h1><h1 id="Sorting-and-Algorithmic-Bounds"><a href="#Sorting-and-Algorithmic-Bounds" class="headerlink" title="Sorting and Algorithmic Bounds"></a>Sorting and Algorithmic Bounds</h1><h2 id="Theoretical-Bounds-on-Sorting"><a href="#Theoretical-Bounds-on-Sorting" class="headerlink" title="Theoretical Bounds on Sorting"></a>Theoretical Bounds on Sorting</h2><p>Let the ultimate comparison sort (TUCS) be the asymptotically fastest possible comparison sorting algorithm, and let R(N) be its worst case runtime.</p>
+<ul>
+<li>Worst case run-time of TUCS, R(N) is <code>O(N log N)</code>. (Not worse than Mergesort.)</li>
+<li>Worst case run-time of TUCS, R(N) is <code>Ω(N)</code>. (Have to at least look at every item.)</li>
+</ul>
+<p>A stronger statement of the lower bound is <code>Ω(N log N)</code>, which means that there’s no sorting algorithm that could have a worst case runtime better than <code>Θ(N log N)</code>.</p>
+<a id="more"></a>
+
+<h3 id="The-Game-of-Puppy-Cat-Dog"><a href="#The-Game-of-Puppy-Cat-Dog" class="headerlink" title="The Game of Puppy, Cat, Dog"></a>The Game of Puppy, Cat, Dog</h3><p>Suppose there is a puppy, a cat, and a dog, each in an opaque soundproof box labeled A, B, and C, and a scale is given to figure out which is which.</p>
+<p>A decision tree for N = 3 could be generated with 3 levels at most. For N items, the decision tree will have at most <code>Ω(log(N!))</code> levels.</p>
+<p>The puppy, cat, dog could reduce to sorting, since a solution to the sorting problem also provides a solution to puppy, cat, dog. Thus, any lower bound on difficulty of puppy, cat, dog must also apply to sorting, which means that it should takes <code>Ω(log(N!))</code> comparisons in the worst case.</p>
+<p>Because <code>log(N!) ∈ Ω(N log N)</code>, <code>log(N!)</code> grows at least as quickly as <code>N log N</code>.</p>
+<p>Since TUCS is <code>Ω(lg N!)</code> and <code>lg N!</code> is <code>Ω(N log N)</code>, TUCS is <code>Ω(N log N)</code>.</p>
+<p>Any comparison based sort requires at least order <code>N log N</code>comparisons in its worst case.</p>
+<h3 id="Proof-of-log-N-∈-Ω-N-log-N"><a href="#Proof-of-log-N-∈-Ω-N-log-N" class="headerlink" title="Proof of log(N!) ∈ Ω(N log N)"></a>Proof of log(N!) ∈ Ω(N log N)</h3><ul>
+<li><code>N! ≥ (N/2)N/2</code>.</li>
+<li>Taking the log of both sides, <code>log(N!) ≥ log(N/2) ^ (N/2)</code>.</li>
+<li>Bringing down the exponent, <code>log(N!) ≥ N/2 log(N/2)</code>.</li>
+<li>Discarding unnecessary constants, <code>log(N!) ∈ Ω(N log N)</code>.</li>
+</ul>
+<h1 id="Radix-Sorts"><a href="#Radix-Sorts" class="headerlink" title="Radix Sorts"></a>Radix Sorts</h1><h2 id="Counting-Sort"><a href="#Counting-Sort" class="headerlink" title="Counting Sort"></a>Counting Sort</h2><p>Sorting requires <code>Ω(N log N)</code> compares in the worst case.</p>
+<p>However, there are different algorithms that could avoid comparisons.</p>
+<h3 id="Sleep-Sort"><a href="#Sleep-Sort" class="headerlink" title="Sleep Sort"></a>Sleep Sort</h3><p>For each integer x in array A, start a new program that:</p>
+<ul>
+<li>Sleeps for x seconds.</li>
+<li>Prints x.</li>
+</ul>
+<h3 id="Counting-Sort-1"><a href="#Counting-Sort-1" class="headerlink" title="Counting Sort"></a>Counting Sort</h3><p>General idea:</p>
+<ul>
+<li>Create a new array.</li>
+<li>Copy item with key i into ith entry of new array. The algorithm could sort N items in <code>Θ(N)</code> worst case time.</li>
+</ul>
+<h4 id="Complex-Cases"><a href="#Complex-Cases" class="headerlink" title="Complex Cases"></a>Complex Cases</h4><p>Alphabet case: Keys belong to a finite ordered alphabet.</p>
+<ul>
+<li>Count number of occurrences of each item.</li>
+<li>Iterate through list, using count array to decide where to put everything.</li>
+</ul>
+<h4 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h4><p>For sorting an array of the 100 largest cities by population, Quicksort is better than Counting Sort since Counting Sort requires building an array of size 37,832,892 (population of Tokyo).</p>
+<p>Runtime for counting sort on N keys with alphabet of size R: <code>Θ(N + R)</code>.</p>
+<ul>
+<li>Create an array of size R to store counts: <code>Θ(R)</code>.</li>
+<li>Counting number of each item: <code>Θ(N)</code>.</li>
+<li>Calculating target positions of each item: <code>Θ(R)</code>.</li>
+<li>Creating an array of size N to store ordered data: <code>Θ(N)</code>.</li>
+<li>Copying items from original array to ordered array: Do N times:</li>
+<li><ul>
+<li>Check target position: <code>Θ(1)</code>.</li>
+</ul>
+</li>
+<li><ul>
+<li>Update target position: <code>Θ(1)</code>.</li>
+</ul>
+</li>
+<li>Copying items from ordered array back to original array: <code>Θ(N)</code>.</li>
+</ul>
+<p>Memory usage: <code>Θ(N + R)</code>. (N for ordered array, while R for counts and starting points.) If <code>N ≥ R</code>, then the algorithm will have a reasonable performance.</p>
+<h2 id="LSD-Radix-Sort"><a href="#LSD-Radix-Sort" class="headerlink" title="LSD Radix Sort"></a>LSD Radix Sort</h2><p>Not all keys belong to finite alphabets, such as Strings. However, Strings consist of characters from a finite alphabet.</p>
+<p>General idea of LSD Radix Sort:</p>
+<ul>
+<li>Sort each digit independently from rightmost digit towards left.</li>
+<li>Pick appropriate letters to represent non-constant terms.</li>
+<li>When keys are of different lengths, can treat empty spaces as less than all other characters.</li>
+</ul>
+<h3 id="Performance-1"><a href="#Performance-1" class="headerlink" title="Performance"></a>Performance</h3><p>Runtime of LSD Radix Sort: <code>Θ(WN + WR)</code>. Runtime depends on length of longest key.</p>
+<ul>
+<li>N: Number of items.</li>
+<li>R: size of alphabet.</li>
+<li>W: Width of each item in # digits.</li>
+</ul>
+<h2 id="MSD-Radix-Sort"><a href="#MSD-Radix-Sort" class="headerlink" title="MSD Radix Sort"></a>MSD Radix Sort</h2><p>Just like LSD, but sort from leftmost digit towards the right.</p>
+<p>Sort each subproblem separately to avoid conflicts.</p>
+<h3 id="Performance-2"><a href="#Performance-2" class="headerlink" title="Performance"></a>Performance</h3><ul>
+<li>Best Case: Finish in one counting sort pass, looking only at the top digit. <code>Θ(N + R)</code></li>
+<li>Worst Case: Look at every character, degenerating to LSD sort. <code>Θ(WN + WR)</code></li>
+</ul>
+<h1 id="Sorting-and-Data-Structures-Conclusion"><a href="#Sorting-and-Data-Structures-Conclusion" class="headerlink" title="Sorting and Data Structures Conclusion"></a>Sorting and Data Structures Conclusion</h1><h2 id="Radix-Sort-vs-Comparison-Sorting"><a href="#Radix-Sort-vs-Comparison-Sorting" class="headerlink" title="Radix Sort vs. Comparison Sorting"></a>Radix Sort vs. Comparison Sorting</h2><p>Merge Sort requires <code>Θ(N log N)</code> compares.</p>
+<p>Merge Sort’s runtime on strings of length W:</p>
+<ul>
+<li><code>Θ(N log N)</code> if each comparison takes constant time. (Strings are all different in top character.)</li>
+<li><code>Θ(WN log N)</code> if each comparison takes <code>Θ(W)</code> time. ( Strings are all equal.)</li>
+</ul>
+<h3 id="LSD-vs-Merge-Sort"><a href="#LSD-vs-Merge-Sort" class="headerlink" title="LSD vs. Merge Sort"></a>LSD vs. Merge Sort</h3><p>Treating alphabet size as constant, LSD Sort has runtime <code>Θ(WN)</code>.</p>
+<p>Merge Sort has runtime between <code>Θ(N log N)</code> and <code>Θ(WN log N)</code>.</p>
+<ul>
+<li>Intuitively if <code>W &lt; log N</code>, or if the Strings are similar, LSD is faster.</li>
+<li>If the Strings are very different, Merge Sort is faster.</li>
+</ul>
+<h3 id="Cost-Model"><a href="#Cost-Model" class="headerlink" title="Cost Model"></a>Cost Model</h3><p>An alternate approach is to pick a cost model: the number of characters examined.</p>
+<ul>
+<li>Radix Sort: Calling charAt in order to count occurrences of each character.</li>
+<li>Merge Sort: Calling charAt in order to compare two Strings.</li>
+</ul>
+<p>Suppose there are 100 strings of 1000 characters each.</p>
+<p>Estimate the total number of characters examined by MSD Radix Sort if all strings are equal. In the worst case (all strings equal), every character is examined exactly once.</p>
+<p>Estimate the total number of characters examined by Merge Sort if all strings are equal. Merging N strings of 1000 characters requires <code>N/2 * 2000 = 1000N</code> examinations. Examine approximately <code>1000N log2 N</code> total characters.</p>
+<ul>
+<li>MSD radix sort will examine <code>~1000N</code> characters (For N = 100: 100,000).</li>
+<li>Merge sort will examine <code>~1000N log2(N)</code> characters (For N = 100: 660,000).</li>
+</ul>
+<h3 id="Empirical-Study"><a href="#Empirical-Study" class="headerlink" title="Empirical Study"></a>Empirical Study</h3><p>The cost model isn’t representative of everything that is happening.</p>
+<p>Java’s Just-In-Time Compiler secretly optimizes your code when it runs.</p>
+<p>Example: Performing calculations whose results are unused.</p>
+<p>Comparing algorithms that have the same order of growth is challenging.</p>
+<ul>
+<li>Have to perform computational experiments.</li>
+<li>In modern programming environments, experiments can be tricky due to optimizations like the JIT in Java.</li>
+</ul>
+<h2 id="Sorting-Summary"><a href="#Sorting-Summary" class="headerlink" title="Sorting Summary"></a>Sorting Summary</h2><p>Three basic flavors: Comparison, Alphabet, and Radix based.</p>
+<p>Each can be useful in different circumstances, but the important part was the analysis and the deep thought.</p>
+<ul>
+<li>Comparison based: Selection (Heapsort), Merge, Partition, Insertion.</li>
+<li>Alphabet based: Counting.</li>
+<li>Radix based: MSD, LSD.</li>
+</ul>
+<h1 id="Prefix-Operations-and-Tries"><a href="#Prefix-Operations-and-Tries" class="headerlink" title="Prefix Operations and Tries"></a>Prefix Operations and Tries</h1><p>Tries is an ordered tree data structure used to store keys which can be broken into “characters” and share prefixes with other keys.</p>
 <ul>
 <li>Every node stores only one letter.</li>
 <li>Nodes can be shared by multiple keys.</li>
@@ -271,7 +385,7 @@
 <li>Runtime: <code>O(R)</code></li>
 </ul>
 <p>(C is the number of children. R is the size of the alphabet.)</p>
-<h2 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h2><p>If a Trie has N keys, the runtime for our Map/Set operations are as follows:</p>
+<h2 id="Performance-3"><a href="#Performance-3" class="headerlink" title="Performance"></a>Performance</h2><p>If a Trie has N keys, the runtime for our Map/Set operations are as follows:</p>
 <ul>
 <li>add: <code>Θ(1)</code></li>
 <li>contains: <code>Θ(1)</code></li>
@@ -374,7 +488,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week13"><span class="nav-number">1.</span> <span class="nav-text">cs61b week13</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Prefix-Operations-and-Tries"><span class="nav-number">2.</span> <span class="nav-text">Prefix Operations and Tries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation"><span class="nav-number">2.1.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DataIndexedCharMap"><span class="nav-number">2.1.1.</span> <span class="nav-text">DataIndexedCharMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Child-Tracking"><span class="nav-number">2.1.2.</span> <span class="nav-text">Child Tracking</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance"><span class="nav-number">2.2.</span> <span class="nav-text">Performance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trie-String-Operations"><span class="nav-number">2.3.</span> <span class="nav-text">Trie String Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prefix-Matching"><span class="nav-number">2.3.1.</span> <span class="nav-text">Prefix Matching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Autocomplete"><span class="nav-number">2.3.2.</span> <span class="nav-text">Autocomplete</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week13"><span class="nav-number">1.</span> <span class="nav-text">cs61b week13</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sorting-and-Algorithmic-Bounds"><span class="nav-number">2.</span> <span class="nav-text">Sorting and Algorithmic Bounds</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Theoretical-Bounds-on-Sorting"><span class="nav-number">2.1.</span> <span class="nav-text">Theoretical Bounds on Sorting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Game-of-Puppy-Cat-Dog"><span class="nav-number">2.1.1.</span> <span class="nav-text">The Game of Puppy, Cat, Dog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proof-of-log-N-∈-Ω-N-log-N"><span class="nav-number">2.1.2.</span> <span class="nav-text">Proof of log(N!) ∈ Ω(N log N)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Radix-Sorts"><span class="nav-number">3.</span> <span class="nav-text">Radix Sorts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Counting-Sort"><span class="nav-number">3.1.</span> <span class="nav-text">Counting Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sleep-Sort"><span class="nav-number">3.1.1.</span> <span class="nav-text">Sleep Sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Counting-Sort-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">Counting Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Complex-Cases"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">Complex Cases</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Performance"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">Performance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LSD-Radix-Sort"><span class="nav-number">3.2.</span> <span class="nav-text">LSD Radix Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Performance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSD-Radix-Sort"><span class="nav-number">3.3.</span> <span class="nav-text">MSD Radix Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">Performance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sorting-and-Data-Structures-Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Sorting and Data Structures Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Radix-Sort-vs-Comparison-Sorting"><span class="nav-number">4.1.</span> <span class="nav-text">Radix Sort vs. Comparison Sorting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LSD-vs-Merge-Sort"><span class="nav-number">4.1.1.</span> <span class="nav-text">LSD vs. Merge Sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cost-Model"><span class="nav-number">4.1.2.</span> <span class="nav-text">Cost Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Empirical-Study"><span class="nav-number">4.1.3.</span> <span class="nav-text">Empirical Study</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorting-Summary"><span class="nav-number">4.2.</span> <span class="nav-text">Sorting Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Prefix-Operations-and-Tries"><span class="nav-number">5.</span> <span class="nav-text">Prefix Operations and Tries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation"><span class="nav-number">5.1.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DataIndexedCharMap"><span class="nav-number">5.1.1.</span> <span class="nav-text">DataIndexedCharMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Child-Tracking"><span class="nav-number">5.1.2.</span> <span class="nav-text">Child Tracking</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-3"><span class="nav-number">5.2.</span> <span class="nav-text">Performance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trie-String-Operations"><span class="nav-number">5.3.</span> <span class="nav-text">Trie String Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prefix-Matching"><span class="nav-number">5.3.1.</span> <span class="nav-text">Prefix Matching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Autocomplete"><span class="nav-number">5.3.2.</span> <span class="nav-text">Autocomplete</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -390,7 +504,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

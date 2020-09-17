@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="cs61b week14CompressionCompression Model #1: Algorithms Operating on Bits.  Bitstream -&gt; Algorithms Operating on Bits -&gt; Compressed bits C Compressed bits C -&gt; Decompression Algorithm -&gt; B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs61b week14">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/09/17/cs61b%20week14/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="cs61b week14CompressionCompression Model #1: Algorithms Operating on Bits.  Bitstream -&gt; Algorithms Operating on Bits -&gt; Compressed bits C Compressed bits C -&gt; Decompression Algorithm -&gt; B">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-17T02:53:58.436Z">
+<meta property="article:modified_time" content="2020-09-17T02:55:10.983Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="cs">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2020/09/17/cs61b%20week14/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>cs61b week14 | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/cs61b%20week14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cs61b week14
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-17 11:53:58 / 修改时间：11:55:10" itemprop="dateCreated datePublished" datetime="2020-09-17T11:53:58+09:00">2020-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="cs61b-week14"><a href="#cs61b-week14" class="headerlink" title="cs61b week14"></a>cs61b week14</h1><h1 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h1><p>Compression Model #1: Algorithms Operating on Bits.</p>
+<ul>
+<li>Bitstream -&gt; Algorithms Operating on Bits -&gt; Compressed bits C</li>
+<li>Compressed bits C -&gt; Decompression Algorithm -&gt; Bitstream</li>
+</ul>
+<p>A lossless compression algorithm require that no information is lost.</p>
+<a id="more"></a>
+
+<h2 id="Prefix-Free-Codes"><a href="#Prefix-Free-Codes" class="headerlink" title="Prefix Free Codes"></a>Prefix Free Codes</h2><p>English text is usually represented by sequences of characters, each 8 bits long. Use fewer than 8 bits for each letter: Have to decide which bit sequences should go with which letters.</p>
+<p>Morse code creates ambiguity. Avoid ambiguity by making code prefix free. A prefix-free code is one in which no codeword is a prefix of any other.</p>
+<p>Some prefix-free codes are better for some texts than others. It’d be useful to have a procedure that calculates the optimized code for a given text.</p>
+<h2 id="Huffman-Coding"><a href="#Huffman-Coding" class="headerlink" title="Huffman Coding"></a>Huffman Coding</h2><h3 id="General-Idea"><a href="#General-Idea" class="headerlink" title="General Idea"></a>General Idea</h3><p>Calculate relative frequencies.</p>
+<ul>
+<li>Assign each symbol to a node with weight = relative frequency.</li>
+<li>Take the two smallest nodes and merge them into a super node with weight equal to sum of weights.</li>
+<li>Repeat until everything is part of a tree.</li>
+</ul>
+<h3 id="Data-Structures"><a href="#Data-Structures" class="headerlink" title="Data Structures"></a>Data Structures</h3><p>For encoding (bitstream to compressed bitstream):</p>
+<ul>
+<li>Array of BitSequence[], to retrieve, can use character as index.</li>
+<li>HashMap&lt;Character, BitSequence&gt;. (Lookup in a hashmap consists of: Compute hashCode, mod by number of buckets, look in a linked list.)</li>
+</ul>
+<p>Compared to HashMaps, Arrays are faster, but use more memory if some characters in the alphabet are unused.</p>
+<p>For decoding (compressed bitstream back to bitstream):</p>
+<ul>
+<li>Tries. (Need to look up longest matching prefix.)</li>
+</ul>
+<h3 id="Practice"><a href="#Practice" class="headerlink" title="Practice"></a>Practice</h3><p>Two possible philosophies for using Huffman Compression:</p>
+<ol>
+<li>Build one corpus per input type.</li>
+<li>For every possible input file, create a unique code just for that file. Send the code along with the compressed file.</li>
+</ol>
+<ul>
+<li>Approach 1 will result in suboptimal encoding.</li>
+<li>Approach 2 requires to use extra space for the codeword table in the compressed bitstream. (Use in real world.)</li>
+</ul>
+<p>Given a file X.txt that prepares to compress into X.huf:</p>
+<ul>
+<li>Consider each b-bit symbol of X.txt, counting occurrences of each of the 2b possibilities, where b is the size of each symbol in bits.</li>
+<li>Use Huffman code construction algorithm to create a decoding trie and encoding map. Store this trie at the beginning of X.huf.</li>
+<li>Use encoding map to write codeword for each symbol of input into X.huf.</li>
+</ul>
+<p>To decompress X.huf:</p>
+<ul>
+<li>Read in the decoding trie.</li>
+<li>Repeatedly use the decoding trie’s <code>longestPrefixOf</code> operation until all bits in X.hug have been converted back to their uncompressed form.</li>
+</ul>
+<h2 id="Compression-Theory"><a href="#Compression-Theory" class="headerlink" title="Compression Theory"></a>Compression Theory</h2><p>The big idea in Huffman Coding is representing common symbols with small numbers of bits.</p>
+<p>General idea: Exploit redundancy and existing order inside the sequence.</p>
+<p>Different compression algorithms achieve different compression ratios on different files.</p>
+<p>There’s no compression algorithm that can compress any bitstream by 50%.</p>
+<ul>
+<li>Argument 1: If true, it will be able to compress any bitstream down to a single bit. Interpreter would have to be able to do the following task for any output sequence.</li>
+<li>Argument 2: There are far fewer short bitstreams than long ones.</li>
+</ul>
+<h3 id="Compression-Model"><a href="#Compression-Model" class="headerlink" title="Compression Model"></a>Compression Model</h3><p>Universal compression is impossible, but the following example implies that comparing compression algorithms could still be quite difficult.</p>
+<p>Suppose there is a special purpose compression algorithm that simply hardcodes small bit sequences into large ones. Example, represent GameOfThronesSeason6-Razor1911-Rip-Episode1.mp4 as 010. To avoid this sort of trickery, the compression model should include the bits needed to encode the decompression algorithm itself.</p>
+<p>Compression Model #2: Self-Extracting Bits</p>
+<p>As a model for the decompression process, the algorithm and the compressed bitstream could be treated as a single sequence of bits. (Can think of the algorithm and compressed bitstream as an input to an interpreter.)</p>
+<h1 id="Compression-Complexity-and-P-NP"><a href="#Compression-Complexity-and-P-NP" class="headerlink" title="Compression, Complexity, and P=NP?"></a>Compression, Complexity, and P=NP?</h1><h2 id="Model-1-vs-Model-2-for-Compression"><a href="#Model-1-vs-Model-2-for-Compression" class="headerlink" title="Model 1 vs. Model 2 for Compression"></a>Model 1 vs. Model 2 for Compression</h2><p>A Flaw in Compression Model 1: Source code for decompression algorithm itself might be highly complex.</p>
+<h3 id="Question-1-Comprehensible-Compression"><a href="#Question-1-Comprehensible-Compression" class="headerlink" title="Question 1: Comprehensible Compression"></a>Question 1: Comprehensible Compression</h3><p>Is there a “comprehensible” compression takes as input a target bitstream B, and outputs useful, readable Java code?</p>
+<h3 id="Question-2-Optimal-Compression"><a href="#Question-2-Optimal-Compression" class="headerlink" title="Question 2: Optimal Compression"></a>Question 2: Optimal Compression</h3><p>Is there an optimal compression takes as input a target bitstream B, and outputs the shortest possible Java program that outputs this bitstream?</p>
+<h2 id="Kolmogorov-Complexity"><a href="#Kolmogorov-Complexity" class="headerlink" title="Kolmogorov Complexity"></a>Kolmogorov Complexity</h2><p>The Java-Kolmogorov complexity K_J (B) is the length of the shortest Java program (in bytes) that generates B.</p>
+<p>Fact #1: Kolmogorov Complexity is effectively independent of language. For any bit stream, the Java-Kolmogorov Complexity is no more than a constant factor larger than the Python-Kolmogorov Complexity.</p>
+<p>Could write a Python interpreter in Java and then runs the Python program.</p>
+<p>It means that most bitstreams are fundamentally incompressible no matter what programming language is used for the compression algorithm.</p>
+<h2 id="Space-Time-Bounded-Compression"><a href="#Space-Time-Bounded-Compression" class="headerlink" title="Space/Time Bounded Compression"></a>Space/Time Bounded Compression</h2><p>An optimal compression algorithm takes as input a target bitstream B, and outputs the shortest possible Java program that outputs this bitstream.</p>
+<p>No “optimal compression” algorithm exists.</p>
+<h3 id="Space-Bounded-Compression"><a href="#Space-Bounded-Compression" class="headerlink" title="Space Bounded Compression"></a>Space Bounded Compression</h3><p>Takes two inputs, a target bitstream B and a size S, and outputs a Java program of <code>length ≤ S</code> that outputs B.</p>
+<p>Does not exist, since it could be used to find K_J (B) by binary searching on S.</p>
+<h3 id="Space-Time-Bounded-Compression-1"><a href="#Space-Time-Bounded-Compression-1" class="headerlink" title="Space/Time Bounded Compression"></a>Space/Time Bounded Compression</h3><p>Takes three inputs, a target bitstream B, a size S, a maximum number of lines of bytecode executed T, and outputs a Java program of <code>length ≤ S</code> that outputs B in fewer than T executed lines of bytecode.</p>
+<p>For each possible program p of length S or less:</p>
+<ul>
+<li>If p compiles, run program p until either:</li>
+<li>p terminates.</li>
+<li>We output B.</li>
+<li>T lines of bytecode are executed. Runtime: <code>O(T x 2 ^ S)</code>.</li>
+</ul>
+<h3 id="Efficient-Space-Time-Bounded-Compression"><a href="#Efficient-Space-Time-Bounded-Compression" class="headerlink" title="Efficient Space/Time Bounded Compression"></a>Efficient Space/Time Bounded Compression</h3><ul>
+<li>Need to make a more precise definition of what we mean by “efficient”.</li>
+<li>Closely related to an important puzzle in computer science: Does P = NP?</li>
+</ul>
+<h2 id="P-NP"><a href="#P-NP" class="headerlink" title="P = NP?"></a>P = NP?</h2><p>An efficient solution to these three problems (3SAT, Independent Set, and Longest Path) would also give an efficient space/time bounded compression algorithm.</p>
+<p>Space/time bounded compression reduces to 3SAT, Independent Set, and Longest Path.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Two important classes of yes/no problems: P: Efficiently solvable problems. NP: Problems with solutions that are efficiently verifiable.</p>
+<p>Examples of problems in P:</p>
+<ul>
+<li>Is this array sorted?</li>
+<li>Does this array have duplicates?</li>
+</ul>
+<p>Examples of problems in NP:</p>
+<ul>
+<li>Is there a solution to this 3SAT problem?</li>
+<li>In graph G, does there exist a path from s to t of weight &gt; k?</li>
+</ul>
+<p>Any decision problem for which a yes answer can be efficiently verified can be transformed into a 3SAT problem. This transformation is also “efficient” (polynomial time).</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/17/cs61b%20week12/" rel="prev" title="cs61b week12">
+      <i class="fa fa-chevron-left"></i> cs61b week12
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs61b-week14"><span class="nav-number">1.</span> <span class="nav-text">cs61b week14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compression"><span class="nav-number">2.</span> <span class="nav-text">Compression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prefix-Free-Codes"><span class="nav-number">2.1.</span> <span class="nav-text">Prefix Free Codes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Huffman-Coding"><span class="nav-number">2.2.</span> <span class="nav-text">Huffman Coding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#General-Idea"><span class="nav-number">2.2.1.</span> <span class="nav-text">General Idea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Structures"><span class="nav-number">2.2.2.</span> <span class="nav-text">Data Structures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Practice"><span class="nav-number">2.2.3.</span> <span class="nav-text">Practice</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compression-Theory"><span class="nav-number">2.3.</span> <span class="nav-text">Compression Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Compression-Model"><span class="nav-number">2.3.1.</span> <span class="nav-text">Compression Model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compression-Complexity-and-P-NP"><span class="nav-number">3.</span> <span class="nav-text">Compression, Complexity, and P&#x3D;NP?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-1-vs-Model-2-for-Compression"><span class="nav-number">3.1.</span> <span class="nav-text">Model 1 vs. Model 2 for Compression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-1-Comprehensible-Compression"><span class="nav-number">3.1.1.</span> <span class="nav-text">Question 1: Comprehensible Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-2-Optimal-Compression"><span class="nav-number">3.1.2.</span> <span class="nav-text">Question 2: Optimal Compression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kolmogorov-Complexity"><span class="nav-number">3.2.</span> <span class="nav-text">Kolmogorov Complexity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Space-Time-Bounded-Compression"><span class="nav-number">3.3.</span> <span class="nav-text">Space&#x2F;Time Bounded Compression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Space-Bounded-Compression"><span class="nav-number">3.3.1.</span> <span class="nav-text">Space Bounded Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Space-Time-Bounded-Compression-1"><span class="nav-number">3.3.2.</span> <span class="nav-text">Space&#x2F;Time Bounded Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Efficient-Space-Time-Bounded-Compression"><span class="nav-number">3.3.3.</span> <span class="nav-text">Efficient Space&#x2F;Time Bounded Compression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P-NP"><span class="nav-number">3.4.</span> <span class="nav-text">P &#x3D; NP?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">3.4.1.</span> <span class="nav-text">Definition</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
