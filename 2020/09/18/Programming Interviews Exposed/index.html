@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Programming Interviews ExposedCHAPTER 1  Before the SearchSUMMARYWhat you do before a formal job search is critical to finding the right kind of job.  With that in  mind, you should consider the follo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programming Interviews Exposed">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/09/18/Programming%20Interviews%20Exposed/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="Programming Interviews ExposedCHAPTER 1  Before the SearchSUMMARYWhat you do before a formal job search is critical to finding the right kind of job.  With that in  mind, you should consider the follo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-18T06:59:20.619Z">
+<meta property="article:modified_time" content="2020-09-18T13:35:16.440Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="mock interview">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2020/09/18/Programming%20Interviews%20Exposed/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Programming Interviews Exposed | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/18/Programming%20Interviews%20Exposed/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Programming Interviews Exposed
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-18 15:59:20 / 修改时间：22:35:16" itemprop="dateCreated datePublished" datetime="2020-09-18T15:59:20+09:00">2020-09-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mock/" itemprop="url" rel="index"><span itemprop="name">mock</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Programming-Interviews-Exposed"><a href="#Programming-Interviews-Exposed" class="headerlink" title="Programming Interviews Exposed"></a>Programming Interviews Exposed</h1><h2 id="CHAPTER-1-Before-the-Search"><a href="#CHAPTER-1-Before-the-Search" class="headerlink" title="CHAPTER 1  Before the Search"></a>CHAPTER 1  Before the Search</h2><h3 id="SUMMARY"><a href="#SUMMARY" class="headerlink" title="SUMMARY"></a>SUMMARY</h3><p>What you do before a formal job search is critical to finding the right kind of job. </p>
+<p>With that in  mind, you should consider the following things:<br> ➤ Know your likes and dislikes as a programmer and a prospective employee.<br> ➤ Understand the market to find and apply for the best jobs.<br> ➤ Develop the marketable skills that employers look for and that can enhance your career.<br> ➤ Manage your public profile to show you in the best possible light and make sure there are no  surprises to turn off potential employers.<br>Once you’ve worked through all these points, you’re ready to begin your job search.</p>
+<h2 id="CHAPTER-2-The-Job-Application-Process"><a href="#CHAPTER-2-The-Job-Application-Process" class="headerlink" title="CHAPTER 2  The Job Application Process"></a>CHAPTER 2  The Job Application Process</h2><h3 id="SUMMARY-1"><a href="#SUMMARY-1" class="headerlink" title="SUMMARY"></a>SUMMARY</h3><p>You can find prospective jobs in various ways, but <strong><code>networking through friends and acquaintances</code></strong> is usually the best method. </p>
+<p>If that’s not possible, find and <strong><code>contact companies directly</code></strong>. </p>
+<p>You may  also engage the services of a headhunter; be aware that the headhunter’s motivations aren’t always  aligned with yours.<br>The <strong><code>interviews</code></strong> are the most important part of the job application process. </p>
+<p>You will have one or two  <strong><code>screening interviews</code></strong>, usually by phone, to ensure that you’re applying for the right job and that you  are actually qualified. </p>
+<p>After the screening interviews, you’ll usually go through <strong><code>a series of on-site technical interviews</code></strong> that ultimately determine whether a job offer comes your way. </p>
+<p>Be sure to dress appropriately for the interviews, and turn off any electronic gadgets you might have with you.<br>During the interview process you’ll frequently interact with one of the company’s recruiters, especially if a job offer is made. </p>
+<p>Be sure to understand the recruiter’s role during this process.<br>When an offer is made, don’t accept it immediately. </p>
+<p>Give yourself time to consider it. </p>
+<p>Look over the offer, and try to <strong><code>negotiate a better deal</code></strong> because most offers aren’t fixed in stone, no matter what the recruiter says. </p>
+<p>After accepting a job offer, be sure to contact anyone else who has made you an offer to thank them for their interest in you.</p>
+<h2 id="CHAPTER-3-The-Phone-Screen"><a href="#CHAPTER-3-The-Phone-Screen" class="headerlink" title="CHAPTER 3  The Phone Screen"></a>CHAPTER 3  The Phone Screen</h2><p>As discussed in detail in that chapter, knowledge-based questions are frequently based on two sources: items on your résumé and concepts you reference in answers to other questions. Make sure you’re prepared to discuss everything on your résumé, and don’t use terms or concepts you don’t really understand in answers to problems.</p>
+<h3 id="PHONE-SCREEN-PROBLEMS"><a href="#PHONE-SCREEN-PROBLEMS" class="headerlink" title="PHONE SCREEN PROBLEMS"></a>PHONE SCREEN PROBLEMS</h3><h4 id="Memory-Allocation-in-C"><a href="#Memory-Allocation-in-C" class="headerlink" title="Memory Allocation in C"></a>Memory Allocation in C</h4><p><strong>PROBLEM  How do you allocate memory in C?</strong></p>
+<p>The most common way to allocate memory in C is by calling <strong><code>malloc</code></strong>. </p>
+<p>If the screener has a technical background (or you’re not sure yet whether they do), you might go on from there to discuss trade-offs between dynamic and static allocation, less common calls into the standard C memory manager like <strong><code>calloc</code></strong> and <strong><code>realloc</code></strong>, and possibly special circumstances under which you might want to use a custom memory manager. </p>
+<h4 id="Recursion-Trade-Offs"><a href="#Recursion-Trade-Offs" class="headerlink" title="Recursion Trade-Offs"></a>Recursion Trade-Offs</h4><p><strong>PROBLEM  Why is recursion bad?</strong></p>
+<p>Recursion is a technique. It has trade-offs. A better wording would have been, “What are the drawbacks of using recursion?” </p>
+<p>Make sure that you hit as many drawbacks as you can to cover all the possibilities. </p>
+<p>“Recursion involves repeated function calls, each of which has overhead in both time and stack space. </p>
+<p>Many people find recursion confusing, which may make a recursive function harder to document, debug, and maintain.”</p>
+<h4 id="Mobile-Programming"><a href="#Mobile-Programming" class="headerlink" title="Mobile Programming"></a>Mobile Programming</h4><p><strong>PROBLEM  How is programming for a mobile device different from programming for a normal computer?</strong></p>
+<p>Mobile programming has several differences from nonmobile programming. </p>
+<p>Mobile devices generally use mobile-specific operating systems like Android or iOS. </p>
+<p>These operating systems have different paradigms for filesystem access, memory access, and inter-application communication than desktop or server operating systems. </p>
+<p>Mobile programming requires more careful attention to power consumption, and storage and network bandwidth are often more limited. </p>
+<p>Network connectivity may be intermittent and available bandwidth may vary over a wide range. </p>
+<p>Most mobile devices use a touch screen and a microphone as their primary input devices, so user interface design centers on optimizing usage of small screens, finger-friendly widgets, gestures, voice recognition, and minimizing text input, which is inconvenient on a soft (screen-based) keyboard. </p>
+<p>Mobile devices have more consistent availability of resources like accelerometers, GPS location services, notifications, and contacts databases than nonmobile devices; access to these may be limited by a permissions model.<br>Application deployment typically occurs exclusively or almost exclusively through an online application store. </p>
+<h4 id="FizzBuzz"><a href="#FizzBuzz" class="headerlink" title="FizzBuzz"></a>FizzBuzz</h4><p><strong>PROBLEM  Write a program that prints the numbers from 1 to 100. If a number  is divisible by 3, print “Fizz” instead of the number, if a number is divisible by  5, print “Buzz” instead of the number, and if a number is divisible by both 3 and 5,  print “FizzBuzz” instead of the number.</strong></p>
+<p>All that’s really needed to complete the task is an understanding of for loops and modulo arithmetic.  If you feel like your solution is inelegant, you can mention that and see whether your interviewer directs you to work on improving it or simply moves on. A working, but not beautifully elegant solution in Java looks like:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">boolean</span> divByThree = (i % <span class="number">3</span> == <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">boolean</span> divByFive = (i % <span class="number">5</span> == <span class="number">0</span>);</span><br><span class="line">     <span class="keyword">if</span> ( divByThree &amp;&amp; divByFive ) &#123;</span><br><span class="line">         System.out.println( <span class="string">"FizzBuzz"</span> );</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (divByThree) &#123;</span><br><span class="line">          System.out.println( <span class="string">"Fizz"</span> );</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (divByFive) &#123;</span><br><span class="line">         System.out.println( <span class="string">"Buzz"</span> );</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         System.out.println( i );</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Reversing-a-String"><a href="#Reversing-a-String" class="headerlink" title="Reversing a String"></a>Reversing a String</h4><p><strong>PROBLEM  Write a function that reverses a string without using any library functions</strong></p>
+<p>This simple question reveals how well you understand basic string operations. A naive answer in Java might be:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverse</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    String rev = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); ++i) &#123;</span><br><span class="line">        rev += str.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> rev;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>It works, but this is better:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverse</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> size = str.length();</span><br><span class="line">    StringBuilder rev = <span class="keyword">new</span> StringBuilder(size);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        rev.append(str.charAt(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> rev.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This version is more efficient and demonstrates a clear understanding of the immutability of strings in Java by avoiding construction of a new String object on each iteration of the loop (see Chapter 7 for more detailed discussion of this). In a screening interview, either of these solutions would probably be sufficient. </p>
+<h4 id="Removing-Duplicates"><a href="#Removing-Duplicates" class="headerlink" title="Removing Duplicates"></a>Removing Duplicates</h4><p><strong>PROBLEM  Given an unsorted list of integers, write a function that returns a new list with all duplicate values removed.</strong></p>
+<p>A naive approach is to store values in a second list, searching that list to determine if a value has already been seen.<br>You can accomplish the same goal much more concisely and efficiently by converting the list to a set, which doesn’t allow duplicated values.<br> Sets don’t preserve the original ordering of their data.<br>That’s probably OK here, as the problem statement doesn’t require that ordering be preserved, but you should clarify that with the interviewer.<br>If the goal is to avoid duplicates, a set may be a better choice for storing this data than a list (which is something you could discuss with a technically knowledgeable screener).<br>However, the problem calls for a list to be returned, so you should convert the set back to a list rather than returning a set.</p>
+<p>Again, because the intent in screening interviews is generally to see whether or not you can code, the first solution might be considered sufficient, but the second is clearly superior if the list order doesn’t matter, and once you come up with the idea of using a set, it’s easier to write, too.</p>
+<h4 id="Nested-Parentheses"><a href="#Nested-Parentheses" class="headerlink" title="Nested Parentheses"></a>Nested Parentheses</h4><p><strong>PROBLEM  You are given a string that contains left and right parenthesis characters. Write code to determine whether the parentheses are correctly nested. For example, the strings “(())” and “()()” are correctly nested but “(()()” and “)(“ are not.</strong></p>
+<p>In a correctly nested string, there will be an equal number of left and right parentheses, so I might begin by approaching this as a counting problem.<br>Because you don’t care about the total number of sets of parentheses, you can do this with a single variable that tracks the relative number of left and right parentheses.<br>Increment a counter when you see a left parenthesis, and decrement it when you see a right parenthesis. If at the end the counter is nonzero, you know you don’t have a properly nested string.</p>
+<p>Check your solution before you start coding. Is what you’ve come up with so far sufficient?<br>The example of “)(“ is not correctly nested because the right parenthesis comes before the left parenthesis with which it is paired.<br>It’s not sufficient for there to be merely the same number of right<br>and left parentheses; every right parenthesis has to come after a left parenthesis that it’s paired with.<br>Put in terms of the counter that you’re using, it’s not sufficient for it to end at zero; it also has to never be negative. When do you need to check this?<br>The counter can only become negative after it’s decremented, so you can just check immediately following the decrement. Implementing this in Java yields:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkNesting</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">        <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">'('</span>) &#123;</span><br><span class="line">            ++count;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">')'</span>) &#123;</span><br><span class="line">            --count;</span><br><span class="line">            <span class="keyword">if</span> (count &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SUMMARY-2"><a href="#SUMMARY-2" class="headerlink" title="SUMMARY"></a>SUMMARY</h3><p>Phone screens are a way for employers to screen out candidates who don’t have the required skills and experience to proceed to on-site interviews. Passing a phone screen is necessary to be invited to on-site interviews, making it a key step toward obtaining a job offer. Be sure you have a good grasp of the fundamental knowledge you’ll need for the job for which you’re applying and everything you’ve mentioned in your résumé. Prepare yourself, your schedule, and your environment before taking a phone screen.</p>
+<h2 id="CHAPTER-4-Approaches-to-Programming-Problems"><a href="#CHAPTER-4-Approaches-to-Programming-Problems" class="headerlink" title="CHAPTER 4  Approaches to Programming Problems"></a>CHAPTER 4  Approaches to Programming Problems</h2><h3 id="The-Basic-Steps"><a href="#The-Basic-Steps" class="headerlink" title="The Basic Steps"></a>The Basic Steps</h3><ol>
+<li><p><strong>Make sure you understand the problem.</strong> Your initial assumptions about the problem may be wrong, or the interviewer’s explanation may be brief or difficult to follow. You can’t demonstrate your skills if you don’t understand the problem. Don’t hesitate to ask your interviewer questions, and don’t start solving the problem until you understand it. The interviewer may be deliberately obscuring things to determine whether you can find and understand the actual problem. In these cases, asking the right clarifying questions is an important part of the correct solution.</p>
+</li>
+<li><p><strong>When you understand the question, try a simple example.</strong>  This example may lead to insights about how to solve the general problem or bring to light any remaining misunderstandings that you have. Starting with an example also demonstrates a methodical, logical thought process. Examples are especially useful if you don’t see the solution right away.  Make sure you understand the problem before you start solving it, and then start with an example to solidify your understanding.</p>
+</li>
+<li><p><strong>Focus on the algorithm and data structures you will use to solve the problem.</strong> This can take a long time and require additional examples. This is to be expected. Interactivity is important during this process. If you stand quietly staring at the whiteboard, the interviewer has no way of knowing whether you’re making productive headway or are simply clueless. Talk to your interviewer about what you are doing. For example, you might say something like, “I’m wondering whether I can store the values in an array and then sort them, but I don’t think<br>that will work because I can’t quickly look up elements in an array by value.” This demonstrates your skill, which is the point of the interview, and may also lead to hints from the interviewer, who might respond, “You’re close to the solution. Do you really need to look up elements by value, or could you….”</p>
+<p>It may take a long time to solve the problem, and you may be tempted to begin coding before you figure out a complete solution. Resist this temptation. Consider who you would rather work with: someone who thinks about a problem for a long time and then codes it correctly the first time or someone who hastily jumps into a problem, makes several errors while coding, and doesn’t have any idea what direction to take. Not a difficult decision, is it?</p>
+</li>
+<li><p><strong>After you figure out your algorithm and how you can implement it, explain your solution to the interviewer.</strong>  This provides an opportunity to evaluate your solution before you begin coding. Your interviewer may say, “Sounds great, go ahead and code it,” or something like, “That’s not quite right because you can’t look up elements in a hash table that way.” Another common response is “That sounds like it will work, but there’s a more efficient solution.” In any case, you gain valuable information about whether you should move on to coding or go back to working on the algorithm.</p>
+</li>
+<li><p><strong>While you code, explain what you’re doing.</strong>  For example, you might say, “Here, I’m initializing the array to all zeros.” This narrative enables the interviewer to follow your code more easily.  Explain what you are doing to your interviewer before and while coding the solution. Keep talking!</p>
+</li>
+<li><p><strong>Ask questions when necessary.</strong>   You generally won’t be penalized for asking factual questions that you might otherwise look up in a reference. You obviously can’t ask a question such as, “How do I solve this problem?” but it is acceptable to ask a question such as, “I can’t remember—what format string do I use to print out a localized date?” Although it’s better to know these things, it’s okay to ask this sort of question.</p>
+</li>
+<li><p><strong>After you write the code for a problem, immediately verify that the code works by tracing through it with an example.</strong> This step demonstrates clearly that your code is correct in at least one case. It also illustrates a logical thought process and your intention to check your work and search for bugs. The example may also help you flush out minor bugs in your solution. </p>
+</li>
+<li><p><strong>Make sure you check your code for all error and special cases, especially boundary conditions.</strong> Programmers often overlook error and special cases; forgetting these cases in an interview indicates you might forget them on the job. If time does not allow for extensive checking, at least explain that you should check for such failures. Covering error and special cases can impress your interviewer and help you correctly solve the problem. Try an example, and check all error and special cases.</p>
+</li>
+</ol>
+<p>After you try an example and feel comfortable that your code is correct, the interviewer may ask you questions about what you wrote. These questions often focus on running time, alternative implementations, and complexity (discussed later in this chapter). If your interviewer does not ask you these questions, you should volunteer the information to show that you are cognizant of these issues. For example, you could say, “This implementation has linear running time, which is the best achievable running time since I need to check all the input values. The dynamic memory allocation will slow it down a little, as will the overhead of using recursion.”</p>
+<h3 id="When-You-Get-Stuck"><a href="#When-You-Get-Stuck" class="headerlink" title="When You Get Stuck"></a>When You Get Stuck</h3><h3 id="ANALYZING-YOUR-SOLUTION"><a href="#ANALYZING-YOUR-SOLUTION" class="headerlink" title="ANALYZING YOUR SOLUTION"></a>ANALYZING YOUR SOLUTION</h3><h3 id="How-to-Do-Big-O-Analysis"><a href="#How-to-Do-Big-O-Analysis" class="headerlink" title="How to Do Big-O Analysis"></a>How to Do Big-O Analysis</h3><p>The general procedure for Big-O runtime analysis is as follows:</p>
+<ol>
+<li>Figure out what the input is and what n represents.</li>
+<li>Express the number of operations the algorithm performs in terms of n.</li>
+<li>Eliminate all but the highest-order terms.</li>
+<li>Remove all constant factors.</li>
+</ol>
+<p>For the algorithms you’ll encounter in interviews, Big-O analysis should be straightforward as long as you correctly identify the operations that are dependent on the input size.<br>If you’d like to learn more about runtime analysis, you can find a more extensive, mathematically rigorous discussion in the first chapters of any good algorithms textbook. This book defines Big- O informally as it is most commonly used by professional programmers. The informal definition of Big-O used in this book is generally closer to the textbook definition of Big-Theta than the textbook definition of Big-O.</p>
+<h3 id="SUMMARY-3"><a href="#SUMMARY-3" class="headerlink" title="SUMMARY"></a>SUMMARY</h3><p>How you solve programming problems during your interviews can determine whether you get a job offer, so you need to answer them as correctly and completely as you can. The problems usually get progressively harder as the day progresses, so don’t be surprised if you need an occasional hint from the interviewer. You normally code in a mainstream programming language, but the choice of language is ultimately dictated by the requirements of the job for which you apply, so be familiar with the right languages.<br>Interact with your interviewers as much as possible as you attempt each problem. Let them know what you’re thinking at each point in your analysis of the problem and your attempts at coding an answer. Start by making sure you understand the problem, and then try some examples to reinforce that understanding. Choose the algorithm and make sure it works for those examples. Remember to test for special cases. If you’re stuck, try more examples or choose a different algorithm. Keep obscure or advanced language features in mind when looking for alternative answers.<br>If asked to comment on the performance of a solution, a Big-O runtime analysis is usually sufficient. Algorithms that run in constant, logarithmic, linear, or quasilinear time are preferred. You should also be prepared to comment on the memory footprint of an algorithm.</p>
+<h2 id="CHAPTER-5-Linked-Lists"><a href="#CHAPTER-5-Linked-Lists" class="headerlink" title="CHAPTER 5  Linked Lists"></a>CHAPTER 5  Linked Lists</h2><h3 id="KINDS-OF-LINKED-LISTS"><a href="#KINDS-OF-LINKED-LISTS" class="headerlink" title="KINDS OF LINKED LISTS"></a>KINDS OF LINKED LISTS</h3><p>Three basic kinds of linked lists exist: <strong><code>singly linked lists</code></strong>, <strong><code>doubly linked lists</code></strong>, and <strong><code>circular linked lists</code></strong>. Singly linked lists are the variety most commonly encountered in interviews.</p>
+<p>A Java implementation using generics is similar, but of course uses references instead of pointers:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A templated Java singly linked list</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListElement</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ListElement</span><span class="params">( T value )</span> </span>&#123; data = value; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListElement&lt;T&gt; <span class="title">next</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> next; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">value</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> data; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">( ListElement&lt;T&gt; elem )</span> </span>&#123; next = elem; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">( T value )</span> </span>&#123; data = value; &#125;</span><br><span class="line">    <span class="keyword">private</span> ListElement&lt;T&gt; next;</span><br><span class="line">    <span class="keyword">private</span> T data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="BASIC-LINKED-LIST-OPERATIONS"><a href="#BASIC-LINKED-LIST-OPERATIONS" class="headerlink" title="BASIC LINKED LIST OPERATIONS"></a>BASIC LINKED LIST OPERATIONS</h3><h4 id="Tracking-the-Head-Element"><a href="#Tracking-the-Head-Element" class="headerlink" title="Tracking the Head Element"></a>Tracking the Head Element</h4><p>Tracking the head element becomes a problem when you alter the list inside a function or method, because the caller must be made aware of the new head element.</p>
+<p> For example, the following Java code is <strong><code>incorrect</code></strong> because it fails to update the reference to the head of the list:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertInFront</span><span class="params">( ListElement&lt;Integer&gt; list, <span class="keyword">int</span> data )</span></span>&#123;</span><br><span class="line">    ListElement&lt;Integer&gt; l = <span class="keyword">new</span> ListElement&lt;Integer&gt;( data );</span><br><span class="line">    l.setNext( list );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>A <strong><code>correct solution</code></strong> is to return the new head element from the method:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListElement&lt;Integer&gt; <span class="title">insertInFront</span><span class="params">( ListElement&lt;Integer&gt; list, <span class="keyword">int</span> data )</span></span>&#123;</span><br><span class="line">    ListElement&lt;Integer&gt; l = <span class="keyword">new</span> ListElement&lt;Integer&gt;( data );</span><br><span class="line">    l.setNext( list );</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>CHAPTER 6  Trees and Graphs</p>
+<p>CHAPTER 7  Arrays and Strings</p>
+<p>CHAPTER 8  Recursion</p>
+<p>CHAPTER 9  Sorting</p>
+<p>CHAPTER 10  Concurrency</p>
+<p>CHAPTER 11  Object-Oriented Programming</p>
+<p>CHAPTER 12  Design Patterns</p>
+<p>CHAPTER 13  Databases</p>
+<p>CHAPTER 14  Graphics and Bit Manipulation</p>
+<p>CHAPTER 15  Data Science, Random Numbers, and Statistics</p>
+<p>CHAPTER 16  Counting, Measuring, and Ordering Puzzles</p>
+<p>CHAPTER 17  Graphical and Spatial Puzzles</p>
+<p>CHAPTER 18  Knowledge-Based Questions</p>
+<p>CHAPTER 19  Nontechnical Questions</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mock-interview/" rel="tag"># mock interview</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/17/Dynamic%20Programming/" rel="prev" title="Dynamic Programming">
+      <i class="fa fa-chevron-left"></i> Dynamic Programming
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Programming-Interviews-Exposed"><span class="nav-number">1.</span> <span class="nav-text">Programming Interviews Exposed</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CHAPTER-1-Before-the-Search"><span class="nav-number">1.1.</span> <span class="nav-text">CHAPTER 1  Before the Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SUMMARY"><span class="nav-number">1.1.1.</span> <span class="nav-text">SUMMARY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CHAPTER-2-The-Job-Application-Process"><span class="nav-number">1.2.</span> <span class="nav-text">CHAPTER 2  The Job Application Process</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SUMMARY-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">SUMMARY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CHAPTER-3-The-Phone-Screen"><span class="nav-number">1.3.</span> <span class="nav-text">CHAPTER 3  The Phone Screen</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHONE-SCREEN-PROBLEMS"><span class="nav-number">1.3.1.</span> <span class="nav-text">PHONE SCREEN PROBLEMS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Memory-Allocation-in-C"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Memory Allocation in C</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Recursion-Trade-Offs"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Recursion Trade-Offs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mobile-Programming"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Mobile Programming</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FizzBuzz"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">FizzBuzz</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reversing-a-String"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">Reversing a String</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Removing-Duplicates"><span class="nav-number">1.3.1.6.</span> <span class="nav-text">Removing Duplicates</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nested-Parentheses"><span class="nav-number">1.3.1.7.</span> <span class="nav-text">Nested Parentheses</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUMMARY-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">SUMMARY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CHAPTER-4-Approaches-to-Programming-Problems"><span class="nav-number">1.4.</span> <span class="nav-text">CHAPTER 4  Approaches to Programming Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Basic-Steps"><span class="nav-number">1.4.1.</span> <span class="nav-text">The Basic Steps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#When-You-Get-Stuck"><span class="nav-number">1.4.2.</span> <span class="nav-text">When You Get Stuck</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANALYZING-YOUR-SOLUTION"><span class="nav-number">1.4.3.</span> <span class="nav-text">ANALYZING YOUR SOLUTION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-Do-Big-O-Analysis"><span class="nav-number">1.4.4.</span> <span class="nav-text">How to Do Big-O Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUMMARY-3"><span class="nav-number">1.4.5.</span> <span class="nav-text">SUMMARY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CHAPTER-5-Linked-Lists"><span class="nav-number">1.5.</span> <span class="nav-text">CHAPTER 5  Linked Lists</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#KINDS-OF-LINKED-LISTS"><span class="nav-number">1.5.1.</span> <span class="nav-text">KINDS OF LINKED LISTS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BASIC-LINKED-LIST-OPERATIONS"><span class="nav-number">1.5.2.</span> <span class="nav-text">BASIC LINKED LIST OPERATIONS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tracking-the-Head-Element"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">Tracking the Head Element</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
