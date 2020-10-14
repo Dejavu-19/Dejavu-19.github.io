@@ -1095,7 +1095,7 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Graphs/">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Graph/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
@@ -1109,7 +1109,7 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/17/Graphs/" class="post-title-link" itemprop="url">Graphs</a>
+            <a href="/2020/09/17/Graph/" class="post-title-link" itemprop="url">Graph</a>
         </h2>
 
         <div class="post-meta">
@@ -1126,7 +1126,7 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-07 13:14:00" itemprop="dateModified" datetime="2020-10-07T13:14:00+09:00">2020-10-07</time>
+                <time title="修改时间：2020-10-14 20:00:05" itemprop="dateModified" datetime="2020-10-14T20:00:05+09:00">2020-10-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1149,14 +1149,14 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Graphs"><a href="#Graphs" class="headerlink" title="Graphs"></a>Graphs</h1><h2 id="Depth-first-Search-AE"><a href="#Depth-first-Search-AE" class="headerlink" title="Depth first Search(AE)"></a>Depth first Search(AE)</h2><ol>
+          <h1 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h1><h2 id="Depth-first-Search-AE"><a href="#Depth-first-Search-AE" class="headerlink" title="Depth first Search(AE)"></a>Depth first Search(AE)</h2><ol>
 <li>traverse the tree-like graph</li>
 <li>V-vertex nodes, E-edges the line between node, call a bunch of stack</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//O(V+E) T</span></span><br><span class="line"><span class="comment">//O(V) S</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Do not edit the class below except</span></span><br><span class="line">    <span class="comment">// for the depthFirstSearch method.</span></span><br><span class="line">    <span class="comment">// Feel free to add new properties</span></span><br><span class="line">    <span class="comment">// and methods to the class.</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        String name;</span><br><span class="line">        List&lt;Node&gt; children = <span class="keyword">new</span> ArrayList&lt;Node&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">depthFirstSearch</span><span class="params">(List&lt;String&gt; array)</span> </span>&#123;</span><br><span class="line">            array.add(<span class="keyword">this</span>.name);  <span class="comment">//First thing is add the node to the return list</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chileren.size(); ++i) &#123;  <span class="comment">//traverse each children node and call DFS function recursively</span></span><br><span class="line">                children.get(i).depthFirstSearch(array);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> array;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Node <span class="title">addChild</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            Node child = <span class="keyword">new</span> Node(name);</span><br><span class="line">            children.add(child);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/09/17/Graphs/#more" rel="contents">
+              <a class="btn" href="/2020/09/17/Graph/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
