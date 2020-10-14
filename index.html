@@ -171,6 +171,132 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/10/14/Searching/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/14/Searching/" class="post-title-link" itemprop="url">Searching</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-14 19:01:23 / 修改时间：19:01:28" itemprop="dateCreated datePublished" datetime="2020-10-14T19:01:23+09:00">2020-10-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Searching"><a href="#Searching" class="headerlink" title="Searching"></a>Searching</h1><h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h1><p><img src="https://camo.githubusercontent.com/17135f6479126d3322eb4c81746c7b7693f8f34b/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f39353930333837382d373235622d346564392d626465642d6263346161653037393261392e6a7067" alt=""></p>
+<p>广度优先搜索一层一层地进行遍历，每层遍历都是以上一层遍历的结果作为起点，遍历一个距离能访问到的所有节点。</p>
+<p>需要注意的是，遍历过的节点不能再次被遍历。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">第一层：</span><br><span class="line">- <span class="number">0</span> -&gt; &#123;<span class="number">6</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">第二层：</span><br><span class="line">- <span class="number">6</span> -&gt; &#123;<span class="number">4</span>&#125;</span><br><span class="line">- <span class="number">2</span> -&gt; &#123;&#125;</span><br><span class="line">- <span class="number">1</span> -&gt; &#123;&#125;</span><br><span class="line">- <span class="number">5</span> -&gt; &#123;<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">第三层：</span><br><span class="line">- <span class="number">4</span> -&gt; &#123;&#125;</span><br><span class="line">- <span class="number">3</span> -&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每一层遍历的节点都与根节点距离相同。设 di 表示第 i 个节点与根节点的距离，推导出一个结论：对于先遍历的节点 i 与后遍历的节点 j，有 di &lt;= dj。</p>
+<p>利用这个结论，可以求解最短路径等 <strong>最优解</strong> 问题：第一次遍历到目的节点，其所经过的路径为最短路径。</p>
+<p>应该注意的是，使用 BFS 只能求解无权图的最短路径，无权图是指从一个节点到另一个节点的代价都记为 1。</p>
+<p>在程序实现 BFS 时需要考虑以下问题：</p>
+<ul>
+<li>队列：用来存储每一轮遍历得到的节点；</li>
+<li>标记：对于遍历过的节点，应该将它标记，防止重复遍历。</li>
+</ul>
+<h2 id="1091-Shortest-Path-in-Binary-Matrix"><a href="#1091-Shortest-Path-in-Binary-Matrix" class="headerlink" title="1091. Shortest Path in Binary Matrix"></a><a href="https://leetcode.com/problems/shortest-path-in-binary-matrix/" target="_blank" rel="noopener">1091. Shortest Path in Binary Matrix</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>In an N by N square grid, each cell is either empty (0) or blocked (1).</p>
+<p>A <em>clear path from top-left to bottom-right</em> has length <code>k</code> if and only if it is composed of cells <code>C_1, C_2, ..., C_k</code> such that:</p>
+<ul>
+<li>Adjacent cells <code>C_i</code> and <code>C_{i+1}</code> are connected 8-directionally (ie., they are different and share an edge or corner)</li>
+<li><code>C_1</code> is at location <code>(0, 0)</code> (ie. has value <code>grid[0][0]</code>)</li>
+<li><code>C_k</code> is at location <code>(N-1, N-1)</code> (ie. has value <code>grid[N-1][N-1]</code>)</li>
+<li>If <code>C_i</code> is located at <code>(r, c)</code>, then <code>grid[r][c]</code> is empty (ie. <code>grid[r][c] == 0</code>).</li>
+</ul>
+<p>Return the length of the shortest such clear path from top-left to bottom-right. If such a path does not exist, return -1.</p>
+<h3 id="Solition1"><a href="#Solition1" class="headerlink" title="Solition1:"></a>Solition1:</h3><ol>
+<li>题目描述：0 表示可以经过某个位置，求解从左上角到右下角的最短路径长度。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">shortestPathBinaryMatrix</span><span class="params">(<span class="keyword">int</span>[][] grids)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (grids == <span class="keyword">null</span> || grids.length == <span class="number">0</span> || grids[<span class="number">0</span>].length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[][] direction = &#123;&#123;<span class="number">1</span>, -<span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span> m = grids.length, n = grids[<span class="number">0</span>].length;</span><br><span class="line">        Queue&lt;Pair&lt;Integer, Integer&gt;&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.add(<span class="keyword">new</span> Pair&lt;&gt;(<span class="number">0</span>, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">int</span> pathLength = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = queue.size();</span><br><span class="line">            pathLength++;</span><br><span class="line">            <span class="keyword">while</span> (size-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                Pair&lt;Integer, Integer&gt; cur = queue.poll();</span><br><span class="line">                <span class="keyword">int</span> cr = cur.getKey(), cc = cur.getValue();</span><br><span class="line">                <span class="keyword">if</span> (grids[cr][cc] == <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (cr == m - <span class="number">1</span> &amp;&amp; cc == n - <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> pathLength;</span><br><span class="line">                &#125;</span><br><span class="line">                grids[cr][cc] = <span class="number">1</span>; <span class="comment">// 标记</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span>[] d : direction) &#123;</span><br><span class="line">                    <span class="keyword">int</span> nr = cr + d[<span class="number">0</span>], nc = cc + d[<span class="number">1</span>];</span><br><span class="line">                    <span class="keyword">if</span> (nr &lt; <span class="number">0</span> || nr &gt;= m || nc &lt; <span class="number">0</span> || nc &gt;= n) &#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    queue.add(<span class="keyword">new</span> Pair&lt;&gt;(nr, nc));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><h2 id="695-Max-Area-of-Island"><a href="#695-Max-Area-of-Island" class="headerlink" title="695. Max Area of Island"></a><a href="https://leetcode.com/problems/max-area-of-island/description/" target="_blank" rel="noopener">695. Max Area of Island</a></h2><p>Given a non-empty 2D array <code>grid</code> of 0’s and 1’s, an <strong>island</strong> is a group of <code>1</code>‘s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.</p>
+<p>Find the maximum area of an island in the given 2D array. (If there is no island, the maximum area is 0.)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br><span class="line">Given the above grid, <span class="keyword">return</span> <span class="number">6</span>. </span><br><span class="line">Note the answer is not <span class="number">11</span>, because the island must be connected <span class="number">4</span>-directionally.</span><br></pre></td></tr></table></figure>
+
+<h1 id="Backtracking"><a href="#Backtracking" class="headerlink" title="Backtracking"></a>Backtracking</h1><p>Backtracking（回溯）属于 DFS。</p>
+<ul>
+<li>普通 DFS 主要用在 <strong>可达性问题</strong> ，这种问题只需要执行到特点的位置然后返回即可。</li>
+<li>而 Backtracking 主要用于求解 <strong>排列组合</strong> 问题，例如有 { ‘a’,’b’,’c’ } 三个字符，求解所有由这三个字符排列得到的字符串，这种问题在执行到特定的位置返回之后还会继续执行求解过程。</li>
+</ul>
+<p>因为 Backtracking 不是立即返回，而要继续求解，因此在程序实现时，需要注意对元素的标记问题：</p>
+<ul>
+<li>在访问一个新元素进入新的递归调用时，需要将新元素标记为已经访问，这样才能在继续递归调用时不用重复访问该元素；</li>
+<li>但是在递归返回时，需要将元素标记为未访问，因为只需要保证在一个递归链中不同时访问一个元素，可以访问已经访问过但是不在当前递归链中的元素。</li>
+</ul>
+<h2 id="17-Letter-Combinations-of-a-Phone-Number"><a href="#17-Letter-Combinations-of-a-Phone-Number" class="headerlink" title="17. Letter Combinations of a Phone Number"></a><a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/" target="_blank" rel="noopener">17. Letter Combinations of a Phone Number</a></h2><p>Given a digit string, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the telephone buttons) is given below.</p>
+<p><img src="https://camo.githubusercontent.com/a8fc38780ec458d1094ad58aea36666a8e818d37/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f39383233373638632d323132622d346231612d623639612d6233663539653037623937372e6a7067" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:Digit string <span class="string">"23"</span></span><br><span class="line">Output: [<span class="string">"ad"</span>, <span class="string">"ae"</span>, <span class="string">"af"</span>, <span class="string">"bd"</span>, <span class="string">"be"</span>, <span class="string">"bf"</span>, <span class="string">"cd"</span>, <span class="string">"ce"</span>, <span class="string">"cf"</span>].</span><br></pre></td></tr></table></figure>
+
+<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1:"></a>Solution1:</h3><ol>
+<li>思路：回溯法，每键创建一个新的List，使用之前的组合添加每一个可能的字符，每一种新结果添加到新List 中。O(n^k)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[][] cs = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">8</span>][];</span><br><span class="line">        cs[<span class="number">0</span>] = <span class="keyword">new</span> <span class="keyword">char</span>[] &#123; <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span> &#125;;</span><br><span class="line">        cs[<span class="number">1</span>] = <span class="keyword">new</span> <span class="keyword">char</span>[] &#123; <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span> &#125;;</span><br><span class="line">        cs[<span class="number">2</span>] = <span class="keyword">new</span> <span class="keyword">char</span>[] &#123; <span class="string">'g'</span>, <span class="string">'h'</span>, <span class="string">'i'</span> &#125;;</span><br><span class="line">        cs[<span class="number">3</span>] = <span class="keyword">new</span> <span class="keyword">char</span>[] &#123; <span class="string">'j'</span>, <span class="string">'k'</span>, <span class="string">'l'</span> &#125;;</span><br><span class="line">        cs[<span class="number">4</span>] = <span class="keyword">new</span> <span class="keyword">char</span>[] &#123; <span class="string">'m'</span>, <span class="string">'n'</span>, <span class="string">'o'</span> &#125;;</span><br><span class="line">        cs[<span class="number">5</span>] = <span class="keyword">new</span> <span class="keyword">char</span>[] &#123; <span class="string">'p'</span>, <span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'s'</span> &#125;;</span><br><span class="line">        cs[<span class="number">6</span>] = <span class="keyword">new</span> <span class="keyword">char</span>[] &#123; <span class="string">'t'</span>, <span class="string">'u'</span>, <span class="string">'v'</span> &#125;;</span><br><span class="line">        cs[<span class="number">7</span>] = <span class="keyword">new</span> <span class="keyword">char</span>[] &#123; <span class="string">'w'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span> &#125;;</span><br><span class="line">        List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        bt(digits, <span class="number">0</span>, cs, ans, <span class="keyword">new</span> StringBuilder());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bt</span><span class="params">(String digits, <span class="keyword">int</span> i, <span class="keyword">char</span>[][] cs, List&lt;String&gt; ans, StringBuilder can)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (i == digits.length()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i != <span class="number">0</span>) &#123;</span><br><span class="line">                    ans.add(can.toString());</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> c : cs[digits.charAt(i) - <span class="string">'2'</span>]) &#123;</span><br><span class="line">                StringBuilder nc = <span class="keyword">new</span> StringBuilder(can);</span><br><span class="line">                nc.append(c);</span><br><span class="line">                bt(digits, i + <span class="number">1</span>, cs, ans, nc);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2:"></a>Solution2:</h3><ol>
+<li>single queue BFS solutions</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">		LinkedList&lt;String&gt; ans = <span class="keyword">new</span> LinkedList&lt;String&gt;();</span><br><span class="line">		<span class="keyword">if</span>(digits.isEmpty()) <span class="keyword">return</span> ans;</span><br><span class="line">		String[] mapping = <span class="keyword">new</span> String[] &#123;<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>&#125;;</span><br><span class="line">		ans.add(<span class="string">""</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;digits.length();i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x = Character.getNumericValue(digits.charAt(i));</span><br><span class="line">			<span class="keyword">while</span>(ans.peek().length()==i)&#123;</span><br><span class="line">				String t = ans.remove();</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">char</span> s : mapping[x].toCharArray())</span><br><span class="line">					ans.add(t+s);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">		LinkedList&lt;String&gt; ans = <span class="keyword">new</span> LinkedList&lt;String&gt;();</span><br><span class="line">		<span class="keyword">if</span>(digits.isEmpty()) <span class="keyword">return</span> ans;</span><br><span class="line">		String[] mapping = <span class="keyword">new</span> String[] &#123;<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>&#125;;</span><br><span class="line">		ans.add(<span class="string">""</span>);</span><br><span class="line">		<span class="keyword">while</span>(ans.peek().length()!=digits.length())&#123;</span><br><span class="line">			String remove = ans.remove();</span><br><span class="line">			String map = mapping[digits.charAt(remove.length())-<span class="string">'0'</span>];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">char</span> c: map.toCharArray())&#123;</span><br><span class="line">				ans.addLast(remove+c);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/10/12/Princeton%20Algorithms%20week2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -202,7 +328,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-13 15:31:25" itemprop="dateModified" datetime="2020-10-13T15:31:25+09:00">2020-10-13</time>
+                <time title="修改时间：2020-10-14 18:59:10" itemprop="dateModified" datetime="2020-10-14T18:59:10+09:00">2020-10-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,7 +351,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Princeton-Algorithms-week2"><a href="#Princeton-Algorithms-week2" class="headerlink" title="Princeton Algorithms week2"></a>Princeton Algorithms week2</h1><p><a href="https://d3c33hcgiwev3.cloudfront.net/_3293220668bef735d367a188452c32dc_13StacksAndQueues.pdf?Expires=1602720000&Signature=aLAe7cVc3QMpdshv3mSWt3PudaO4E508PDqkPUbXotk93NuZdkCvV~DFcbNzTlVNkSgrRlOyO7TZJeLclcV3-pCOIPPHp-mopEOvqcJGuaxx9rbfjc7B5jMTJAVbfkePl4xOYNVi59M8HeaecSevWk6wTcVrJNVanz7hzNrZwGQ_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A" target="_blank" rel="noopener">Slides</a></p>
+          <h1 id="Princeton-Algorithms-week2"><a href="#Princeton-Algorithms-week2" class="headerlink" title="Princeton Algorithms week2"></a>Princeton Algorithms week2</h1><p><a href="https://d3c33hcgiwev3.cloudfront.net/_3293220668bef735d367a188452c32dc_13StacksAndQueues.pdf?Expires=1602720000&Signature=aLAe7cVc3QMpdshv3mSWt3PudaO4E508PDqkPUbXotk93NuZdkCvV~DFcbNzTlVNkSgrRlOyO7TZJeLclcV3-pCOIPPHp-mopEOvqcJGuaxx9rbfjc7B5jMTJAVbfkePl4xOYNVi59M8HeaecSevWk6wTcVrJNVanz7hzNrZwGQ_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A" target="_blank" rel="noopener">Slide1</a></p>
+<p><a href="https://d3c33hcgiwev3.cloudfront.net/_f03960834ff947e41e6b16e8431ab227_21ElementarySorts.pdf?Expires=1602806400&Signature=X8rr4LGa8zv95g4zGKaLwoPqKT167RxLnqdYXrnkkqte-BqPPN9GTnq7qbxg70AZ9E0mHjS2xrK1vMZfDDJFMBQ1fKU26YKTRxIh4CafnMUKJIRrSVwMMzpgScLv5L02oVgd8M-arxGTfG3~CFGW3oaqUUhpNS26SCZ2XtJzVcA_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A" target="_blank" rel="noopener">Slide2</a></p>
 <p><strong>Suggested Readings.</strong> <strong><code>Section 1.3</code></strong> and <strong><code>2.1</code></strong> in <em>Algorithms, 4th edition</em>.</p>
 <h2 id="Stacks-and-Queues"><a href="#Stacks-and-Queues" class="headerlink" title="Stacks and Queues"></a>Stacks and Queues</h2><p><strong>Lecture: Stacks and Queues.</strong></p>
 <p><strong>Lecture: Elementary Sorts.</strong></p>
@@ -1049,90 +1176,6 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Sorting/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/17/Sorting/" class="post-title-link" itemprop="url">Sorting</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-17 12:59:11" itemprop="dateCreated datePublished" datetime="2020-09-17T12:59:11+09:00">2020-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-26 19:39:19" itemprop="dateModified" datetime="2020-09-26T19:39:19+09:00">2020-09-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Sorting"><a href="#Sorting" class="headerlink" title="Sorting"></a>Sorting</h1><h2 id="Bubble-Sort-AE"><a href="#Bubble-Sort-AE" class="headerlink" title="Bubble Sort(AE)"></a>Bubble Sort(AE)</h2><p>Bubble sort do not use other helper array</p>
-<p>O(N^2^) T</p>
-<p>O(1) S</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] bubbleSort(<span class="keyword">int</span>[] array) &#123;</span><br><span class="line">        <span class="comment">// Write your code here.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length - <span class="number">1</span>; i++) &#123;  <span class="comment">//&lt; array.length - 1</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; array.length - <span class="number">1</span> - i; j++) &#123;  <span class="comment">//i表示右侧排序后的固定的长度，逐渐增加</span></span><br><span class="line">                <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">int</span> temp = array[j];</span><br><span class="line">                    array[j] = array[j + <span class="number">1</span>];</span><br><span class="line">                    array[j + <span class="number">1</span>] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/17/Sorting/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1204,7 +1247,7 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
