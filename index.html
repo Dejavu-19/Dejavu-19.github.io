@@ -171,6 +171,83 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/10/21/Princeton%20Algorithms%20week3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/21/Princeton%20Algorithms%20week3/" class="post-title-link" itemprop="url">Princeton Algorithms week3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-21 20:01:06 / 修改时间：23:28:59" itemprop="dateCreated datePublished" datetime="2020-10-21T20:01:06+09:00">2020-10-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Princeton-Algorithms-week3"><a href="#Princeton-Algorithms-week3" class="headerlink" title="Princeton Algorithms week3"></a>Princeton Algorithms week3</h1><p><a href="https://d3c33hcgiwev3.cloudfront.net/_96af337808d8f90939cd4d97c25898e4_22Mergesort.pdf?Expires=1603411200&Signature=EyMaIiRTNDj17z1E23iI9zktB7B~42ULlLyr-DopQ4vhAFqW9xjwEtVa9dYenh-dVHohfhYUGISlRsYjVyb-oy~OUX9GJzhv9TzMAP29dHCudLk9V3n80Sy67Irxwy-ut~QiheaaDk9xH2GiUugn63gL0OAJBpfXbQD9hU-~brE_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A" target="_blank" rel="noopener">Slide1</a></p>
+<p><a href="https://d3c33hcgiwev3.cloudfront.net/_4a6a3b8cd5d6812c52adce2eb27dca95_23Quicksort.pdf?Expires=1603411200&Signature=UXF2Sg6gLamEgKyJrENOOlKpyUtUaaoHLoYxGpBAgfpc3vsbXUj-bLhptLOzxbEnlp5MZ2LrDZYDh6E69xyCTDrAo8WehxxmJry1rOXzZ0dHr1lfGO4Xqoi4sq9z~4wYCN2Mdvd-SbThFXW4XeoRB06w8yGSG2vxiVeDdEljWSQ_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A" target="_blank" rel="noopener">Slide2</a></p>
+<p><strong>Suggested Readings.</strong> <strong><code>Section 2.2</code></strong> and <strong><code>2.3</code></strong> in <em>Algorithms, 4th edition</em>.</p>
+<p><a href="https://coursera.cs.princeton.edu/algs4/assignments/collinear/specification.php" target="_blank" rel="noopener">assignment</a></p>
+<h2 id="Mergesort"><a href="#Mergesort" class="headerlink" title="Mergesort"></a>Mergesort</h2><h3 id="Merging-Java-implementation"><a href="#Merging-Java-implementation" class="headerlink" title="Merging: Java implementation"></a>Merging: Java implementation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(Comparable[] a, Comparable[] aux, <span class="keyword">int</span> lo, <span class="keyword">int</span> mid, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">assert</span> <span class="title">isSorted</span><span class="params">(a, lo, mid)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">assert</span> <span class="title">isSorted</span><span class="params">(a, mid + <span class="number">1</span>, hi)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> 	k = lo; k &lt;= hi; k++) &#123;</span><br><span class="line">        aux[k] = a[k];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> i = lo, j = mid = <span class="number">1</span>；</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = lo; k &lt;= hi; k++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; mid) a[k] = aux[j++];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; hi) a[k] = aux[i++];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (less(aux[j], aux[i])) a[k] = aux[j++];</span><br><span class="line">        <span class="keyword">else</span> a[k] = aux[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">assert</span> <span class="title">isSorted</span><span class="params">(a, lo, hi)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mergesort-Java-implementation"><a href="#Mergesort-Java-implementation" class="headerlink" title="Mergesort: Java implementation"></a>Mergesort: Java implementation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Merge</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(...)</span></span></span><br><span class="line"><span class="function">    </span>&#123; <span class="comment">/* as before */</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a, Comparable[] aux, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">        sort(a, aux, lo, mid);</span><br><span class="line">        sort(a, aux, mid+<span class="number">1</span>, hi);</span><br><span class="line">        merge(a, aux, lo, mid, hi);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        aux = <span class="keyword">new</span> Comparable[a.length];</span><br><span class="line">        sort(a, aux, <span class="number">0</span>, a.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Quicksort"><a href="#Quicksort" class="headerlink" title="Quicksort"></a>Quicksort</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/10/18/weekly%20contest/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -427,7 +504,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/12/Princeton%20Algorithms%20week2/" class="post-title-link" itemprop="url">cs61b week2</a>
+            <a href="/2020/10/12/Princeton%20Algorithms%20week2/" class="post-title-link" itemprop="url">Princeton Algorithms week2</a>
         </h2>
 
         <div class="post-meta">
@@ -444,7 +521,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-15 15:34:28" itemprop="dateModified" datetime="2020-10-15T15:34:28+09:00">2020-10-15</time>
+                <time title="修改时间：2020-10-21 20:00:28" itemprop="dateModified" datetime="2020-10-21T20:00:28+09:00">2020-10-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -582,7 +659,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/25/Princeton%20Algorithms%20week1/" class="post-title-link" itemprop="url">cs61b week1</a>
+            <a href="/2020/09/25/Princeton%20Algorithms%20week1/" class="post-title-link" itemprop="url">Princeton Algorithms week1</a>
         </h2>
 
         <div class="post-meta">
@@ -599,7 +676,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-16 19:05:43" itemprop="dateModified" datetime="2020-10-16T19:05:43+09:00">2020-10-16</time>
+                <time title="修改时间：2020-10-21 20:00:38" itemprop="dateModified" datetime="2020-10-21T20:00:38+09:00">2020-10-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -684,7 +761,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-09 21:27:33" itemprop="dateModified" datetime="2020-10-09T21:27:33+09:00">2020-10-09</time>
+                <time title="修改时间：2020-10-22 12:05:22" itemprop="dateModified" datetime="2020-10-22T12:05:22+09:00">2020-10-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -828,6 +905,10 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
 <li>The idea is: I calculated the stored water at each index a and b in my code. At the start of every loop, I update the current maximum height from left side (that is from A[0,1…a]) and the maximum height from right side(from A[b,b+1…n-1]). if(leftmax&lt;rightmax) then, at least (leftmax-A[a]) water can definitely be stored no matter what happens between [a,b] since we know there is a barrier at the rightside(rightmax&gt;leftmax). On the other side, we cannot store more water than (leftmax-A[a]) at index a since the barrier at left is of height leftmax. So, we know the water that can be stored at index a is exactly (leftmax-A[a]). The same logic applies to the case when (leftmax&gt;rightmax). At each loop we can make a and b one step closer. Thus we can finish it in linear time.</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trap</span><span class="params">(<span class="keyword">int</span>[] A)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> b=A.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> max=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> leftmax=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rightmax=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(a&lt;=b)&#123;</span><br><span class="line">        leftmax=Math.max(leftmax,A[a]);</span><br><span class="line">        rightmax=Math.max(rightmax,A[b]);</span><br><span class="line">        <span class="keyword">if</span>(leftmax&lt;rightmax)&#123;</span><br><span class="line">            max+=(leftmax-A[a]);  <span class="comment">// leftmax is smaller than rightmax, so the (leftmax-A[a]) water can be stored</span></span><br><span class="line">            a++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            max+=(rightmax-A[b]);</span><br><span class="line">            b--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="745-Asteroid-Collision"><a href="#745-Asteroid-Collision" class="headerlink" title="745. Asteroid Collision"></a><a href="https://leetcode.com/problems/asteroid-collision/" target="_blank" rel="noopener">745. Asteroid Collision</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] asteroidCollision(<span class="keyword">int</span>[] a) &#123;</span><br><span class="line">        LinkedList&lt;Integer&gt; s = <span class="keyword">new</span> LinkedList&lt;&gt;(); <span class="comment">// use LinkedList to simulate stack so that we don't need to reverse at end.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : a) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!s.isEmpty() &amp;&amp; s.getLast() &gt; <span class="number">0</span> &amp;&amp; s.getLast() &lt; -i)</span><br><span class="line">                s.pollLast();</span><br><span class="line">            <span class="keyword">if</span> (s.isEmpty() || i &gt; <span class="number">0</span> || s.getLast() &lt; <span class="number">0</span>)</span><br><span class="line">                s.add(i);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; <span class="number">0</span> &amp;&amp; s.getLast() == -i)</span><br><span class="line">                s.pollLast();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.stream().mapToInt(i-&gt;i).toArray();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 <h1 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h1><h2 id="346-Moving-Average-from-Data-Stream"><a href="#346-Moving-Average-from-Data-Stream" class="headerlink" title="346. Moving Average from Data Stream"></a><a href="https://leetcode.com/problems/moving-average-from-data-stream" target="_blank" rel="noopener">346. Moving Average from Data Stream</a></h2><p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window. </p>
 <p>For example,</p>
@@ -1128,91 +1209,10 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Recursion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/17/Recursion/" class="post-title-link" itemprop="url">Recursion</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-17 13:05:50" itemprop="dateCreated datePublished" datetime="2020-09-17T13:05:50+09:00">2020-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-15 15:29:26" itemprop="dateModified" datetime="2020-10-15T15:29:26+09:00">2020-10-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h1><h2 id="Nth-Fibonacci-AE"><a href="#Nth-Fibonacci-AE" class="headerlink" title="Nth Fibonacci(AE)"></a>Nth Fibonacci(AE)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>) </span><br><span class="line"><span class="comment">//bad O(2^n)T, cause do many unncessary compute</span></span><br><span class="line"><span class="comment">//eg. fib(6)-&gt; fib(5)+fib(4)-&gt;fib(4)+fib(3)+fib(3)+fib(2)   </span></span><br><span class="line"><span class="comment">//O(N) S call the stack</span></span><br><span class="line"><span class="comment">//eg.in the stack maximum </span></span><br><span class="line"><span class="comment">//fib(6)</span></span><br><span class="line"><span class="comment">//fib(5) </span></span><br><span class="line"><span class="comment">//fib(4)</span></span><br><span class="line"><span class="comment">//fib(3)</span></span><br><span class="line"><span class="comment">//fib(2)</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/17/Recursion/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1280,7 +1280,7 @@ minMaxStack is a list of Map&lt;String, Integer&gt;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">71</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
