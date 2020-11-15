@@ -171,6 +171,177 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/20/Heap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/20/Heap/" class="post-title-link" itemprop="url">Heap</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-20 12:36:36" itemprop="dateCreated datePublished" datetime="2020-09-20T12:36:36+09:00">2020-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-30 16:21:52" itemprop="dateModified" datetime="2020-09-30T16:21:52+09:00">2020-09-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h1><h2 id="Min-Heap-Construction-AE"><a href="#Min-Heap-Construction-AE" class="headerlink" title="Min Heap Construction(AE)"></a>Min Heap Construction(AE)</h2><ol>
+<li><p>Building a Min Heap form an input array of integers. Implement <strong><code>insert</code></strong>, <strong><code>remove</code></strong>, <strong><code>peek</code></strong>, <strong><code>sift up</code></strong>, <strong><code>sift down</code></strong> operations. Heap is a binary and a special type of binary tree that satisfies two additional properties.  Completeness and heap property. For Min Heap, every node value is smaller of equal to children node.</p>
+</li>
+<li><p>Child position formula</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">currentNode -&gt;  i</span><br><span class="line">childOne    -&gt;  <span class="number">2</span>i + <span class="number">1</span></span><br><span class="line">childTwo    -&gt;  <span class="number">2</span>i + <span class="number">2</span></span><br><span class="line">parentNode  -&gt;  floor((i - <span class="number">1</span>) / <span class="number">2</span>)</span><br><span class="line"> <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>,  <span class="number">8</span></span><br><span class="line">[<span class="number">8</span>,<span class="number">12</span>,<span class="number">23</span>,<span class="number">17</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">44</span>,<span class="number">102</span>,<span class="number">18</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>After insert new element, sift up or down to the correct position, eg. add 9 element, it less than parent 31 swap them , 9 less than parent 12 swap them. Same to sift down, if parent small than the <strong><code>minimum children</code></strong> node, swap them. Remove root, swap last root node and children node, pop() it, then sift down</p>
+</li>
+<li><p>sift up &amp; sift down O(log n) every time wo remove half of the tree</p>
+<p>Build Heap O(n)  not O(n logn) sift down on leaf node is constant time,  math sum up of all node sift down is n</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MinHeap</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; heap = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();  <span class="comment">//implement by array</span></span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MinHeap</span><span class="params">(List&lt;Integer&gt; array)</span> </span>&#123;</span><br><span class="line">            heap = buildHeap(array);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//O(n) time | O(1) space</span></span><br><span class="line">        <span class="comment">//5.build Heap by calling sift down method on all parent nodes</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">buildHeap</span><span class="params">(List&lt;Integer&gt; array)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> firstParentIdx = (array.szie() - <span class="number">2</span>) / <span class="number">2</span>;  </span><br><span class="line">            <span class="comment">//start from first parent node, (array.size() - 1 - 1) /2</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> currentIdx = firstParentIdx; currentIdx &gt;= <span class="number">0</span>; currentIdx--) &#123;  <span class="comment">//go from the end to traverse, sift all to the bottom</span></span><br><span class="line">                siftDown(currentIdx, array.size() - <span class="number">1</span>, array);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> array;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//4.(logn) time | O(1) space</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">siftDown</span><span class="params">(<span class="keyword">int</span> currentIdx, <span class="keyword">int</span> endIdx, List&lt;Integer&gt; heap)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> childOneIdx = currentIdx * <span class="number">2</span> + <span class="number">1</span>;  <span class="comment">//calculate the first children position</span></span><br><span class="line">            <span class="keyword">while</span> (currentOneIdx &lt;= endIdx) &#123; </span><br><span class="line">                <span class="keyword">int</span> childTwoIdx = currentIdx * <span class="number">2</span> + <span class="number">2</span> &lt;= endIdx ? currentIdx * <span class="number">2</span> + <span class="number">2</span> : -<span class="number">1</span>;  <span class="comment">//if exist children 2</span></span><br><span class="line">                <span class="keyword">int</span> idxToSwap;  <span class="comment">//if we have child2 and smaller than child1, target is child2</span></span><br><span class="line">                <span class="keyword">if</span> (childTwoIdx != -<span class="number">1</span> &amp;&amp; heap.get(childTwoIdx) &lt; heap.get(childOneIdx)) &#123;</span><br><span class="line">                    idxToSwap = childTwoIdx;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    idxToSwap = childOneIdx;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (heap.get(idxToSwap) &lt; heap.get(currentIdx)) &#123;  <span class="comment">//if if not satisfy the heap property, smallest child &lt; current value, swap them</span></span><br><span class="line">                    swap(currentIdx, idxToSwap, heap);</span><br><span class="line">                    currentIdx = idxToSwap;  <span class="comment">//keep track the value after previously swap</span></span><br><span class="line">                    childOneIdx = currentIdx * <span class="number">2</span> + <span class="number">1</span>;  <span class="comment">//update the next child</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//3.O(logn) time | O(1) space</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">siftUp</span><span class="params">(<span class="keyword">int</span> currentIdx, List&lt;Integer&gt; heap)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> parentIdx = (currentIdx - <span class="number">1</span>) / <span class="number">2</span>;  <span class="comment">//find the parent index value, floor that down</span></span><br><span class="line">            <span class="keyword">while</span> (currentIdx &gt; <span class="number">0</span> &amp;&amp; heap.get(currentIdx) &lt; heap.get(parentIdx)) &#123;</span><br><span class="line">                <span class="comment">//if not satisfy the heap property, parent node is great than current, swap them, base line is current&gt;0 is child</span></span><br><span class="line">                swap(currentIdx, parentIdx, heap);</span><br><span class="line">                currentIdx = parentIdx;  <span class="comment">//update the cur and parent after swap previously</span></span><br><span class="line">                parentIdx = (currentIdx - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> heap.get(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//2.</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            swap(<span class="number">0</span>, heap.size() - <span class="number">1</span>, heap);  <span class="comment">//swap the first with last value</span></span><br><span class="line">            <span class="keyword">int</span> valueToRemove = heap.get(heap.size() - <span class="number">1</span>);  <span class="comment">//pop the target value</span></span><br><span class="line">            heap.remove(heap.size() - <span class="number">1</span>);</span><br><span class="line">            siftDown(<span class="number">0</span>, heap.size() - <span class="number">1</span>, heap);  <span class="comment">//sift down the value to the correct position</span></span><br><span class="line">            <span class="keyword">return</span> valueToRemove;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//1.start with insert method</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">            heap.add(value);  <span class="comment">//add it to the tail in the array</span></span><br><span class="line">            siftUp(heap.size() - <span class="number">1</span>, heap);  <span class="comment">//sift it up to the correct position</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, List&lt;Integer&gt; heap)</span> </span>&#123;</span><br><span class="line">            Integer temp = heap.get(j);</span><br><span class="line">            heap.set(j, heap.get(i));</span><br><span class="line">            heap.set(i, temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Continuous-Median-AE"><a href="#Continuous-Median-AE" class="headerlink" title="Continuous Median(AE)"></a>Continuous Median(AE)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Program</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ContinuousMedianHandler</span> </span>&#123;</span><br><span class="line">        Heap lowes = <span class="keyword">new</span> Heap(Heap::Max_VALUE_FUNC, <span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        Heap greaters = <span class="function">enw <span class="title">Heap</span><span class="params">(Heap::MIN_FUNC, new ArrayList&lt;Integer&gt;()</span>)</span>;</span><br><span class="line">        <span class="keyword">double</span> median = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/18/Programming%20Interviews%20Exposed/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/18/Programming%20Interviews%20Exposed/" class="post-title-link" itemprop="url">Programming Interviews Exposed</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-18 15:59:20" itemprop="dateCreated datePublished" datetime="2020-09-18T15:59:20+09:00">2020-09-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-19 14:31:34" itemprop="dateModified" datetime="2020-09-19T14:31:34+09:00">2020-09-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mock/" itemprop="url" rel="index"><span itemprop="name">mock</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Programming-Interviews-Exposed"><a href="#Programming-Interviews-Exposed" class="headerlink" title="Programming Interviews Exposed"></a>Programming Interviews Exposed</h1><h2 id="CHAPTER-1-Before-the-Search"><a href="#CHAPTER-1-Before-the-Search" class="headerlink" title="CHAPTER 1  Before the Search"></a>CHAPTER 1  Before the Search</h2><h3 id="SUMMARY"><a href="#SUMMARY" class="headerlink" title="SUMMARY"></a>SUMMARY</h3><p>What you do before a formal job search is critical to finding the right kind of job. </p>
+<p>With that in  mind, you should consider the following things:<br> ➤ Know your likes and dislikes as a programmer and a prospective employee.<br> ➤ Understand the market to find and apply for the best jobs.<br> ➤ Develop the marketable skills that employers look for and that can enhance your career.<br> ➤ Manage your public profile to show you in the best possible light and make sure there are no  surprises to turn off potential employers.<br>Once you’ve worked through all these points, you’re ready to begin your job search.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/18/Programming%20Interviews%20Exposed/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/17/Dynamic%20Programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -901,185 +1072,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/14/AT%20week1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/14/AT%20week1/" class="post-title-link" itemprop="url">AT week1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-14 11:30:18" itemprop="dateCreated datePublished" datetime="2020-09-14T11:30:18+09:00">2020-09-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AT/" itemprop="url" rel="index"><span itemprop="name">AT</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="AT-week1"><a href="#AT-week1" class="headerlink" title="AT week1"></a>AT week1</h1><h3 id="What-is-an-interview-about"><a href="#What-is-an-interview-about" class="headerlink" title="What is an interview about?"></a>What is an interview about?</h3><ol>
-<li>Image you are a sole founder of the company and ready to hire the first employee. How would you design the interview?<ul>
-<li>Find out if the candidate will be an awesome future colleague </li>
-<li>If we really want to work with you and we feel excited to have you on the team, you are definitely hired. Looking for both positive and negative signals.</li>
-</ul>
-</li>
-</ol>
-<h3 id="What-signals-to-look-for-in-a-coding-interview"><a href="#What-signals-to-look-for-in-a-coding-interview" class="headerlink" title="What signals to look for in a coding interview?"></a>What signals to look for in a coding interview?</h3><ol>
-<li>Image you are a hired great engineer. You really enjoy working with this person. What are the traits that make them awesome to work with</li>
-<li><strong><code>Their code is easy to read and understand.</code></strong> When you need to read their code, you can understand what they try to achieve and how they achieve it with the code they wrote.</li>
-<li><strong><code>They can help you turn  a problem into clear logic.</code></strong> When you have a messy problem and don’t  know where to start you consult them. They bring you clarify. You feel the logic is so obvious that you can just turn it into clean code</li>
-<li><strong><code>You feel they understand you.</code></strong> Sometimes you have a problem that you can’t even clearly describe what you want. You talk to them. They ask a few questions to learn from you. And then they describe your problem in a much better way.</li>
-<li><strong><code>You feel comfortable delegating work to them.</code></strong> They don’t keep you in the dark. They explain how they are going to work succinctly. They deliver what they promise. They update you when they need to change the plan</li>
-<li>They respond to your feedback in a positive way, When you point out where their work can be improved, they focus on how to achieve that improvement with you. They don’t become overly defensive.</li>
-</ol>
-<h3 id="Summary-of-the-signals"><a href="#Summary-of-the-signals" class="headerlink" title="Summary of the signals"></a>Summary of the signals</h3><ol>
-<li>Communication<ul>
-<li>Succinct articulation</li>
-<li>Talking feedback</li>
-</ul>
-</li>
-<li>Problem solving</li>
-<li>Coding<ul>
-<li>Language proficiency</li>
-<li>Code quality</li>
-</ul>
-</li>
-<li>Debugging and testing</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/09/09/Lab/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/09/Lab/" class="post-title-link" itemprop="url">Lab</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-09 13:30:41" itemprop="dateCreated datePublished" datetime="2020-09-09T13:30:41+09:00">2020-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 11:25:58" itemprop="dateModified" datetime="2020-09-15T11:25:58+09:00">2020-09-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61b/" itemprop="url" rel="index"><span itemprop="name">cs61b</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Lab-1-Setup-Setting-Up-Your-Computer"><a href="#Lab-1-Setup-Setting-Up-Your-Computer" class="headerlink" title="Lab 1 Setup: Setting Up Your Computer"></a>Lab 1 Setup: Setting Up Your Computer</h1><h1 id="Lab1-Lab1B"><a href="#Lab1-Lab1B" class="headerlink" title="Lab1, Lab1B"></a>Lab1, Lab1B</h1><h2 id="Lab1-Setup"><a href="#Lab1-Setup" class="headerlink" title="Lab1 Setup"></a>Lab1 Setup</h2><h4 id="A-Configure-Your-Computer"><a href="#A-Configure-Your-Computer" class="headerlink" title="A. Configure Your Computer"></a>A. Configure Your Computer</h4><ul>
-<li><h3 id="A-Install-Java"><a href="#A-Install-Java" class="headerlink" title="A. Install Java"></a>A. Install Java</h3></li>
-</ul>
-<h4 id="B-Learn-to-Use-the-Terminal"><a href="#B-Learn-to-Use-the-Terminal" class="headerlink" title="B. Learn to Use the Terminal"></a>B. Learn to Use the Terminal</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/09/Lab/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1151,7 +1143,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
