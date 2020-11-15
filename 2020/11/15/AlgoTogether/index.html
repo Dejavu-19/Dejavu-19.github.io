@@ -22,22 +22,21 @@
     var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Good evening everyone, today I want to make a presentation about the problem valid palindrome in leetcode 125. About the problem description, We were given a string, and we nee to check if it is a pal">
+  <meta name="description" content="FeedbackValid palindrome presentation: Use example,  pseudocode to explain you idea.  Step1, Step2, Step3 make it your language more organized 123&quot;a b;. ab a&quot;-         -left     right  Initial each va">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pres">
-<meta property="og:url" content="https://dejavi-19.github.io/2020/11/15/pres/index.html">
+<meta property="og:title" content="AlgoTogether">
+<meta property="og:url" content="https://dejavi-19.github.io/2020/11/15/AlgoTogether/index.html">
 <meta property="og:site_name" content="Dejavu&#39;s Notebook">
-<meta property="og:description" content="Good evening everyone, today I want to make a presentation about the problem valid palindrome in leetcode 125. About the problem description, We were given a string, and we nee to check if it is a pal">
+<meta property="og:description" content="FeedbackValid palindrome presentation: Use example,  pseudocode to explain you idea.  Step1, Step2, Step3 make it your language more organized 123&quot;a b;. ab a&quot;-         -left     right  Initial each va">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-15T02:53:51.497Z">
-<meta property="article:modified_time" content="2020-11-15T02:53:51.663Z">
+<meta property="article:published_time" content="2020-11-15T04:14:09.803Z">
+<meta property="article:modified_time" content="2020-11-15T04:14:10.014Z">
 <meta property="article:author" content="Dejavu">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="cs">
 <meta property="article:tag" content="java">
-<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dejavi-19.github.io/2020/11/15/pres/">
+<link rel="canonical" href="https://dejavi-19.github.io/2020/11/15/AlgoTogether/">
 
 
 <script id="page-configurations">
@@ -50,7 +49,7 @@
   };
 </script>
 
-  <title>pres | Dejavu's Notebook</title>
+  <title>AlgoTogether | Dejavu's Notebook</title>
   
 
 
@@ -174,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/11/15/pres/">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/11/15/AlgoTogether/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
@@ -187,7 +186,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          pres
+          AlgoTogether
         </h1>
 
         <div class="post-meta">
@@ -196,8 +195,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-15 11:53:51" itemprop="dateCreated datePublished" datetime="2020-11-15T11:53:51+09:00">2020-11-15</time>
+              <time title="创建时间：2020-11-15 13:14:09 / 修改时间：13:14:10" itemprop="dateCreated datePublished" datetime="2020-11-15T13:14:09+09:00">2020-11-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+                </span>
             </span>
 
           
@@ -211,24 +220,81 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Good evening everyone, today I want to make a presentation about the problem valid palindrome in leetcode 125.</p>
-<p>About the problem description,</p>
-<p>We were given a string, and we nee to check if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
-<p>A <em>palindrome</em> means the sequence of words that reads the same backward as forward.</p>
-<p><strong>Note:</strong> For the purpose of this problem, we define empty string as valid palindrome.</p>
-<p>Thinking process ,</p>
-<p>initial thoughts </p>
-<p>Solution: Two pointers</p>
-<p><strong>Character.isLetterOrDigit</strong></p>
-<p>Ignore Comma, colon</p>
-<p>Case</p>
-<p><strong>Character.toLowerCase</strong>  For example Uppercase A = Lowercase a</p>
-<p>Time complexity: O(n)<br>Space complexity: O(1)</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;A man, a plan, a canal: Panama&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+        <h1 id="Feedback"><a href="#Feedback" class="headerlink" title="Feedback"></a>Feedback</h1><h2 id="Valid-palindrome-presentation"><a href="#Valid-palindrome-presentation" class="headerlink" title="Valid palindrome presentation:"></a>Valid palindrome presentation:</h2><ol>
+<li><p><strong><code>Use example</code></strong>,  pseudocode to explain you idea. </p>
+<p>Step1, Step2, Step3 make it your language more organized</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"a b;. ab a"</span></span><br><span class="line">-         -</span><br><span class="line">left     right</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Initial each <strong><code>variable in a different line</code></strong>;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> right = s.length() - <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<strong><code>注释//xx</code></strong>让code更清楚</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (left &lt;= right) <span class="comment">//traverse the string both from start and end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If else branch, pay attention</p>
+</li>
+<li><p><strong><code>Ask interviewer.</code></strong> </p>
+<p>Am I clear, Are you following? Is that make sense to you? Should I make more explanation about it?</p>
+</li>
+</ol>
+<h2 id="Decode-String-presentation"><a href="#Decode-String-presentation" class="headerlink" title="Decode String presentation:"></a>Decode String presentation:</h2><ol>
+<li><strong><code>Write branch first, then implement</code></strong></li>
+<li>Use demo make your way more Can you teach your grandmother to write this code?</li>
+<li>Show the two stack work</li>
+<li>Don’t be nervous.</li>
+<li>I know StringBuilder is more efficient. Do you want me to make this improvement?</li>
+</ol>
+<h2 id="Rotate-Image-presentation"><a href="#Rotate-Image-presentation" class="headerlink" title="Rotate Image presentation:"></a>Rotate Image presentation:</h2><ol>
+<li>Explain transpose</li>
+<li>Utilize demo.</li>
+</ol>
+<h2 id="Tic-Tac-Toe-presentation"><a href="#Tic-Tac-Toe-presentation" class="headerlink" title="Tic-Tac-Toe presentation:"></a>Tic-Tac-Toe presentation:</h2><ol>
+<li><p>Remind X is always first.</p>
+</li>
+<li><p>Explain in each code block.</p>
+</li>
+<li><pre><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validTicTacToe</span><span class="params">(String[] board)</span> </span>{
+        <span class="comment">//Convert string board into matrix</span>
+        <span class="keyword">int</span> turns = <span class="number">0</span>;
+        <span class="keyword">int</span>[] rows = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];
+        <span class="keyword">int</span>[] cols = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];
+        <span class="keyword">int</span> diag = <span class="number">0</span>;
+        <span class="keyword">int</span> antidiag = <span class="number">0</span>;
+        <span class="keyword">boolean</span> xwin = <span class="keyword">false</span>;
+        <span class="keyword">boolean</span> owin = <span class="keyword">false</span>;
 
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;race a car&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+        <span class="comment">//compute the eight lines</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) {
+                <span class="keyword">if</span> (board[i].charAt(j) == <span class="string">'X'</span>) {
+                    turns++;
+                    rows[i]++;
+                    cols[j]++;
+                    <span class="keyword">if</span> (i == j) diag++;
+                    <span class="keyword">if</span> (i + j == <span class="number">2</span>) antidiag++;
+                } <span class="keyword">else</span> <span class="keyword">if</span> (board[i].charAt(j) == <span class="string">'O'</span>) {
+                    turns--;
+                    rows[i]--;
+                    cols[j]--;
+                    <span class="keyword">if</span> (i == j) diag--;
+                    <span class="keyword">if</span> (i + j == <span class="number">2</span>) antidiag--;
+                }
+            }
+        }
+
+        <span class="comment">//determine who win</span>
+        xwin = rows[<span class="number">0</span>] == <span class="number">3</span> || rows[<span class="number">1</span>] == <span class="number">3</span> || rows[<span class="number">2</span>] == <span class="number">3</span> || cols[<span class="number">0</span>] == <span class="number">3</span> || cols[<span class="number">1</span>] == <span class="number">3</span> || cols[<span class="number">2</span>] == <span class="number">3</span> || diag == <span class="number">3</span> || antidiag == <span class="number">3</span>;
+        owin = rows[<span class="number">0</span>] == -<span class="number">3</span> || rows[<span class="number">1</span>] == -<span class="number">3</span> || rows[<span class="number">2</span>] == -<span class="number">3</span> || cols[<span class="number">0</span>] == -<span class="number">3</span> || cols[<span class="number">1</span>] == -<span class="number">3</span> || cols[<span class="number">2</span>] == -<span class="number">3</span> || diag == -<span class="number">3</span> || antidiag == -<span class="number">3</span>;
+
+        <span class="comment">//X always move first</span>
+        <span class="keyword">if</span> (xwin &amp;&amp; turns == <span class="number">0</span> || owin &amp;&amp; turns == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;
+        <span class="keyword">return</span> (turns == <span class="number">0</span> || turns == <span class="number">1</span>) &amp;&amp; (!xwin || !owin);
+    }
+}</code></pre>
+</li>
+</ol>
+
     </div>
 
     
@@ -236,6 +302,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
 
         
 
@@ -243,13 +313,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/28/Princeton%20Algorithms%20week4/" rel="prev" title="Princeton Algorithms week4">
-      <i class="fa fa-chevron-left"></i> Princeton Algorithms week4
+    <a href="/2020/11/15/leetcode%20125/" rel="prev" title="leetcode 125">
+      <i class="fa fa-chevron-left"></i> leetcode 125
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/15/leetcode%20125/" rel="next" title="leetcode 125">
-      leetcode 125 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -308,6 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Feedback"><span class="nav-number">1.</span> <span class="nav-text">Feedback</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Valid-palindrome-presentation"><span class="nav-number">1.1.</span> <span class="nav-text">Valid palindrome presentation:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decode-String-presentation"><span class="nav-number">1.2.</span> <span class="nav-text">Decode String presentation:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rotate-Image-presentation"><span class="nav-number">1.3.</span> <span class="nav-text">Rotate Image presentation:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tic-Tac-Toe-presentation"><span class="nav-number">1.4.</span> <span class="nav-text">Tic-Tac-Toe presentation:</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
