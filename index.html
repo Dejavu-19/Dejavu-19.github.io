@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-15 13:14:09 / 修改时间：13:14:10" itemprop="dateCreated datePublished" datetime="2020-11-15T13:14:09+09:00">2020-11-15</time>
+              <time title="创建时间：2020-11-15 13:14:09" itemprop="dateCreated datePublished" datetime="2020-11-15T13:14:09+09:00">2020-11-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-16 19:00:42" itemprop="dateModified" datetime="2020-11-16T19:00:42+09:00">2020-11-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -219,7 +225,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Feedback"><a href="#Feedback" class="headerlink" title="Feedback"></a>Feedback</h1><h2 id="Valid-palindrome-presentation"><a href="#Valid-palindrome-presentation" class="headerlink" title="Valid palindrome presentation:"></a>Valid palindrome presentation:</h2><ol>
+          <h1 id="Week-1-Feedback"><a href="#Week-1-Feedback" class="headerlink" title="Week 1 Feedback"></a>Week 1 Feedback</h1><h2 id="Technique"><a href="#Technique" class="headerlink" title="Technique"></a>Technique</h2><p>Asking <strong><code>clarifying questions</code></strong></p>
+<ol>
+<li>Are they integers?</li>
+<li>Is the solution guaranteed?</li>
+<li>What if multiple solutions?</li>
+</ol>
+<p>Communication with <strong><code>logical thinking</code></strong></p>
+<ol>
+<li>If it’s okay to return any random solution when there are multiple solutions.</li>
+<li>Don’t let your interviewer in the dark.</li>
+</ol>
+<h2 id="Valid-palindrome-presentation"><a href="#Valid-palindrome-presentation" class="headerlink" title="Valid palindrome presentation:"></a>Valid palindrome presentation:</h2><ol>
 <li><p><strong><code>Use example</code></strong>,  pseudocode to explain you idea. </p>
 <p>Step1, Step2, Step3 make it your language more organized</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"a b;. ab a"</span></span><br><span class="line">-         -</span><br><span class="line">left     right</span><br></pre></td></tr></table></figure>
@@ -290,8 +307,26 @@
         <span class="keyword">if</span> (xwin &amp;&amp; turns == <span class="number">0</span> || owin &amp;&amp; turns == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;
         <span class="keyword">return</span> (turns == <span class="number">0</span> || turns == <span class="number">1</span>) &amp;&amp; (!xwin || !owin);
     }
-}</code></pre>
+}
+&lt;!--￼<span class="number">3</span>--&gt;</code></pre>
 </li>
+<li><p>Walk Through some examples, test case</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>When present your solution</p>
+<ol>
+<li>Talk about high level idea before dive into details implementations</li>
+<li>Focus on most complicate part</li>
+<li>For DP, how demo status transition works before into code</li>
+</ol>
+<p>Follow up</p>
+<ol>
+<li>Fine tuning code (corner cases, minor mistakes, typo)</li>
+<li>Bonus(if you answer correct, hire -&gt; strong hire)</li>
+<li>More challenge</li>
+<li>Push for better solution</li>
 </ol>
 
       
