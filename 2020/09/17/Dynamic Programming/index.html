@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JiawenQi98/PrampPractice/master/Number%20of%20Paths/example.png">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png">
 <meta property="article:published_time" content="2020-09-17T04:16:45.004Z">
-<meta property="article:modified_time" content="2020-11-26T10:24:32.252Z">
+<meta property="article:modified_time" content="2020-11-27T02:45:49.671Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="200">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-26 19:24:32" itemprop="dateModified" datetime="2020-11-26T19:24:32+09:00">2020-11-26</time>
+                <time title="修改时间：2020-11-27 11:45:49" itemprop="dateModified" datetime="2020-11-27T11:45:49+09:00">2020-11-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -445,7 +445,7 @@ formula:dp[i][j] = dp[i-<span class="number">1</span>][j] + (j &gt;= coins[i-<sp
 <h2 id="✅Number-of-Paths💜"><a href="#✅Number-of-Paths💜" class="headerlink" title="✅Number of Paths💜"></a><a href="https://github.com/JiawenQi98/PrampPractice/tree/master/Number%20of%20Paths" target="_blank" rel="noopener">✅Number of Paths💜</a></h2><p><img src="https://raw.githubusercontent.com/JiawenQi98/PrampPractice/master/Number%20of%20Paths/example.png" alt=""></p>
 <ol>
 <li><p>If you are already at the destination, there is obviously only one possible path to the destination, so we set the value for the destination to <code>1</code> (this would be the base case in your recursive version):</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">          <span class="number">1</span></span><br><span class="line">        ? ?</span><br><span class="line">      ? ? ?</span><br><span class="line">    ? ? ? ?</span><br><span class="line">  ? ? ? ? ?</span><br><span class="line">? ? ? ? ? ?</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">          ？</span><br><span class="line">        ? ?</span><br><span class="line">      ? ? ?</span><br><span class="line">    ? ? ? ?</span><br><span class="line">  ? ? ? ? ?</span><br><span class="line"><span class="number">1</span> ? ? ? ? ?</span><br></pre></td></tr></table></figure>
 
 <p>Since every value in the lookup table is the sum of the value above it and the value to its right, we can first fill up the rightmost column from top to bottom (since the values in the rightmost column have no value to their right, every value in this column is identical to the value above it):</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">          <span class="number">1</span></span><br><span class="line">        ? <span class="number">1</span></span><br><span class="line">      ? ? <span class="number">1</span></span><br><span class="line">    ? ? ? <span class="number">1</span></span><br><span class="line">  ? ? ? ? <span class="number">1</span></span><br><span class="line">? ? ? ? ? <span class="number">1</span></span><br></pre></td></tr></table></figure>
