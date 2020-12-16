@@ -829,17 +829,8 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-14 02:11:14" itemprop="dateModified" datetime="2020-08-14T02:11:14+09:00">2020-08-14</time>
+                <time title="修改时间：2020-12-16 15:08:33" itemprop="dateModified" datetime="2020-12-16T15:08:33+09:00">2020-12-16</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
 
           
 
@@ -852,24 +843,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><h2 id="0-原理"><a href="#0-原理" class="headerlink" title="0. 原理"></a>0. 原理</h2><p>0s 表示一串 0，1s 表示一串 1。 <strong><code>^</code></strong>抑或(XOR)，相同则消 A XOR A = 0</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x ^ <span class="number">0</span>s = x      x &amp; <span class="number">0</span>s = <span class="number">0</span>      x | <span class="number">0</span>s = x</span><br><span class="line">x ^ <span class="number">1</span>s = ~x     x &amp; <span class="number">1</span>s = x      x | <span class="number">1</span>s = <span class="number">1</span>s</span><br><span class="line">x ^ x = <span class="number">0</span>       x &amp; x = x       x | x = x</span><br></pre></td></tr></table></figure>
-
-<p>利用 <strong><code>x ^ 1s = ~x</code></strong> ，可以将一个数的位级表示翻转；</p>
-<p>利用 <strong><code>x ^ x = 0</code></strong> 的特点，可以将三个数中重复的两个数去除，只留下另一个数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>^<span class="number">1</span>^<span class="number">2</span> = <span class="number">2</span>  <span class="comment">//1 ^ 1 = 0</span></span><br></pre></td></tr></table></figure>
-
-<p>利用 <strong><code>x &amp; 0s = 0</code></strong> 和 <strong><code>x &amp; 1s = x</code></strong> 的特点，可以实现掩码操作。</p>
-<p>一个数 num 与 mask：00111100 进行位与操作，只保留 num 中与 mask 的 1 部分相对应的位。    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">01011011</span> &amp;</span><br><span class="line"><span class="number">00111100</span></span><br><span class="line">--------</span><br><span class="line"><span class="number">00011000</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/11/%E4%BD%8D%E8%BF%90%E7%AE%97/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          
       
     </div>
 

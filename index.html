@@ -294,7 +294,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-14 15:37:40" itemprop="dateModified" datetime="2020-12-14T15:37:40+09:00">2020-12-14</time>
+                <time title="修改时间：2020-12-16 15:05:39" itemprop="dateModified" datetime="2020-12-16T15:05:39+09:00">2020-12-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -317,7 +317,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Algotogether"><a href="#Algotogether" class="headerlink" title="Algotogether"></a>Algotogether</h1><h2 id="Week-1-Feedback"><a href="#Week-1-Feedback" class="headerlink" title="Week 1 Feedback"></a>Week 1 Feedback</h2><h3 id="Theme-Complex-Coding"><a href="#Theme-Complex-Coding" class="headerlink" title="Theme: Complex Coding"></a>Theme: Complex Coding</h3><p>You should aim for these goals when working through these problems:</p>
+          <h1 id="Algotogether"><a href="#Algotogether" class="headerlink" title="Algotogether"></a>Algotogether</h1><h2 id="Week-1-Theme-Complex-Coding"><a href="#Week-1-Theme-Complex-Coding" class="headerlink" title="Week 1 Theme: Complex Coding"></a>Week 1 Theme: Complex Coding</h2><p>You should aim for these goals when working through these problems:</p>
 <ol>
 <li>Some languages could solve some problems with internal libraries/packages, do NOT use them.</li>
 <li>The problems don’t require advance algorithm/data structure, but they either have lots of corner cases or require good coding skills, please try to pass them with 1st attempt.</li>
@@ -353,84 +353,75 @@
 <h3 id="Decode-String-presentation"><a href="#Decode-String-presentation" class="headerlink" title="Decode String presentation:"></a>Decode String presentation:</h3><ol>
 <li><strong><code>Write branch first, then implement</code></strong></li>
 <li>Use demo make your way more Can you teach your grandmother to write this code?</li>
-<li>Show the two stack work</li>
+<li>Show the two stack work.</li>
 <li>Don’t be nervous.</li>
 <li>I know StringBuilder is more efficient. Do you want me to make this improvement?</li>
 </ol>
 <h3 id="Rotate-Image-presentation"><a href="#Rotate-Image-presentation" class="headerlink" title="Rotate Image presentation:"></a>Rotate Image presentation:</h3><ol>
-<li>Explain transpose</li>
+<li>Explain transpose.</li>
 <li>Utilize demo.</li>
 </ol>
 <h3 id="Tic-Tac-Toe-presentation"><a href="#Tic-Tac-Toe-presentation" class="headerlink" title="Tic-Tac-Toe presentation:"></a>Tic-Tac-Toe presentation:</h3><ol>
-<li><p>Remind X is always first.</p>
+<li>Remind X is always first.</li>
+<li>Explain in each code block.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validTicTacToe</span><span class="params">(String[] board)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//Convert string board into matrix</span></span><br><span class="line">    <span class="keyword">int</span> turns = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[] rows = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">int</span>[] cols = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">int</span> diag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> antidiag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">boolean</span> xwin = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">boolean</span> owin = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//compute the eight lines</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (board[i].charAt(j) == <span class="string">'X'</span>) &#123;</span><br><span class="line">                turns++;</span><br><span class="line">                rows[i]++;</span><br><span class="line">                cols[j]++;</span><br><span class="line">                <span class="keyword">if</span> (i == j) diag++;</span><br><span class="line">                <span class="keyword">if</span> (i + j == <span class="number">2</span>) antidiag++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (board[i].charAt(j) == <span class="string">'O'</span>) &#123;</span><br><span class="line">                turns--;</span><br><span class="line">                rows[i]--;</span><br><span class="line">                cols[j]--;</span><br><span class="line">                <span class="keyword">if</span> (i == j) diag--;</span><br><span class="line">                <span class="keyword">if</span> (i + j == <span class="number">2</span>) antidiag--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//determine who win</span></span><br><span class="line">    xwin = rows[<span class="number">0</span>] == <span class="number">3</span> || rows[<span class="number">1</span>] == <span class="number">3</span> || rows[<span class="number">2</span>] == <span class="number">3</span> || cols[<span class="number">0</span>] == <span class="number">3</span> || cols[<span class="number">1</span>] == <span class="number">3</span> || cols[<span class="number">2</span>] == <span class="number">3</span> || diag == <span class="number">3</span> || antidiag == <span class="number">3</span>;</span><br><span class="line">    owin = rows[<span class="number">0</span>] == -<span class="number">3</span> || rows[<span class="number">1</span>] == -<span class="number">3</span> || rows[<span class="number">2</span>] == -<span class="number">3</span> || cols[<span class="number">0</span>] == -<span class="number">3</span> || cols[<span class="number">1</span>] == -<span class="number">3</span> || cols[<span class="number">2</span>] == -<span class="number">3</span> || diag == -<span class="number">3</span> || antidiag == -<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//X always move first</span></span><br><span class="line">    <span class="keyword">if</span> (xwin &amp;&amp; turns == <span class="number">0</span> || owin &amp;&amp; turns == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> (turns == <span class="number">0</span> || turns == <span class="number">1</span>) &amp;&amp; (!xwin || !owin);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Invert-Binary-Tree-Mock-Interview"><a href="#Invert-Binary-Tree-Mock-Interview" class="headerlink" title="Invert Binary Tree Mock Interview"></a>Invert Binary Tree Mock Interview</h3><ol>
+<li>Never say you are not familar with DFS/BFS(or xxx)</li>
+</ol>
+<h3 id="Binary-Tree-Maximum-Path-Sum-Mock-Interview"><a href="#Binary-Tree-Maximum-Path-Sum-Mock-Interview" class="headerlink" title="Binary Tree Maximum Path Sum Mock Interview"></a>Binary Tree Maximum Path Sum Mock Interview</h3><ol>
+<li>先沟通思路，Interviewer said direction is right, then start code.</li>
+<li>Tell me what is whole path and single path? Don’t have gap in communication.</li>
+</ol>
+<h2 id="Week-2-Theme-Binary-Search⭐"><a href="#Week-2-Theme-Binary-Search⭐" class="headerlink" title="Week 2 Theme: Binary Search⭐"></a>Week 2 Theme: Binary Search⭐</h2><p>For most algorithms you have learned from school/programming bootcamp, they probably won’t be used in real-world projects until you touch really low-level infra. Binary Search is considered a basic algorithm that might be required in a real-world project, so it’s frequently asked in interviews.</p>
+<p>Some of the problems here can be solved without binary search (explicitly mentioned in the problem statement), but it’s recommended to solve them with binary search which could significantly improve your programming skill.</p>
+<h3 id="Technique-for-interview"><a href="#Technique-for-interview" class="headerlink" title="Technique  for interview"></a>Technique  for interview</h3><p>Problem solving</p>
+<ol>
+<li>Every company have their own scoring system.</li>
+<li>Don’t need to get fulll score to apss interview.</li>
+<li>Clean non optimal solution &gt; Mess/Half down optimal solution</li>
+<li>Coding style is not major factor, but it helps</li>
+<li>Go through approach before coding</li>
+</ol>
+<p>Communication</p>
+<ol>
+<li><p>English is important, but not critical</p>
 </li>
-<li><p>Explain in each code block.</p>
-</li>
-<li><pre><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{
-    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validTicTacToe</span><span class="params">(String[] board)</span> </span>{
-        <span class="comment">//Convert string board into matrix</span>
-        <span class="keyword">int</span> turns = <span class="number">0</span>;
-        <span class="keyword">int</span>[] rows = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];
-        <span class="keyword">int</span>[] cols = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];
-        <span class="keyword">int</span> diag = <span class="number">0</span>;
-        <span class="keyword">int</span> antidiag = <span class="number">0</span>;
-        <span class="keyword">boolean</span> xwin = <span class="keyword">false</span>;
-        <span class="keyword">boolean</span> owin = <span class="keyword">false</span>;
-
-        <span class="comment">//compute the eight lines</span>
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) {
-                <span class="keyword">if</span> (board[i].charAt(j) == <span class="string">'X'</span>) {
-                    turns++;
-                    rows[i]++;
-                    cols[j]++;
-                    <span class="keyword">if</span> (i == j) diag++;
-                    <span class="keyword">if</span> (i + j == <span class="number">2</span>) antidiag++;
-                } <span class="keyword">else</span> <span class="keyword">if</span> (board[i].charAt(j) == <span class="string">'O'</span>) {
-                    turns--;
-                    rows[i]--;
-                    cols[j]--;
-                    <span class="keyword">if</span> (i == j) diag--;
-                    <span class="keyword">if</span> (i + j == <span class="number">2</span>) antidiag--;
-                }
-            }
-        }
-
-        <span class="comment">//determine who win</span>
-        xwin = rows[<span class="number">0</span>] == <span class="number">3</span> || rows[<span class="number">1</span>] == <span class="number">3</span> || rows[<span class="number">2</span>] == <span class="number">3</span> || cols[<span class="number">0</span>] == <span class="number">3</span> || cols[<span class="number">1</span>] == <span class="number">3</span> || cols[<span class="number">2</span>] == <span class="number">3</span> || diag == <span class="number">3</span> || antidiag == <span class="number">3</span>;
-        owin = rows[<span class="number">0</span>] == -<span class="number">3</span> || rows[<span class="number">1</span>] == -<span class="number">3</span> || rows[<span class="number">2</span>] == -<span class="number">3</span> || cols[<span class="number">0</span>] == -<span class="number">3</span> || cols[<span class="number">1</span>] == -<span class="number">3</span> || cols[<span class="number">2</span>] == -<span class="number">3</span> || diag == -<span class="number">3</span> || antidiag == -<span class="number">3</span>;
-
-        <span class="comment">//X always move first</span>
-        <span class="keyword">if</span> (xwin &amp;&amp; turns == <span class="number">0</span> || owin &amp;&amp; turns == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;
-        <span class="keyword">return</span> (turns == <span class="number">0</span> || turns == <span class="number">1</span>) &amp;&amp; (!xwin || !owin);
-    }
-}
-&lt;!--￼<span class="number">3</span>--&gt;</code></pre>
-</li>
-<li><p>Walk Through some examples, test case</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
+<li><p>Use all tools to help interviewers understand</p>
+<ul>
+<li>Whiteboard</li>
+<li>Pseudo Code</li>
+</ul>
 </li>
 </ol>
-<p>When present your solution</p>
-<ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()</span><br><span class="line"><span class="keyword">do</span> xx</span><br><span class="line">retrun xx</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Walk Through some examples, test case</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>When present your solution<ul>
 <li>Talk about high level idea before dive into details implementations</li>
 <li>Focus on most complicate part</li>
 <li>For DP, how demo status transition works before into code</li>
+</ul>
+</li>
 </ol>
 <p>Follow up</p>
 <ol>
-<li>Fine tuning code (corner cases, minor mistakes, typo)</li>
+<li>Fine tuning code (want you thinking corner cases, minor mistakes, typo)</li>
 <li>Bonus(if you answer correct, hire -&gt; strong hire)</li>
 <li>More challenge</li>
 <li>Push for better solution</li>
+<li>Redirection the interview to non coding area</li>
 </ol>
-<h3 id="Technique-1"><a href="#Technique-1" class="headerlink" title="Technique"></a>Technique</h3><p><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">Search in Rotated Sorted Array</a></p>
+<h3 id="Presentation"><a href="#Presentation" class="headerlink" title="Presentation"></a>Presentation</h3><p><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">Search in Rotated Sorted Array</a></p>
 <p><a href="https://leetcode.com/problems/koko-eating-bananas/" target="_blank" rel="noopener">Koko Eating Bananas</a></p>
-<ol>
-<li><h2 id="Week-3-Feedback"><a href="#Week-3-Feedback" class="headerlink" title="Week 3 Feedback"></a>Week 3 Feedback</h2></li>
-</ol>
-<h3 id="Theme-BFS-amp-DFS"><a href="#Theme-BFS-amp-DFS" class="headerlink" title="Theme: BFS &amp; DFS"></a>Theme: BFS &amp; DFS</h3><p>BFS and DFS are considered fundamental in programming skills. Even they are almost not being used in real-world problems, many companies still using them in most of their interviews.</p>
+<h2 id="Week-3-Theme-BFS-amp-DFS⭐"><a href="#Week-3-Theme-BFS-amp-DFS⭐" class="headerlink" title="Week 3 Theme: BFS &amp; DFS⭐"></a>Week 3 Theme: BFS &amp; DFS⭐</h2><p>BFS and DFS are considered fundamental in programming skills. Even they are almost not being used in real-world problems, many companies still using them in most of their interviews.</p>
 <p>According to the interview results, when interviewers ask BFS / DFS problems, more than 60% of candidates fail with two main reasons:</p>
 <ol>
 <li>Not able to figure out BFS / DFS solution</li>
@@ -438,7 +429,89 @@
 </ol>
 <p>Many candidates tend to use DFS over BFS, especially for new grads, but sometimes choosing the correct searching algorithm will significantly improve the performance.</p>
 <p>In general, it should be obvious to tell if a particular problem could be solved by BFS or DFS. However, it’s possible that one problem could be solved by both algorithms. In this case, it’s better to evaluate the pros and cons of them first.</p>
-<h3 id="Presentation-Sliding-Puzzle"><a href="#Presentation-Sliding-Puzzle" class="headerlink" title="Presentation Sliding Puzzle"></a>Presentation Sliding Puzzle</h3><ol>
+<h3 id="Technique-1"><a href="#Technique-1" class="headerlink" title="Technique"></a>Technique</h3><p>The traverse order matter</p>
+<ol>
+<li>A node depends on all shallower nodes:<ul>
+<li>BFS</li>
+</ul>
+</li>
+<li>A node depends on all descendant nodes:<ul>
+<li>DFS</li>
+</ul>
+</li>
+<li>More complex dependency<ul>
+<li>BFS and DFS that dependency tree/graph</li>
+</ul>
+</li>
+</ol>
+<p>Quiz</p>
+<ol>
+<li>Shortest path from one leaf to another leaf<ul>
+<li>DFS</li>
+<li>The shortest path goes up from leaf X through a node Y and then down to leaf Z</li>
+<li>Path Y to X and path Y to Z must be the two shorest leaf path from Y</li>
+<li>The shorest leaf path from Y can be calculated fromthe shorest leaf from Y’s child nodes.</li>
+</ul>
+</li>
+</ol>
+<p>DFS</p>
+<p>Its recursion form is easy to remember and write. 3 steps in a  recursive DFS function:</p>
+<ol>
+<li>Take the necessary informations from child nodes.</li>
+<li>Compute current node based on current node’s information and those from the child nodes.</li>
+<li>Return the computation result in the same data stucture.</li>
+</ol>
+<p>Example:</p>
+<ol>
+<li>Sum of all node values</li>
+<li>Longest path to leaf</li>
+</ol>
+<p>DFS Review</p>
+<ol>
+<li>Determine how we are going to compute the result for the current node.</li>
+<li>Identify what information we ned from child nodes for computation.</li>
+<li>Return the similar information after computing the current node.</li>
+<li>Chect if leaf node returns the correct information.</li>
+</ol>
+<p>BFS</p>
+<p>It’s a little bit harder to remoember and write than DFS. However, it only requires 3 steps just like DFS.</p>
+<ol>
+<li>Enqueue the root node</li>
+<li>Dequeue a node and enqueue all its child nodes.</li>
+<li>Repeat indefinitely until the queue is empty.</li>
+</ol>
+<p>Example:</p>
+<ol>
+<li><p>Leaf closest to root</p>
+<ul>
+<li>check it it’s a leaf node</li>
+<li>stop if it’s a leaf node</li>
+</ul>
+</li>
+<li><p>Shortest path from point A to point B, can be map in matrix or graph</p>
+<ul>
+<li>start at point A  as step 1, consider it as root</li>
+<li>identify all adjacent points as step 2 candidates, like child node</li>
+<li>repeat that for step 3, 4</li>
+<li>show when point B is identified as candidate of step X</li>
+</ul>
+</li>
+<li><p>Shortest path from state A to state B</p>
+<p>​    More variations:</p>
+<ul>
+<li>A game started with state A. Can it get state B? how to get state B in least amount of steps?</li>
+<li>A game started with state A. Player X and player Y play against each other. Can it get to state B(eg.X winning or Y winning)?</li>
+</ul>
+</li>
+</ol>
+<p>BFS Review</p>
+<ol>
+<li>BFS needs a queue.</li>
+<li>The problem might not mention tree or graph.</li>
+<li>The problem might involve state transitions.</li>
+<li>Memorize visited nodes if it’s a graph.</li>
+</ol>
+<h3 id="Sliding-Puzzle-presentation"><a href="#Sliding-Puzzle-presentation" class="headerlink" title="Sliding Puzzle presentation"></a>Sliding Puzzle presentation</h3><ol>
 <li>Bad : Too many typos. Time complexity, space complexity analyze.</li>
 <li>Flow of code is good. Framework first and then implement detail code.  </li>
 <li>Explain why you choose this data structure, why not other array, etc. Motavitation. </li>
@@ -446,9 +519,262 @@
 <li>Line 30 : Comment visualize the current data is great //123450 -&gt; x,y</li>
 <li>Explain how you achieve BFS’s level search.</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">slidingPuzzle</span><span class="params">(<span class="keyword">int</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//initial varaible</span></span><br><span class="line">        <span class="keyword">int</span> row = board.length;</span><br><span class="line">        <span class="keyword">int</span> col = board[<span class="number">0</span>].length;</span><br><span class="line">        String start = <span class="string">""</span>;</span><br><span class="line">        String goal = <span class="string">"123450"</span>;</span><br><span class="line">        <span class="comment">//initial start = xxxxx</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++) &#123;</span><br><span class="line">                start += board[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[][] directiosn = &#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;&#125;;</span><br><span class="line">        </span><br><span class="line">        Set&lt;String&gt; visited = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        visited.add(start);</span><br><span class="line">        Queue&lt;String&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.add(start);</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//bfs</span></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = queue();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i  =<span class="number">0</span>; i &lt; size; i++) &#123;  <span class="comment">//++</span></span><br><span class="line">                String curState = queue.poll(); <span class="comment">//++</span></span><br><span class="line">                <span class="keyword">if</span> (s == goal) &#123;</span><br><span class="line">                    <span class="keyword">return</span> cnt;  <span class="comment">//++</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//123450 -&gt; x,y</span></span><br><span class="line">                <span class="keyword">int</span> pos = s.indexOf(<span class="string">"0"</span>);</span><br><span class="line">                <span class="keyword">int</span> x = pos % col;</span><br><span class="line">                <span class="keyword">int</span> y = pos / col;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span>[] d : directions) &#123;</span><br><span class="line">                    <span class="keyword">int</span> nextX = x + d[<span class="number">0</span>];</span><br><span class="line">                    <span class="keyword">int</span> nextY = y + d[<span class="number">1</span>];</span><br><span class="line">                    <span class="keyword">if</span> (nextX &lt; <span class="number">0</span> || nextX &gt;= row || nextY &lt; <span class="number">0</span> || nextY &gt;= col) &#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">int</span> nextPos = nextX * col + nextY;</span><br><span class="line">                    <span class="comment">// 0 -&gt; xxxxx</span></span><br><span class="line">                    String newString = swap(s, pos, nextPos);</span><br><span class="line">                    <span class="keyword">if</span> (visited.contains(newString)) <span class="keyword">continue</span>;</span><br><span class="line">                    visited.add(newString);</span><br><span class="line">                    queue.add(newString);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">swap</span><span class="params">(String s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">        <span class="keyword">char</span> temp = chars[i];</span><br><span class="line">        chars[i] = chars[j];</span><br><span class="line">        chars[j] = temp;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Stirng(chars);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">slidingPuzzle</span><span class="params">(<span class="keyword">int</span>[][] board)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//initial varaible</span></span><br><span class="line">    <span class="keyword">int</span> row = board.length;</span><br><span class="line">    <span class="keyword">int</span> col = board[<span class="number">0</span>].length;</span><br><span class="line">    String start = <span class="string">""</span>;</span><br><span class="line">    String goal = <span class="string">"123450"</span>;</span><br><span class="line">    <span class="comment">//initial start = xxxxx</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++) &#123;</span><br><span class="line">            start += board[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span>[][] directiosn = &#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">    Set&lt;String&gt; visited = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    visited.add(start);</span><br><span class="line">    Queue&lt;String&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(start);</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//bfs</span></span><br><span class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> size = queue();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i  =<span class="number">0</span>; i &lt; size; i++) &#123;  <span class="comment">//++</span></span><br><span class="line">            String curState = queue.poll(); <span class="comment">//++</span></span><br><span class="line">            <span class="keyword">if</span> (s == goal) &#123;</span><br><span class="line">                <span class="keyword">return</span> cnt;  <span class="comment">//++</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//123450 -&gt; x,y</span></span><br><span class="line">            <span class="keyword">int</span> pos = s.indexOf(<span class="string">"0"</span>);</span><br><span class="line">            <span class="keyword">int</span> x = pos % col;</span><br><span class="line">            <span class="keyword">int</span> y = pos / col;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] d : directions) &#123;</span><br><span class="line">                <span class="keyword">int</span> nextX = x + d[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">int</span> nextY = y + d[<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span> (nextX &lt; <span class="number">0</span> || nextX &gt;= row || nextY &lt; <span class="number">0</span> || nextY &gt;= col) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> nextPos = nextX * col + nextY;</span><br><span class="line">                <span class="comment">// 0 -&gt; xxxxx</span></span><br><span class="line">                String newString = swap(s, pos, nextPos);</span><br><span class="line">                <span class="keyword">if</span> (visited.contains(newString)) <span class="keyword">continue</span>;</span><br><span class="line">                visited.add(newString);</span><br><span class="line">                queue.add(newString);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">swap</span><span class="params">(String s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">    <span class="keyword">char</span> temp = chars[i];</span><br><span class="line">    chars[i] = chars[j];</span><br><span class="line">    chars[j] = temp;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Stirng(chars);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Interview-io"><a href="#Interview-io" class="headerlink" title="Interview.io"></a>Interview.io</h1><h2 id="628-Maximum-Product-of-Three-Numbers💜"><a href="#628-Maximum-Product-of-Three-Numbers💜" class="headerlink" title="628. Maximum Product of Three Numbers💜"></a><a href="https://leetcode.com/problems/maximum-product-of-three-numbers/description/" target="_blank" rel="noopener">628. Maximum Product of Three Numbers</a>💜</h2><h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1:"></a>Solution1:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">Output: <span class="number">24</span></span><br></pre></td></tr></table></figure>
+<h2 id="Week-4-amp-5-Theme-Data-Structure-I-Basic-Data-Structure-II-advanced"><a href="#Week-4-amp-5-Theme-Data-Structure-I-Basic-Data-Structure-II-advanced" class="headerlink" title="Week 4&amp;5 Theme: Data Structure I (Basic) Data Structure II (advanced)"></a>Week 4&amp;5 Theme: Data Structure I (Basic) Data Structure II (advanced)</h2><h3 id="Technique-2"><a href="#Technique-2" class="headerlink" title="Technique"></a>Technique</h3><p>There are lots of Data Structures we have learned from school. Some of them are considered as basic since</p>
+<ol>
+<li>They are easier to understand, and</li>
+<li>They are used more often in real-world projects.</li>
+</ol>
+<p>For example, Array, Queue, Stack, Heap, Tree, and Hash.</p>
+<p>Some others are considered as advance, for example, Interval Tree, Trie, BST, Graph, etc.</p>
+<p>For this week, we will focus on the basic data structures, and talk about advanced data structure next week.</p>
+<p>For most of the interview questions, they can be solved by basic data structures. However, sometimes we can’t solve the problem by applying a single data structures, optimization is required. For example:</p>
+<ol>
+<li>Combine two different data structures together, or</li>
+<li>Apply other algorithms on top of it, e.g. Greedy, Sorting, etc.</li>
+</ol>
+<p>Advanced Data Structure includes a lot of things, but only a few of them are asked frequently in the interview, they are</p>
+<ol>
+<li>Binary Search Tree</li>
+<li>Graph (Shortest Path, Minimal Spanning Tree, Topological Sorting)</li>
+<li>Trie</li>
+<li>Disjoint Set (aka Union Find Set)</li>
+<li>Binary Indexed Tree</li>
+<li>Interval Tree (aka Segment Tree, together with Line Sweeping)</li>
+</ol>
+<p>The above order reflects how often these problems are being asked in the actual interview. Some of these data structures require a <em>template</em>, otherwise, most candidates won’t able to code it up within 45 minutes, which makes it less likely to be asked in interviews.</p>
+<p>However, we still have some records that some companies ask candidates these data structures, e.g</p>
+<ol>
+<li>Uber, ask Line Sweeping</li>
+<li>Google, ask Binary Indexed Tree and Disjoint Set</li>
+<li>Facebook and Airbnb, ask Interval Tree</li>
+</ol>
+<p>Usually, when the interviewer asks these kinds of problems, the actual data structure might not be the one they are expecting. Try to start with a simple data structure before going into the complicate ones.</p>
+<p>For example, Binary Indexed Tree is considered as a simple version of Interval Tree; some features of Trie/Disjoint Set could be achieved by using a regular tree/graph, with higher time complexity.</p>
+<p>When the interviewer asks you these questions, I would recommend:</p>
+<ol>
+<li>Explicitly ask the interview what are they looking for. You could provide two solutions, a) complicate data structure but lower time/space complexity, and b) simple data structure with better readability but higher time/space complexity. Talk to the interviewer to see what they are looking for.</li>
+<li>If you decide to go with the complicate ones, clarify with the interviewer if they want you to implement the actual data structure. Facebook is allowing you to assume the existence of data structure, but Google / Airbnb won’t allow that.</li>
+<li>If you have to go with the complicate ones, make sure you think through the problem before start coding. If your original solution doesn’t work, you might not have enough to rewrite your code.</li>
+</ol>
+<p>Data structures</p>
+<ol>
+<li>Data operations<ul>
+<li>store</li>
+<li>query</li>
+<li>update</li>
+</ul>
+</li>
+<li>Core metrics<ul>
+<li>Functionality</li>
+<li>Time/Space complexity</li>
+<li>Coding complexity</li>
+</ul>
+</li>
+<li>Basic data structures<ul>
+<li>Array</li>
+<li>Stack &amp; Queue<ul>
+<li>PriorityQueue(Heap)</li>
+</ul>
+</li>
+<li>Hash</li>
+</ul>
+</li>
+<li>Advanced data structures<ul>
+<li>Tree<ul>
+<li>Binary search tree<ul>
+<li>Balance tree</li>
+</ul>
+</li>
+<li>Trie</li>
+<li>Disjoint Set</li>
+<li>Binary Indexed Tree/Interval Tree</li>
+</ul>
+</li>
+<li>Graph<ul>
+<li>Directional Graph<ul>
+<li>Graph DP</li>
+<li>Topological Sorting</li>
+<li>Shortest Path</li>
+</ul>
+</li>
+<li>Bidirectional Graph<ul>
+<li>Minimal Spanning Tree</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Interview<ul>
+<li>Mostly require basic data structures</li>
+<li>Might require combing data structures/algorithms<ul>
+<li>Stack/Queue</li>
+<li>Sorting</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Basic-data-structures"><a href="#Basic-data-structures" class="headerlink" title="Basic data structures"></a>Basic data structures</h3><h4 id="Stack-and-Queue"><a href="#Stack-and-Queue" class="headerlink" title="Stack and Queue"></a>Stack and Queue</h4><ul>
+<li>Tracking order</li>
+<li>Stack, FILO</li>
+<li>Queue, FIFO</li>
+</ul>
+<ol>
+<li>Implement Stack with Queues</li>
+<li>Implement Queue with Stacks</li>
+<li>Reverse Polish Notation</li>
+</ol>
+<h4 id="Priority-Queue-Heap"><a href="#Priority-Queue-Heap" class="headerlink" title="Priority Queue(Heap)"></a>Priority Queue(Heap)</h4><ul>
+<li>Tree strcture</li>
+<li>Parent node is minimal(or maximal) of its subtree</li>
+<li>Tracking running minimal or maximal </li>
+</ul>
+<ol>
+<li>Medium in Array</li>
+<li>Shorest Path</li>
+</ol>
+<h4 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h4><ul>
+<li>Converting input objects into keys</li>
+<li>Tracking info of keys<ul>
+<li>Memorize Recursion(DP)</li>
+<li>Visited array in BFS</li>
+</ul>
+</li>
+<li>HashMap(Java/Cpp) or dict(python)</li>
+</ul>
+<ol>
+<li>Implement hash function(start up company)<ul>
+<li>Rabin-Karp Algorithm</li>
+</ul>
+</li>
+<li>Comparing strings</li>
+</ol>
+<h3 id="Advanced-data-structures"><a href="#Advanced-data-structures" class="headerlink" title="Advanced data structures"></a>Advanced data structures</h3><ol>
+<li>Many Advanced data structures</li>
+<li>only handfulof them are asked</li>
+<li>Choose data structure wisely<ul>
+<li>Clarity requirment(implement? or assume them exist)</li>
+<li>Explain idea</li>
+<li>Set exception</li>
+</ul>
+</li>
+<li>Use well-known naming<ul>
+<li>Interval Tree -&gt; Segment Tree</li>
+<li>Disjoint Set -&gt; Union Find Set</li>
+</ul>
+</li>
+</ol>
+<h4 id="Binary-search-tree"><a href="#Binary-search-tree" class="headerlink" title="Binary search tree"></a>Binary search tree</h4><ol>
+<li>Preorder/Inorder/Postorder Search<ul>
+<li>Given two of the orders, figure out the rest</li>
+</ul>
+</li>
+<li>Balance Tree<ul>
+<li>Handle BST degeneration</li>
+<li>More complicated</li>
+<li>Recommend to use Map/Set/dict</li>
+</ul>
+</li>
+</ol>
+<h4 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h4><ol>
+<li>Prefix tree</li>
+<li>Store multiple strings in O(nm) space<ul>
+<li>n is size of alphabet</li>
+<li>m is lengh of strings</li>
+</ul>
+</li>
+<li>Query string in O(m) sapce</li>
+</ol>
+<h4 id="Disjoint-Set"><a href="#Disjoint-Set" class="headerlink" title="Disjoint Set"></a>Disjoint Set</h4><ol>
+<li>Given multiples sets<ul>
+<li>Query ID of set(find)</li>
+<li>Merge multiple sets(union)</li>
+</ul>
+</li>
+<li>Query Equations</li>
+</ol>
+<h4 id="Binary-Indexed-Tree"><a href="#Binary-Indexed-Tree" class="headerlink" title="Binary Indexed Tree"></a>Binary Indexed Tree</h4><ol>
+<li>Add value into array[index]</li>
+<li>Replace array[index] with value</li>
+<li>Sum array[index1 : idnex2]</li>
+</ol>
+<h4 id="Interval-Tree"><a href="#Interval-Tree" class="headerlink" title="Interval Tree"></a>Interval Tree</h4><ol>
+<li>Replace array[idnex1 : idnex2] with value</li>
+<li>Query sum(array[index1 : index2])</li>
+</ol>
+<h4 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h4><ol>
+<li>Topological sorting(Run BFS in directional graph)<ul>
+<li>Alien Dictionary</li>
+</ul>
+</li>
+<li>Shorest Path<ul>
+<li>Dijkstra</li>
+</ul>
+</li>
+<li>Minimal Spanning Tree<ul>
+<li>Prim</li>
+<li>Kruskal</li>
+</ul>
+</li>
+</ol>
+<h3 id="Presentation-1"><a href="#Presentation-1" class="headerlink" title="Presentation"></a>Presentation</h3><h2 id="Week-6-Theme-Math"><a href="#Week-6-Theme-Math" class="headerlink" title="Week 6 Theme: Math"></a>Week 6 Theme: Math</h2><p>Math actually has many different kinds of problems, they are widely used in interviews, especially for startups.</p>
+<p>Some typical topics being asked are:</p>
+<ol>
+<li>GCD / LCM</li>
+<li>Prime numbers</li>
+<li>Pigeonhole principle</li>
+<li>Geometry</li>
+<li>Bit Manipulation</li>
+<li>Randomization</li>
+<li>Brainteaser</li>
+</ol>
+<p>On top of basic mathematical theories, some other algorithms might be required to solve the problems, e.g</p>
+<ol>
+<li>Dynamic Programming</li>
+<li>DFS / Recursion</li>
+<li>Sorting</li>
+</ol>
+<h3 id="Technique-3"><a href="#Technique-3" class="headerlink" title="Technique"></a>Technique</h3><ol>
+<li>Prime<ul>
+<li>Find prime numbers in O(n) space/time</li>
+<li>Find prime factors in average O(log n) time</li>
+</ul>
+</li>
+<li>GCD/LCM<ul>
+<li>Find GCD /LCM in O(log n) time, O(1) space</li>
+</ul>
+</li>
+<li>Geometry<ul>
+<li>Check if two segments intersect into each other</li>
+<li>Convex Hull</li>
+</ul>
+</li>
+<li>Bit<ul>
+<li>Calculate +-*/ with bitwise operation</li>
+<li>Zipping bits into integer</li>
+</ul>
+</li>
+<li>Random<ul>
+<li>Shuffle Array</li>
+<li>Given a particular randomizer, build a new one on top of<ul>
+<li>Given randomizer from [0, 1], build one from [0, 100]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Brain Teasers<ul>
+<li>Nim</li>
+<li>Triangle<ul>
+<li>Given a list of integers, find out how many trios could form a triangle</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Week-7-Theme-Dynamic-Programming⭐"><a href="#Week-7-Theme-Dynamic-Programming⭐" class="headerlink" title="Week 7 Theme: Dynamic Programming⭐"></a>Week 7 Theme: Dynamic Programming⭐</h2><h1 id="Interview-io"><a href="#Interview-io" class="headerlink" title="Interview.io"></a>Interview.io</h1><h2 id="628-Maximum-Product-of-Three-Numbers💜"><a href="#628-Maximum-Product-of-Three-Numbers💜" class="headerlink" title="628. Maximum Product of Three Numbers💜"></a><a href="https://leetcode.com/problems/maximum-product-of-three-numbers/description/" target="_blank" rel="noopener">628. Maximum Product of Three Numbers</a>💜</h2><h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1:"></a>Solution1:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">Output: <span class="number">24</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximumProduct</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max1 = Integer.MIN_VALUE, max2 = Integer.MIN_VALUE, max3 = Integer.MIN_VALUE, min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;</span><br><span class="line">    <span class="comment">//Find the largest 3 numbers &amp;&amp; 2 minimum number(because input can be negetive -9 * -8= 72)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (num &gt; max1) &#123;</span><br><span class="line">            max3 = max2;</span><br><span class="line">            max2 = max1;</span><br><span class="line">            max1 = num;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num &gt; max2) &#123;</span><br><span class="line">            max3 = max2;</span><br><span class="line">            max2 = num;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num &gt; max3) &#123;</span><br><span class="line">            max3 = num;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (num &lt; min1) &#123;</span><br><span class="line">            min2 = min1;</span><br><span class="line">            min1 = num;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num &lt; min2) &#123;</span><br><span class="line">            min2 = num;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Math.max(max1*max2*max3, max1*min1*min2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1344,7 +1670,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-10 19:38:01" itemprop="dateModified" datetime="2020-12-10T19:38:01+09:00">2020-12-10</time>
+                <time title="修改时间：2020-12-16 20:21:01" itemprop="dateModified" datetime="2020-12-16T20:21:01+09:00">2020-12-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1406,6 +1732,16 @@
 <h3 id="基于堆的优先队列"><a href="#基于堆的优先队列" class="headerlink" title="基于堆的优先队列"></a>基于堆的优先队列</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MAXPQ</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Key[] pq;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> N = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MaxPQ</span><span class="params">(<span class="keyword">int</span> maxN)</span></span></span><br><span class="line"><span class="function">    </span>&#123;pq = (Key[]) <span class="keyword">new</span> Comparable[maxN+<span class="number">1</span>];&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;<span class="keyword">return</span> N == <span class="number">0</span>;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">size</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;<span class="keyword">return</span> N;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Key v)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        pq[++N] = v;</span><br><span class="line">        swim(N);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Key <span class="title">delMax</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Key max = pq[<span class="number">1</span>];</span><br><span class="line">        exch(<span class="number">1</span>, N--);</span><br><span class="line">        pq[N+<span class="number">1</span>] = <span class="keyword">null</span>;</span><br><span class="line">        sink(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">less</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sink</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Heap-Sort-堆排序"><a href="#Heap-Sort-堆排序" class="headerlink" title="Heap Sort(堆排序)"></a>Heap Sort(堆排序)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = a.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = N/<span class="number">2</span>; k &gt;= <span class="number">1</span>; k--)</span><br><span class="line">        sink(a, k, N);</span><br><span class="line">    <span class="keyword">while</span> (N &gt; <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        exch(a, <span class="number">1</span>, N--);</span><br><span class="line">        sink(a, <span class="number">1</span>, N);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="第三章查找"><a href="#第三章查找" class="headerlink" title="第三章查找"></a>第三章查找</h1><h2 id="3-1符号表"><a href="#3-1符号表" class="headerlink" title="3.1符号表"></a>3.1符号表</h2><h3 id="顺序查找-基于无序链表"><a href="#顺序查找-基于无序链表" class="headerlink" title="顺序查找(基于无序链表)"></a>顺序查找(基于无序链表)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SequentialSearchST</span>&lt;<span class="title">Key</span>, <span class="title">Value</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Node first;</span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        Key key;</span><br><span class="line">        Value value;</span><br><span class="line">        Node next;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(Key key, Value value, Node next)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.key = key;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">            <span class="keyword">this</span>.next = next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Value <span class="title">get</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Node x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">            <span class="keyword">if</span> (key.equals(x.key))</span><br><span class="line">                <span class="keyword">return</span> x.val;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key, Value val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Node x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">            <span class="keyword">if</span> (key.equals(x.key))</span><br><span class="line">            &#123;x.val = val; <span class="keyword">return</span>;&#125;</span><br><span class="line">        first = <span class="keyword">new</span> Node(key, val, first);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二分查找-基于有序数组"><a href="#二分查找-基于有序数组" class="headerlink" title="二分查找(基于有序数组)"></a>二分查找(基于有序数组)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinarySearchST</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;, <span class="title">Value</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Key[] keys;</span><br><span class="line">    <span class="keyword">private</span> Value[] value;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> N;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BinarySearchST</span><span class="params">(<span class="keyword">int</span> capacity)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        keys[] = (Key[]) <span class="keyword">new</span> Comparable[capacity];</span><br><span class="line">        vals = (Value[]) <span class="keyword">new</span> Object[capacity];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;<span class="keyword">return</span> N;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Value <span class="title">get</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">int</span> i = rank(key);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; N &amp;&amp; keys[i].compareTo(key) == <span class="number">0</span>) <span class="keyword">return</span> vals[i];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rank</span><span class="params">(Key key)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key, Value val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = rank(key);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; N &amp;&amp; keys[i].compareTo(key) == <span class="number">0</span>)</span><br><span class="line">        &#123;vals[i] = val; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = N; j &gt; i; j--)</span><br><span class="line">        &#123;keys[j] = keys[j - i]; vals[j] = vals[j - <span class="number">1</span>]&#125;</span><br><span class="line">        keys[i] = key; vals[i] = val;</span><br><span class="line">        N++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="基于有序数组的二分查找-迭代"><a href="#基于有序数组的二分查找-迭代" class="headerlink" title="基于有序数组的二分查找(迭代)"></a>基于有序数组的二分查找(迭代)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rank</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> lo = <span class="number">0</span>, hi = N-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (lo &lt;= hi)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = lo + (hi - lo)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> cmp = key.compareTo(keys[mid]);</span><br><span class="line">        <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) hi = mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) lo = mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="基于二分查找的有序符号表的其他操作"><a href="#基于二分查找的有序符号表的其他操作" class="headerlink" title="基于二分查找的有序符号表的其他操作"></a>基于二分查找的有序符号表的其他操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">min</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="keyword">return</span> kets[<span class="number">0</span>]&#125;;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">max</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="keyword">return</span> keys[N-<span class="number">1</span>];&#125;;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">select</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="keyword">return</span> keys[k];&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">ceiling</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = rank(key);</span><br><span class="line">    <span class="keyword">return</span> keys[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">floor</span><span class="params">(Key key)</span></span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">delete</span><span class="params">(Key key)</span></span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Iterable&lt;Key&gt; <span class="title">keys</span><span class="params">(Key lo, Key hi)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Queue&lt;Key&gt; q = <span class="keyword">new</span> Queue&lt;Key&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = rank(lo)l i &lt; rank(hi); i++)</span><br><span class="line">    q.enqueue(keys[i]);</span><br><span class="line">    <span class="keyword">if</span> (contains(hi))</span><br><span class="line">        q.enqueue(keys[rank(hi));</span><br><span class="line">    <span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2Binary-Search-Tree-二叉查找树"><a href="#3-2Binary-Search-Tree-二叉查找树" class="headerlink" title="3.2Binary Search Tree(二叉查找树)"></a>3.2Binary Search Tree(二叉查找树)</h2><h3 id="基于二叉查找树的符号表"><a href="#基于二叉查找树的符号表" class="headerlink" title="基于二叉查找树的符号表"></a>基于二叉查找树的符号表</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BST</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;, <span class="title">Value</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 
 
       
