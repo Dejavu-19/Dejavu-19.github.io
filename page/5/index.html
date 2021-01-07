@@ -893,7 +893,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-05 20:45:40" itemprop="dateModified" datetime="2021-01-05T20:45:40+09:00">2021-01-05</time>
+                <time title="修改时间：2021-01-07 15:15:11" itemprop="dateModified" datetime="2021-01-07T15:15:11+09:00">2021-01-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -916,17 +916,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Two-Pointers"><a href="#Two-Pointers" class="headerlink" title="Two Pointers"></a>Two Pointers</h1><h2 id="✅167-Two-Sum-II-Input-array-is-sorted-Easy"><a href="#✅167-Two-Sum-II-Input-array-is-sorted-Easy" class="headerlink" title="✅167. Two Sum II - Input array is sorted (Easy)"></a><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="noopener">✅167. Two Sum II - Input array is sorted (Easy)</a></h2><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
-<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based. You may assume that each input would have exactly one solution and you may not use the same element twice. Input: numbers={2, 7, 11, 15}, target=9 Output: index1=1, index2=2</p>
-<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1 :"></a>Solution1 :</h3><p>要求：you may not use the same element twice.</p>
-<ol>
-<li>思路：夹逼法。两边开始，如果两数和大于目标，则右侧指针左移，反之左侧指针右移。</li>
-<li>two pointer O(n logn) O(1)  <strong>good sorting algorithms like Quicksort or Merge sort or Heapsort</strong> O(n logn) </li>
-<li>Let the two pointers <strong><code>i</code></strong> and <strong><code>j</code></strong> correspond to the head and tail of the array, respectively, and sum the two. num[i]+num[j] = k</li>
-<li>If k is greater than traget, perform j-1 operation (because of ascending order, the tail number is large);<br>If k is smaller than target, perform i+1 operation.</li>
-<li>Return the index</li>
+          <h1 id="Two-Pointers"><a href="#Two-Pointers" class="headerlink" title="Two Pointers"></a>Two Pointers</h1><h2 id="Water-Area-AE-💜⭐"><a href="#Water-Area-AE-💜⭐" class="headerlink" title="Water Area(AE)💜⭐"></a>Water Area(AE)💜⭐</h2><h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1:"></a>Solution1:</h3><ol>
+<li>Dynamic Programming</li>
+<li>Time complexity: O(n)<em>O</em>(<em>n</em>).<ul>
+<li>We store the maximum heights upto a point using 2 iterations of O(n)<em>O</em>(<em>n</em>) each.</li>
+<li>We finally update \text{ans}ans using the stored values in O(n)<em>O</em>(<em>n</em>).</li>
+</ul>
+</li>
+<li>Space complexity: O(n)<em>O</em>(<em>n</em>) extra space.<ul>
+<li>Additional O(n)<em>O</em>(<em>n</em>) space for \text{left_max}left_max and \text{right_max}right_max arrays than</li>
+</ul>
+</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];  <span class="comment">//create return type is int[]</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (numbers == <span class="keyword">null</span> || numbers.length &lt; <span class="number">2</span>) &#123;  <span class="comment">//edge case</span></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = numbers.length - <span class="number">1</span>, sum;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">        sum = numbers[l] + numbers[r];</span><br><span class="line">        <span class="keyword">if</span> (sum == target) &#123;</span><br><span class="line">            res[<span class="number">0</span>] = l + <span class="number">1</span>;</span><br><span class="line">            res[<span class="number">1</span>] = r + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a + b &lt; target) &#123;</span><br><span class="line">            l++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            r--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://leetcode.com/problems/trapping-rain-water/Figures/42/trapping_rain_water.png" alt=""></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/07/15/Two%20pointer/#more" rel="contents">
@@ -984,7 +986,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-05 00:37:22" itemprop="dateModified" datetime="2021-01-05T00:37:22+09:00">2021-01-05</time>
+                <time title="修改时间：2021-01-06 18:06:55" itemprop="dateModified" datetime="2021-01-06T18:06:55+09:00">2021-01-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1068,7 +1070,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-05 00:46:52" itemprop="dateModified" datetime="2021-01-05T00:46:52+09:00">2021-01-05</time>
+                <time title="修改时间：2021-01-05 23:09:17" itemprop="dateModified" datetime="2021-01-05T23:09:17+09:00">2021-01-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
