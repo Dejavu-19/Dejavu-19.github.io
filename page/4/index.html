@@ -171,101 +171,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/25/Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
-      <meta itemprop="name" content="Dejavu">
-      <meta itemprop="description" content="Stay gold">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dejavu's Notebook">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/25/Tree/" class="post-title-link" itemprop="url">Tree</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-25 11:15:45" itemprop="dateCreated datePublished" datetime="2020-08-25T11:15:45+09:00">2020-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-06 18:09:05" itemprop="dateModified" datetime="2021-01-06T18:09:05+09:00">2021-01-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Binary-Tree"><a href="#Binary-Tree" class="headerlink" title="Binary Tree"></a>Binary Tree</h1><h2 id="Branch-Sums-AE"><a href="#Branch-Sums-AE" class="headerlink" title="Branch Sums(AE)"></a>Branch Sums(AE)</h2><p>Go through the tree and return an array consists of  the branch sums of each branch.</p>
-<ol>
-<li><p>Use <strong><code>DFS</code></strong>, call the recursive function, and keep track of running sum.</p>
-</li>
-<li><p>First setup an ArrayList <strong><code>nums</code></strong> to store the return value, because <strong><code>return is an Array</code></strong></p>
-</li>
-<li><p>Built a helper method take (tree, runningSum, nums) as parameter, add the target value to nums</p>
-</li>
-<li><p>while the left &amp; right both are null, we will say we have find the <strong><code>leaf node</code></strong>, the <strong>runningSum at this moment is Branch Sums</strong>, add this value to the sums; if not, we will call the method recursively. A special situation need to note, is that only one child node of current node, to deal with this, add if (node == null) return;</p>
-</li>
-<li><p>recursive:</p>
-<p>O(N) T</p>
-<p>O(log N) S</p>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/25/Tree/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/24/AWS2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1009,7 +914,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-29 12:11:29" itemprop="dateModified" datetime="2020-12-29T12:11:29+09:00">2020-12-29</time>
+                <time title="修改时间：2021-01-08 00:13:08" itemprop="dateModified" datetime="2021-01-08T00:13:08+09:00">2021-01-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1032,7 +937,68 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Intern"><a href="#Intern" class="headerlink" title="Intern"></a>Intern</h1><h2 id="1-Find-Pair-With-Given-Sum⭐⭐"><a href="#1-Find-Pair-With-Given-Sum⭐⭐" class="headerlink" title="1. Find Pair With Given Sum⭐⭐"></a><a href="https://leetcode.com/discuss/interview-question/356960" target="_blank" rel="noopener">1. Find Pair With Given Sum</a>⭐⭐</h2><p>Given a list of positive integers <code>nums</code> and an int <code>target</code>, return indices of the two numbers such that they add up to a <code>target - 30</code>.</p>
+          <h1 id="Amazon-Interview-Question"><a href="#Amazon-Interview-Question" class="headerlink" title="Amazon Interview Question"></a><a href="https://leetcode.com/discuss/interview-question?currentPage=1&orderBy=hot&query=&tag=amazon" target="_blank" rel="noopener">Amazon Interview Question</a></h1><p><a href="https://leetcode.com/discuss/interview-question/344650/Amazon-Online-Assessment-Questions" target="_blank" rel="noopener">https://leetcode.com/discuss/interview-question/344650/Amazon-Online-Assessment-Questions</a></p>
+<p>Looks like the critical subjects (tags) for Amazon are:</p>
+<ol>
+<li>DFS</li>
+<li>BFS</li>
+<li>Sliding Window</li>
+<li>Tree</li>
+<li>LinkedList.</li>
+</ol>
+<p><a href="https://leetcode.com/discuss/interview-question/488887/Amazon-Final-Interview-Questions-or-SDE1" target="_blank" rel="noopener">https://leetcode.com/discuss/interview-question/488887/Amazon-Final-Interview-Questions-or-SDE1</a></p>
+<h1 id="SDE1-Question-List"><a href="#SDE1-Question-List" class="headerlink" title="SDE1 Question List"></a>SDE1 Question List</h1><p>I’ve compiled a list of questions people have been asked for Amazon who have had 3 virtual interviews for SDE 1:</p>
+<ul>
+<li>Two Sum (<a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">#1</a>)</li>
+<li>Median of Two Sorted Arrays * (<a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">#4</a>)</li>
+<li>Longest Palindromic Substring (<a href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">#5</a>)</li>
+<li>String to Integer (atoi) (<a href="https://leetcode.com/problems/string-to-integer-atoi/" target="_blank" rel="noopener">#8</a>)</li>
+<li>Integer to Roman (<a href="https://leetcode.com/problems/integer-to-roman/" target="_blank" rel="noopener">#12</a>)</li>
+<li>Roman to Integer (<a href="https://leetcode.com/problems/roman-to-integer/" target="_blank" rel="noopener">#13</a>)</li>
+<li>Valid Parentheses (<a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">#20</a>)</li>
+<li>Merge K Sorted Lists (<a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">#23</a>)</li>
+<li>Valid Sudoku (<a href="https://leetcode.com/problems/valid-sudoku/" target="_blank" rel="noopener">#36</a>)</li>
+<li>Combination Sum (<a href="https://leetcode.com/problems/combination-sum/" target="_blank" rel="noopener">#39</a>)</li>
+<li>Permutations (<a href="https://leetcode.com/problems/permutations/" target="_blank" rel="noopener">#46</a>)</li>
+<li>Merge Intervals (<a href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener">#56</a>)</li>
+<li>Rotate List (<a href="https://leetcode.com/problems/rotate-list/" target="_blank" rel="noopener">#61</a>)</li>
+<li>Minimum Path Sum (<a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="noopener">#64</a>)</li>
+<li>Word Search (<a href="https://leetcode.com/problems/word-search/" target="_blank" rel="noopener">#79</a>)</li>
+<li>Validate Binary Search Tree(<a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">#98</a>)</li>
+<li>Same Tree ~ (<a href="https://leetcode.com/problems/same-tree/" target="_blank" rel="noopener">#100</a>)</li>
+<li>Symmetric Tree ~ (<a href="https://leetcode.com/problems/symmetric-tree/" target="_blank" rel="noopener">#101</a>)</li>
+<li>Binary Tree Level Order Traversal (<a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">#102</a>)</li>
+<li>Convert Sorted List to Binary Search Tree (<a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/" target="_blank" rel="noopener">#109</a>)</li>
+<li>Populating Next Right Pointers in Each Node (<a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node/" target="_blank" rel="noopener">#116</a>)</li>
+<li>Best Time to Buy and Sell Stock (<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">#121</a>)</li>
+<li>Word Ladder II (<a href="https://leetcode.com/problems/word-ladder-ii/" target="_blank" rel="noopener">#126</a>)</li>
+<li>Word Ladder (<a href="https://leetcode.com/problems/word-ladder/" target="_blank" rel="noopener">#127</a>)</li>
+<li>LRU Cache (<a href="https://leetcode.com/problems/lru-cache/" target="_blank" rel="noopener">#146</a>)</li>
+<li>Min Stack (<a href="https://leetcode.com/problems/min-stack/" target="_blank" rel="noopener">#155</a>)</li>
+<li>Number of Islands (<a href="https://leetcode.com/problems/number-of-islands/" target="_blank" rel="noopener">#200</a>)</li>
+<li>Course Schedule (<a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener">#207</a>)</li>
+<li>Course Schedule II (<a href="https://leetcode.com/problems/course-schedule-ii/" target="_blank" rel="noopener">#210</a>)</li>
+<li>Add and Search Word - Data structure design (<a href="https://leetcode.com/problems/add-and-search-word-data-structure-design/" target="_blank" rel="noopener">#211</a>)</li>
+<li>Word Search II (<a href="https://leetcode.com/problems/word-search-ii/" target="_blank" rel="noopener">#212</a>)</li>
+<li>Integer to English Words (<a href="https://leetcode.com/problems/integer-to-english-words/" target="_blank" rel="noopener">#273</a>)</li>
+<li>Game of Life (<a href="https://leetcode.com/problems/game-of-life/" target="_blank" rel="noopener">#289</a>)</li>
+<li>Find Median from Data Stream (<a href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank" rel="noopener">#295</a>)</li>
+<li>Longest Increasing Subsequence (<a href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">#300</a>)</li>
+<li>Design Tic-Tac-Toe (<a href="https://leetcode.com/problems/design-tic-tac-toe/" target="_blank" rel="noopener">#348</a>)</li>
+<li>Pacific Atlantic Water Flow (<a href="https://leetcode.com/problems/pacific-atlantic-water-flow/" target="_blank" rel="noopener">#417</a>)</li>
+<li>Minesweeper (<a href="https://leetcode.com/problems/minesweeper/" target="_blank" rel="noopener">#529</a>)</li>
+<li>Diameter of Binary Tree (<a href="https://leetcode.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">#543</a>)</li>
+<li>Reorganize String (<a href="https://leetcode.com/problems/reorganize-string/" target="_blank" rel="noopener">#767</a>)</li>
+</ul>
+<p>I was asked game of life(#289) also</p>
+<p>I was asked word ladder</p>
+<p>I was asked Kth largest element in an array.</p>
+<p>I was given minimize the area of rectangle and Pacific/Atlantic ocean problem. I would add those to the list.</p>
+<p>I was asked <a href="https://leetcode.com/problems/reorganize-string" target="_blank" rel="noopener">#767</a> and <a href="https://leetcode.com/problems/binary-tree-level-order-traversal" target="_blank" rel="noopener">#102</a> with modification as : return all nodes level wise whose value is greater than K.</p>
+<p>I was asked Valid Parentheses, Merge K Sorted Lists, Word Ladder II.</p>
+<p>etc</p>
+<p><em>*not required to solve</em><br><em>~solve both iteratively and recursively</em></p>
+<h1 id="Intern"><a href="#Intern" class="headerlink" title="Intern"></a>Intern</h1><h2 id="1-Find-Pair-With-Given-Sum⭐⭐"><a href="#1-Find-Pair-With-Given-Sum⭐⭐" class="headerlink" title="1. Find Pair With Given Sum⭐⭐"></a><a href="https://leetcode.com/discuss/interview-question/356960" target="_blank" rel="noopener">1. Find Pair With Given Sum</a>⭐⭐</h2><p>Given a list of positive integers <code>nums</code> and an int <code>target</code>, return indices of the two numbers such that they add up to a <code>target - 30</code>.</p>
 <p>Conditions:</p>
 <ul>
 <li>You will pick exactly 2 numbers.</li>
@@ -1055,6 +1021,87 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/08/07/Amazon%E9%A2%98%E5%BA%93/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2020/08/05/LinkedList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/05/LinkedList/" class="post-title-link" itemprop="url">Linked List</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-05 09:06:09" itemprop="dateCreated datePublished" datetime="2020-08-05T09:06:09+09:00">2020-08-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-05 11:11:07" itemprop="dateModified" datetime="2021-01-05T11:11:07+09:00">2021-01-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h1><h2 id="LinkedList-Constructon-AE"><a href="#LinkedList-Constructon-AE" class="headerlink" title="LinkedList Constructon(AE)"></a>LinkedList Constructon(AE)</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/05/LinkedList/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1145,7 +1192,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
