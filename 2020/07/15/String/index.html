@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://leetcode.com/problems/compare-version-numbers/Figures/165/yoyo3.png">
 <meta property="og:image" content="https://leetcode.com/problems/compare-version-numbers/Figures/165/diff3.png">
 <meta property="article:published_time" content="2020-07-14T15:37:48.475Z">
-<meta property="article:modified_time" content="2021-02-11T10:37:44.607Z">
+<meta property="article:modified_time" content="2021-02-20T05:50:38.946Z">
 <meta property="article:author" content="Dejavu">
 <meta property="article:tag" content="200">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-11 19:37:44" itemprop="dateModified" datetime="2021-02-11T19:37:44+09:00">2021-02-11</time>
+                <time title="修改时间：2021-02-20 14:50:38" itemprop="dateModified" datetime="2021-02-20T14:50:38+09:00">2021-02-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -262,6 +262,10 @@
 <h2 id="819-Most-Common-Word⭐💜"><a href="#819-Most-Common-Word⭐💜" class="headerlink" title="819. Most Common Word⭐💜"></a><a href="https://leetcode.com/problems/most-common-word/" target="_blank" rel="noopener">819. Most Common Word⭐💜</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">paragraph = <span class="string">"Bob hit a ball, the hit BALL flew far after it was hit."</span></span><br><span class="line">banned = [<span class="string">"hit"</span>]</span><br><span class="line">Output: <span class="string">"ball"</span></span><br><span class="line">Explanation: </span><br><span class="line"><span class="string">"hit"</span> occurs <span class="number">3</span> times, but it is a banned word.</span><br><span class="line"><span class="string">"ball"</span> <span class="function">occurs <span class="title">twice</span> <span class="params">(and no other word does)</span>, so it is the most frequent non-banned word in the paragraph. </span></span><br><span class="line"><span class="function">Note that words in the paragraph are not <span class="keyword">case</span> sensitive,</span></span><br><span class="line"><span class="function">that punctuation is <span class="title">ignored</span> <span class="params">(even <span class="keyword">if</span> adjacent to words, such as <span class="string">"ball,"</span>)</span>, </span></span><br><span class="line"><span class="function">and that "hit" isn't the answer even though it occurs more because it is banned.</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://leetcode.com/problems/most-common-word/Figures/819/819_pipeline_.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">mostCommonWord</span><span class="params">(String paragraph, String[] banned)</span> </span>&#123;</span><br><span class="line">    Set&lt;String&gt; ban = <span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(banned));</span><br><span class="line"></span><br><span class="line">    StringBuilder temp = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(idx &lt; paragraph.length()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (Character.isLetter(paragraph.charAt(idx))) &#123;</span><br><span class="line">            <span class="keyword">while</span>(idx &lt; paragraph.length() &amp;&amp; Character.isLetter(paragraph.charAt(idx))) &#123;</span><br><span class="line">                <span class="keyword">char</span> c = Character.toLowerCase(paragraph.charAt(idx));</span><br><span class="line">                temp.append(c);</span><br><span class="line">                idx++;</span><br><span class="line">            &#125;</span><br><span class="line">            String word = temp.toString();</span><br><span class="line">            <span class="keyword">if</span> (!ban.contains(word)) &#123;</span><br><span class="line">                map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            temp = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (idx &lt; paragraph.length() &amp;&amp; !Character.isLetter(paragraph.charAt(idx))) &#123;</span><br><span class="line">            idx++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    String ans = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (String key : map.keySet()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (map.get(key) &gt; max) &#123;</span><br><span class="line">            max = map.get(key);</span><br><span class="line">            ans = key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="Solution1-3"><a href="#Solution1-3" class="headerlink" title="Solution1:"></a>Solution1:</h3><ol>
 <li>Time Complexity: \mathcal{O}(N + M)O(<em>N</em>+<em>M</em>).<ul>
 <li>It would take \mathcal{O}(N)O(<em>N</em>) time to process each stage of the pipeline as we built.</li>
@@ -467,7 +471,7 @@ At the and it is only valid <span class="keyword">if</span> there was at least <
 So basically the number should match <span class="keyword">this</span> regular expression:
 
 [-+]?(([<span class="number">0</span>-<span class="number">9</span>]+(.[<span class="number">0</span>-<span class="number">9</span>]*)?)|.[<span class="number">0</span>-<span class="number">9</span>]+)(e[-+]?[<span class="number">0</span>-<span class="number">9</span>]+)?
-&lt;!--￼<span class="number">46</span>--&gt;
+&lt;!--￼<span class="number">47</span>--&gt;
 </code></pre>
 </li>
 </ol>
@@ -833,7 +837,7 @@ So basically the number should match <span class="keyword">this</span> regular e
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
