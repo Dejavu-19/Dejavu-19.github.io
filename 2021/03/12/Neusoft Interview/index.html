@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Neusoft Interview嵌入式软件开发一：嵌入式软件开发的特点1.⁮嵌入式软件设计时更强调软硬件协同工作的效率和稳定性。2.嵌入式软件的结果通常需要固化在目标系统的储存器或处理器内部储存器资源中。3.嵌入式软件的开发一般需要开发工具、目标系统、测试设备。4.嵌入式软件对实时性的要求更高。5.嵌入式软件对抗干扰性和可靠性的要求很高。6.嵌入式软件的代码大小也要考虑。 7.模块化设计：将一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neusoft Interview">
+<meta property="og:url" content="https://dejavi-19.github.io/2021/03/12/Neusoft%20Interview/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="Neusoft Interview嵌入式软件开发一：嵌入式软件开发的特点1.⁮嵌入式软件设计时更强调软硬件协同工作的效率和稳定性。2.嵌入式软件的结果通常需要固化在目标系统的储存器或处理器内部储存器资源中。3.嵌入式软件的开发一般需要开发工具、目标系统、测试设备。4.嵌入式软件对实时性的要求更高。5.嵌入式软件对抗干扰性和可靠性的要求很高。6.嵌入式软件的代码大小也要考虑。 7.模块化设计：将一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/713744/201804/713744-20180429143125921-1300575334.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/bbe716e11ca979af077d83837c9524453a22219919f65aa791aedacfdbfc7e5b/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f30666136633233372d613930392d346532612d613737312d3263353438356364386365302e706e67">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328907031_09DD8C2662B96CE14928333F055C5580">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328974264_E4E1F3318AF5F32719A15808E8D8458B">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523330203140_679365C102E2482C08A96522C038E4F4">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523330268987_BE6FD1F463EA96355ED600180CD14D97">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523329478530_13ABD61BD6655587865C9126C15D259D">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-fbef2c48d13068978904f3d1688728ab_1440w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-770cc76b2cb7da75d04a886015a9565b_1440w.jpg">
+<meta property="og:image" content="https://camo.githubusercontent.com/d688683e3f6fb14d059412247e4f427a7cd1aa7686417bc552e061628f24dd84/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230373231303433373032332e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/c91a2b2afab81bacf79151369d88d29d6c71ee65641fcc452e51d8ad95af906e/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f37613239616363652d663234332d343931342d396630302d6632393838633532383431322e6a7067">
+<meta property="article:published_time" content="2021-03-12T12:36:37.972Z">
+<meta property="article:modified_time" content="2021-03-15T05:52:23.356Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="Interview">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/713744/201804/713744-20180429143125921-1300575334.png">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2021/03/12/Neusoft%20Interview/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Neusoft Interview | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2021/03/12/Neusoft%20Interview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Neusoft Interview
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-12 21:36:37" itemprop="dateCreated datePublished" datetime="2021-03-12T21:36:37+09:00">2021-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-15 14:52:23" itemprop="dateModified" datetime="2021-03-15T14:52:23+09:00">2021-03-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Neusoft-Interview"><a href="#Neusoft-Interview" class="headerlink" title="Neusoft Interview"></a>Neusoft Interview</h1><h1 id="嵌入式软件开发"><a href="#嵌入式软件开发" class="headerlink" title="嵌入式软件开发"></a>嵌入式软件开发</h1><p>一：嵌入式软件开发的特点<br>1.⁮嵌入式软件设计时更强调软硬件协同工作的效率和稳定性。<br>2.嵌入式软件的结果通常需要固化在目标系统的储存器或处理器内部储存器资源中。<br>3.嵌入式软件的开发一般需要开发工具、目标系统、测试设备。<br>4.嵌入式软件对实时性的要求更高。<br>5.嵌入式软件对抗干扰性和可靠性的要求很高。<br>6.嵌入式软件的代码大小也要考虑。</p>
+<p>7.模块化设计：将一个较大的程序按功能划分成若干程序模块，每个模块实现特定的功能。</p>
+<p>二：嵌入式软件的设计流程<br>(1)需求定义<br>整理清楚用户的需求，并日将项目要求转化为Firmware，档利初步的测试文档，通过与团队和用户逐步进行谈论之后，确定设计目标。<br>(2)资源准备<br>列出在开发过程中，会用到的开发工具、开发环境、开发板、测试仪器等设备，以及在软件测试时用到的资源等。<br>(3)任务和时间表规划<br>平衡开发进度的要求和提供的性能之间的关系，做出￥细的进度表和需要完成的任务列表，包括开发和测试等阶段。<br>(4)人员规划<br>确定每个软件模块的负责人。(5)整理设计输入文档，在开始进行具体设计之前，必须确定某些文档，例如系统接1定义、内部模块功能和相互之间的接口定义、性能要求、测试方法、版本管理方法等。<br>(6)程序设计<br>在正确的项目分文上进行程序编写与调试，开发过程中，要随时根据实际代码的情况更新设计文档和测试文档，做好版本管理。<br>(7)程序测试<br>包括模块测试，子系统测试、整机测试等不同范围的检测，还有功能测试、可靠性测试、兼容性测试等不同内容的测试。<br>(8)结果验证<br>与用户确定程序结果满足其要求，不断观察和改进。<br>(9)代码维护和升级<br>必要时完成此类后续任务。</p>
+<p>三：嵌入式软件的结构<br>基于ARM的嵌入式软件通飞需罗段汇 编代码作为启动代码来完成处理器运行环境的初始化等操作，区同设计者可S期转到用CIC++等高级语言编写的应用程序中，也可以进入某个嵌入式操作系统中开始任务的调度，当然所有代码可以全部由汇编语言完成。ADS、SDT等集成开发环境都都提供了完备的运行时库供设计者引用。</p>
+<p>嵌入式软件包括：启动代码、应用程序、头文件、库文件和某些专用的开发工具等几个主要部分。</p>
+<h1 id="面经"><a href="#面经" class="headerlink" title="面经"></a>面经</h1><h2 id="七月在线ML练习题"><a href="#七月在线ML练习题" class="headerlink" title="七月在线ML练习题"></a>七月在线ML练习题</h2><p><a href="https://www.julyedu.com/question/topic_list/20" target="_blank" rel="noopener">https://www.julyedu.com/question/topic_list/20</a></p>
+<p><a href="https://www.job592.com/pay/comms15977368.html" target="_blank" rel="noopener">https://www.job592.com/pay/comms15977368.html</a></p>
+<p><a href="https://www.jianshu.com/p/8bc86eb5994b" target="_blank" rel="noopener">https://www.jianshu.com/p/8bc86eb5994b</a></p>
+<p><a href="https://github.com/CyC2018/CS-Notes" target="_blank" rel="noopener">https://github.com/CyC2018/CS-Notes</a></p>
+<p><a href="https://hit-alibaba.github.io/interview/Server/db/DB-Index.html" target="_blank" rel="noopener">https://hit-alibaba.github.io/interview/Server/db/DB-Index.html</a></p>
+<h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><h2 id="1-堆和栈那个是对程序员透明的？"><a href="#1-堆和栈那个是对程序员透明的？" class="headerlink" title="1.堆和栈那个是对程序员透明的？"></a>1.堆和栈那个是对程序员透明的？</h2><p>栈。基本上除了汇编栈是透明的以外，其他地方哪个都不是。</p>
+<p>不应该是透明的，从面向对象上说，类应该是个黑盒子：它提供一些接口给程序员访问，不要求、也不必知道里面如何实现的</p>
+<h2 id="2-多态"><a href="#2-多态" class="headerlink" title="2.多态"></a>2.多态</h2><p>多态的定义是同一操作或者method，用于不同的类的实例，不同的类将进行不同的解释，最后产生不同的结果。比如覆盖或重写</p>
+<p>编译时多态—- 通过<strong>overload</strong>来实现,系统在编译时，根据<strong>参数和返回的类型</strong>等信息决定哪一种操作。</p>
+<p>运行时多态—- 通过<strong>override</strong>来实现，根据<strong>对象的类型</strong>决定决定哪一种方法。</p>
+<h2 id="3-Final和finally，finalize的区别？"><a href="#3-Final和finally，finalize的区别？" class="headerlink" title="3.Final和finally，finalize的区别？"></a>3.Final和finally，finalize的区别？</h2><ul>
+<li>final 可以将其看成“常量”，用于声明属性，方法和类，分别对应表示属性不可变，方法不可覆盖， 类不可继承。</li>
+<li>finally 适合try、catch块配合使用的，是异常处理语句结构的一部分，表示总是执行。finally一般放一些收尾的代码，也就是说，不管try块中的代码是否正常执行，也不管catch块中的代码是否工作了，finally中的代码都要执行。</li>
+<li>finalize 是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，可以覆盖此方法提供垃圾收集时的其他资源回收，例如关闭文件等. JVM不保证此方法总被调用。</li>
+</ul>
+<h2 id="4-Java的垃圾回收机制"><a href="#4-Java的垃圾回收机制" class="headerlink" title="4.Java的垃圾回收机制"></a>4.Java的垃圾回收机制</h2><p><a href="https://www.jianshu.com/p/5261a62e4d29" target="_blank" rel="noopener">https://www.jianshu.com/p/5261a62e4d29</a></p>
+<p>Java的自动垃圾回收圾回收(Garbage Collection)是Java虚拟机(JVM)垃圾回收器提供的一种用于在空闲时间不定时回收无任何对象引用的对象占据的内存空间的一种机制。</p>
+<p>引用：如果Reference类型的数据中存储的数值代表的是另外一块内存的起始地址，就称这块内存代表着一个引用。（<strong><em>引用都有哪些？对垃圾回收又有什么影响？</em></strong>）</p>
+<p>  垃圾：无任何对象引用的对象（<strong><em>怎么通过算法找到这些对象呢？</em></strong>）。</p>
+<p>  回收：清理“垃圾”占用的内存空间而非对象本身（<strong><em>怎么通过算法实现回收呢？\</em></strong>）。</p>
+<p>  发生地点：一般发生在堆内存中，因为大部分的对象都储存在堆内存中（<strong><em>堆内存为了配合垃圾回收有什么不同区域划分，各区域有什么不同？</em></strong>）。</p>
+<p>  发生时间：程序空闲时间不定时回收（回收的执行机制是什么？是否可以通过显示调用函数的方式来确定的进行回收过程？\）</p>
+<p> <strong><em>垃圾回收器(GC)\</em></strong></p>
+<p><strong>6.1 按执行机制划分Java有四种类型的垃圾回收器：</strong></p>
+<p>（1）串行垃圾回收器（Serial Garbage Collector）</p>
+<p>（2）并行垃圾回收器（Parallel Garbage Collector）</p>
+<p>（3）并发标记扫描垃圾回收器（CMS Garbage Collector）</p>
+<p>（4）G1垃圾回收器（G1 Garbage Collector）</p>
+<h2 id="5-J2EE，J2SE，J2ME区别"><a href="#5-J2EE，J2SE，J2ME区别" class="headerlink" title="5.J2EE，J2SE，J2ME区别"></a>5.J2EE，J2SE，J2ME区别</h2><p>J2EE(Java EE)是做企业级应用的。比如，163邮箱，比如某公司的管理系统<br>J2SE（Java SE)就是Java语言的标准版本，类似于C++，主要做桌面软件，比如Eclipse,MyEclipse由于微软的封杀，java的桌面应用非常少且本身没有太大的优势却劣势很大，不过J2SE应该是学习Java的人首先应该学习的。<br>J2ME就是手机或者嵌入式软件，不是android，是以前那种手机的java应用</p>
+<h2 id="6-内存泄露，溢出分析"><a href="#6-内存泄露，溢出分析" class="headerlink" title="6.内存泄露，溢出分析"></a>6.内存泄露，溢出分析</h2><p><strong>内存泄漏 memory leak</strong>：是指程序在申请内存后，无法释放已经申请的内存空间，一次内存泄露似乎不会有大的影响，但内存泄漏堆积后的后果就是内存溢出；</p>
+<p><strong>内存溢出 out of memory</strong>：是指程序申请内存后，没有足够的内存供申请者使用或将 long 类型的数据存储到 int 类型的存储空间时，就会出现 OOM 错误。</p>
+<h3 id="溢出"><a href="#溢出" class="headerlink" title="溢出"></a>溢出</h3><p>jvm的内存控制，JVM运行时候占用一定的内存，其大小是有限定的，如果程序在运行时jvm占用的内存大于某个限度，则会产生内存溢出，也就是“java.lang.outofmemoryerror”</p>
+<p>程序运行过程所需要的内存应该是一个基础固定的值，如果仅是因为我们的项目所需内存超过了jvm设置内存值导致内存溢出，那么我们可以通过增大jvm的参数设置来解决内存溢出的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-Xms: 设置JVM初始内存，此值可以设置与-Xmx相同,以避免每次垃圾回收完成后JVM重新分配内存。</span><br><span class="line"></span><br><span class="line">-Xmx:设置JVM最大可用内存。</span><br><span class="line"></span><br><span class="line">-Xmn:设置年轻代大小，整个堆大小&#x3D;年轻代大小+年老代大小+持久代大小.持久代一般固定大小为64m,所以增大年轻代后,将会减小年老代大小.此值对系统性能影响较大,Sun官方推荐配置为整个堆的3&#x2F;8.</span><br><span class="line"></span><br><span class="line">-Xss:设置每个线程的堆栈大小.在相同物理内存下,减小这个值能生成更多的线程.但是操作系统对一个进程内的线程数还是有限制的,不能无限生成。</span><br></pre></td></tr></table></figure>
+
+<h3 id="泄露"><a href="#泄露" class="headerlink" title="泄露"></a>泄露</h3><p>在jvm参数调试过程中，发现分配最大内存数超过1G后，仍然会产生内存溢出的现象，而估计其正常分配使用的内存应该不会超过1G，那么由此可以基本断定其存在内存泄露现象，也就是一些原来分配的不再使用的内存不能被java的垃圾回归所回收，导致不断占用原分配的内存同时不能够释放，导致不断申请更多的内存直到超过内存设置而导致内存溢出。</p>
+<p>如何查找引起内存泄漏的原因?</p>
+<p>第一种，安排有经验的编程人员对代码进行走查和分析，找出内存泄漏发生的位置；</p>
+<p>第二种，就是利用一些内存检查分析工具来分析，找出内存泄露的具体位置可以快速解决。</p>
+<p><a href="https://juejin.cn/post/6844903871538528269" target="_blank" rel="noopener">https://juejin.cn/post/6844903871538528269</a></p>
+<p><a href="https://www.cnblogs.com/xuxg/archive/2012/08/07/2627411.html" target="_blank" rel="noopener">https://www.cnblogs.com/xuxg/archive/2012/08/07/2627411.html</a></p>
+<h3 id="Java-堆溢出"><a href="#Java-堆溢出" class="headerlink" title="Java 堆溢出"></a>Java 堆溢出</h3><p>Java堆是用于存储对象实例的，因此，只要我们不断创建对象，并且保证对象不被垃圾回收机制清除，那么当堆中对象的大小超过了最大堆的容量限制，就会出现堆内存溢出。</p>
+<p>堆溢出常见的异常是：<strong>java.lang.OutOfMemoryError: Java heap space</strong>。</p>
+<p>控制台打印了OutOfMemoryError，并且提示是Java heap发生的内存溢出，同时生成了dump文件。对于Java堆溢出，一般通过内存映像分析工具（如Eclipse Memory Analyzer）对dump文件进行堆快照分析，确认内存中的对象是不是必要的：</p>
+<p>如果对象不是必要的，那就属于内存泄漏，需要分析为什么对象没有被回收；</p>
+<p>如果对象确实有必要继续存在，那就属于内存溢出，需要通过将堆的大小调高（<strong>-Xms</strong> 和 <strong>-Xmx</strong>）来避免内存溢出。</p>
+<h2 id="7-JVM的内存三个区"><a href="#7-JVM的内存三个区" class="headerlink" title="7.JVM的内存三个区"></a>7.JVM的内存三个区</h2><p>Java 的 JVM 的内存一般可分为 3 个区：堆（heap）、栈（stack）和方法区（method）。</p>
+<p><img src="https://images2018.cnblogs.com/blog/713744/201804/713744-20180429143125921-1300575334.png" alt="img"></p>
+<p><strong>1.1 堆区</strong></p>
+<p>1）存储的全部是对象，每个对象都包含一个与之对应的 Class 的信息，Class 的目的是得到操作指令；</p>
+<p>2）JVM 只有一个堆区（heap）被所有线程共享，堆中不存放基本类型和对象引用，只存放对象本身。</p>
+<p><strong>1.2 栈区</strong></p>
+<p>1）每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用（不是对象），对象都存放在堆区中；</p>
+<p>2）每个栈中的数据(原始类型和对象引用)都是私有的，其他栈不能访问；</p>
+<p>3）栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区（存放操作指令）。</p>
+<p><strong>1.3 方法区</strong></p>
+<p>1）又叫静态区或永久代，跟堆一样，被所有的线程共享。方法区包含所有的 Class 和 static 变量；</p>
+<p>2）方法区中包含的都是在整个程序中永远唯一的元素，如 Class，static 变量；</p>
+<p>3）运行时常量池都分配在 Java 虚拟机的方法区之中，但是从 JDK 1.7 的 HotSpot 虚拟机开始中，已经把原本放在永久代的字符串常量池移出了。</p>
+<h2 id="8-全局变量，局部静态变量等存储在哪里"><a href="#8-全局变量，局部静态变量等存储在哪里" class="headerlink" title="8.全局变量，局部静态变量等存储在哪里"></a>8.全局变量，局部静态变量等存储在哪里</h2><p>全局变量储存在静态数据库，局部变量在堆栈。</p>
+<h2 id="9-堆栈溢出一般是由什么原因导致的？"><a href="#9-堆栈溢出一般是由什么原因导致的？" class="headerlink" title="9.堆栈溢出一般是由什么原因导致的？"></a>9.堆栈溢出一般是由什么原因导致的？</h2><p>1.递归函数调用层次太深。函数递归调用时，系统要在栈中不断保存函数调用时的现场和产生的变量，如果递归调用太深，就会造成栈溢出，这时递归无法返回。<br>2.动态申请空间使用之后没有释放。由于 C 语言中没有垃圾资源自动回收机制，因此，需要程序主动释放已经不再使用的动态地址空间。申请的动态空间使用的是堆空间，动态空间使用不会造成堆溢出。<br>3.数组访问越界。C 语言没有提供数组下标越界检查，如果在程序中出现数组下标访问超出数组范围，在运行过程中可能会内存访问错误。<br>4.指针非法访问。指针保存了一个非法的地址，通过这样的指针访问所指向的地址时会产生内存访问错误。</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p><img src="https://camo.githubusercontent.com/bbe716e11ca979af077d83837c9524453a22219919f65aa791aedacfdbfc7e5b/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f30666136633233372d613930392d346532612d613737312d3263353438356364386365302e706e67" alt=""></p>
+<h2 id="五层协议"><a href="#五层协议" class="headerlink" title="五层协议"></a>五层协议</h2><ul>
+<li><strong>应用层</strong> ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。</li>
+<li><strong>传输层</strong> ：为进程提供通用数据传输服务。由于应用层协议很多，定义通用的传输层协议就可以支持不断增多的应用层协议。运输层包括两种协议：TCP，UDP。传输控制协议 TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；用户数据报协议 UDP，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报。TCP 主要提供完整性服务，UDP 主要提供及时性服务。</li>
+<li><strong>网络层</strong> ：为主机提供数据传输服务。而传输层协议是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据报封装成分组。</li>
+<li><strong>数据链路层</strong> ：网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。</li>
+<li><strong>物理层</strong> ：考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</li>
+</ul>
+<h2 id="OSI，TCP-IP，五层协议的体系结构，以及各层协议"><a href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议" class="headerlink" title="OSI，TCP/IP，五层协议的体系结构，以及各层协议"></a>OSI，TCP/IP，五层协议的体系结构，以及各层协议</h2><p>OSI/RM 共分为七层，TCP/IP 分为四层。TCP/IP 中的网络接口层相当于 OSI的物理层和数据链路层，TCP 的应用层相当于 OSI 的应用层、表示层和会话层。</p>
+<p>OSI分层 （7层）：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。<br>TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层。<br>五层协议 （5层）：物理层、数据链路层、网络层、运输层、 应用层。</p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328907031_09DD8C2662B96CE14928333F055C5580" alt=""></p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328974264_E4E1F3318AF5F32719A15808E8D8458B" alt=""></p>
+<h2 id="TCP三次握手和四次挥手的全过程"><a href="#TCP三次握手和四次挥手的全过程" class="headerlink" title="TCP三次握手和四次挥手的全过程"></a>TCP三次握手和四次挥手的全过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">第一次握手：客户端发送syn包（syn&#x3D;x)到服务器，并进入SYN_SEND状态，等待服务器确认</span><br><span class="line">第二次握手：服务器收到客户端发送的syn包，必须确认客户端的syn（ack&#x3D;syn+1），同时自己也发送一个SYN包（syn&#x3D;y）即syn+ack，同时服务器进入SYN_RECV状态</span><br><span class="line">第三次握手：客户端接收到SYN+ACK包，向服务器发送确认包（ack&#x3D;y+1)，此包发送完毕，客户端和服务器进入ESTABLISH状态，完成三次握手。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">四次握手：</span><br><span class="line">与建立连接的三次握手类似，TCP断开连接需要四次握手。</span><br><span class="line">第一次挥手：主动关闭方发送一个FIN,用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：我不会再给你发送数据啦（当然，在fin包之前发送出去的数据，如果没有收到对应的ack确认报文，主动关闭方会重新发送数据），但此时主动关闭方还是可以接收数据</span><br><span class="line">第二次挥手：被动关闭方收到FIN报文后，发送ACK确认报文给主动关闭方，确认序号为收到序号加1（与SYN一样，一个FIN占用一个序号）</span><br><span class="line">第三次挥手：被动关闭方发送一个FIN报文，用来关闭被动关闭方与主动关闭方之间的数据传输，也就是告诉主动关闭方我的数据也发送完成了，不会再给你发送数据了。</span><br><span class="line">第四次挥手：主动关闭方收到FIN后，发送一个ACK给被动关闭方，确认序号为收到序号加1，至此完成四次挥手。</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;review-java?query&#x3D;&amp;asc&#x3D;true&amp;order&#x3D;&amp;tagQuery&#x3D;&amp;page&#x3D;6</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;review-network</span><br><span class="line"></span><br><span class="line">[老李打酱油例子](https:&#x2F;&#x2F;www.nowcoder.com&#x2F;questionTerminal&#x2F;ec843c8a27c84a7693865f55a71a7e8c)</span><br><span class="line"></span><br><span class="line">**三次握手的最主要目的是保证连接是双工的，可靠更多的是通过重传机制来保证的。**</span><br><span class="line"></span><br><span class="line">**为了保证服务端能收接受到客户端的信息并能做出正确的应答而进行前两次(第一次和第二次)握手，为了保证客户端能够接收到服务端的信息并能做出正确的应答而进行后两次(第二次和第三次)握手。**</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523330203140_679365C102E2482C08A96522C038E4F4" alt=""></p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523330268987_BE6FD1F463EA96355ED600180CD14D97" alt=""></p>
+<h2 id="为什么不用2次握手？"><a href="#为什么不用2次握手？" class="headerlink" title="为什么不用2次握手？"></a>为什么不用2次握手？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">用2次握手在一些情况下server的很多资源就白白浪费掉了。</span><br><span class="line"></span><br><span class="line">比如</span><br><span class="line">client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。</span><br><span class="line">本来这是一个早已失效的报文段,但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。</span><br><span class="line">于是就向client发出确认报文段，同意建立连接。</span><br><span class="line"></span><br><span class="line">假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。</span><br><span class="line">由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据,但server却以为新的运输连接已经建立，并一直等待client发来数据。</span><br><span class="line">这样，server的很多资源就白白浪费掉了。</span><br><span class="line">采用“三次握手”的办法可以防止上述现象发生。</span><br></pre></td></tr></table></figure>
+
+<h2 id="TCP和UDP的区别？"><a href="#TCP和UDP的区别？" class="headerlink" title="TCP和UDP的区别？"></a>TCP和UDP的区别？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.TCP面向连接的运输层协议，UDP无连接，有连接的意思是开始传输实际数据之前TCP的客户端和服务器端必须通过三次握手建立连接，会话结束之后也要结束连接。</span><br><span class="line">2.TCP协议保证数据按序发送，按序到达，保证可靠性，但是UDP不保证按序到达，甚至不保证到达，只是努力交付保证时效性</span><br><span class="line">3.TCP面向字节流，UDP面向报文</span><br><span class="line">4.TCP是点对点连接的，UDP一对一，一对多，多对多都可以</span><br><span class="line">5.TCP适合用于网页，邮件等，UDP适合用于视频，语音广播等</span><br></pre></td></tr></table></figure>
+
+<p>TCP提供面向连接的、可靠的数据流传输，而UDP提供的是非面向连接的、不可靠的数据流传输。<br>TCP传输单位称为TCP报文段，UDP传输单位称为用户数据报。<br>TCP注重数据安全性，UDP数据传输快，因为不需要连接等待，少了许多操作，但是其安全性却一般。<br>TCP对应的协议和UDP对应的协议<br>TCP对应的协议：<br>（1） FTP：定义了文件传输协议，使用21端口。<br>（2） Telnet：一种用于远程登陆的端口，使用23端口，用户可以以自己的身份远程连接到计算机上，可提供基于DOS模式下的通信服务。<br>（3） SMTP：邮件传送协议，用于发送邮件。服务器开放的是25号端口。<br>（4） POP3：它是和SMTP对应，POP3用于接收邮件。POP3协议所用的是110端口。<br>（5）HTTP：是从Web服务器传输超文本到本地浏览器的传送协议。<br>UDP对应的协议：<br>（1） DNS：用于域名解析服务，将域名地址转换为IP地址。DNS用的是53号端口。<br>（2） SNMP：简单网络管理协议，使用161号端口，是用来管理网络设备的。由于网络设备很多，无连接的服务就体现出其优势。<br>（3） TFTP(Trivial File Transfer Protocal)，简单文件传输协议，该协议在熟知端口69上使用UDP服务。</p>
+<h2 id="TCP如何保证可靠传输，丢包怎么办"><a href="#TCP如何保证可靠传输，丢包怎么办" class="headerlink" title="TCP如何保证可靠传输，丢包怎么办"></a>TCP如何保证可靠传输，丢包怎么办</h2><p>为了满足TCP协议不丢包。TCP协议有如下规定： </p>
+<ol>
+<li>数据分片：发送端对数据进行分片，接受端要对数据进行重组，由TCP确定分片的大小并控制 分片和重组 </li>
+<li>到达确认：接收端接收到分片数据时，根据分片数据序号向发送端发送一个确认</li>
+<li>超时重发：发送方在发送分片时设置超时定时器，如果在定时器超时之后没有收到相应的确认 ，重发分片数据 </li>
+<li>滑动窗口：TCP连接的每一方的接受缓冲空间大小固定，接收端只允许另一端发送接收端缓冲 区所能接纳的数据，TCP在滑动窗口的基础上提供流量控制，防止较快主机致使较慢主机的缓冲 区溢出 </li>
+<li>失序处理：作为IP数据报来传输的TCP分片到达时可能会失序，TCP将对收到的数据进行重新 排序，将收到的数据以正确的顺序交给应用层; 6. 重复处理：作为IP数据报来传输的TCP分片会发生重复，TCP的接收端必须丢弃重复的数据; </li>
+<li>数据校验：TCP将保持它首部和数据的检验和，这是一个端到端的检验和，目的是检测数据在 传输过程中的任何变化。如果收到分片的检验或有差错，TCP将丢弃这个分片，并不确认收到此 报文段导致对端超时并重发</li>
+</ol>
+<h2 id="TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？"><a href="#TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？" class="headerlink" title="TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？"></a>TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？</h2><p>\1. 只要收到了包，就会ACK。<br>\2. TCP在ACK的同时会带有window大小值，表示这边能接受的数据量。发送方会根据这个调整数据量。<br>\3. 接收方缓冲区满时，回给发送方的window值就是0。<br>\4. 发送方看到window为0的包，会启动一个定时器，隔一段时间发一个包试探。<br>\5. 一旦接收方缓冲区有足够空间了，就会给window赋上非0值。发送方就又开始发送了。 </p>
+<h2 id="利用滑动窗口控制提高速度"><a href="#利用滑动窗口控制提高速度" class="headerlink" title="利用滑动窗口控制提高速度"></a>利用滑动窗口控制提高速度</h2><p>为解决这个问题，TCP 引入了<strong>窗口</strong>这个概念。<strong>确认应答不是以每个分段来确认，而是以更大的单位进行确认</strong>，转发时间将会被大幅地缩短。也就是说，<strong>发送端主机，在发送了一个段以后不必要一直等待确认应答，而是继续发送</strong>。我们假设窗口大小是4000字节，主机A可以一口气发送把4000字节的序列号发送完毕。这个跟前面每个段接收ACK后才能继续发送新一个段的情况相比，即使RTT变长也不会影响网络的吞吐量。</p>
+<p><strong>窗口大小就是指无需等待确认应答ACK而继续发送数据的最大值</strong>。</p>
+<p>这种窗口机制实现了使用了大量的缓冲区（Buffer，指的是计算机存储收发数据的的内存空间），通过对多个段同时进行确认应答的功能。</p>
+<h2 id="DNS域名系统，简单描述其工作原理。"><a href="#DNS域名系统，简单描述其工作原理。" class="headerlink" title="DNS域名系统，简单描述其工作原理。"></a>DNS域名系统，简单描述其工作原理。</h2><p>当DNS客户机需要在程序中使用名称时，它会查询DNS服务器来解析该名称。客户机发送的每条查询信息包括三条信息：包括：指定的DNS域名，指定的查询类型，DNS域名的指定类别。</p>
+<p>基于UDP服务，端口53. 该应用一般不直接为用户使用，而是为其他应用服务，如HTTP，SMTP等在其中需要完成主机名到IP地址的转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当一个应用进程需要把某个域名解析为IP地址时，该应用进程就会调用解析程序，并成为一个DNS用户，把待解析的域名放在DNS请求报文中，以UDP数据报的形式发送给本地域名服务器，本地域名服务器查找到相应域名的IP地址后，就将该域名的IP地址信息放入应答报文中返回给客户进程，如果本地域名服务器没有直接查找到对应的IP地址，则向根域名服务器发出迭代查询，再将查询到的IP地址信息回传给客户程序。</span><br></pre></td></tr></table></figure>
+
+<h2 id="IP地址的分类"><a href="#IP地址的分类" class="headerlink" title="IP地址的分类"></a>IP地址的分类</h2><p>A类地址：以0开头，  第一个字节范围：1~126（1.0.0.0 - 126.255.255.255）；</p>
+<p>B类地址：以10开头，  第一个字节范围：128~191（128.0.0.0 - 191.255.255.255）；</p>
+<p>C类地址：以110开头， 第一个字节范围：192~223（192.0.0.0 - 223.255.255.255）；</p>
+<p>D类地址：以1110开头，第一个字节范围：224~239（224.0.0.0 - 239.255.255.255）；（作为多播使用）</p>
+<p>E类地址：保留</p>
+<p>其中A、B、C是基本类，D、E类作为多播和保留使用。</p>
+<p>以下是留用的内部私有地址：</p>
+<p>A类 10.0.0.0–10.255.255.255</p>
+<p>B类 172.16.0.0–172.31.255.255</p>
+<p>C类 192.168.0.0–192.168.255.255</p>
+<p>IP地址与子网掩码相与得到网络号：</p>
+<p>ip    : 192.168.2.110</p>
+<p>&amp;</p>
+<p>Submask : 255.255.255.0</p>
+<p>-—————————</p>
+<p>网络号  ：192.168.2  .0</p>
+<p>注:</p>
+<p>主机号，全为0的是网络号（例如：192.168.2.0），主机号全为1的为广播地址（192.168.2.255）</p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523329478530_13ABD61BD6655587865C9126C15D259D" alt=""></p>
+<h2 id="ARP是地址解析协议，简单语言解释一下工作原理"><a href="#ARP是地址解析协议，简单语言解释一下工作原理" class="headerlink" title="ARP是地址解析协议，简单语言解释一下工作原理"></a>ARP是地址解析协议，简单语言解释一下工作原理</h2><p>Address Resolution Protocol</p>
+<p>答:1：首先，每个主机都会在自己的ARP缓冲区中建立一个ARP列表，以表示IP地址和MAC地址之间的对应关系。<br>2：当源主机要发送数据时，首先检查ARP列表中是否有对应IP地址的目的主机的MAC地址，如果有，则直接发送数据，如果没有，就向本网段的所有主机发送ARP数据包，该数据包包括的内容有：源主机 IP地址，源主机MAC地址，目的主机的IP 地址。<br>3：当本网络的所有主机收到该ARP数据包时，首先检查数据包中的IP地址是否是自己的IP地址，如果不是，则忽略该数据包，如果是，则首先从数据包中取出源主机的IP和MAC地址写入到ARP列表中，如果已经存在，则覆盖，然后将自己的MAC地址写入ARP响应包中，告诉源主机自己是它想要找的MAC地址。<br>4：源主机收到ARP响应包后。将目的主机的IP和MAC地址写入ARP列表，并利用此信息发送数据。如果源主机一直没有收到ARP响应数据包，表示ARP查询失败。<br>广播发送ARP请求，单播发送ARP响应。</p>
+<p>有了ip为何还需要mac？ </p>
+<p>​    首先要理解报文传输的工作逻辑： IP地址是逻辑地址寻址，工作在网络层，具有全网范围内的寻址能力，可以快速定位目标地址所在的网络 MAC地址是物理地址寻址，工作在数据链路层，要将数据包发给对方必须知道对方的MAC地址，因为主机的以太网网卡只能识别MAC地址  为何要如此设计那？或者说，有了mac地址唯一定位，为什么还要设计IP协议那？ </p>
+<p>​     （1）IP地址的分配是根据网络的拓朴结构，而不是根据谁制造了网络设置。若将高效的路由选择方案建立在设备制造商的基础上而不是网络所处的拓朴位置基础上，这种方案是不可行的。 </p>
+<p>​    （2）当存在一个附加层的地址寻址时，设备更易于移动和维修。例如，如果一个以太网卡坏了，可以被更换，而无须取得一个新的IP地址。如果一个IP主机从一个网络移到另一个网络，可以给它一个新的IP地址，而无须换一个新的网卡。  主机的以太网网卡只能识别MAC地址，而不能识别IP地址，若数据帧中不指明主机B的MAC 地址，主机B的网卡不能识别该帧是发给自己的，因此主机A仅知道主机B的IP地址还不够，还必须知道主机B的MAC地址，才能完成对主机B的访问；</p>
+<h2 id="各种协议的介绍"><a href="#各种协议的介绍" class="headerlink" title="各种协议的介绍"></a>各种协议的介绍</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TCP&#x2F;IP 互联网层协议 ：</span><br><span class="line"></span><br><span class="line">ICMP 协议 ： 网际消息控制协议 。它是 TCP&#x2F;IP 协议族的一个子协议，用于在 IP 主机、路由器之间传递控制消息 。（差错报告、查询、应答）</span><br><span class="line">NAT 协议 ：网络地址协议，让一个合法的地址给多个内部主机共享，通过端口号对不同主机进程加以区分，用来解决 IP 地址不足的问题。</span><br><span class="line"></span><br><span class="line">TCP&#x2F;IP 应用层协议：</span><br><span class="line"></span><br><span class="line">DHCP 协议 ： 动态主机配置协议 ，自动设置 IP 地址，统一管理 IP 地址分配。</span><br><span class="line"></span><br><span class="line">TFTP 协议 ： 简单 文件传输协议 。采用 UDP 进行传输 ，是 TCP&#x2F;IP 协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。</span><br></pre></td></tr></table></figure>
+
+<p>答:ICMP协议： 因特网控制报文协议。它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。<br>TFTP协议： 是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。<br>HTTP协议： 超文本传输协议，是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。<br>NAT协议：网络地址转换属接入广域网(WAN)技术，是一种将私有（保留）地址转化为合法IP地址的转换技术，<br>DHCP协议：动态主机配置协议，是一种让系统得以连接到网络上，并获取所需要的配置参数手段，使用UDP协议工作。具体用途：给内部网络或网络服务供应商自动分配IP地址，给用户或者内部网络管理员作为对所有计算机作中央管理的手段。</p>
+<h2 id="描述RARP协议"><a href="#描述RARP协议" class="headerlink" title="描述RARP协议"></a>描述RARP协议</h2><p>RARP的工作过程如下： </p>
+<p>  1、网络上的每台设备都会有一个独一无二的硬件地址，通常是由设备厂商分配的MAC地址。PC1从网卡上读取MAC地址，然后在网络上发送一个RARP请求的广播数据包，请求RARP服务器回复该PC的IP地址。 </p>
+<p>  2、RARP服务器收到了RARP请求数据包，为其分配IP地址，并将RARP回应发送给PC1。 </p>
+<p>  3、PC1收到RARP回应后，就使用得到的IP地址进行通讯</p>
+<p>RARP是逆地址解析协议，作用是完成硬件地址到IP地址的映射，主要用于无盘工作站，因为给无盘工作站配置的IP地址不能保存。工作流程：在网络中配置一台RARP服务器，里面保存着IP地址和MAC地址的映射关系，当无盘工作站启动后，就封装一个RARP数据包，里面有其MAC地址，然后广播到网络上去，当服务器收到请求包后，就查找对应的MAC地址的IP地址装入响应报文中发回给请求者。因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
+<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><p>HTTP协议是<strong>超文本传输协议</strong>。它是从WEB服务器传输超文本标记语言(HTML)到本地浏览器的传送协议。是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。</p>
+<p>设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。</p>
+<p>HTPP有多个版本，目前广泛使用的是HTTP/1.1版本。</p>
+<h2 id="HTTP原理"><a href="#HTTP原理" class="headerlink" title="HTTP原理"></a>HTTP原理</h2><p>HTTP是一个基于TCP/IP通信协议来传递数据的协议，传输的数据类型为HTML 文件,、图片文件, 查询结果等。</p>
+<p>HTTP协议一般用于B/S架构（）。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-fbef2c48d13068978904f3d1688728ab_1440w.jpg" alt=""></p>
+<h3 id="在浏览器中输入www-baidu-com后执行的全部过程"><a href="#在浏览器中输入www-baidu-com后执行的全部过程" class="headerlink" title="在浏览器中输入www.baidu.com后执行的全部过程"></a>在浏览器中输入<a href="http://www.baidu.com后执行的全部过程" target="_blank" rel="noopener">www.baidu.com后执行的全部过程</a></h3><p>1、客户端浏览器通过DNS解析到<a href="http://www.baidu.com/" target="_blank" rel="noopener">www.baidu.com</a> 的IP地址220.181.27.48，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包，输入到网络层。<br>2、在客户端的传输层，把HTTP会话请求分成报文段，添加源和目的端口，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口。然后使用IP层的IP地址查找目的端。<br>3、客户端的网络层不用关心应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器，期间可能经过多个路由器，这些都是由路由器来完成的工作，我不作过多的描述，无非就是通过查找路由表决定通过那个路径到达服务器。<br>4、客户端的链路层，包通过链路层发送到路由器，通过邻居协议查找给定IP地址的MAC地址，然后发送ARP请求查找目的地址，如果得到回应后就可以使用ARP的请求应答交换的IP数据包现在就可以传输了，然后发送IP数据包到达服务器的地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">事件顺序</span><br><span class="line"></span><br><span class="line">(1) 浏览器获取输入的域名www.baidu.com</span><br><span class="line"></span><br><span class="line">(2) 浏览器向DNS请求解析www.baidu.com的IP地址</span><br><span class="line"></span><br><span class="line">(3) 域名系统DNS解析出百度服务器的IP地址</span><br><span class="line"></span><br><span class="line">(4) 浏览器与该服务器建立TCP连接(默认端口号80)</span><br><span class="line"></span><br><span class="line">(5) 浏览器发出HTTP请求，请求百度首页</span><br><span class="line"></span><br><span class="line">(6) 服务器通过HTTP响应把首页文件发送给浏览器</span><br><span class="line"></span><br><span class="line">(7) TCP连接释放</span><br><span class="line"></span><br><span class="line">(8) 浏览器将首页文件进行解析，并将Web页显示给用户。</span><br><span class="line"></span><br><span class="line">涉及到的协议</span><br><span class="line"></span><br><span class="line">(1) 应用层：HTTP(WWW访问协议)，DNS(域名解析服务)</span><br><span class="line"></span><br><span class="line">(2) 传输层：TCP(为HTTP提供可靠的数据传输)，UDP(DNS使用UDP传输)</span><br><span class="line"></span><br><span class="line">(3) 网络层：IP(IP数据数据包传输和路由选择)，ICMP(提供网络传输过程中的差错检测)，ARP(将本机的默认网关IP地址映射成物理MAC地址)</span><br></pre></td></tr></table></figure>
+
+<h2 id="HTTP特点"><a href="#HTTP特点" class="headerlink" title="HTTP特点"></a>HTTP特点</h2><ol>
+<li>http协议支持客户端/服务端模式，也是一种请求/响应模式的协议。</li>
+<li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。</li>
+<li>灵活：HTTP允许传输任意类型的数据对象。传输的类型由Content-Type加以标记。</li>
+<li>无连接：限制每次连接只处理一个请求。服务器处理完请求，并收到客户的应答后，即断开连接，但是却不利于客户端与服务器保持会话连接，为了弥补这种不足，产生了两项记录http状态的技术，一个叫做Cookie,一个叫做Session。</li>
+<li>无状态：无状态是指协议对于事务处理没有记忆，后续处理需要前面的信息，则必须重传。</li>
+</ol>
+<h2 id="URI和URL的区别"><a href="#URI和URL的区别" class="headerlink" title="URI和URL的区别"></a>URI和URL的区别</h2><ul>
+<li>URI：Uniform Resource Identifier 统一资源<strong>标识</strong>符</li>
+<li>URL：Uniform Resource Location 统一资源<strong>定位</strong>符</li>
+</ul>
+<p>URI 是用来标示 一个具体的资源的，我们可以通过 URI 知道一个资源是什么。</p>
+<p>URL 则是用来定位具体的资源的，标示了一个具体的资源位置。互联网上的每个文件都有一个唯一的URL。</p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>HTTP 使用 URL（ <strong>U</strong> niform <strong>R</strong>esource <strong>L</strong>ocator，统一资源定位符）来定位资源，它是 URI（<strong>U</strong>niform <strong>R</strong>esource <strong>I</strong>dentifier，统一资源标识符）的子集，URL 在 URI 的基础上增加了定位能力。URI 除了包含 URL，还包含 URN（Uniform Resource Name，统一资源名称），它只是用来定义一个资源的名称，并不具备定位该资源的能力。例如 urn:isbn:0451450523 用来定义一个书籍名称，但是却没有表示怎么找到这本书。</p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS?"></a>HTTPS?</h2><ul>
+<li>HTTPS是HTTP协议的安全版本，HTTP协议的数据传输是明文的，是不安全的，HTTPS使用了SSL/TLS协议进行了加密处理。</li>
+<li>http和https使用连接方式不同，默认端口也不一样，http是80，https是443。</li>
+</ul>
+<p>HTTP 有以下安全性问题：</p>
+<ul>
+<li>使用明文进行通信，内容可能会被窃听；</li>
+<li>不验证通信方的身份，通信方的身份有可能遭遇伪装；</li>
+<li>无法证明报文的完整性，报文有可能遭篡改。</li>
+</ul>
+<p>HTTPS 并不是新协议，而是让 HTTP 先和 SSL（Secure Sockets Layer）通信，再由 SSL 和 TCP 通信，也就是说 HTTPS 使用了隧道进行通信。</p>
+<p>通过使用 SSL，HTTPS 具有了加密（防窃听）、认证（防伪装）和完整性保护（防篡改）。</p>
+<h2 id="HTTP报文组成"><a href="#HTTP报文组成" class="headerlink" title="HTTP报文组成"></a>HTTP报文组成</h2><p>请求报文构成</p>
+<ol>
+<li>请求行：包括请求方法、URL、协议/版本</li>
+<li>请求头(Request Header)</li>
+<li>请求正文</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/80/v2-770cc76b2cb7da75d04a886015a9565b_1440w.jpg" alt=""></p>
+<h1 id="计算机操作系统"><a href="#计算机操作系统" class="headerlink" title="计算机操作系统"></a>计算机操作系统</h1><p><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E6%A6%82%E8%BF%B0.md#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F---%E6%A6%82%E8%BF%B0" target="_blank" rel="noopener">https://github.com/CyC2018/CS-Notes/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E6%A6%82%E8%BF%B0.md#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F---%E6%A6%82%E8%BF%B0</a></p>
+<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>并发是指宏观上在一段时间内能同时运行多个程序，而并行则指同一时刻能运行多个指令。</p>
+<p>并行需要硬件支持，如多流水线、多核处理器或者分布式计算系统。</p>
+<p>操作系统通过引入进程和线程，使得程序能够并发运行。</p>
+<p>你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。<br>你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发。<br>你吃饭吃到一半，电话来了，你一边打电话一边吃饭，这说明你支持并行。</p>
+<p>并发的关键是你有处理多个任务的能力，不一定要同时。<br>并行的关键是你有同时处理多个任务的能力。</p>
+<p>所以我认为它们最关键的点就是：是否是『同时』。</p>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程是资源分配的基本单位。</p>
+<p>进程控制块 (Process Control Block, PCB) 描述进程的基本信息和运行状态，所谓的创建进程和撤销进程，都是指对 PCB 的操作。</p>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>线程是独立调度的基本单位。</p>
+<p>一个进程中可以有多个线程，它们共享进程资源。</p>
+<p>QQ 和浏览器是两个进程，浏览器进程里面有很多线程，例如 HTTP 请求线程、事件响应线程、渲染线程等等，线程的并发执行使得在浏览器中点击一个新链接从而发起 HTTP 请求时，浏览器还可以响应用户的其它事件。</p>
+<h2 id="Thread线程与process进程区别和联系"><a href="#Thread线程与process进程区别和联系" class="headerlink" title="Thread线程与process进程区别和联系?"></a>Thread线程与process进程区别和联系?</h2><p>Ⅰ 拥有资源</p>
+<p>进程是资源分配的基本单位，但是线程不拥有资源，线程可以访问隶属进程的资源。</p>
+<p>Ⅱ 调度</p>
+<p>线程是独立调度的基本单位，在同一进程中，线程的切换不会引起进程切换，从一个进程中的线程切换到另一个进程中的线程时，会引起进程切换。</p>
+<p>Ⅲ 系统开销</p>
+<p>由于创建或撤销进程时，系统都要为之分配或回收资源，如内存空间、I/O 设备等，所付出的开销远大于创建或撤销线程时的开销。类似地，在进行进程切换时，涉及当前执行进程 CPU 环境的保存及新调度进程 CPU 环境的设置，而线程切换时只需保存和设置少量寄存器内容，开销很小。</p>
+<p>Ⅳ 通信方面</p>
+<p>线程间可以通过直接读写同一进程中的数据进行通信，但是进程通信需要借助 IPC。</p>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">多线程指的是在一个程序运行中可以有多个线程同时运行它们，每个线程可以执行不同的任务。</span><br><span class="line">多线程与多任务的区别：多任务是指对操作系统而言的，代表着操作系统可以同时执行的程序个数，多线程是只对一个程序而言的，代表着一个程序可以同时执行的线程个数，而每个线程可以完成不同的任务。</span><br></pre></td></tr></table></figure>
+
+<h2 id="程序什么时候应该使用线程，什么时候单线程效率高"><a href="#程序什么时候应该使用线程，什么时候单线程效率高" class="headerlink" title="程序什么时候应该使用线程，什么时候单线程效率高"></a>程序什么时候应该使用线程，什么时候单线程效率高</h2><p>1．耗时的操作使用线程，提高应用程序响应<br>2．并行操作时使用线程，如 C/S 架构的服务器端并发线程响应用户的请求。<br>3．多 CPU 系统中，使用线程提高 CPU 利用率<br>4．改善程序结构。一个既长又复杂的进程可以考虑分为多个线程，成为几个独立或半独立的运行部分，这样的程序会利于理解和修改。其他情况都使用单线程。</p>
+<h2 id="使用线程是如何防止出现大的波峰。"><a href="#使用线程是如何防止出现大的波峰。" class="headerlink" title="使用线程是如何防止出现大的波峰。"></a>使用线程是如何防止出现大的波峰。</h2><p>意思是如何防止同时产生大量的线程，方法是使用线程池，线程池具有可以同时提高调度效率和限制资源使用的好处，线程池中的线程达到最大数时，其他线程就会排队等候。</p>
+<h2 id="进程状态的切换"><a href="#进程状态的切换" class="headerlink" title="进程状态的切换"></a>进程状态的切换</h2><ul>
+<li>就绪状态（ready）：等待被调度</li>
+<li>运行状态（running）</li>
+<li>阻塞状态（waiting）：等待资源</li>
+</ul>
+<p>应该注意以下内容：</p>
+<ul>
+<li>只有就绪态和运行态可以相互转换，其它的都是单向转换。就绪状态的进程通过调度算法从而获得 CPU 时间，转为运行状态；而运行状态的进程，在分配给它的 CPU 时间片用完之后就会转为就绪状态，等待下一次调度。</li>
+<li>阻塞状态是缺少需要的资源从而由运行状态转换而来，但是该资源不包括 CPU 时间，缺少 CPU 时间会从运行态转换为就绪态。</li>
+</ul>
+<h3 id="线程是否具有相同的堆栈-是否有独立的堆栈"><a href="#线程是否具有相同的堆栈-是否有独立的堆栈" class="headerlink" title="线程是否具有相同的堆栈?是否有独立的堆栈?"></a>线程是否具有相同的堆栈?是否有独立的堆栈?</h3><p>动态链接库DLL 中有没有独立的堆栈,这个问题不好回答,或者说这个问题本身是否有问题。因为</p>
+<p>DLL 中的代码是被某些线程所执行;只有线程拥有堆栈,如果 DLL 中的代码是EXE 中的线程所调用,那么这个时候是不是说这个 DLL 没有自己独立的堆栈?如果 DLL 中的代码是由 DLL 自己创建的线程所执行,那么是不是说 DLL 有独<br>立的堆栈?以上讲的是堆栈,如果对于堆来说,每个 DLL 有自己的堆,所以如果是从 DLL中动态分配的内存,最好是从 DLL 中刪除,如果你从 DLL 中分配内存,然后在EXE 中,或者另外一个 DLL 中删除,很有可能导致程序崩溃.static 有什么用途？</p>
+<ol>
+<li>在函数体，一个被声明为静态的变量在这一函数被调用过程中维持其值不变。</li>
+<li>在模块内（但在函数体外），一个被声明为静态的变量可以被模块内所用函数访问，但不能被模块外其它函数访问。它是一个本地的全局变量。</li>
+<li>在模块内，一个被声明为静态的函数只可被这一模块内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用</li>
+</ol>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>当线程A持有独占锁a，并尝试去获取独占锁b的同时，线程B持有独占锁b，并尝试获取独占锁a的 情况下，就会发生AB两个线程由于互相持有对方需要的锁，而发生的阻塞现象，我们称为死锁。</p>
+<p>必要条件</p>
+<ul>
+<li>互斥：每个资源要么已经分配给了一个进程，要么就是可用的。</li>
+<li>占有和等待：已经得到了某个资源的进程可以再请求新的资源。</li>
+<li>不可抢占：已经分配给一个进程的资源不能强制性地被抢占，它只能被占有它的进程显式地释放。</li>
+<li>环路等待：有两个或者两个以上的进程组成一条环路，该环路中的每个进程都在等待下一个进程所占有的资源。</li>
+</ul>
+<h2 id="如何预防死锁，避免死锁，死锁发生的检查"><a href="#如何预防死锁，避免死锁，死锁发生的检查" class="headerlink" title="如何预防死锁，避免死锁，死锁发生的检查"></a>如何预防死锁，避免死锁，死锁发生的检查</h2><p>预防死锁:破坏死锁的四个条件: </p>
+<p>● 把只能互斥访问的资源改造为允许共享使用 </p>
+<p>● 允许高优先级的进程剥夺低优先级的进程保持的资源 </p>
+<p>● 静态资源分配:进程一次性获取全部所需资源再运行 </p>
+<p>● 给资源的优先级编号，必须按增序获取</p>
+<h3 id="互斥锁，自旋锁，读写锁，悲观锁，乐观锁"><a href="#互斥锁，自旋锁，读写锁，悲观锁，乐观锁" class="headerlink" title="互斥锁，自旋锁，读写锁，悲观锁，乐观锁"></a>互斥锁，自旋锁，读写锁，悲观锁，乐观锁</h3><p> 互斥锁（Mutex):互斥锁是一种「独占锁」，比如当线程 A 加锁成功后，此时互斥锁已经被线程独A 占了，只要线程 A 没有释放手中的锁，线程 B 加锁就会失败，于是就会释放 CPU 让给其他线程，既然 线程 B 释放掉了 CPU，自然线程 B 加锁的代码就会被阻塞. </p>
+<p>上下文开销成本大： </p>
+<p>● 当线程加锁失败时，内核会把线程的状态从「运行」状态设置为「睡眠」状态，然后把 CPU 切换给其他线程运行；</p>
+<p> ● 接着，当锁被释放时，之前「睡眠」状态的线程会变为「就绪」状态，然后内核会在合适的时 间，把 CPU 切换给该线程运行。 如果你能确定被锁住的代码执行时间很短，就不应该用互斥锁，而应该选用自旋锁，否则使用互 斥锁 </p>
+<p>自旋锁（Spin Lock)：一般加锁的过程，包含两个步骤：第一步，查看锁的状态，如果锁是空闲 的，则将锁设置为当前线程持有。当发生多线程竞争锁的情况，加锁失败的线程会「忙等待」，直到它拿 到锁。自旋锁是最比较简单的一种锁，一直自旋，利用 CPU 周期，直到锁可用。 自旋锁开销少，在多核系统下一般不会主动产生线程切换，适合异步、协程等在用户态切换请求 的编程方式，但如果被锁住的代码执行时间过长，自旋的线程会长时间占用 CPU 资源，所以自旋 的时间和被锁住的代码执行的时间是成「正比」的关系，我们需要清楚的知道这一点。 </p>
+<p>读写锁：读锁是一个共享锁，写锁是互斥锁。 </p>
+<p>● 当「写锁」没有被线程持有时，多个线程能够并发地持有读锁，这大大提高了共享资源的 访问效率，因为「读锁」是用于读取共享资源的场景，所以多个线程同时持有读锁也不会 破坏共享资源的数据。</p>
+<p> ● 但是，一旦「写锁」被线程持有后，读线程的获取读锁的操作会被阻塞，而且其他写线程的 获取写锁的操作也会被阻塞。 所以说，写锁是独占锁，因为任何时刻只能有一个线程持有写锁，类似互斥锁和自旋锁，而读锁是 共享锁，因为读锁可以被多个线程同时持有。读写锁在读多写少的场景，能发挥出优势 </p>
+<p>乐观锁：乐观锁做事比较乐观，它假定冲突的概率很低，它的工作方式是：先修改完共享资源，再 验证这段时间内有没有发生冲突，如果没有其他线程在修改资源，那么操作完成，如果发现有其 他线程已经修改过这个资源，就放弃本次操作。 </p>
+<p>悲观锁：前面提到的互斥锁、自旋锁、读写锁，都是属于悲观锁。悲观锁做事比较悲观，它认为 多线程同时修改共享资源的概率比较高，于是很容易出现冲突，所以访问共享资源前，先要上 锁。什么是死锁，死锁的条件 A deadlock occurs when a process or thread enters a waiting state because a requested system resource is held by another waiting process, which in turn is waiting for another resource held by another waiting process. 1. Mutual exclusion: Only one process can use the resource at any given instant of time 2. Hold and wait: a process is currently holding at least one resource and requesting additional resources which are being held by other processes. 3. No preemption: a resource can be released only voluntarily by the process holding it. 4. Circular Wait: 当线程A持有独占锁a，并尝试去获取独占锁b的同时，线程B持有独占锁b，并尝试获取独占锁a的 情况下，就会发生AB两个线程由于互相持有对方需要的锁，而发生的阻塞现象，我们称为死锁。 (1） 互斥条件：一个资源每次只能被一个进程使用。 （2） 请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。 （3） 不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺。 （4） 循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。 如何预防死锁，避免死锁，死锁发生的检查 预防死锁:破坏死锁的四个条件: ● 把只能互斥访问的资源改造为允许共享使用 ● 允许高优先级的进程剥夺低优先级的进程保持的资源 ● 静态资源分配:进程一次性获取全部所需资源再运行 ● 给资源的优先级编号，必须按增序获取 堆和栈的区别以及存储模式有什么区别 Reference 栈是由编译器自动分配和释放，存放函数的参数和局部变量的值，它的访问速度较快。栈上数据 的释放是随着出栈自动销毁了。栈的生长方向向下，内存地址由高到低。 堆是程序运行时显式申请和释放的内存空间，程序结束后由操作系统回收，容易产生内存碎片。 堆的空间比较灵活，可以不连续，通常比栈要大。堆的生长方向向上，内存地址由低到高。内存泄漏和内存溢出 内存溢出(out of memory): 是指程序在申请内存时，没有足够的内存空间供其使用，出现outof memory；比如申请了一个integer,但给它存了long才能存下的数，那就是内存溢出。比如栈满的时 候入栈，栈空的时候出栈。 内存泄露 (memory leak)：是指程序在申请内存后，无法释放已申请的内存空间，一次内存泄露 危害可以忽略，但内存泄露堆积后果很严重，无论多少内存,迟早会被占光。内存泄漏是指你向系 统申请分配内存进行使用(new)，可是使用完了以后却不归还(delete)，结果你申请到的那块内存 你自己也不能再访问（也许你把它的地址给弄丢了），而系统也不能再次将它分配给需要的程序 计算机内存管理的方式 Video Reference 常见的内存管理方式有块式管理、页式管理、段式和段页式管理。 （1）块式管理：把主存分为一大块一大块的，当所需的程序片段不在主存时就分配一块主存空间， 把程序片段load入主存，就算所需的程序片段只有几个字节也只能把这一块分配给它。这样会造 成很大的浪费，平均浪费了50%的内存空间，但是易于管理。 （2）页式管理：把主存分为一页一页的，每一页的空间要比一块一块的空间小很多，这种方法的空 间利用率要比块式管理高很多。程序的逻辑内存分为多个页（page）， 通过页表（page tab来le寻） 找物理内存的映射，即相应的页帧（page frame）。如果对应的帧号是磁盘，那就会进入内核态，内核会到磁盘中找到对应的数据然后加载到物理内存的帧中，然后将帧号填写到页表中。 如果物理 内存已经满了，那就会使用页置换算法把不常用的页帧换到磁盘中。 ● 时间优化：将常访问的几个页表项存到访问速度更快的硬件中，， 一般是MMU（内存管理 单元），这个小表名称叫做TLB(Translation Lookaside Buffer)，可以称其为快表。寻址时先 查找TLB，miss后再查page table。 （3）段式管理：把主存分为一段一段的，每一段的空间又要比一页一页的空间小很多，这种方法在 空间利用率上又比页式管理高得多，但是也有另外一个缺点。一个程序片段可能会被分为几十段 ，这样很多时间就会被浪费在计算每一段的物理地址上。 （4）段页式管理：结合了段式管理和页式管理的优点。把主存先分成若干段，每个段又分成若干 页。段页式管理每取一护具，要访问3次内存。 虚拟内存 用于扩充内存的。 它使得应用程序认为它拥有连续可用的内存（一个连续完整的地址空间），而 实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要 时进行数据交换。虚拟内存的重要意义是它定义了一个连续的虚拟地址空间，并且把内存扩展到 硬盘空间 如果程序很大，可以将经常用的部分装入内存，暂时用不到的部分留在外存。如果内存空间不足， 操作系统会将暂时用不到的信息放入外存。当访问的信息不在内存中时，操作系统会将外中存的 信息移入内存。 线程和进程的区别是什么 Reference 根本区别：进程是操作系统资源分配的基本单位，而线程是处理器任务调度和执行的基本单位 ● 资源开销：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换会有较大 的开销；线程可以看做轻量级的进程，同一类线程共享代码和数据空间，每个线程都有自 己独立的运行栈和程序计数器（PC），线程之间切换的开销小。 ● 包含关系：如果一个进程内有多个线程，则执行过程不是一条线的，而是多条线（线程）共 同完成的；线程是进程的一部分，所以线程也被称为轻权进程或者轻量级进程。 ● 内存分配：同一进程的线程共享本进程的地址空间和资源，而进程之间的地址空间和资源 是相互独立的 ● 影响关系：一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃 整个进程都死掉。所以多进程要比多线程健壮。● 执行过程：每个独立的进程有程序运行的入口、顺序执行序列和程序出口。但是线程不能 独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制，两者均可并发执 行 多线程和多进程，以及应用场景 多进程多线程主要是为了实现并行计算。 ● 多进程的话各个进程需要在操作系统层面进行进程的通信。 ● 多线程共享进程的数据段和程序段，节约内存，可以直接操作共享内存，会涉及到同步问 题。 ● 多进程的新建进程开销，进程调度开销和通信开销要比多线程大。此外多进程的可靠性也 强于多线程，因为多线程中的一个线程死亡可能导致整个进程异常，比如该线程没有释放 一个锁。 ● 多线程适合线程间需要数据共享的计算，多进程适合高性能要求的计算，以及分布式的系 统。 ● 在python中由于全局解释器锁的存在，多线程无法利用多核cpu实现并行化，所以python 多线程适合IO密集型操作，多进程适合计算密集型操作 进程通信方式 Reference 1. 匿名管道：只支持单向数据流；只能用于具有亲缘关系的进程之间；没有名字；管道的缓冲区是 有限的 2. 有名管道：有名管道不同于匿名管道之处在于它提供了一个路径名与之关联，以有名管道的文 件形式存在于文件系统中，这样，即使与有名管道的创建进程不存在亲缘关系的进程，只要可以 访问该路径，就能够彼此通过有名管道相互通信 3. 信号(Signal)： 信号是Linux系统中用于进程间互相通信或者操作的一种机制，信号可以在 任何 时候发给某一进程，而无需知道该进程的状态。 ● 如果该进程当前并未处于执行状态，则该信号就由内核保存起来，直到该进程恢复执行并 传递给它为止。 ● 如果一个信号被进程设置为阻塞，则该信号的传递被延迟，直到其阻塞被取消是才被传递 给进程。 4. 消息队列(Message): 与管道（无名管道：只存在于内存中的文件；命名管道：存在于实际的盘磁 介质或者文件系统）不同的是消息队列存放在内核中，只有在内核重启(即，操作系统重启)或者 显示地删除一个消息队列时，该消息队列才会被真正的删除。 5. 共享内存(Shared Memory): ● 使得多个进程可以可以直接读写同一块内存空间，是最快的可用IPC形式。是针对其他通 信机制运行效率较低而设计的。 ● 为了在多个进程间交换信息，内核专门留出了一块内存区，可以由需要访问的进程将其映 射到自己的私有地址空间。进程就可以直接读写这一块内存而不需要进行数据的拷贝， 从而大大提高效率。 ● 由于多个进程共享一段内存，因此需要依靠某种同步机制（如信号量）来达到进程间的同 步及互斥。6. 信号量(Semaphore): 信号量是一个计数器，用于多进程对共享数据的访问，信号量的意图在于 进程间同步。为了获得共享资源，进程需要执行下列操作： （1）创建一个信号量：这要求调用者指定初始值，对于二值信号量来说，它通常是1，也可是0 （2）等待一个信号量：该操作会测试这个信号量的值，如果小于0，就阻塞。也称为P操作。 （3）挂出一个信号量：该操作将信号量的值加1，也称为V操作。 7. 套接字(Socket): 套接字是一种通信机制，凭借这种机制，客户/服务器（即要进行通信的进程） 系统的开发工作既可以在本地单机上进行，也可以跨网络进行。也就是说它可以让不在同一台计 算机但通过网络连接计算机上的进程进行通信。 进程调度方法 Reference: 1. 非剥夺方式（非抢占方式）：一旦占用CPU，直至完成或阻塞。不利用实时任务，不利用短作业； 使用于批处理系统 2. 剥夺方式（抢占方式）： 在一定情况下，可剥夺一进程占有的处理机。抢占的原则有：短作业（进 程）优先原则、时间片原则、优先权原则。 ● 先来先服务调度算法（FCFS） ● 短作业优先调度算法（SJF） ● 时间片轮转调度算法（RR） ● 高响应比优先调度算法（HRRF）： 响应时间 / 运行时间 ● 最高优先级优先调度算法 什么是Linux用户态和内核态 Reference 指的是处理器处于的两种状态。 ● 用户态的程序只能访问用户空间的资源，执行非特权指令，对于特权指令要通过系统调用 的方式进行。 ● 运行在内核态的进程控制着操作系统内核程序和计算机的硬件资源，可以执行特权指令 和非特权指令。 用户态就是提供应用程序运行的空间，为了使应用程序访问到内核管理的资源例如CPU，内存， I/O。内核必须提供一组通用的访问接口，这些接口就叫系统调用 从用户态到内核态切换可以通过三种方式： 1. 系统调用: 其实系统调用本身就是中断，但是软件中断，跟硬中断不同。 2. 异常：如果当前进程运行在用户态，如果这个时候发生了异常事件，就会触发切换。例如： 缺页异常。 3. 外设中断：当外设完成用户的请求时，会向CPU发送中断信号。进程的状态，进程状态就绪和等待状态的区别是什么 就绪，执行，阻塞 阻塞和就绪的区别：阻塞是等待除CPU以外的资源，而就绪等待的是CPU资源。 1）就绪——执行：对就绪状态的进程，当进程调度程序按一种选定的策略从中选中一个就绪进程， 为之分配了处理机后，该进程便由就绪状态变为执行状态； 2）执行——阻塞：正在执行的进程因发生某等待事件而无法执行，则进程由执行状态变为阻塞状 态，如进程提出输入/输出请求而变成等待外部设备传输信息的状态，进程申请资源（主存空间或 外部设备）得不到满足时变成等待资源状态，进程运行中出现了故障（程序出错或主存储器读写 错等）变成等待干预状态等等； 当进程进入阻塞状态，是不占用CPU资源的。 3）阻塞——就绪：处于阻塞状态的进程，在其等待的事件已经发生，如输入/输出完成，资源得到满 足或错误处理完毕时，处于等待状态的进程并不马上转入执行状态，而是先转入就绪状态，然后 再由系统进程调度程序在适当的时候将该进程转为执行状态； 4）执行——就绪：正在执行的进程，因时间片用完而被暂停执行，或在采用抢先式优先级调度算法 的系统中,当有更高优先级的进程要运行而被迫让出处理机时，该进程便由执行状态转变为就绪状 态。 线程池 线程池就是事先将若干个进程放入一个容器中，当需要的时候从线程池中获取线程，使用完毕的 时候将线程放回线程池。这样可以减少多任务的时候创建和销毁线程的开销。这是一种多线程实 现方式。 线程安全的实现方式 Reference 线程安全定义：当多个线程访问某个类, 不管运行环境采用何种调度方式或者这些线程如何交替 执行, 并且在主调代码中不需要任何额外的同步或协同, 这个类都能表现出正确的行为, 那么就称 这个类为线程安全的 ● Synchronized: synchronized关键字，就是用来控制线程同步的，保证我们的线程在多线 程环境下，不被多个线程同时执行，确保我们数据的完整性，使用方法一般是加在方法 上。 当synchronized锁住一个对象之后，别的线程如果想要获取锁对象，那么就必须等这 个线程执行完释放锁对象之后才可以，否则一直处于等待状态。 ● Lock：就是我们在需要的时候去手动的获取锁和释放锁，甚至我们还可以中断获取 以及超时获取的同步特性，但是从使用上说Lock明显没有synchronized使用起来方 便快捷。 进程和线程的上下文切换 Context Switches: 上下文切换就是从当前执行任务切换到另一个任务执行的过程。但是，为了确 保下次能从正确的位置继续执行，在切换之前，会保存上一个任务的状态。进程上下文切换与线程上下文切换最主要的区别就是线程的切换虚拟空间内存是相同的（因为都 是属于自己的进程），但是，进程切换的虚拟空间内存则是不同的。 同时，这两种上下文切换的处理都是通过操作系统内核来完成的。内核的这种切换过程伴随的最 显著的性能损耗是将寄存器中的内容切换出。线程上下文切换比进程上下文切换快的多。 协程 Reference 协程的特点 1. 线程的切换由操作系统负责调度，协程由用户自己进行调度，因此减少了上下文切换，提 高了效率。 2. 线程的默认Stack大小是1M，而协程更轻量，接近1K。因此可以在相同的内存中开启更多 的协程。 3. 由于在同一个线程上，因此可以避免竞争关系而使用锁。 4. 适用于被阻塞的，且需要大量并发的场景。但不适用于大量计算的多线程，遇到此种情况 ，更好实用线程去解决 协程的原理：当出现IO阻塞的时候，由协程的调度器进行调度，通过将数据流立刻yield掉（主动让 出），并且记录当前栈上的数据，阻塞完后立刻再通过线程恢复栈，并把阻塞的结果放到这个线程 上去跑，这样看上去好像跟写同步代码没有任何差别，这整个流程可以称为coroutine 协程是轻量级线程，拥有自己的上下文和栈，在调度切换的时候可以恢复上一次调用时的状态， 也 就是上一次离开逻辑流的位置。适合IO密集型程序和高并发程序 并发和并行区别 ● 并行(parallel)：指在同一时刻，有多条指令在多个处理器上同时执行。所以无论从微观还 是从宏观来看，二者都是一起执行的。 ● 并发(concurrency)：指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执 行，使得在宏观上具有多个进程同时执行的效果，但在微观上并不是同时执行的，只是把 时间分成若干段，使多个进程快速交替的执行。</p>
+<h2 id="堆和栈的区别以及存储模式有什么区别"><a href="#堆和栈的区别以及存储模式有什么区别" class="headerlink" title="堆和栈的区别以及存储模式有什么区别"></a>堆和栈的区别以及存储模式有什么区别</h2><p>栈是由编译器自动分配和释放，存放函数的参数和局部变量的值，它的访问速度较快。栈上数据 的释放是随着出栈自动销毁了。栈的生长方向向下，内存地址由高到低。 堆是程序运行时显式申请和释放的内存空间，程序结束后由操作系统回收，容易产生内存碎片。 堆的空间比较灵活，可以不连续，通常比栈要大。堆的生长方向向上，内存地址由低到高。</p>
+<h2 id="计算机内存管理的方式"><a href="#计算机内存管理的方式" class="headerlink" title="计算机内存管理的方式"></a>计算机内存管理的方式</h2><p>常见的内存管理方式有块式管理、页式管理、段式和段页式管理。</p>
+<p>（1）块式管理：把主存分为一大块一大块的，当所需的程序片段不在主存时就分配一块主存空间， 把程序片段load入主存，就算所需的程序片段只有几个字节也只能把这一块分配给它。这样会造 成很大的浪费，平均浪费了50%的内存空间，但是易于管理。 </p>
+<p>（2）页式管理：把主存分为一页一页的，每一页的空间要比一块一块的空间小很多，这种方法的空 间利用率要比块式管理高很多。程序的逻辑内存分为多个页（page）， 通过页表（page tab来le寻） 找物理内存的映射，即相应的页帧（page frame）。如果对应的帧号是磁盘，那就会进入内核态，内核会到磁盘中找到对应的数据然后加载到物理内存的帧中，然后将帧号填写到页表中。 如果物理 内存已经满了，那就会使用页置换算法把不常用的页帧换到磁盘中。 ● 时间优化：将常访问的几个页表项存到访问速度更快的硬件中，， 一般是MMU（内存管理 单元），这个小表名称叫做TLB(Translation Lookaside Buffer)，可以称其为快表。寻址时先 查找TLB，miss后再查page table。 </p>
+<p>（3）段式管理：把主存分为一段一段的，每一段的空间又要比一页一页的空间小很多，这种方法在 空间利用率上又比页式管理高得多，但是也有另外一个缺点。一个程序片段可能会被分为几十段 ，这样很多时间就会被浪费在计算每一段的物理地址上。 </p>
+<p>（4）段页式管理：结合了段式管理和页式管理的优点。把主存先分成若干段，每个段又分成若干 页。段页式管理每取一护具，要访问3次内存。</p>
+<h2 id="内存管理虚拟内存"><a href="#内存管理虚拟内存" class="headerlink" title="内存管理虚拟内存"></a>内存管理虚拟内存</h2><p>虚拟内存的目的是为了让物理内存扩充成更大的逻辑内存，从而让程序获得更多的可用内存。</p>
+<p>虚拟内存允许程序不用将地址空间中的每一页都映射到物理内存，也就是说一个程序不需要全部调入内存就可以运行，这使得有限的内存运行大程序成为可能。</p>
+<h1 id="Linux系统基础"><a href="#Linux系统基础" class="headerlink" title="Linux系统基础"></a>Linux系统基础</h1><h2 id="Linux常见命令文件与目录的基本操作"><a href="#Linux常见命令文件与目录的基本操作" class="headerlink" title="Linux常见命令文件与目录的基本操作"></a>Linux常见命令文件与目录的基本操作</h2><h4 id="1-ls"><a href="#1-ls" class="headerlink" title="1. ls"></a>1. ls</h4><p>列出文件或者目录的信息，目录的信息就是其中包含的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## ls [-aAdfFhilnrRSt] file|dir</span><br><span class="line">-a ：列出全部的文件</span><br><span class="line">-d ：仅列出目录本身</span><br><span class="line">-l ：以长数据串行列出，包含文件的属性与权限等等数据</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-cd"><a href="#2-cd" class="headerlink" title="2. cd"></a>2. cd</h4><p>更换当前目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-mkdir"><a href="#3-mkdir" class="headerlink" title="3. mkdir"></a>3. mkdir</h4><p>创建目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## mkdir [-mp] 目录名称</span><br><span class="line">-m ：配置目录权限</span><br><span class="line">-p ：递归创建目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-rmdir"><a href="#4-rmdir" class="headerlink" title="4. rmdir"></a>4. rmdir</h4><p>删除目录，目录必须为空。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir [-p] 目录名称</span><br><span class="line">-p ：递归删除目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-touch"><a href="#5-touch" class="headerlink" title="5. touch"></a>5. touch</h4><p>更新文件时间或者建立新文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## touch [-acdmt] filename</span><br><span class="line">-a ： 更新 atime</span><br><span class="line">-c ： 更新 ctime，若该文件不存在则不建立新文件</span><br><span class="line">-m ： 更新 mtime</span><br><span class="line">-d ： 后面可以接更新日期而不使用当前日期，也可以使用 --date&#x3D;&quot;日期或时间&quot;</span><br><span class="line">-t ： 后面可以接更新时间而不使用当前时间，格式为[YYYYMMDDhhmm]</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-cp"><a href="#6-cp" class="headerlink" title="6. cp"></a>6. cp</h4><p>复制文件。如果源文件有两个以上，则目的文件一定要是目录才行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cp [-adfilprsu] source destination</span><br><span class="line">-a ：相当于 -dr --preserve&#x3D;all</span><br><span class="line">-d ：若来源文件为链接文件，则复制链接文件属性而非文件本身</span><br><span class="line">-i ：若目标文件已经存在时，在覆盖前会先询问</span><br><span class="line">-p ：连同文件的属性一起复制过去</span><br><span class="line">-r ：递归复制</span><br><span class="line">-u ：destination 比 source 旧才更新 destination，或 destination 不存在的情况下才复制</span><br><span class="line">--preserve&#x3D;all ：除了 -p 的权限相关参数外，还加入 SELinux 的属性, links, xattr 等也复制了</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-rm"><a href="#7-rm" class="headerlink" title="7. rm"></a>7. rm</h4><p>删除文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## rm [-fir] 文件或目录</span><br><span class="line">-r ：递归删除</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-mv"><a href="#8-mv" class="headerlink" title="8. mv"></a>8. mv</h4><p>移动文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## mv [-fiu] source destination</span><br><span class="line">## mv [options] source1 source2 source3 .... directory</span><br><span class="line">-f ： force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="Indexing索引"><a href="#Indexing索引" class="headerlink" title="Indexing索引"></a>Indexing索引</h2><p>索引依附于基表，建立索引是加快查询的有效手段。 </p>
+<p>根据数据库的功能，可以在数据库设计器中创建三种索引：唯一索引、主键索引和聚集索引。</p>
+<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>唯一索引是不允许其中任何两行具有相同索引值的索引。<br>当现有数据中存在重复的键值时，大多数数据库不允许将新创建的唯一索引与表一起保存。数据库还可能防止添加将在表中创建重复键值的新数据。例如，如果在employee表中职员的姓(lname)上创建了唯一索引，则任何两个员工都不能同姓。</p>
+<h3 id="主键索引"><a href="#主键索引" class="headerlink" title="主键索引"></a>主键索引</h3><p>数据库表经常有一列或列组合，其值唯一标识表中的每一行。该列称为表的主键。<br>在数据库关系图中为表定义主键将自动创建主键索引，主键索引是唯一索引的特定类型。该索引要求主键中的每个值都唯一。当在查询中使用主键索引时，它还允许对数据的快速访问。</p>
+<h3 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h3><p>在聚集索引中，表中行的物理顺序与键值的逻辑（索引）顺序相同。一个表只能包含一个聚集索引。<br>如果某索引不是聚集索引，则表中行的物理顺序与键值的逻辑顺序不匹配。与非聚集索引相比，聚集索引通常提供更快的数据访问速度。</p>
+<p>1、普通索引<br>     CREATE INDEX indexName ON mytable(username(length));<br>     创建表的时候直接指定： </p>
+<p>CREATE TABLE mytable(<br>       ID INT NOT NULL,<br>       username VARCHAR(16) NOT NULL,<br>       INDEX [indexName] (username(length))<br> );<br>  删除索引的语法：<br>DROP INDEX [indexName] ON mytable;</p>
+<p>2、唯一索引<br>它与普通索引类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。</p>
+<p>创建索引：<br>CREATE UNIQUE INDEX indexName ON mytable(username(length))<br>修改表结构：<br>ALTER table mytable ADD UNIQUE [indexName] (username(length))<br>创建表的时候直接指定：<br>CREATE TABLE mytable(<br>     ID INT NOT NULL,<br>      username VARCHAR(16) NOT NULL,<br>      UNIQUE [indexName] (username(length))<br> );<br>有四种方式来添加数据表的索引：</p>
+<p>1.ALTER TABLE tbl_name ADD PRIMARY KEY (column_list): 该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。<br>2.ALTER TABLE tbl_name ADD UNIQUE index_name (column_list): 这条语句创建索引的值必须是唯一的（除了NULL外，NULL可能会出现多次）。<br>3.ALTER TABLE tbl_name ADD INDEX index_name (column_list): 添加普通索引，索引值可出现多次。4.ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):该语句指定了索引为 FULLTEXT ，用于全文索引。<br>例如：</p>
+<p>创建索引：ALTER TABLE testalter_tbl ADD INDEX (c);<br>删除索引：ALTER TABLE testalter_tbl DROP INDEX (c);<br>显示索引信息<br>SHOW INDEX FROM table_name\G</p>
+<h2 id="什么是游标"><a href="#什么是游标" class="headerlink" title="什么是游标"></a>什么是游标</h2><p>游标是系统为用户开设的一个数据缓冲区，存放SQL语句的执行结果，每个游标区都有一个</p>
+<h2 id="对数据库操作的语句"><a href="#对数据库操作的语句" class="headerlink" title="对数据库操作的语句"></a>对数据库操作的语句</h2><p>答案：select，insert，update，delete</p>
+<h2 id="数据库的操作过程"><a href="#数据库的操作过程" class="headerlink" title="数据库的操作过程"></a>数据库的操作过程</h2><p>答案：（1）加载驱动程序；（2）建立数据库连接；（3）向数据库发送SQL 语句；（4）事务处理；（5）管理连接。</p>
+<h2 id="MVC？"><a href="#MVC？" class="headerlink" title="MVC？"></a><a href="https://segmentfault.com/a/1190000022996706" target="_blank" rel="noopener">MVC？</a></h2><p>什么是MVC模式</p>
+<p>MVC模式中M代表模型、V代表视图、C代表控制器。<br>Model（模型）表示应用程序核心（比如数据库记录列表）。<br>View（视图）显示数据（数据库记录）。<br>Controller（控制器）处理输入（写入数据库记录）。工具类（负责连接数据库）实现数据库的增删改查的操作类</p>
+<h2 id="Restful-api"><a href="#Restful-api" class="headerlink" title="Restful api"></a>Restful api</h2><p>表现层状态转换 (Representational state transfer)</p>
+<p>REST是设计风格而<strong>不是</strong>标准。REST通常基于<a href="https://zh.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">HTTP</a>、<a href="https://zh.wikipedia.org/wiki/URI" target="_blank" rel="noopener">URI</a>、<a href="https://zh.wikipedia.org/wiki/XML" target="_blank" rel="noopener">XML</a>以及<a href="https://zh.wikipedia.org/wiki/HTML" target="_blank" rel="noopener">HTML</a>这些现有的广泛流行的协议和标准。</p>
+<ul>
+<li>资源是由URI来指定。</li>
+<li>对资源的操作包括获取、创建、修改和删除，这些操作正好对应HTTP协议提供的GET、POST、PUT和DELETE方法。</li>
+<li>通过操作资源的表现形式来操作资源。</li>
+<li>资源的表现形式则是XML或者HTML，取决于读者是机器还是人、是消费Web服务的客户软件还是Web浏览器。当然也可以是任何其他的格式，例如JSON。</li>
+</ul>
+<p>符合REST设计风格的Web API称为<strong>RESTful API</strong>。它从以下三个方面资源进行定义：</p>
+<ul>
+<li>直观简短的资源地址：URI，比如：<code>http://example.com/resources</code>。</li>
+<li>传输的资源：Web服务接受与返回的<a href="https://zh.wikipedia.org/wiki/互联网媒体类型" target="_blank" rel="noopener">互联网媒体类型</a>，比如：<a href="https://zh.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">JSON</a>，<a href="https://zh.wikipedia.org/wiki/XML" target="_blank" rel="noopener">XML</a>，<a href="https://zh.wikipedia.org/wiki/YAML" target="_blank" rel="noopener">YAML</a>等。</li>
+<li>对资源的操作：Web服务在该资源上所支持的一系列<a href="https://zh.wikipedia.org/wiki/超文本传输协议#请求方法" target="_blank" rel="noopener">请求方法</a>（比如：POST，GET，PUT或DELETE）。</li>
+</ul>
+<h2 id="Cookie和session是什么，为什么要用cookie和session"><a href="#Cookie和session是什么，为什么要用cookie和session" class="headerlink" title="Cookie和session是什么，为什么要用cookie和session"></a>Cookie和session是什么，为什么要用cookie和session</h2><p>Session是在服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据 库、文件中； Cookie是客户端保存用户信息的一种机制，用来记录用户的一些信息，也是实现Session的一种 方式 </p>
+<p>Why原因：</p>
+<p>由于HTTP协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来 识具体的用户，这个机制就是Session.</p>
+<p>典型的场景比如购物车，当你点击下单按钮时，由于HTTP 协议无状态，所以并不知道是哪个用户操作的，所以服务端要为特定的用户创建了特定的 Session，用于标识这个用户，并且跟踪用户，这样才知道购物车里面有几本书。这个Session是保存在服务端的，有一个唯一标识。在服务端保存Session的方法很多，内存、数据库、文件都有 </p>
+<p>思考一下服务端如何识别特定的客户？</p>
+<p>这个时候Cookie就登场了。每次HTTP请求的时候，客户端都会发送相应的Cookie信息到服务端。实际上大多数的应用都是用 Cookie 来实现Session跟踪 的，第一次创建Session的时候，服务端会在HTTP协议中告诉客户端，需要在 Cookie 里面记录一 个Session ID，以后每次请求把这个会话ID发送到服务器，我就知道你是谁了。有人问，如果客户 端的浏览器禁用了 Cookie 怎么办？一般这种情况下，会使用一种叫做URL重写的技术来进行会 话跟踪，即每次HTTP交互，URL后面都会被附加上一个诸如 sid=xxxxx 这样的参数，服务端据此 来识别用户 </p>
+<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点:"></a>不同点:</h3><p>● Cookie在客户端，Session在服务器端 ● Cookie只能存储较少的ASCII数据，Session可以存任意数据。● Cookie有效期比较⻓，在浏览器中一般⻓期保存。Session有效期比较短，在用户会话结束 之 后立刻失效。 ● Cookie的安全性比较差，因为存放在用户端。</p>
+<h2 id="数据库的事务是什么"><a href="#数据库的事务是什么" class="headerlink" title="数据库的事务是什么?"></a>数据库的事务是什么?</h2><p>事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。</p>
+<h2 id="事务的特性（ACID）"><a href="#事务的特性（ACID）" class="headerlink" title="事务的特性（ACID）"></a>事务的特性（ACID）</h2><ol>
+<li>原子性（Atomicity）</li>
+</ol>
+<p>事务被视为不可分割的最小单元，事务的所有操作要么全部提交成功，要么全部失败回滚。</p>
+<p>回滚可以用回滚日志（Undo Log）来实现，回滚日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。</p>
+<ol start="2">
+<li>一致性（Consistency）</li>
+</ol>
+<p>数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对同一个数据的读取结果都是相同的。</p>
+<ol start="3">
+<li>隔离性（Isolation）</li>
+</ol>
+<p>一个事务所做的修改在最终提交以前，对其它事务是不可见的。</p>
+<ol start="4">
+<li>持久性（Durability）</li>
+</ol>
+<p>一旦事务提交，则其所做的修改将会永远保存到数据库中。即使系统发生崩溃，事务执行的结果也不能丢失。</p>
+<p>系统发生崩溃可以用重做日志（Redo Log）进行恢复，从而实现持久性。与回滚日志记录数据的逻辑修改不同，重做日志记录的是数据页的物理修改。</p>
+<p><img src="https://camo.githubusercontent.com/d688683e3f6fb14d059412247e4f427a7cd1aa7686417bc552e061628f24dd84/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230373231303433373032332e706e67" alt=""></p>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="Git-属于分布式版本控制系统，而-SVN-属于集中式。"><a href="#Git-属于分布式版本控制系统，而-SVN-属于集中式。" class="headerlink" title="Git 属于分布式版本控制系统，而 SVN 属于集中式。"></a>Git 属于分布式版本控制系统，而 SVN 属于集中式。</h2><p><img src="https://camo.githubusercontent.com/c91a2b2afab81bacf79151369d88d29d6c71ee65641fcc452e51d8ad95af906e/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f37613239616363652d663234332d343931342d396630302d6632393838633532383431322e6a7067" alt=""></p>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Git基本常用命令如下：</span><br><span class="line">   mkdir：         XX (创建一个空目录 XX指目录名)</span><br><span class="line">   pwd：          显示当前目录的路径。</span><br><span class="line"></span><br><span class="line">   git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。</span><br><span class="line">   git add XX       把xx文件添加到暂存区去。</span><br><span class="line">   git commit –m “XX”  提交文件 –m 后面的是注释。</span><br><span class="line"></span><br><span class="line">   git status        查看仓库状态</span><br><span class="line">   git diff  XX      查看XX文件修改了那些内容</span><br><span class="line">   git log          查看历史记录</span><br><span class="line"></span><br><span class="line">   git reset  --hard HEAD^ 或者 git reset  --hard HEAD~ 回退到上一个版本</span><br><span class="line">                        (如果想回退到100个版本，使用git reset –hard HEAD~100 )</span><br><span class="line"></span><br><span class="line">   cat XX         查看XX文件内容</span><br><span class="line">   git reflog       查看历史记录的版本号id</span><br><span class="line">   git checkout -- XX  把XX文件在工作区的修改全部撤销。</span><br><span class="line">   git rm XX          删除XX文件</span><br><span class="line"></span><br><span class="line">   git remote add origin https:&#x2F;&#x2F;github.com&#x2F;tugenhua0707&#x2F;testgit 关联一个远程库</span><br><span class="line">   git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库</span><br><span class="line">   git clone https:&#x2F;&#x2F;github.com&#x2F;tugenhua0707&#x2F;testgit  从远程库中克隆</span><br><span class="line"></span><br><span class="line">   git checkout –b dev  创建dev分支 并切换到dev分支上</span><br><span class="line">   git branch  查看当前所有的分支</span><br><span class="line">   git checkout master 切换回master分支</span><br><span class="line">   git merge dev    在当前的分支上合并dev分支</span><br><span class="line">   git branch –d dev 删除dev分支</span><br><span class="line">   git branch name  创建分支</span><br><span class="line"></span><br><span class="line">   git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作</span><br><span class="line">   git stash list 查看所有被隐藏的文件列表</span><br><span class="line">   git stash apply 恢复被隐藏的文件，但是内容不删除</span><br><span class="line">   git stash drop 删除文件</span><br><span class="line">   git stash pop 恢复文件的同时 也删除文件</span><br><span class="line"></span><br><span class="line">   git remote 查看远程库的信息</span><br><span class="line">   git remote –v 查看远程库的详细信息</span><br><span class="line">   git push origin master  Git会把master分支推送到远程库对应的远程分支上</span><br><span class="line"></span><br><span class="line">下面来详细介绍Git。</span><br><span class="line">作者：涂根华</span><br><span class="line">来源：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;tugenhua0707&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Interview-Questions"><a href="#Interview-Questions" class="headerlink" title="Interview Questions"></a>Interview Questions</h1><h2 id="JD"><a href="#JD" class="headerlink" title="JD"></a>JD</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">クライアントの担当者との打ち合わせ</span><br><span class="line">ソフトウェアの要件定義・基本設計、</span><br><span class="line">一部のオンサイト開発、オフショア開発の管理</span><br><span class="line"></span><br><span class="line">車載機器（カーナビ、カーオーディオ）、デジタル家電、PC製品、携帯端末などの組込みシステムにおける開発経験が3年程度ある方</span><br><span class="line">プロジェクトマネジメント &#x2F; リーダ経験のある方歓迎</span><br><span class="line"></span><br><span class="line">業務系（ＯＰＥＮ系、Ｗｅｂ系）システムにおける開発経験が3年程度ある方</span><br><span class="line">プロジェクトマネジメント &#x2F; リーダ経験のある方歓迎</span><br><span class="line"></span><br><span class="line">インフラ基盤・運用基盤（OPEN系）における設計経験が2年程度ある方</span><br><span class="line">プロジェクトマネジメント &#x2F; リーダ経験のある方歓迎</span><br></pre></td></tr></table></figure>
+
+<h2 id="自己紹介してください"><a href="#自己紹介してください" class="headerlink" title="自己紹介してください"></a>自己紹介してください</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">面试官您好，</span><br><span class="line">我是刘昆灵，目前是就读于东京大学的新领域创城科学研究科先端能源工学的一名研究生。</span><br><span class="line">我的本科是上海理工大学，获得学士学位后，有在上海英特尔机器人技术创新中心的一段实习经验。</span><br><span class="line"></span><br><span class="line">在那个时间段我接触到了许多创新型科技公司和他们产品，比如大疆无人机，新松机器人等，因此我对计算机相关技术产生了浓厚的兴趣。</span><br><span class="line">在就读于东京大学期间，在校内和Cousera或Udemy等在线课程网站上选修并自学了相关的一些课程。</span><br><span class="line">包括数据结构与算法，数据科学以及人工智能等课程，同时这些课程使我产生了想要更详细地研究计算机及其相关技术的热情。</span><br><span class="line">在完成这些课程时，我也做了一些机器学习和数据处理相关的项目，其中也包括kaggle竞赛数据科学的比赛，我所在的小组最终获取了银牌的成绩。</span><br><span class="line"></span><br><span class="line">语言方面的话，英语托业900分，日语JLPT N2的程度。</span><br><span class="line">编程技术方面Java，Python，c&#x2F;c++都有接触过，不过近期用得比较多的语言还是java。</span><br><span class="line">然后目前我希望寻找一份软件工程师的工作作为自己职业生涯的开端。</span><br><span class="line">以上是我个人的一些基本信息。请多多指教。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">私は刘昆灵と申します、</span><br><span class="line">中国山东省出身です。</span><br><span class="line"></span><br><span class="line">2019年9月に東京大学大学院の</span><br><span class="line">新領域創成sose科学研究科に</span><br><span class="line">入学しました。</span><br><span class="line"></span><br><span class="line">専攻は先端エネルギー工学です。</span><br><span class="line"></span><br><span class="line">私はData Structures Algorithms,  Data Science AIを勉強しました</span><br><span class="line"></span><br><span class="line">私は自分の専攻知識、プログラミング能力、思考力、人とのコミュニケーション能力，</span><br><span class="line">IT技术を社会で生か ikaして、</span><br><span class="line">周りの人々hitobito や</span><br><span class="line">物事monogotoが</span><br><span class="line">少しでも良いyoi状態に変わるkawaruことに</span><br><span class="line">貢献kōkenできることを望んでいます。</span><br><span class="line"></span><br><span class="line">将来は御社onshaを代表して国際的なkokusai-tekina舞台butaiで</span><br><span class="line">活躍katsuyakuしたいと思っています。</span><br><span class="line">宜しくお願いします。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Why东软"><a href="#Why东软" class="headerlink" title="Why东软"></a>Why东软</h2><p>shorten this answer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;baike.baidu.com&#x2F;item&#x2F;%E4%B8%9C%E8%BD%AF%E9%9B%86%E5%9B%A2</span><br><span class="line">https:&#x2F;&#x2F;www.neusoft.com&#x2F;cn&#x2F;about&#x2F;</span><br><span class="line">东软医疗http:&#x2F;&#x2F;www.neusoftmedical.com&#x2F;</span><br><span class="line">理由主要分三点，</span><br><span class="line">首先我家乡是在山东省，在包含我家乡的东北地区，东北大学的刘教授90年代创立的贵司非常知名，同时也是是中国第一个上市的软件公司。贵司在医疗健康，汽车电子等领域也颇有建树。</span><br><span class="line">是一家非常知名且优秀的IT解决方案和服务提供商，也可以说我个人一直憧憬的公司。</span><br><span class="line">其次，</span><br><span class="line">我觉得我自身的背景比较适合目前申请的岗位。</span><br><span class="line">东软日本是东软在日本的子公司。</span><br><span class="line">随着经济发展和商业全球化，中国日本两国在IT领域进行合作的需求会逐步增加。</span><br><span class="line">在与中国的联合开发方面，需要能够站在客户的立场，在需求定义阶段能够处理与客户的协调和技术开发，并实施运营和管理，跟进项目，这样的具有丰富经验的工程师Bridge SE。</span><br><span class="line">我本科就读于上海理工大学能源相关专业，而研究生就读于日本东京大学，对于中日两边的大环境和科技发展趋势较为熟悉，同时具有在国内一线城市科技公司Intel机器人创新中心实习过的经历。</span><br><span class="line">最后一点是，</span><br><span class="line">我个人的未来职业发展规划与贵司的岗位也相当契合。</span><br><span class="line">我未来是想从事IT领域的相关工作，并持续下去。</span><br><span class="line">所以非常希望能有机会在贵司通过参与需求定义，协调与客户的事务和技术开发等，来彻底了解一线的技术问题和解决方案，和贵公司一同成长。</span><br><span class="line"></span><br><span class="line">オープン系</span><br><span class="line">組込系</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">中国最大[要出典]のソフトウェア開発・ITサービス会社で、本社は遼寧省瀋陽市にある。1991年に瀋陽にある東北大学 (中国)の教授、劉積仁博士（英語名：Liu Jiren、現在は代表取締役会長兼CEO）が起業し、1993年に設立した会社で、当初日本のアルパインおよび東芝がプロジェクトを出して育て、1996年からは中国のソフトウェア会社としては初めて上海証券取引所に上場している。中国以外には、子会社が日本（Neusoft Japan株式会社）と米国にあり、事務所が中東とヨーロッパにある。</span><br><span class="line"></span><br><span class="line">随着经济和商业全球化的加速发展，中日两国在IT领域进行合作的需求日益增加。近年来，由于系统开发规模的迅速扩大，采购优秀的人力资源已成为当务之急，与此同时，降低与之相关的开发成本已成为必要。</span><br><span class="line"></span><br><span class="line">日本东软日本有限公司成立于2001年，是中国最大的IT解决方案和服务提供商东软在日本的子公司。自成立以来，为了满足日本客户的需求，我们以外包顾问的身份支持了许多合作伙伴公司，与日本合作伙伴共享中国总部的IT资源，并实现了共存与共同繁荣。</span><br><span class="line"></span><br><span class="line">具体地说，在与中国的联合开发方面具有丰富经验的工程师Bridge SE站在客户的立场，并根据每个项目适当地协调操作。在项目进行过程中，我们会及时提供建议和管理。</span><br><span class="line"></span><br><span class="line">该项目从选择东软中国开发部门开始，在需求定义阶段处理与客户的协调和技术开发，并实施运营和管理。关于项目跟进，我们还会提出满足客户需求的建议。</span><br><span class="line"></span><br><span class="line">通过这些活动，我们向合作伙伴公司提供IT人力资源，并在技术方面对它们进行补充，以帮助提高合作伙伴的竞争力和发展。</span><br><span class="line"></span><br><span class="line">东软日本有限公司将继续全力支持日本客户的离岸扩张&#x2F;向中国扩张，并通过提供整体解决方案，作为外包顾问，我们将继续追求更高的客户满意度。</span><br><span class="line"></span><br><span class="line">1991年，东软成立，与阿尔派成立合资公司，在汽车电子领域展开合作。</span><br><span class="line">1994年，软件与制造结合，进入医疗设备领域。</span><br><span class="line">1996年，成为中国第一家上市的软件公司。软件与应用、服务结合，大规模进入行业解决方案市场。</span><br><span class="line">2000-2002年，东软香港、美国、日本分公司相继成立。</span><br><span class="line">2004年，成为获得CMMI5级评估的软件企业。</span><br><span class="line">2008-2009年，东软欧洲公司成立。东软集团整体上市，致力于成为全球优秀的IT解决方案与服务提供商。</span><br><span class="line">2011年，东软熙康成立，进入健康管理领域。</span><br><span class="line">2014年，东软医疗、东软熙康引入战略投资者，加速医疗健康板块业务发展。</span><br><span class="line">2015年，东软睿驰成立，推动汽车电子业务向智能化、互联网化、新能源化布局。</span><br><span class="line">2018年，东软智能医疗研究院成立。</span><br><span class="line">教育</span><br><span class="line">2000年，创办大连东软信息学院（大连）；</span><br><span class="line">2001年，创办广东东软学院（佛山）；</span><br><span class="line">2002年，创办成都东软学院（成都）。</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">御社を選んだeranda理由はまず、</span><br><span class="line">我出身东北山东省，御社是中国东北第一番有名的软件公司。</span><br><span class="line">一直憧れでいます</span><br><span class="line"></span><br><span class="line">そして、私はIT界に強い興味を</span><br><span class="line">持つからです。</span><br><span class="line"></span><br><span class="line">IT技术の変化は速くhayaku、</span><br><span class="line">IT界の第一線daiissenである御社で</span><br><span class="line">働く者monoは</span><br><span class="line">迅速jinsokuかつ</span><br><span class="line">適切tekisetsuに</span><br><span class="line">対応しなければなりません。</span><br><span class="line"></span><br><span class="line">このような知的chiteki</span><br><span class="line">刺激shigekiに</span><br><span class="line">溢afuれる職場は</span><br><span class="line">向上心kōjōshinの強い私に</span><br><span class="line">とって非常hijōに</span><br><span class="line">魅力的mirikiteki</span><br><span class="line">だと感じています。</span><br><span class="line"></span><br><span class="line">次に、国際的な舞台で</span><br><span class="line">活躍している御社では、</span><br><span class="line">より多様tayōな人々hitobitoと出会え、</span><br><span class="line">様々な仕事に</span><br><span class="line">携tazusaわる機会と</span><br><span class="line">海外の機会が多いです。</span><br><span class="line"></span><br><span class="line">私は多ta文化bunka</span><br><span class="line">多ta国籍の職場で自分の技术Gijutsu能力</span><br><span class="line">日本語、中国語、英語能力を</span><br><span class="line">最大限に引き出し、</span><br><span class="line">成長したいです。</span><br><span class="line">御社でキャリアの道で進めたいと思います。</span><br></pre></td></tr></table></figure>
+
+<h2 id="🌕なんで日本で就職？"><a href="#🌕なんで日本で就職？" class="headerlink" title="🌕なんで日本で就職？"></a>🌕なんで日本で就職？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">私は日本人の秩序（ちつじょ）や勤勉さに感心しました。</span><br><span class="line">日本人は深夜で</span><br><span class="line">誰一人もいない場でも</span><br><span class="line">必ず交通ルールを守り、</span><br><span class="line">また地震にあった際にも</span><br><span class="line">秩序整然sezenに避難所まで撤退tetaiしました。</span><br><span class="line"></span><br><span class="line">2009年上海でEXPO（国際博覧会hakurankai）</span><br><span class="line">を開催する時に、</span><br><span class="line">日本の観客kankyakuが</span><br><span class="line">通toしたところには</span><br><span class="line">ゴミ一つも</span><br><span class="line">残nokoraらないだと</span><br><span class="line">上海新聞の記事に載noせました。</span><br><span class="line">日本人の勤勉さも世界中有名で、</span><br><span class="line">私が勉強している東京大学は更に</span><br><span class="line">みんな学業Gakugyōも</span><br><span class="line">部活も</span><br><span class="line">就職shiyoshoku活動も</span><br><span class="line">一切手を抜nuかずに真剣に頑張っています。</span><br><span class="line">私が所属する研究室では遅くまで勉強する人が多いです。</span><br><span class="line"></span><br><span class="line">日本が技術や経済力を</span><br><span class="line">世界の各国の人から</span><br><span class="line">認めMitomeられ、</span><br><span class="line">より安定な社会を作り出せるの原因といえば、</span><br><span class="line">その秩序と勤勉さが</span><br><span class="line">あげられるだと思います。</span><br><span class="line">desukara</span><br><span class="line">この国で働き、勉強を続けたいと思います。</span><br></pre></td></tr></table></figure>
+
+<h2 id="长处"><a href="#长处" class="headerlink" title="长处"></a>长处</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">私の長所chōshoは三miつあります。</span><br><span class="line">一つ目は勤勉である。</span><br><span class="line">私は友達によく真面目majimenaな性格だと言われて、</span><br><span class="line">勉強でもサークルの活動</span><br><span class="line">また塾のアルバイトでも</span><br><span class="line">全zen身全zen力を尽tsuくします、</span><br><span class="line">また常tsuneに「これが自分が出来るベストなのか」を聞きまして、</span><br><span class="line">何Nani事gotoでも</span><br><span class="line">細sai部buまで丁寧にやります。</span><br><span class="line"></span><br><span class="line">二つFutatsu目は長期インターンシップ経験が豊ho富fuです。</span><br><span class="line">現場で学生とは違う社会人の働き方、生き方を見て、</span><br><span class="line">「働く」の意味をより深く理解しました。</span><br><span class="line">また仕事に必須な基礎能力も</span><br><span class="line">獲得kakutokuしました。</span><br><span class="line"></span><br><span class="line">例えば上海インテルのロボティクスイノベーションセンターで</span><br><span class="line">インターンシップをしました</span><br><span class="line">ではマルチタスクを</span><br><span class="line">効率的に完成する時間管理のスキル、</span><br><span class="line">正確Seikakuかつkatesu</span><br><span class="line">迅速jinsoku にプロジェクト理解する</span><br><span class="line">を学manaびbiました。</span><br><span class="line"></span><br><span class="line">三つ目はコミュニケーション能力が高いこと。</span><br><span class="line">私は学部bu時代から今までずっと家庭教師をしていますが、</span><br><span class="line">生徒たちに問題を分かりやすく説明することができるため、</span><br><span class="line">大変好評kōhyōでしだ。</span><br><span class="line">また、二年間社団部長を担tan当toしたことがあって、</span><br><span class="line">他人Taninを励hageまして、</span><br><span class="line">チームの団結力danketsu-ryoku</span><br><span class="line">を高takaめる</span><br><span class="line">獲得kakutokuしました。</span><br></pre></td></tr></table></figure>
+
+<h2 id="短处-ストレスを感じた時-頑張ったこと"><a href="#短处-ストレスを感じた時-頑張ったこと" class="headerlink" title="短处 | ストレスを感じた時 | 頑張ったこと"></a>短处 | ストレスを感じた時 | 頑張ったこと</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">性格が優しすぎで、</span><br><span class="line">人にNoを言うことがなかなか出来ません。</span><br><span class="line"></span><br><span class="line">チームの中でリーダーを担当する時に</span><br><span class="line">一番問題になります。</span><br><span class="line">例えば东大课程チームリーダーをやる時、</span><br><span class="line">最初はみんなバリバリやりましたが、</span><br><span class="line">三ヶ月経taってtteから</span><br><span class="line">新鮮感が無くなって</span><br><span class="line">チームの中で一人hitoriが</span><br><span class="line">やる気を失ったushinattaみたいです。</span><br><span class="line">彼はいつも理由作ってミーティングに</span><br><span class="line">来kiなくてもいいと</span><br><span class="line">私に聞きます。</span><br><span class="line">また配分haibunされた任務を締め切りぎりぎりの時に</span><br><span class="line">自分が忙しすぎで</span><br><span class="line">私に頼んでやって</span><br><span class="line">あげることもあります。</span><br><span class="line"></span><br><span class="line">私は何度もNoと言いたかった けれども、</span><br><span class="line">上下Jōgeの関係というより</span><br><span class="line">友達だからなかなか言えないです。</span><br><span class="line"></span><br><span class="line">しかしそのうちに他のチームメンバーが不満fumanになって、</span><br><span class="line">全体の雰囲気が乱れmidareました。</span><br><span class="line">私はその場反省して、</span><br><span class="line">リーダーの役割は</span><br><span class="line">任務配分haibunと</span><br><span class="line">団結力danketsu-ryokuを高takaめることで、</span><br><span class="line">そのためある程度</span><br><span class="line">人を引っ張ってhippatte いく能力、</span><br><span class="line">Noを言い出daせる</span><br><span class="line">強さが必要です。</span><br><span class="line">次回彼から勝手な願いnegaiを出す時、</span><br><span class="line">私は彼と相談して、</span><br><span class="line">自分の本当に思ってることと自分の立場を真剣に伝えて断りました、</span><br><span class="line">その後彼も変わって、真面目にやりました。</span><br><span class="line"></span><br><span class="line">今後職場でお互いtagaiに助け</span><br><span class="line">進んで行く</span><br><span class="line">つもりだけど、</span><br><span class="line">時々はNoを言えるになりたいです。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Why-IT"><a href="#Why-IT" class="headerlink" title="Why IT"></a>Why IT</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">ITを志望shibōする理由は</span><br><span class="line">主omoに以下の３つあります。</span><br><span class="line"></span><br><span class="line">第一、私はIT技术に興味があります。</span><br><span class="line">ITは生活をとても便利にします。</span><br><span class="line">たとえば、ソフトウェアによって</span><br><span class="line">昔数su日でしか</span><br><span class="line">処理できないデータは、</span><br><span class="line">今は数時間で完成できます。</span><br><span class="line">IT技術部門bumonは</span><br><span class="line">主omoniほかの業界に技術サポートを</span><br><span class="line">提供teikyōしますが、</span><br><span class="line">技術は高速変化しています、</span><br><span class="line">そのために業務フローを変革し、</span><br><span class="line">問題意識を持ち</span><br><span class="line">しなければなりません。</span><br><span class="line">私はチャレンジが好きで、</span><br><span class="line">技術部門で速やsumiyakaかに</span><br><span class="line">対応できる専門家を目指します。</span><br><span class="line"></span><br><span class="line">次に私自身の性格が向muいていると思います。</span><br><span class="line">私は友達によく真面目な性格をしている</span><br><span class="line">と言われており、</span><br><span class="line">勉強でも研究でも</span><br><span class="line">サークルの活動でも</span><br><span class="line">一切sai手を抜かない真剣な態度という</span><br><span class="line">高い評価をもらっています。</span><br><span class="line">この性格は特に情報データを</span><br><span class="line">扱うatsukau時に</span><br><span class="line">最mottoも必要となると思います。</span><br><span class="line">私はもプログラミングに興味を持ち、</span><br><span class="line">大学院もData Structures Algorithms, Data Science AIを勉強しました。</span><br><span class="line"></span><br><span class="line">第三、私は上海のインテルロボティクスイノベーションセンターでインターンシップをしました、</span><br><span class="line">現場で見たIT技術部門の人は</span><br><span class="line">各kaku部門と接触したすることが多く、</span><br><span class="line">正確Seikakuかつkatsu</span><br><span class="line">迅速jinsoku にプロジェクト理解する</span><br><span class="line">を学manaびbiました。</span><br></pre></td></tr></table></figure>
+
+<h2 id="5年后？入社後にやりたいこと？"><a href="#5年后？入社後にやりたいこと？" class="headerlink" title="5年后？入社後にやりたいこと？"></a>5年后？入社後にやりたいこと？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">５年後は、</span><br><span class="line">私は開発チームをうまく</span><br><span class="line">マネジメントして、</span><br><span class="line">いかにお客様の要望yōbōを満miたす</span><br><span class="line">クオリティの高いソフト</span><br><span class="line">を開発するころを目指しますです。</span><br><span class="line"> </span><br><span class="line">その前にまず、</span><br><span class="line">この2，3年私はチームの中心になりたい</span><br><span class="line">エンジニア経験は必要だが技術学びたい。</span><br><span class="line">なぜなら、</span><br><span class="line">仕事に求められる技術というのは、</span><br><span class="line">どんどん変化していきます。</span><br><span class="line">ですから、</span><br><span class="line">コミュニケーション力を上げるために、</span><br><span class="line">エンジニアとしての基本が持っているは必要と思います</span><br></pre></td></tr></table></figure>
+
+<h2 id="卒業論文"><a href="#卒業論文" class="headerlink" title="卒業論文"></a>卒業論文</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">私の卒業論文は深層Shinsō学習, </span><br><span class="line">CNNによる超解像kaizo乱流データの再構成を</span><br><span class="line">研究しています。</span><br><span class="line"></span><br><span class="line">具体的には低tei解像度doの</span><br><span class="line">流体データから小さなパッチを</span><br><span class="line">使用して作成zakuseした</span><br><span class="line">訓練kunrenデータに対して，</span><br><span class="line">新しい損失関数を設計sekeし，</span><br><span class="line">小の渦巻きの位置ichi を予測する，</span><br><span class="line">超cho解像流れ画像を生成するの</span><br><span class="line">ニューラルネットワークの訓練を行うokonau</span><br><span class="line"></span><br><span class="line">深層Shinsō学習を用いてない既存の方法hōhō</span><br><span class="line">と比較hikakuして，</span><br><span class="line">本手法生成の超解像流れ画像精度大的优点</span><br><span class="line">以上desu</span><br></pre></td></tr></table></figure>
+
+<h2 id="M5项目"><a href="#M5项目" class="headerlink" title="M5项目"></a>M5项目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">今年4月，我与东京大学的几个朋友一起参加了Kaggle的M5预测比赛。在本次竞赛中，我们使用沃尔玛（按收入计算）这家全球最大的公司的分层销售数据来预测未来28天的每日销售量。数据涵盖了美国十个州的商店，并包括项目级别，部门，产品类别和商店详细信息。此外，它具有解释性变量，例如价格，促销，星期几和特殊事件。使用这些数据集，我们需要尽可能地提高预测准确性。</span><br><span class="line"></span><br><span class="line">导入包,matplotlib, pandas, numpy,sklearn,lightgbm等等</span><br><span class="line"></span><br><span class="line">有28天需要预测</span><br><span class="line">对sell_prices，calendar，sales_train_evaluation里面的数据进行预处理</span><br><span class="line">1.ol_dtype &#x3D;&#x3D; &quot;category&quot; 数据类型转化成int</span><br><span class="line">2.名字处理，横竖行排列处理，用melt函数转化竖着排列</span><br><span class="line"></span><br><span class="line">特征工程</span><br><span class="line">计算农历，农历是和月亮的周期有关</span><br><span class="line">计算每个商店具体商品的均值和方差</span><br><span class="line">lag特征，某个时间点的特征，如前7天，前14天，前21天，前28天，前35天的商品销量特征</span><br><span class="line">rolling特征，某个时间段的特征，某个时间段内的均值方差</span><br><span class="line">for i in [7,14,21,28]:</span><br><span class="line">for j in [7,14,30,45,60]: </span><br><span class="line">df[&#39;rolling_mean&#39;+str(i)+&#39;_t&#39;+str(j)]</span><br><span class="line"></span><br><span class="line">时间特征</span><br><span class="line">一周内的第几天，一月内的第几天，一年内的第几周，月份，季度，年</span><br><span class="line">月内的第几周</span><br><span class="line">是否是周末</span><br><span class="line">得到农历数据</span><br><span class="line"></span><br><span class="line">价格特征：</span><br><span class="line">某个商店商品最大值， 最小值， 标准差， 均值， 中位数，差值， 归一值</span><br><span class="line"></span><br><span class="line">训练模型</span><br><span class="line">ex_f派出不需要排除的特征eg.&#39;state_id&#39;数据里有10个州(加州德克萨斯州)只能用来分隔不能用作特征, &#39;demand&#39;, &#39;sales&#39;, &#39;date&#39;, &#39;d&#39;, &#39;weekday&#39;, &#39;wm_yr_wk&#39;, &#39;state_id&#39;, &#39;store_id&#39;</span><br><span class="line">features需要训练的特征，</span><br><span class="line">cat_feats类别型特征[&#39;item_id&#39;, &#39;dept_id&#39;, &#39;cat_id&#39;] + [&quot;event_name_1&quot;, &quot;event_name_2&quot;, &quot;event_type_1&quot;, &quot;event_type_2&quot;] + [&#39;snap_CA&#39;, &#39;snap_WI&#39;, &#39;snap_TX&#39;]</span><br><span class="line">(一些特征是数值型的)</span><br><span class="line"></span><br><span class="line">xgboost参数</span><br><span class="line">行采样，列采样，循环次数10次，根据不同的store来训练模型，并保存</span><br><span class="line"></span><br><span class="line">测试集的特征工程需要单独处理</span><br><span class="line">测试集加特征工程</span><br><span class="line">先预测头7天的数据</span><br><span class="line">再预测接着7天的数据</span><br><span class="line">再预测接着7天的数据</span><br><span class="line">再预测接着7天的数据 &#x3D;&#x3D; 28天</span><br><span class="line">调整coe &#x3D; 1.025</span><br><span class="line"></span><br><span class="line">模型融合</span><br><span class="line">给每个文件根据ID进行排序</span><br><span class="line">按照权重进行融合</span><br><span class="line">根据ID进行模型融合</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">我是我们团队的最初组织者，其他小组成员在我们一起工作之前并不认识。在这项工作中，我的角色主要是数据清理，以及基于一些软件包（例如NumPy或pandas）的要素工程的一部分，以预处理诸如售价，日历之类的数据。将价格的数据类型更改为int，将CSV文件进行行和列转换等。之后，总结诸如滞后，滚动和时间功能之类的功能。</span><br><span class="line"></span><br><span class="line">我认为，棘手的部分是特征工程。</span><br><span class="line">例如，由于它与节日有关，因此我们需要根据农历和月相周期来转换功能。其他特征，例如滞后特征，它们是前7天，前14天，21天，28天，35天的商品销售量。滚动功能，代表时间段1-7天，8-14天，15-21天。时间功能，是星期几（例如星期一，星期二等），月的哪一天，年的哪一天，月，季度，年等。同时，还需要考虑产品的价格特性，例如最大值，最小值，平均值，中位数等。基于对特定问题的深刻理解和对特征的理解等同于特征工程。</span><br><span class="line">结果，交付后，我获得了等级为43&#x2F;5558的银牌。在这个项目中，我了解了团队合作和沟通的重要性。在此期间，我们每周都会明确划分任务并进行小组讨论。根据每个人的不同知识背景，讨论后可以解决许多问题。而且任何人都无法完成整个项目。在技术方面，我还从我的合作伙伴那里学习了模型融合的技巧，该技巧是同时使用xgb，lgb和加权混合模型等不同模型以获得更好的结果。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Data cleaning &amp;&amp; Feature engineering</span><br><span class="line"></span><br><span class="line">The goal of this competition is to predict Wal-Mart’s sales in the coming quarters.</span><br><span class="line">Data: 5 files. The sales situation of the product on a certain date, the price of the product, the historical sales situation of 5 years, there are 4 weeks 28 days to predict</span><br><span class="line"></span><br><span class="line">matplotlib, pandas, numpy, sklearn, lightgbm, xgboost</span><br><span class="line">Calculate the lunar calendar, moon phases, holidays,weekends,which  day in the week, which week in the month and which month in the year</span><br><span class="line">Calculate the mean and variance of product</span><br><span class="line"></span><br><span class="line">Ten stores, some in California, some in Texas</span><br><span class="line"></span><br><span class="line">一个challenging project&#x2F;有没有项目中感觉到不太懂或者遇到困难的。我回答了一个项目先是遇到困难后来在一系列解决方法下performance非常好的例子追问细节：performance好是超出期望的吗？还是说提高这么多倍是正常的？data代表的数据具体是什么？</span><br><span class="line"></span><br><span class="line">模型融合的时候，用了一个自己训练的结果，还有网上的2个两个结果进行融合，权重的系数对结果影响比较大</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="好奇心"><a href="#好奇心" class="headerlink" title="好奇心"></a>好奇心</h3><p>私は物事に対する好奇心が人より強いと思う。日本に来て半年の間、和菓子作り、浴衣着付け、富士山登り、神社参り、青春18切符で中国や四国まで十日間の旅、市民音楽会など様々なイベントに参加し日本の伝統、歴史、文化に触れました。これから社会に出て「好奇心」を仕事に生かして、新しい環境に積極的に飛び込んで誰よりも業務に詳しい人になりたい。私は仕事を楽しむことが大事だと思い、好奇心を持って仕事を楽しみながら地道（じみち）に努力を重ねて行きたい。</p>
+<h3 id="趣味"><a href="#趣味" class="headerlink" title="趣味"></a>趣味</h3><p>趣味は友人と一緒に旅行することです。旅行では日常生活に隠れる美しさの発見ができます。今年の夏に富士山を登り、山頂から星空のように光っている都市の夜景を見て、私は毎日「星空」に囲まれることを知り始めた。また、友人と交互に支えて山頂まで辿りつくことによって、旅の苦労を分かち合う間に友情も深めました。</p>
+<p>私の趣味は友人と一緒に旅行する。旅行は地域の歴史や文化や自然への理解を深め、社会を知る方法の一つだと思う。旅行では生活に隠れられた美しさも発見できます。今年の夏休みに、私は富士登山しました。山頂から眺めると、夜の都市は星空のようにきらきら暖かく光っていた。山頂から見ないといつも住んでいるところは毎日「星空」に囲まれるのは思われない、その美しさを発見したのは旅行の意義だと思います。また、一緒に旅出した友人も同じ感動を分かち合える上でもっと親しくなれると感じた。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">我对机器学习技术非常感兴趣。我相信该领域将在未来继续蓬勃发展，这也是人工智能领域的必要知识。我的实验室专注于流体力学的研究，我的研究是应用深度学习技术来改善CFD数值模拟的结果。具体而言，计算机视觉中的高分辨率技术（GAN）用于改善数值模拟结果。除了在学校学习与人工智能相关的课程外，我在业余时间还学习了由斯坦福大学教授吴安德（Andrew Ng）在Coursera上教授的深度学习系列课程，并获得了认证。另外，我对软件工程的前端也有浓厚的兴趣。我自学了Java，以及伯克利大学的数据结构和算法。因此，我认为我申请的职位适合我。尽管我仍处于学习阶段，但我认为通过积累一定的实践经验，我将能够担任这一职位，并挑战现实生活中遇到的各种问题。</span><br><span class="line"></span><br><span class="line">基于深度学习的流场信息的重构</span><br><span class="line"></span><br><span class="line">湍流是一种混沌的时空多尺度非线性现象。对简洁，高分辨率的湍流数据的要求一直是实验和CFD（计算流体力学）的主要追求之一。在CFD中，流体流量数据的精度随网格的分辨率而提高。 DNS（直接数值模拟）是对具有精细网格的计算流体动力学进行的模拟，该模拟非常精确，但价格昂贵。 LES（大涡模拟）具有粗网格，但计算效率更高。随着高性能计算机和算法的发展，可用的仿真数据呈爆炸性增长。</span><br><span class="line">另一方面，深度学习技术也成为发展各种应用湍流模型的有前途的技术。 [1]因此，如果可以从通过LES获得的数据中重建DNS质量数据，则对于子网格规模建模将非常有帮助。本研究的目的是开发深度学习方法，以从低分辨率流场输入中重建超分辨率流场数据。</span><br><span class="line">超分辨率（SR）是提高成像系统分辨率的一类技术。 CNN（卷积神经网络）最近展示了针对单图像超分辨率（SR）的高质量重建[2]。 在这项研究中，开发了变形的CNN。 利用细网格模拟数据的参考并设计损失函数来训练神经网络，它们使用粗流场输入重建超分辨率数据。</span><br><span class="line">2.2方法论</span><br><span class="line">输入的时候imput image, CFD参考模拟结果分为三部分，分别由训练数据，验证数据和测试数据组成。 除了主要使用的参数外，还有速度（u，v）和压力（p）的不同组成部分。</span><br><span class="line"></span><br><span class="line">框架时开始部分把原始的图像由两层卷积层，主干部分res net，4个res next的block实现的，然后是接了一个金字塔池化，把resnet得到的输出连接起来，把这一部分的信息再送到卷积层得到输出这样。</span><br><span class="line">然后后面跟着一个解码的模块，再接着一个卷积层就可以得到一个超分辨率的图像</span><br><span class="line"></span><br><span class="line">卷积原理，feature map比较大的情况下为了得到这部分的feature特征细节，提取内部的到一个latent space，和图片里的每一个像素，可以说是乘法吧，得到一个输出。</span><br><span class="line">不同卷积核</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">变形的CNN的体系结构由五个卷积层，完全连接层和转置卷积层组成。 变形的CNN使用卷积层将输入映射到潜在空间。 并为输入的仿真数据生成特征表示。 要重建超分辨率数据，请训练从粗网格潜在空间到精细网格潜在空间的完整连接层，并通过变形的CNN对其进行上采样。 选择损失函数作为均方误差。</span><br><span class="line"> </span><br><span class="line">此外，使用梯度下降来更新权重。 优化权重，以便优化所需的高分辨率数据y与模型输出F（x; w）之间的损失函数。 在训练数据处理后确定权重之后，该模型可以应用于某些问题。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Intel-Technical-seminar⭐"><a href="#Intel-Technical-seminar⭐" class="headerlink" title="Intel Technical seminar⭐"></a>Intel Technical seminar⭐</h2><p>missing insight, searching what inside, topic, schedule, people, </p>
+<p>5w ,set a goal, work backwords,</p>
+<p>manager,</p>
+<p>my goal is, livly tight deadline with , to attract with undsided topic, </p>
+<ol>
+<li>figure ti=oic,why this topic</li>
+<li>logical </li>
+<li>find right people</li>
+<li>working backwards</li>
+<li></li>
+</ol>
+<p>S<br>SIASUN Robot collaborative robot<br>Business-oriented -&gt; Tech<br>When I led the technical seminar for the first time, it is very challenging for me.<br>Cause I have no idea how to…<br>T<br>Invite a technical specialist from Intel or a partner company and attract as many customers in the seminar topic field and build a relationship if possible.<br>A<br>The first thing I did is search a lot of previous posts on a similar topic on the internet in order to understand it better. Including setting the schedule and word flow, a lot of basic concepts of topic about the technical seminar.<br>Second, I also ask some team members for tips on how to attract and serve the customer better, like connect with the previous partner who has a similar background to get advanced knowledge in this field. And I also learn that we should avoid involving opponent technique in our seminar and the same with the posting article. eg NVIDIA/ɪnˈvɪdiə/</p>
+<p>Based on that, I started to work with customers to figure out what kind of problems that customers concerned about most.<br>Cause most customers who are coming to seminars are not professional developers. We need to use their language to tell them the story.<br>They just need to know if they are easy to use and efficient, they don’t care about how to implement the algorithms.<br>All they need to do is just make easy decisions based on the suggestions we provide. The system will take care of all the other stuff.  Like if there is a security system, the system will bubble up an alert to let them know, and also providing them the detailed dashboards. They can choose the suggestions provided by the system, like reset the robot arm.</p>
+<p>R<br>So, finally, after the seminar, we invited 60 people and get positive feedback from customers.<br>We get a connection with a professor in the engineering department at Shanghai Tech University.<br>Since then I always try my best to listen to the customers and provide the best experience for them.</p>
+<h2 id="How-do-you-show-your-customer-obsession-⭐"><a href="#How-do-you-show-your-customer-obsession-⭐" class="headerlink" title="How do you show your customer obsession?⭐"></a>How do you show your customer obsession?⭐</h2><p>“An example of how I regard customers is from my previous job as ProductManager at Hardware Store X in 2016. We were having problems retainingcustomers because our online services, in particular the online web shop,<br>weren’t as sophisticated as our in person services were even though more ofour customers were wanting to shop online. I realized needed to be resolvecand began a push to revamp the app along with the IT department. It took us6 months, but in the end we rolled out the new online app and it was well<br>received. This and effort from other departments helped the organization<br>notch customer engagement of 85% from just 65% earlier over the next 2<br>years. We improved the region’s profitability by 15%.”</p>
+<h2 id="Tell-me-a-example-you-work-beyond-your-scope"><a href="#Tell-me-a-example-you-work-beyond-your-scope" class="headerlink" title="Tell me a example you work beyond your scope"></a>Tell me a example you work beyond your scope</h2><p>not your job, understand customer, </p>
+<p>wechat background, python, sql, to manage</p>
+<p>!share the insides, how you use </p>
+<p>saving time, find pentail partener 2h,-&gt; new method 30min</p>
+<p>data</p>
+<h2 id="Strength-and-weakness-⭐⭐"><a href="#Strength-and-weakness-⭐⭐" class="headerlink" title="Strength and weakness?⭐⭐"></a>Strength and weakness?⭐⭐</h2><h3 id="Strength-short-term-value-and-long-term-value"><a href="#Strength-short-term-value-and-long-term-value" class="headerlink" title="Strength/short-term value and long-term value"></a>Strength/short-term value and long-term value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">I think my strength is focused more quality when compared with the quantity.</span><br><span class="line"></span><br><span class="line">I took a course called CFD introduction last semester. </span><br><span class="line"></span><br><span class="line">This course requires a final project in fluid mechanics simulation. </span><br><span class="line"></span><br><span class="line">Basically, I can choose to finished two 2D cases or one 3D case.</span><br><span class="line"></span><br><span class="line">But I think 3D is more interesting and have more benefits in long term when compared to 2D.</span><br><span class="line"></span><br><span class="line">Because I think practicing a 3D simulation will be a good experience and also be of great help to my future research, the simulation data can be used as dataset in deep learning method.</span><br><span class="line"></span><br><span class="line">However 3D numerical simulation is much more complicated, it is difficult to finish within the 2 weeks deadline. </span><br><span class="line"></span><br><span class="line">So I communicated with the professor by email in advance and told him my thoughts and got the one-week extension.</span><br><span class="line"></span><br><span class="line">Finally, I compete the 3D fluid simulation on flow passed a squared cylinder by using LES simulation method.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Weakness"><a href="#Weakness" class="headerlink" title="Weakness"></a>Weakness</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">I am kind of introverted person. </span><br><span class="line"></span><br><span class="line">For example, if I am at a party, I may not greet strangers. I think this shortcoming will make me lose some potential opportunities to get new friends.</span><br><span class="line"></span><br><span class="line">In order to solve this problem, I participated in the school’s one-to-one exchange program, which is a program in which introduce two people from two different countries to know each other and learning about the new language and culture, and my partner is Mr.Yoshinaga, he is big fan of animation and movie.. We have enjoy our time became close friend now. </span><br><span class="line"></span><br><span class="line">In addition, I also tried to use Cambly, which is a website for people who want to learn English communicating with people all over the world.  </span><br><span class="line"></span><br><span class="line">Through this website, I have talked with many people from different countries such like South Africa, the United States, and Brazil. </span><br><span class="line"></span><br><span class="line">I think this not only make me become more outgoing but also broaden my horzions and learning different kinds of culture.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Conflict⭐⭐"><a href="#Conflict⭐⭐" class="headerlink" title="Conflict⭐⭐"></a>Conflict⭐⭐</h2><p>When I was working on a project for our Internet Architecture Course, one of the members of my team would consistently show up late, or even not show up at all to our team meetings<br>As the leader of the team, I had to address the situation and make sure that our coworker was fulfilling his responsibilities. So I contacted X and scheduled a one-on-one meeting. During the meeting, I provided examples of meetings that he was late or evenfailed to attend and explain why this was an issue for the entire team. Also, I asked him to explain why this was happening? He explained that many of these meetings were conficting with work related to another project. We decided to move the meeting one hour later.<br>At our next meeting, he apologized in front of the group and promised this would no longer occur. The project went well and in the end we got an A on our group project!</p>
+<h2 id="Tell-me-about-a-situation-where-you-had-to-solve-a-difficult-problem⭐"><a href="#Tell-me-about-a-situation-where-you-had-to-solve-a-difficult-problem⭐" class="headerlink" title="Tell me about a situation where you had to solve a difficult problem⭐"></a>Tell me about a situation where you had to solve a difficult problem⭐</h2><p>Let me tell you about a project that I led during my last year of university we were a team of five charged of developing machine learning algorithm that would accurately spot cats from given samples and our lecture had<br>allocated two specific tasks and goes to to each of us for for this purpose and gave us a deadline of 1/2 months now two weeks into into the project I realize that one of our team members never actually showed up to our group meeting so I thought l’d give them a heads up as I send them a few emails asking what’s going on and they politely replied that some personal circumstances prevented them from from attending our meeting but they do their best to do so on the next occasion and at the next occasion still there was the same situation they couldn’t show up and I realized that it was actually getting this was getting becoming a serious situation because we had no no possible way of completing our project on time without team member given that we were assigned specifictasks here and so after a quick discussion with our teammates I decide to schedule a one-on-one between me and that person and during that meeting thatperson was quite apologetic and I’m confident that the situation his<br>situation was genuine however they couldn’t reassure me that this won’t happen again so I really felt like I should contact the lecturer to see what can be done about this and this proved to be a gooddecision in my case because the lecturer scheduled the meeting with all three of us and five minutes into the meeting he became obvious that that person couldn’t be part of our project so the lecturer remove them and reassign tasks to ourproject which again turned out to be a very good idea because we were able despite all these difficulties to complete our project on time and even further but we managed to deliver an algorithm that spotted 97.5% of caps inin images as compared to the original threshold the passing threshold or of of just 90%</p>
+<h2 id="Tell-me-about-one-time-you-take-risk-⭐⭐"><a href="#Tell-me-about-one-time-you-take-risk-⭐⭐" class="headerlink" title="Tell me about one time you take risk?⭐⭐"></a>Tell me about one time you take risk?⭐⭐</h2><p>I think my strength is focused more quality when compared with the quantity.<br>I took a course called CFD introduction last semester.<br>This course requires a final project in fluid mechanics simulation.<br>Basically, I can choose to finished two 2D cases or one 3D case.<br>But I think 3D is more interesting and have more benefits in long term when compared to 2D.<br>Because I think practicing a 3D simulation will be a good experience and also be of great help to my future research, the simulation data can be used as dataset in deep learning method.<br>However 3D numerical simulation is much more complicated, it is difficult to finish within the 2 weeks deadline.<br>So I communicated with the professor by email in advance and told him my thoughts and got the one-week extension.<br>Finally, I compete the 3D fluid simulation on flow passed a squared cylinder by using LES simulation method.</p>
+<h2 id="Tell-me-about-one-time-you-cannot-meet-a-deadline-2-tight-deadline-Couldn’t-finish-tasks-before-deadline"><a href="#Tell-me-about-one-time-you-cannot-meet-a-deadline-2-tight-deadline-Couldn’t-finish-tasks-before-deadline" class="headerlink" title="Tell me about one time you cannot meet a deadline?2.tight deadline?Couldn’t finish tasks before deadline?"></a>Tell me about one time you cannot meet a deadline?2.tight deadline?Couldn’t finish tasks before deadline?</h2><p>tight ddl怎么解决，仔细说</p>
+<p>有没有ddl快到了，做了comprimise的例子，deadline 过后有没有做什么 improvement，怎么做。这个我就说了一个课程项目，ddl快到了，只把base的情况做了，没有做完bonus part</p>
+<p>I remember last time I was building the alerting system, my original schedule is one week, but my manager suddenly sent me an email said that he needs to show a demo to a customer two days later. One core feature of the demo is the alerting system. So I was asked to realize the function before two days deadline. If I still follow the original schedule, I definitely can not finish that. My original schedule is to let the alerting system generate rules automatically based on dynamic data. But I can not finish that in such a short time. So I figured out another temporary solution with my manager, is to make it a fake automation temporarily, to preset all the parameters and processes. If you run it, it will behave like generating rules automatically, so for the demo, the customer will have exactly the same experience. And I can also finish that before deadline. After that, I can make it real automation.</p>
+<p>If I couldn’t finish tasks before deadline, I will discuss with my colleagues, trying to figure out a way that can improve the efficiency and If necessary, I will use my private time to keep working on the task. After all, finishing the task with high quality as soon as possible is what we want. I’ll never sacrifice the customer experience or the quality of the product because of that. Customer experience is always the most important. We must make sure that the product we are gonna deliver is qualified. We can sacrifice our own time to try to finish the tasks. If we still can not finish the tasks, we will communicate with customers and related people, to tell them why and earn their trust. At the same time, we will try our best to finish the tasks as soon as possible.</p>
+<h3 id="make-decision-a-time-you-make-fast-decision"><a href="#make-decision-a-time-you-make-fast-decision" class="headerlink" title="make decision/a time you make fast decision"></a>make decision/a time you make fast decision</h3><p>Describe a time when you make a decision without your professor or your supervisor’s permission.</p>
+<p>quick decision with limited data</p>
+<h1 id="谈薪资"><a href="#谈薪资" class="headerlink" title="谈薪资"></a>谈薪资</h1><p>反问：您这边的工资结构是怎样的？我还不是很清楚。有没有任务绩效，五险一金的比例，年终奖的构成等。</p>
+<p>1.五险一金<br>2.每个月的工资构成（底薪+绩效+餐补+交通补等等）<br>3.12个月的基本薪资+季度奖金+年终奖等等<br>4.涨薪机制（一年有多少次考核晋升调薪机会、KPI考核）、期权等等。</p>
+<p>根据第1步自己的预期薪水范围，和第2步hr回答的工资结构，你可以调整下自己的预期薪水范围。然后告诉hr这个范围。注意，这里回答一个范围（比如10k-20k），而不是一个具体的数值（比如15k），以避免低于或者超过HR的预期。</p>
+<p>我希望的薪资是税前xx-xx(一个区间）来进行回答（这个范围比自己预估的高一些，避免HR有意压价而吃亏）</p>
+<p>作者：Eva Fan<br>链接：<a href="https://www.zhihu.com/question/34557602/answer/592380732" target="_blank" rel="noopener">https://www.zhihu.com/question/34557602/answer/592380732</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>HR:那接下来想问一下您对这个岗位薪水的期望？</p>
+<p>人选：请问这个岗位的薪酬范围大约是多少？（可不要太耿直说按照对方的范围来，参照本回答第一段）</p>
+<p>HR:薪资范围是有的，当然我们会结合人选的目前薪资水平和期望值综合考虑。（这句话是试探，这个HR比较老练，也不会马上透底牌）</p>
+<p>人选：我目前的薪水是XX，季度绩效奖金大约XX，另外会有期权XX，年终还会有2个月的工资作为奖金。所以我的年薪大约XX（注意，说自己目前薪水尽量详细一些，奖金福利要计算进去，同时也先不要出价，尽量把底牌放到后面出）</p>
+<p>HR: 谢谢您详细的信息。不知道您公司的带薪年假和其他福利怎么样？我们公司有XX天带薪年假，补充商业医疗保险百分百报销，子女也一样。住房公积金比较高是20%，等等。（注意这个时候如果HR开始说其他福利，说明她要开始压价了，当然有的公司的福利确实很好，比如保险和住房公积金是非常实在的福利，仔细听和了解）</p>
+<p>人选：这些福利不错。</p>
+<p>HR:对的，相比同类公司我们很注重人文和福利。但是我注意到您目前的薪水也不低，而且很接近我们岗位预算的上限了，所以还是想问问您具体您的薪水期望是多少呢？（压价信号，也是一个心理暗示，这个时候可以考虑把自己做好功课研究的薪水期望报一下了）</p>
+<p>人选：啊，那你们的上限设定的也不算高（同样给对方一个心理反暗示）。这样吧，我们先说工资的部分，我的期望值是XX（报出比你的底线高一些的薪资期望，开始出牌，同时记住先谈薪资，再谈福利，不要混为一谈）</p>
+<p>HR:  这个数字有点高了，我也有些为难，但我们珍惜每一位优秀的候选人。如果薪水是XX（继续压价信号，比对方报价低较多）您可以接受吗？</p>
+<p>人选：我对贵司好感度很高，贵司有很好的实力请到业内优秀的同仁。这个岗位的职责与我非常匹配，而且我的技术在这个领域是比较专的，跳槽成本比较大。我希望下一个变动能够有一个薪水上良好的提升。 如果只是您出的这个数字，我需要回去考虑一下。（反压价，暗示现在自己的独特性，以及不止一个机会在谈。）</p>
+<p>HR:理解，那这样，我也把您的薪水状况以及期望报告给老板，因为超出预算的部分需要特批的。虽然不确定能否拿到特批，但我希望您能加入我们！（可能是缓和信号，也可能是缓兵之计）</p>
+<p>人选：非常感谢您的帮助，说实话，在这个岗位我算有几年工作经验，对于市场的人才价格有所耳闻（自己不是小白），贵司口碑品牌做的这么好，又在今年招聘了不少人才，相信贵司能够有一个合理的offer出给我。（夸赞对方的实力，也表明自己是指导自己的价值的，同时展现自己良好的意愿让HR能够有信心的帮你争取薪水。）</p>
+<p>人选：好的，请问什么时候能够有结果呢（确定一个时限，现场确认远比离开后邮件或者电话确认强）</p>
+<p>HR:下周一我给您回复。</p>
+<p>以上这个案例里，人选明显已经做了很多的调研工作，了解这个岗位的薪资以及了解自己的薪资状况。同时也在对话中争取了主动权。实际结果也是拿到了不错的offer.</p>
+<p>如果觉得这篇回答有用谢谢点赞，希望大家都能拿到好offer！</p>
+<p>想咨询更多offer环节复盘，行业薪酬咨询，可以私信。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Interview/" rel="tag"># Interview</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/10/Byte%20dance%20interview/" rel="prev" title="Byte Dance Interview">
+      <i class="fa fa-chevron-left"></i> Byte Dance Interview
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/12/Machine%20Learning%20Interview/" rel="next" title="Machine Learning Interview">
+      Machine Learning Interview <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Neusoft-Interview"><span class="nav-number">1.</span> <span class="nav-text">Neusoft Interview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#嵌入式软件开发"><span class="nav-number">2.</span> <span class="nav-text">嵌入式软件开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面经"><span class="nav-number">3.</span> <span class="nav-text">面经</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#七月在线ML练习题"><span class="nav-number">3.1.</span> <span class="nav-text">七月在线ML练习题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java基础"><span class="nav-number">4.</span> <span class="nav-text">Java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-堆和栈那个是对程序员透明的？"><span class="nav-number">4.1.</span> <span class="nav-text">1.堆和栈那个是对程序员透明的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-多态"><span class="nav-number">4.2.</span> <span class="nav-text">2.多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Final和finally，finalize的区别？"><span class="nav-number">4.3.</span> <span class="nav-text">3.Final和finally，finalize的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Java的垃圾回收机制"><span class="nav-number">4.4.</span> <span class="nav-text">4.Java的垃圾回收机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-J2EE，J2SE，J2ME区别"><span class="nav-number">4.5.</span> <span class="nav-text">5.J2EE，J2SE，J2ME区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-内存泄露，溢出分析"><span class="nav-number">4.6.</span> <span class="nav-text">6.内存泄露，溢出分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#溢出"><span class="nav-number">4.6.1.</span> <span class="nav-text">溢出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泄露"><span class="nav-number">4.6.2.</span> <span class="nav-text">泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-堆溢出"><span class="nav-number">4.6.3.</span> <span class="nav-text">Java 堆溢出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-JVM的内存三个区"><span class="nav-number">4.7.</span> <span class="nav-text">7.JVM的内存三个区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-全局变量，局部静态变量等存储在哪里"><span class="nav-number">4.8.</span> <span class="nav-text">8.全局变量，局部静态变量等存储在哪里</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-堆栈溢出一般是由什么原因导致的？"><span class="nav-number">4.9.</span> <span class="nav-text">9.堆栈溢出一般是由什么原因导致的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络"><span class="nav-number">5.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#五层协议"><span class="nav-number">5.1.</span> <span class="nav-text">五层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议"><span class="nav-number">5.2.</span> <span class="nav-text">OSI，TCP&#x2F;IP，五层协议的体系结构，以及各层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP三次握手和四次挥手的全过程"><span class="nav-number">5.3.</span> <span class="nav-text">TCP三次握手和四次挥手的全过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么不用2次握手？"><span class="nav-number">5.4.</span> <span class="nav-text">为什么不用2次握手？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP的区别？"><span class="nav-number">5.5.</span> <span class="nav-text">TCP和UDP的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP如何保证可靠传输，丢包怎么办"><span class="nav-number">5.6.</span> <span class="nav-text">TCP如何保证可靠传输，丢包怎么办</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？"><span class="nav-number">5.7.</span> <span class="nav-text">TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用滑动窗口控制提高速度"><span class="nav-number">5.8.</span> <span class="nav-text">利用滑动窗口控制提高速度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS域名系统，简单描述其工作原理。"><span class="nav-number">5.9.</span> <span class="nav-text">DNS域名系统，简单描述其工作原理。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址的分类"><span class="nav-number">5.10.</span> <span class="nav-text">IP地址的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP是地址解析协议，简单语言解释一下工作原理"><span class="nav-number">5.11.</span> <span class="nav-text">ARP是地址解析协议，简单语言解释一下工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各种协议的介绍"><span class="nav-number">5.12.</span> <span class="nav-text">各种协议的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述RARP协议"><span class="nav-number">5.13.</span> <span class="nav-text">描述RARP协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP协议"><span class="nav-number">6.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http"><span class="nav-number">6.1.</span> <span class="nav-text">http</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP原理"><span class="nav-number">6.2.</span> <span class="nav-text">HTTP原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在浏览器中输入www-baidu-com后执行的全部过程"><span class="nav-number">6.2.1.</span> <span class="nav-text">在浏览器中输入www.baidu.com后执行的全部过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP特点"><span class="nav-number">6.3.</span> <span class="nav-text">HTTP特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URI和URL的区别"><span class="nav-number">6.4.</span> <span class="nav-text">URI和URL的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">6.5.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">6.6.</span> <span class="nav-text">HTTPS?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP报文组成"><span class="nav-number">6.7.</span> <span class="nav-text">HTTP报文组成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机操作系统"><span class="nav-number">7.</span> <span class="nav-text">计算机操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并发"><span class="nav-number">7.1.</span> <span class="nav-text">并发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">7.2.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">7.3.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thread线程与process进程区别和联系"><span class="nav-number">7.4.</span> <span class="nav-text">Thread线程与process进程区别和联系?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程"><span class="nav-number">7.5.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序什么时候应该使用线程，什么时候单线程效率高"><span class="nav-number">7.6.</span> <span class="nav-text">程序什么时候应该使用线程，什么时候单线程效率高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用线程是如何防止出现大的波峰。"><span class="nav-number">7.7.</span> <span class="nav-text">使用线程是如何防止出现大的波峰。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程状态的切换"><span class="nav-number">7.8.</span> <span class="nav-text">进程状态的切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程是否具有相同的堆栈-是否有独立的堆栈"><span class="nav-number">7.8.1.</span> <span class="nav-text">线程是否具有相同的堆栈?是否有独立的堆栈?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁"><span class="nav-number">7.9.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何预防死锁，避免死锁，死锁发生的检查"><span class="nav-number">7.10.</span> <span class="nav-text">如何预防死锁，避免死锁，死锁发生的检查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥锁，自旋锁，读写锁，悲观锁，乐观锁"><span class="nav-number">7.10.1.</span> <span class="nav-text">互斥锁，自旋锁，读写锁，悲观锁，乐观锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆和栈的区别以及存储模式有什么区别"><span class="nav-number">7.11.</span> <span class="nav-text">堆和栈的区别以及存储模式有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机内存管理的方式"><span class="nav-number">7.12.</span> <span class="nav-text">计算机内存管理的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存管理虚拟内存"><span class="nav-number">7.13.</span> <span class="nav-text">内存管理虚拟内存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux系统基础"><span class="nav-number">8.</span> <span class="nav-text">Linux系统基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux常见命令文件与目录的基本操作"><span class="nav-number">8.1.</span> <span class="nav-text">Linux常见命令文件与目录的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ls"><span class="nav-number">8.1.0.1.</span> <span class="nav-text">1. ls</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-cd"><span class="nav-number">8.1.0.2.</span> <span class="nav-text">2. cd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-mkdir"><span class="nav-number">8.1.0.3.</span> <span class="nav-text">3. mkdir</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-rmdir"><span class="nav-number">8.1.0.4.</span> <span class="nav-text">4. rmdir</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-touch"><span class="nav-number">8.1.0.5.</span> <span class="nav-text">5. touch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-cp"><span class="nav-number">8.1.0.6.</span> <span class="nav-text">6. cp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-rm"><span class="nav-number">8.1.0.7.</span> <span class="nav-text">7. rm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-mv"><span class="nav-number">8.1.0.8.</span> <span class="nav-text">8. mv</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库"><span class="nav-number">9.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Indexing索引"><span class="nav-number">9.1.</span> <span class="nav-text">Indexing索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一索引"><span class="nav-number">9.1.1.</span> <span class="nav-text">唯一索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主键索引"><span class="nav-number">9.1.2.</span> <span class="nav-text">主键索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚集索引"><span class="nav-number">9.1.3.</span> <span class="nav-text">聚集索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是游标"><span class="nav-number">9.2.</span> <span class="nav-text">什么是游标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对数据库操作的语句"><span class="nav-number">9.3.</span> <span class="nav-text">对数据库操作的语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的操作过程"><span class="nav-number">9.4.</span> <span class="nav-text">数据库的操作过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC？"><span class="nav-number">9.5.</span> <span class="nav-text">MVC？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restful-api"><span class="nav-number">9.6.</span> <span class="nav-text">Restful api</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie和session是什么，为什么要用cookie和session"><span class="nav-number">9.7.</span> <span class="nav-text">Cookie和session是什么，为什么要用cookie和session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同点"><span class="nav-number">9.7.1.</span> <span class="nav-text">不同点:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的事务是什么"><span class="nav-number">9.8.</span> <span class="nav-text">数据库的事务是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的特性（ACID）"><span class="nav-number">9.9.</span> <span class="nav-text">事务的特性（ACID）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-number">10.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-属于分布式版本控制系统，而-SVN-属于集中式。"><span class="nav-number">10.1.</span> <span class="nav-text">Git 属于分布式版本控制系统，而 SVN 属于集中式。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用操作"><span class="nav-number">10.2.</span> <span class="nav-text">常用操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Interview-Questions"><span class="nav-number">11.</span> <span class="nav-text">Interview Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JD"><span class="nav-number">11.1.</span> <span class="nav-text">JD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己紹介してください"><span class="nav-number">11.2.</span> <span class="nav-text">自己紹介してください</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why东软"><span class="nav-number">11.3.</span> <span class="nav-text">Why东软</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌕なんで日本で就職？"><span class="nav-number">11.4.</span> <span class="nav-text">🌕なんで日本で就職？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长处"><span class="nav-number">11.5.</span> <span class="nav-text">长处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#短处-ストレスを感じた時-頑張ったこと"><span class="nav-number">11.6.</span> <span class="nav-text">短处 | ストレスを感じた時 | 頑張ったこと</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-IT"><span class="nav-number">11.7.</span> <span class="nav-text">Why IT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5年后？入社後にやりたいこと？"><span class="nav-number">11.8.</span> <span class="nav-text">5年后？入社後にやりたいこと？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卒業論文"><span class="nav-number">11.9.</span> <span class="nav-text">卒業論文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#M5项目"><span class="nav-number">11.10.</span> <span class="nav-text">M5项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#好奇心"><span class="nav-number">11.10.1.</span> <span class="nav-text">好奇心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#趣味"><span class="nav-number">11.10.2.</span> <span class="nav-text">趣味</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intel-Technical-seminar⭐"><span class="nav-number">11.11.</span> <span class="nav-text">Intel Technical seminar⭐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-do-you-show-your-customer-obsession-⭐"><span class="nav-number">11.12.</span> <span class="nav-text">How do you show your customer obsession?⭐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tell-me-a-example-you-work-beyond-your-scope"><span class="nav-number">11.13.</span> <span class="nav-text">Tell me a example you work beyond your scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strength-and-weakness-⭐⭐"><span class="nav-number">11.14.</span> <span class="nav-text">Strength and weakness?⭐⭐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Strength-short-term-value-and-long-term-value"><span class="nav-number">11.14.1.</span> <span class="nav-text">Strength&#x2F;short-term value and long-term value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weakness"><span class="nav-number">11.14.2.</span> <span class="nav-text">Weakness</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conflict⭐⭐"><span class="nav-number">11.15.</span> <span class="nav-text">Conflict⭐⭐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tell-me-about-a-situation-where-you-had-to-solve-a-difficult-problem⭐"><span class="nav-number">11.16.</span> <span class="nav-text">Tell me about a situation where you had to solve a difficult problem⭐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tell-me-about-one-time-you-take-risk-⭐⭐"><span class="nav-number">11.17.</span> <span class="nav-text">Tell me about one time you take risk?⭐⭐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tell-me-about-one-time-you-cannot-meet-a-deadline-2-tight-deadline-Couldn’t-finish-tasks-before-deadline"><span class="nav-number">11.18.</span> <span class="nav-text">Tell me about one time you cannot meet a deadline?2.tight deadline?Couldn’t finish tasks before deadline?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#make-decision-a-time-you-make-fast-decision"><span class="nav-number">11.18.1.</span> <span class="nav-text">make decision&#x2F;a time you make fast decision</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#谈薪资"><span class="nav-number">12.</span> <span class="nav-text">谈薪资</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
