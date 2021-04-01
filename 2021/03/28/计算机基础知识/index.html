@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dejavi-19.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="计算机基础知识高频面试题及答案Repohttps:&#x2F;&#x2F;www.taodudu.cc&#x2F;news&#x2F;show-2018933.html 先背基础，再背框架，然后数据库，redis等等，再刷算法，基本就够了 https:&#x2F;&#x2F;segmentfault.com&#x2F;u&#x2F;javaguide https:&#x2F;&#x2F;snailclimb.gitee.io&#x2F;javaguide-interview&#x2F;#&#x2F; Thread线程与pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机基础知识">
+<meta property="og:url" content="https://dejavi-19.github.io/2021/03/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Dejavu&#39;s Notebook">
+<meta property="og:description" content="计算机基础知识高频面试题及答案Repohttps:&#x2F;&#x2F;www.taodudu.cc&#x2F;news&#x2F;show-2018933.html 先背基础，再背框架，然后数据库，redis等等，再刷算法，基本就够了 https:&#x2F;&#x2F;segmentfault.com&#x2F;u&#x2F;javaguide https:&#x2F;&#x2F;snailclimb.gitee.io&#x2F;javaguide-interview&#x2F;#&#x2F; Thread线程与pro">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328907031_09DD8C2662B96CE14928333F055C5580">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328974264_E4E1F3318AF5F32719A15808E8D8458B">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523330203140_679365C102E2482C08A96522C038E4F4">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523330268987_BE6FD1F463EA96355ED600180CD14D97">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523329478530_13ABD61BD6655587865C9126C15D259D">
+<meta property="article:published_time" content="2021-03-28T11:40:17.655Z">
+<meta property="article:modified_time" content="2021-03-28T11:40:17.833Z">
+<meta property="article:author" content="Dejavu">
+<meta property="article:tag" content="Interview">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328907031_09DD8C2662B96CE14928333F055C5580">
+
+<link rel="canonical" href="https://dejavi-19.github.io/2021/03/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机基础知识 | Dejavu's Notebook</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/Dejavu-19" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dejavu's Notebook</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alea iacta est</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首&emsp;&emsp;页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于博主</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标&emsp;&emsp;签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分&emsp;&emsp;类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归&emsp;&emsp;档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dejavi-19.github.io/2021/03/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+      <meta itemprop="name" content="Dejavu">
+      <meta itemprop="description" content="Stay gold">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dejavu's Notebook">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机基础知识
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-28 20:40:17" itemprop="dateCreated datePublished" datetime="2021-03-28T20:40:17+09:00">2021-03-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="计算机基础知识"><a href="#计算机基础知识" class="headerlink" title="计算机基础知识"></a>计算机基础知识</h1><h1 id="高频面试题及答案"><a href="#高频面试题及答案" class="headerlink" title="高频面试题及答案"></a>高频面试题及答案</h1><h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a>Repo</h1><p><a href="https://www.taodudu.cc/news/show-2018933.html" target="_blank" rel="noopener">https://www.taodudu.cc/news/show-2018933.html</a></p>
+<p>先背基础，再背框架，然后数据库，redis等等，再刷算法，基本就够了</p>
+<p><a href="https://segmentfault.com/u/javaguide" target="_blank" rel="noopener">https://segmentfault.com/u/javaguide</a></p>
+<p><a href="https://snailclimb.gitee.io/javaguide-interview/#/" target="_blank" rel="noopener">https://snailclimb.gitee.io/javaguide-interview/#/</a></p>
+<h2 id="Thread线程与process进程的区别和联系"><a href="#Thread线程与process进程的区别和联系" class="headerlink" title="Thread线程与process进程的区别和联系?"></a>Thread线程与process进程的区别和联系?</h2><p><strong>线程</strong>（英语：thread）是<a href="https://zh.wikipedia.org/wiki/操作系统" target="_blank" rel="noopener">操作系统</a>能够进行运算<a href="https://zh.wikipedia.org/wiki/调度" target="_blank" rel="noopener">调度</a>的最小单位。大部分情况下，它被包含在<a href="https://zh.wikipedia.org/wiki/进程" target="_blank" rel="noopener">进程</a>之中，是<a href="https://zh.wikipedia.org/wiki/进程" target="_blank" rel="noopener">进程</a>中的实际运作单位。一条线程指的是<a href="https://zh.wikipedia.org/wiki/进程" target="_blank" rel="noopener">进程</a>中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。线程是独立调度和分派的基本单位。线程可以为操作系统内核调度的内核线程，</p>
+<p>进程是死的,只是一些资源的集合,真正的程序执行都是线程来完成的, 程序启动的时候操作系统就帮你创建线程。每个线程有自己的堆栈。</p>
+<h3 id="线程是否具有相同的堆栈-是否有独立的堆栈"><a href="#线程是否具有相同的堆栈-是否有独立的堆栈" class="headerlink" title="线程是否具有相同的堆栈?是否有独立的堆栈?"></a>线程是否具有相同的堆栈?是否有独立的堆栈?</h3><p>动态链接库DLL 中有没有独立的堆栈,这个问题不好回答,或者说这个问题本身是否有问题。因为</p>
+<p>DLL 中的代码是被某些线程所执行;只有线程拥有堆栈,如果 DLL 中的代码是EXE 中的线程所调用,那么这个时候是不是说这个 DLL 没有自己独立的堆栈?如果 DLL 中的代码是由 DLL 自己创建的线程所执行,那么是不是说 DLL 有独<br>立的堆栈?以上讲的是堆栈,如果对于堆来说,每个 DLL 有自己的堆,所以如果是从 DLL中动态分配的内存,最好是从 DLL 中刪除,如果你从 DLL 中分配内存,然后在EXE 中,或者另外一个 DLL 中删除,很有可能导致程序崩溃.static 有什么用途？</p>
+<ol>
+<li>在函数体，一个被声明为静态的变量在这一函数被调用过程中维持其值不变。</li>
+<li>在模块内（但在函数体外），一个被声明为静态的变量可以被模块内所用函数访问，但不能被模块外其它函数访问。它是一个本地的全局变量。</li>
+<li>在模块内，一个被声明为静态的函数只可被这一模块内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用</li>
+</ol>
+<h2 id="全局变量，全局静态变量，局部静态变量等存储在哪里"><a href="#全局变量，全局静态变量，局部静态变量等存储在哪里" class="headerlink" title="全局变量，全局静态变量，局部静态变量等存储在哪里"></a>全局变量，全局静态变量，局部静态变量等存储在哪里</h2><p>全局变量储存在静态数据库，局部变量在堆栈。</p>
+<h2 id="多态-以及实现机制，Override和overload的区别"><a href="#多态-以及实现机制，Override和overload的区别" class="headerlink" title="多态 以及实现机制，Override和overload的区别"></a>多态 以及实现机制，Override和overload的区别</h2><p><em>多态</em>性是面向对象程序设计代码重用的一个重要机制， 是父类或接口定义的引用变量可以指向子类或<em>实现</em>类的实例对象</p>
+<p>多态性是允许你将父对象设置成为一个或更多的他的子对象相等的技术。</p>
+<ul>
+<li><strong>重载 (Overload)</strong> 表示同一个类中可以有多个名称相同的方法，但这些方法的参数列表各不相同（即参数个数、类型或顺序不同）。</li>
+<li><strong>重写 (Override)</strong> 表示子类中的方法可以与父类中的某个方法的名称 和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那 个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。（备注：子类覆盖父类的方法时，只能比父类抛出更少的异常，或者是抛出父类抛出的异常 的子异常，因为子类可以解决父类的一些问题，不能比父类有更多的问题。子类方法的访问权限只能比父类的更大，不能更小。如果父类的方法 是 private 类型，那么，子类则不存在覆盖的限制，相当于子类中增加了一个全新的方法。）</li>
+</ul>
+<p><strong>多态通常有两种实现方法：</strong></p>
+<ol>
+<li>子类继承父类（extends）</li>
+<li>类实现接口（implements）</li>
+</ol>
+<p>Q1.计算机网络七层模型<br>Q2.http协议如何保证可靠性（当时以为是要答建立连接讲了个三次握手- -||）<br>Q3.拥塞控制和滑动窗口<br>Q4.Linux有没有用过<br>Q5.常用的Linux命令<br>Q6.查看进程的Linux命令<br>Q7.mysql隔离级别<br>Q8.事务隔离级别实现（讲了一下MVCC）<br>Q8.mysql建立用户的语句<br>Q9.如何给一个用户改密码（这个操作没用过 说我都是用远程连接工具做的这事…）</p>
+<p>java基础知识； </p>
+<p>  多线程； </p>
+<p>  jvm类加载和内存管理； </p>
+<p>  http，tcp与udp，三次握手； </p>
+<p>  linux了解的命令，shell脚本写过哪些程序； </p>
+<p>  了解的数据结构； </p>
+<p>  堆与栈的区别； </p>
+<p>  常用的数据库了解哪些？ </p>
+<p>  数据库的一些问题；</p>
+<p>\1. 死锁？</p>
+<p>\2. TCP三次握手？</p>
+<p>\3. SYN攻击</p>
+<p>\4. select，epoll</p>
+<p>\5. 线程和协程</p>
+<p>\6. 手撕代码<a href="https://www.nowcoder.com/jump/super-jump/practice?questionId=691" target="_blank" rel="noopener">合并区间
+  </a></p>
+<p>作者：迷之火焰<br>链接：<a href="https://www.nowcoder.com/discuss/539681?type=2&amp;order=1&amp;pos=213&amp;page=1&amp;source_id=discuss_tag_nctrack&amp;channel=-1" target="_blank" rel="noopener">https://www.nowcoder.com/discuss/539681?type=2&amp;order=1&amp;pos=213&amp;page=1&amp;source_id=discuss_tag_nctrack&amp;channel=-1</a><br>来源：牛客网</p>
+<p>一面： </p>
+<p>  1.介绍了20分钟<a href="">项目</a>吧，两个<a href="">项目</a>，聊了聊优化什么的。 </p>
+<p>  2.基础的东西，hashmap和hashtable的区别，底层的一些东西。 </p>
+<p>  3.多线程，常用的线程池说一下。 </p>
+<p>  4.用过mybatis么，用他做过什么，其中的数据缓存是什么。 </p>
+<p>  5.用<a href="">redis</a>吗，为什么单线程速度会这么快。 </p>
+<p>  6.Kafka的一些东西，主要是<a href="">项目</a>提到了。 </p>
+<p>  7.一道题，讲一个字符串按照z字型重新排列，然后输出。</p>
+<p>作者：牛客452710950号<br>链接：<a href="https://www.nowcoder.com/discuss/570487?type=2&amp;order=1&amp;pos=142&amp;page=1&amp;source_id=discuss_tag_nctrack&amp;channel=-1" target="_blank" rel="noopener">https://www.nowcoder.com/discuss/570487?type=2&amp;order=1&amp;pos=142&amp;page=1&amp;source_id=discuss_tag_nctrack&amp;channel=-1</a><br>来源：牛客网</p>
+<p>1.自我介绍，说了下个人特点 </p>
+<p>  2.面试官说你学过数据结构对吧，然后我给他每个数据结构都过了一遍 </p>
+<p>  3.接上，他问我Hash怎么搞，我就给他说了下数组，然后问Hashmap实现原理，答<a href="">红黑树</a>，然后灵魂直击追问<a href="">红黑树</a>，我一没打过ACM没手撕过<a href="">红黑树</a>的本科生直接阿巴🤣 </p>
+<p>  4.发一个邮件，经过了哪些网络层，把每层的数据结构说说 </p>
+<p>  5.链路层网络层数据结构实现</p>
+<p>  6.Socket编程（楼主all in操作系统了，哪晓得<a href="">华为</a>连互联网企业都不是会问这么多计网，直接白给） </p>
+<p>  7.（面试官看到我都开始脸色发青了）线程进程区别，这里楼主又脑子抽抽了始终没把共享资源答出来🤣 </p>
+<p>  8.多线程编程，结果说到最后发现自己扯的是多进程编程🤣 </p>
+<p>  9.再次灵魂直击，问设计模式，然后追问知道有哪些开源框架、开源<a href="">项目</a>用了哪些设计模式，我这只会fork别人的屑本科生哪嗦得出话😅 </p>
+<p>  10.看过开源代码吗，参与过开源<a href="">项目</a>吗 </p>
+<p>  11.手撕代码：<a href="">二分查找</a>，非递归写一个递归写一个，大体10分钟内撕出来了，面试官指出来有一些边界条件没考虑到</p>
+<p>自我介绍</p>
+<p>口撕<a href="https://www.nowcoder.com/jump/super-jump/word?word=项目" target="_blank" rel="noopener">项目</a>相关：在<a href="https://www.nowcoder.com/jump/super-jump/word?word=项目" target="_blank" rel="noopener">项目</a>里干了啥，作为队长遇到了什么困难，自己遇到了什么困难</p>
+<p>对<a href="https://www.nowcoder.com/jump/super-jump/word?word=华为" target="_blank" rel="noopener">华为</a>的奋斗精神的看法，当时人就懵了没准备过这方面的问题，就硬扯了一会扯不出来啥东西🤣</p>
+<p>你还有什么想问我的吗</p>
+<h2 id="程序什么时候应该使用线程，什么时候单线程效率高"><a href="#程序什么时候应该使用线程，什么时候单线程效率高" class="headerlink" title="程序什么时候应该使用线程，什么时候单线程效率高"></a>程序什么时候应该使用线程，什么时候单线程效率高</h2><p>1．耗时的操作使用线程，提高应用程序响应<br>2．并行操作时使用线程，如 C/S 架构的服务器端并发线程响应用户的请求。<br>3．多 CPU 系统中，使用线程提高 CPU 利用率<br>4．改善程序结构。一个既长又复杂的进程可以考虑分为多个线程，成为几个独立或半独立的运行部分，这样的程序会利于理解和修改。其他情况都使用单线程。</p>
+<h2 id="使用线程是如何防止出现大的波峰。"><a href="#使用线程是如何防止出现大的波峰。" class="headerlink" title="使用线程是如何防止出现大的波峰。"></a>使用线程是如何防止出现大的波峰。</h2><p>意思是如何防止同时产生大量的线程，方法是使用线程池，线程池具有可以同时提高调度效率和限制资源使用的好处，线程池中的线程达到最大数时，其他线程就会排队等候。</p>
+<h2 id="堆栈溢出一般是由什么原因导致的？"><a href="#堆栈溢出一般是由什么原因导致的？" class="headerlink" title="堆栈溢出一般是由什么原因导致的？"></a>堆栈溢出一般是由什么原因导致的？</h2><p>1.函数调用层次太深。函数递归调用时，系统要在栈中不断保存函数调用时的现场和产生的变量，如果递归调用太深，就会造成栈溢出，这时递归无法返回。再有，当函数调用层次过深时也可能导致栈无法容纳这些调用的返回地址而造成栈溢出。<br>2.动态申请空间使用之后没有释放。由于 C 语言中没有垃圾资源自动回收机制，因此，需要程序主动释放已经不再使用的动态地址空间。申请的动态空间使用的是堆空间，动态空间使用不会造成堆溢出。<br>3.数组访问越界。C 语言没有提供数组下标越界检查，如果在程序中出现数组下标访问超出数组范围，在运行过程中可能会内存访问错误。<br>4.指针非法访问。指针保存了一个非法的地址，通过这样的指针访问所指向的地址时会产生内存访问错误。</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="OSI，TCP-IP，五层协议的体系结构，以及各层协议"><a href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议" class="headerlink" title="OSI，TCP/IP，五层协议的体系结构，以及各层协议"></a>OSI，TCP/IP，五层协议的体系结构，以及各层协议</h2><p>OSI/RM 共分为七层，TCP/IP 分为四层。TCP/IP 中的网络接口层相当于 OSI的物理层和数据链路层，TCP 的应用层相当于 OSI 的应用层、表示层和会话层。</p>
+<p>OSI分层 （7层）：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。<br>TCP/IP分层（4层）：网络接口层、 网际层、运输层、 应用层。<br>五层协议 （5层）：物理层、数据链路层、网络层、运输层、 应用层。<br>每一层的协议如下：<br>物理层：RJ45、CLOCK、IEEE802.3 （中继器，集线器）<br>数据链路：PPP、FR、HDLC、VLAN、MAC （网桥，交换机）<br>网络层：IP、ICMP、ARP、RARP、OSPF、IPX、RIP、IGRP、 <strong>（路由器）</strong><br>传输层：TCP、UDP、SPX<br>会话层：NFS、SQL、NETBIOS、RPC<br>表示层：JPEG、MPEG、ASII<br>应用层：FTP、DNS、Telnet、SMTP、HTTP、WWW、NFS<br>每一层的作用如下：<br>物理层：通过媒介传输比特,确定机械及电气规范（比特Bit）<br>数据链路层：将比特组装成帧和点到点的传递（帧Frame）<br>网络层：负责数据包从源到宿的传递和网际互连（包PackeT）<br>传输层：提供端到端的可靠报文传递和错误恢复（段Segment）<br>会话层：建立、管理和终止会话（会话协议数据单元SPDU）<br>表示层：对数据进行翻译、加密和压缩（表示协议数据单元PPDU）<br>应用层：允许访问OSI环境的手段（应用协议数据单元APDU）</p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328907031_09DD8C2662B96CE14928333F055C5580" alt=""></p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523328974264_E4E1F3318AF5F32719A15808E8D8458B" alt=""></p>
+<h2 id="在浏览器中输入www-baidu-com后执行的全部过程"><a href="#在浏览器中输入www-baidu-com后执行的全部过程" class="headerlink" title="在浏览器中输入www.baidu.com后执行的全部过程"></a>在浏览器中输入<a href="http://www.baidu.com后执行的全部过程" target="_blank" rel="noopener">www.baidu.com后执行的全部过程</a></h2><p>1、客户端浏览器通过DNS解析到<a href="http://www.baidu.com/" target="_blank" rel="noopener">www.baidu.com</a> 的IP地址220.181.27.48，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个HTTP会话到220.181.27.48，然后通过TCP进行封装数据包，输入到网络层。<br>2、在客户端的传输层，把HTTP会话请求分成报文段，添加源和目的端口，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口。然后使用IP层的IP地址查找目的端。<br>3、客户端的网络层不用关心应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器，期间可能经过多个路由器，这些都是由路由器来完成的工作，我不作过多的描述，无非就是通过查找路由表决定通过那个路径到达服务器。<br>4、客户端的链路层，包通过链路层发送到路由器，通过邻居协议查找给定IP地址的MAC地址，然后发送ARP请求查找目的地址，如果得到回应后就可以使用ARP的请求应答交换的IP数据包现在就可以传输了，然后发送IP数据包到达服务器的地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">事件顺序</span><br><span class="line"></span><br><span class="line">(1) 浏览器获取输入的域名www.baidu.com</span><br><span class="line"></span><br><span class="line">(2) 浏览器向DNS请求解析www.baidu.com的IP地址</span><br><span class="line"></span><br><span class="line">(3) 域名系统DNS解析出百度服务器的IP地址</span><br><span class="line"></span><br><span class="line">(4) 浏览器与该服务器建立TCP连接(默认端口号80)</span><br><span class="line"></span><br><span class="line">(5) 浏览器发出HTTP请求，请求百度首页</span><br><span class="line"></span><br><span class="line">(6) 服务器通过HTTP响应把首页文件发送给浏览器</span><br><span class="line"></span><br><span class="line">(7) TCP连接释放</span><br><span class="line"></span><br><span class="line">(8) 浏览器将首页文件进行解析，并将Web页显示给用户。</span><br><span class="line"></span><br><span class="line">涉及到的协议</span><br><span class="line"></span><br><span class="line">(1) 应用层：HTTP(WWW访问协议)，DNS(域名解析服务)</span><br><span class="line"></span><br><span class="line">(2) 传输层：TCP(为HTTP提供可靠的数据传输)，UDP(DNS使用UDP传输)</span><br><span class="line"></span><br><span class="line">(3) 网络层：IP(IP数据数据包传输和路由选择)，ICMP(提供网络传输过程中的差错检测)，ARP(将本机的默认网关IP地址映射成物理MAC地址)</span><br></pre></td></tr></table></figure>
+
+<h2 id="TCP三次握手和四次挥手的全过程"><a href="#TCP三次握手和四次挥手的全过程" class="headerlink" title="TCP三次握手和四次挥手的全过程"></a>TCP三次握手和四次挥手的全过程</h2><p><a href="https://www.nowcoder.com/ta/review-java?query=&amp;asc=true&amp;order=&amp;tagQuery=&amp;page=6" target="_blank" rel="noopener">https://www.nowcoder.com/ta/review-java?query=&amp;asc=true&amp;order=&amp;tagQuery=&amp;page=6</a></p>
+<p><a href="https://www.nowcoder.com/ta/review-network" target="_blank" rel="noopener">https://www.nowcoder.com/ta/review-network</a></p>
+<p><a href="https://www.nowcoder.com/questionTerminal/ec843c8a27c84a7693865f55a71a7e8c" target="_blank" rel="noopener">老李打酱油例子</a></p>
+<p><strong>三次握手的最主要目的是保证连接是双工的，可靠更多的是通过重传机制来保证的。</strong></p>
+<p><strong>为了保证服务端能收接受到客户端的信息并能做出正确的应答而进行前两次(第一次和第二次)握手，为了保证客户端能够接收到服务端的信息并能做出正确的应答而进行后两次(第二次和第三次)握手。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">第一次握手：客户端发送syn包（syn&#x3D;x)到服务器，并进入SYN_SEND状态，等待服务器确认</span><br><span class="line">第二次握手：服务器收到客户端发送的syn包，必须确认客户端的syn（ack&#x3D;syn+1），同时自己也发送一个SYN包（syn&#x3D;y）即syn+ack，同时服务器进入SYN_RECV状态</span><br><span class="line">第三次握手：客户端接收到SYN+ACK包，向服务器发送确认包（ack&#x3D;y+1)，此包发送完毕，客户端和服务器进入ESTABLISH状态，完成三次握手。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">四次握手：</span><br><span class="line">与建立连接的三次握手类似，TCP断开连接需要四次握手。</span><br><span class="line">第一次挥手：主动关闭方发送一个FIN,用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：我不会再给你发送数据啦（当然，在fin包之前发送出去的数据，如果没有收到对应的ack确认报文，主动关闭方会重新发送数据），但此时主动关闭方还是可以接收数据</span><br><span class="line">第二次挥手：被动关闭方收到FIN报文后，发送ACK确认报文给主动关闭方，确认序号为收到序号加1（与SYN一样，一个FIN占用一个序号）</span><br><span class="line">第三次挥手：被动关闭方发送一个FIN报文，用来关闭被动关闭方与主动关闭方之间的数据传输，也就是告诉主动关闭方我的数据也发送完成了，不会再给你发送数据了。</span><br><span class="line">第四次挥手：主动关闭方收到FIN后，发送一个ACK给被动关闭方，确认序号为收到序号加1，至此完成四次挥手。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523330203140_679365C102E2482C08A96522C038E4F4" alt=""></p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523330268987_BE6FD1F463EA96355ED600180CD14D97" alt=""></p>
+<h2 id="为什么不用2次握手？三次握手建立连接时，发送方再次发送确认的必要性？"><a href="#为什么不用2次握手？三次握手建立连接时，发送方再次发送确认的必要性？" class="headerlink" title="为什么不用2次握手？三次握手建立连接时，发送方再次发送确认的必要性？"></a>为什么不用2次握手？三次握手建立连接时，发送方再次发送确认的必要性？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">用2次握手在一些情况下server的很多资源就白白浪费掉了。</span><br><span class="line"></span><br><span class="line">比如</span><br><span class="line">client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。</span><br><span class="line">本来这是一个早已失效的报文段,但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。</span><br><span class="line">于是就向client发出确认报文段，同意建立连接。</span><br><span class="line"></span><br><span class="line">假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。</span><br><span class="line">由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据,但server却以为新的运输连接已经建立，并一直等待client发来数据。</span><br><span class="line">这样，server的很多资源就白白浪费掉了。</span><br><span class="line">采用“三次握手”的办法可以防止上述现象发生。</span><br></pre></td></tr></table></figure>
+
+<h2 id="TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？"><a href="#TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？" class="headerlink" title="TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？"></a>TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？</h2><p>\1. 只要收到了包，就会ACK。<br>\2. TCP在ACK的同时会带有window大小值，表示这边能接受的数据量。发送方会根据这个调整数据量。<br>\3. 接收方缓冲区满时，回给发送方的window值就是0。<br>\4. 发送方看到window为0的包，会启动一个定时器，隔一段时间发一个包试探。<br>\5. 一旦接收方缓冲区有足够空间了，就会给window赋上非0值。发送方就又开始发送了。 </p>
+<h2 id="TCP和UDP的区别？"><a href="#TCP和UDP的区别？" class="headerlink" title="TCP和UDP的区别？"></a>TCP和UDP的区别？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.TCP面向连接的运输层协议，UDP无连接，有连接的意思是开始传输实际数据之前TCP的客户端和服务器端必须通过三次握手建立连接，会话结束之后也要结束连接。</span><br><span class="line">2.TCP协议保证数据按序发送，按序到达，保证可靠性，但是UDP不保证按序到达，甚至不保证到达，只是努力交付保证时效性</span><br><span class="line">3.TCP面向字节流，UDP面向报文</span><br><span class="line">4.TCP是点对点连接的，UDP一对一，一对多，多对多都可以</span><br><span class="line">5.TCP适合用于网页，邮件等，UDP适合用于视频，语音广播等</span><br></pre></td></tr></table></figure>
+
+<p>TCP提供面向连接的、可靠的数据流传输，而UDP提供的是非面向连接的、不可靠的数据流传输。<br>TCP传输单位称为TCP报文段，UDP传输单位称为用户数据报。<br>TCP注重数据安全性，UDP数据传输快，因为不需要连接等待，少了许多操作，但是其安全性却一般。<br>TCP对应的协议和UDP对应的协议<br>TCP对应的协议：<br>（1） FTP：定义了文件传输协议，使用21端口。<br>（2） Telnet：一种用于远程登陆的端口，使用23端口，用户可以以自己的身份远程连接到计算机上，可提供基于DOS模式下的通信服务。<br>（3） SMTP：邮件传送协议，用于发送邮件。服务器开放的是25号端口。<br>（4） POP3：它是和SMTP对应，POP3用于接收邮件。POP3协议所用的是110端口。<br>（5）HTTP：是从Web服务器传输超文本到本地浏览器的传送协议。<br>UDP对应的协议：<br>（1） DNS：用于域名解析服务，将域名地址转换为IP地址。DNS用的是53号端口。<br>（2） SNMP：简单网络管理协议，使用161号端口，是用来管理网络设备的。由于网络设备很多，无连接的服务就体现出其优势。<br>（3） TFTP(Trivial File Transfer Protocal)，简单文件传输协议，该协议在熟知端口69上使用UDP服务。</p>
+<h2 id="TCP如何保证可靠传输，丢包怎么办"><a href="#TCP如何保证可靠传输，丢包怎么办" class="headerlink" title="TCP如何保证可靠传输，丢包怎么办"></a>TCP如何保证可靠传输，丢包怎么办</h2><p>为了满足TCP协议不丢包。TCP协议有如下规定： 1. 数据分片：发送端对数据进行分片，接受端要对数据进行重组，由TCP确定分片的大小并控制 分片和重组 2. 到达确认：接收端接收到分片数据时，根据分片数据序号向发送端发送一个确认 3. 超时重发：发送方在发送分片时设置超时定时器，如果在定时器超时之后没有收到相应的确认 ，重发分片数据 4. 滑动窗口：TCP连接的每一方的接受缓冲空间大小固定，接收端只允许另一端发送接收端缓冲 区所能接纳的数据，TCP在滑动窗口的基础上提供流量控制，防止较快主机致使较慢主机的缓冲 区溢出 5. 失序处理：作为IP数据报来传输的TCP分片到达时可能会失序，TCP将对收到的数据进行重新 排序，将收到的数据以正确的顺序交给应用层; 6. 重复处理：作为IP数据报来传输的TCP分片会发生重复，TCP的接收端必须丢弃重复的数据; 7. 数据校验：TCP将保持它首部和数据的检验和，这是一个端到端的检验和，目的是检测数据在 传输过程中的任何变化。如果收到分片的检验或有差错，TCP将丢弃这个分片，并不确认收到此 报文段导致对端超时并重发</p>
+<h2 id="Http和https-http是超文本传输协议"><a href="#Http和https-http是超文本传输协议" class="headerlink" title="Http和https http是超文本传输协议"></a>Http和https http是超文本传输协议</h2><p>是一种从服务器传输html文件到本地浏览器的协议。http有几个安全性问题明:文传输 ，容易被截取;没有数据完整性的校验;也没有对服务器身份的校验。 https是为了解决这些问题而产生的，它本质上还是http协议，但是使用ssl证书来验证服务器的身份并为客户 端与服务器之间的通信进行加密。 首先客户端与服务端建立ssl连接。服务端会返回一个网站的证书给客户端。客户端通过证书中心 CA的公解钥 开数字证书，就可以验证证书是否合法，有没有过期，以及网址是否是当前访问的网 址。如果验证通过后，浏览 器会生成一个随机数，并用证书解密得到的公钥来加密这个数，然后发 送给服务器。服务器用自己的私钥解密 之后，就可以将之后与客户端的通信内容都用这个随机数秘 钥的对称加密算法来加密。</p>
+<h2 id="Socket-编程"><a href="#Socket-编程" class="headerlink" title="Socket 编程"></a>Socket 编程</h2><p>Socket 是对 TCP/IP 协议族的一种封装，是应用层与TCP/IP协议族通信的中间软件抽象层。从设 计模式的角度看来，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口 后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议</p>
+<h2 id="http协议如何保证可靠性"><a href="#http协议如何保证可靠性" class="headerlink" title="http协议如何保证可靠性"></a>http协议如何保证可靠性</h2><p>HTTP本身就是一个协议，是从Web服务器传输超文本到本地浏览器的传送协议。</p>
+<h2 id="fd-socket-与tcp协议栈之间有什么联系？"><a href="#fd-socket-与tcp协议栈之间有什么联系？" class="headerlink" title="fd(socket) 与tcp协议栈之间有什么联系？"></a>fd(socket) 与tcp协议栈之间有什么联系？</h2><p>send(fd, buffer, length, 0)</p>
+<p>recv(fd, buffer, length, 0)</p>
+<p>fd会在客户端连接服务器最后一次握手的时候从accep队列里取出一个节点并且分配一个fd</p>
+<h2 id="利用滑动窗口控制提高速度"><a href="#利用滑动窗口控制提高速度" class="headerlink" title="利用滑动窗口控制提高速度"></a>利用滑动窗口控制提高速度</h2><p>为解决这个问题，TCP 引入了<strong>窗口</strong>这个概念。<strong>确认应答不是以每个分段来确认，而是以更大的单位进行确认</strong>，转发时间将会被大幅地缩短。也就是说，<strong>发送端主机，在发送了一个段以后不必要一直等待确认应答，而是继续发送</strong>。我们假设窗口大小是4000字节，主机A可以一口气发送把4000字节的序列号发送完毕。这个跟前面每个段接收ACK后才能继续发送新一个段的情况相比，即使RTT变长也不会影响网络的吞吐量。</p>
+<p><strong>窗口大小就是指无需等待确认应答ACK而继续发送数据的最大值</strong>。</p>
+<p>这种窗口机制实现了使用了大量的缓冲区（Buffer，指的是计算机存储收发数据的的内存空间），通过对多个段同时进行确认应答的功能。</p>
+<h2 id="DNS域名系统，简单描述其工作原理。"><a href="#DNS域名系统，简单描述其工作原理。" class="headerlink" title="DNS域名系统，简单描述其工作原理。"></a>DNS域名系统，简单描述其工作原理。</h2><p>当DNS客户机需要在程序中使用名称时，它会查询DNS服务器来解析该名称。客户机发送的每条查询信息包括三条信息：包括：指定的DNS域名，指定的查询类型，DNS域名的指定类别。基于UDP服务，端口53. 该应用一般不直接为用户使用，而是为其他应用服务，如HTTP，SMTP等在其中需要完成主机名到IP地址的转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当一个应用进程需要把某个域名解析为IP地址时，该应用进程就会调用解析程序，并成为一个DNS用户，把待解析的域名放在DNS请求报文中，以UDP数据报的形式发送给本地域名服务器，本地域名服务器查找到相应域名的IP地址后，就将该域名的IP地址信息放入应答报文中返回给客户进程，如果本地域名服务器没有直接查找到对应的IP地址，则向根域名服务器发出迭代查询，再将查询到的IP地址信息回传给客户程序。</span><br></pre></td></tr></table></figure>
+
+<h2 id="IP地址的分类"><a href="#IP地址的分类" class="headerlink" title="IP地址的分类"></a>IP地址的分类</h2><p>A类地址：以0开头，  第一个字节范围：1~126（1.0.0.0 - 126.255.255.255）；</p>
+<p>B类地址：以10开头，  第一个字节范围：128~191（128.0.0.0 - 191.255.255.255）；</p>
+<p>C类地址：以110开头， 第一个字节范围：192~223（192.0.0.0 - 223.255.255.255）；</p>
+<p>D类地址：以1110开头，第一个字节范围：224~239（224.0.0.0 - 239.255.255.255）；（作为多播使用）</p>
+<p>E类地址：保留</p>
+<p>其中A、B、C是基本类，D、E类作为多播和保留使用。</p>
+<p>以下是留用的内部私有地址：</p>
+<p>A类 10.0.0.0–10.255.255.255</p>
+<p>B类 172.16.0.0–172.31.255.255</p>
+<p>C类 192.168.0.0–192.168.255.255</p>
+<p>IP地址与子网掩码相与得到网络号：</p>
+<p>ip    : 192.168.2.110</p>
+<p>&amp;</p>
+<p>Submask : 255.255.255.0</p>
+<p>-—————————</p>
+<p>网络号  ：192.168.2  .0</p>
+<p>注:</p>
+<p>主机号，全为0的是网络号（例如：192.168.2.0），主机号全为1的为广播地址（192.168.2.255）</p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180410/4039680_1523329478530_13ABD61BD6655587865C9126C15D259D" alt=""></p>
+<h2 id="ARP是地址解析协议，简单语言解释一下工作原理。"><a href="#ARP是地址解析协议，简单语言解释一下工作原理。" class="headerlink" title="ARP是地址解析协议，简单语言解释一下工作原理。"></a>ARP是地址解析协议，简单语言解释一下工作原理。</h2><p>Address Resolution Protocol</p>
+<p>答:1：首先，每个主机都会在自己的ARP缓冲区中建立一个ARP列表，以表示IP地址和MAC地址之间的对应关系。<br>2：当源主机要发送数据时，首先检查ARP列表中是否有对应IP地址的目的主机的MAC地址，如果有，则直接发送数据，如果没有，就向本网段的所有主机发送ARP数据包，该数据包包括的内容有：源主机 IP地址，源主机MAC地址，目的主机的IP 地址。<br>3：当本网络的所有主机收到该ARP数据包时，首先检查数据包中的IP地址是否是自己的IP地址，如果不是，则忽略该数据包，如果是，则首先从数据包中取出源主机的IP和MAC地址写入到ARP列表中，如果已经存在，则覆盖，然后将自己的MAC地址写入ARP响应包中，告诉源主机自己是它想要找的MAC地址。<br>4：源主机收到ARP响应包后。将目的主机的IP和MAC地址写入ARP列表，并利用此信息发送数据。如果源主机一直没有收到ARP响应数据包，表示ARP查询失败。<br>广播发送ARP请求，单播发送ARP响应。</p>
+<p>有了ip为何还需要mac？ </p>
+<p>​    首先要理解报文传输的工作逻辑： IP地址是逻辑地址寻址，工作在网络层，具有全网范围内的寻址能力，可以快速定位目标地址所在的网络 MAC地址是物理地址寻址，工作在数据链路层，要将数据包发给对方必须知道对方的MAC地址，因为主机的以太网网卡只能识别MAC地址  为何要如此设计那？或者说，有了mac地址唯一定位，为什么还要设计IP协议那？ </p>
+<p>​     （1）IP地址的分配是根据网络的拓朴结构，而不是根据谁制造了网络设置。若将高效的路由选择方案建立在设备制造商的基础上而不是网络所处的拓朴位置基础上，这种方案是不可行的。 </p>
+<p>​    （2）当存在一个附加层的地址寻址时，设备更易于移动和维修。例如，如果一个以太网卡坏了，可以被更换，而无须取得一个新的IP地址。如果一个IP主机从一个网络移到另一个网络，可以给它一个新的IP地址，而无须换一个新的网卡。  主机的以太网网卡只能识别MAC地址，而不能识别IP地址，若数据帧中不指明主机B的MAC 地址，主机B的网卡不能识别该帧是发给自己的，因此主机A仅知道主机B的IP地址还不够，还必须知道主机B的MAC地址，才能完成对主机B的访问；</p>
+<h2 id="各种协议的介绍"><a href="#各种协议的介绍" class="headerlink" title="各种协议的介绍"></a>各种协议的介绍</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TCP&#x2F;IP 互联网层协议 ：</span><br><span class="line"></span><br><span class="line">ICMP 协议 ： 网际消息控制协议 。它是 TCP&#x2F;IP 协议族的一个子协议，用于在 IP 主机、路由器之间传递控制消息 。（差错报告、查询、应答）</span><br><span class="line">NAT 协议 ：网络地址协议，让一个合法的地址给多个内部主机共享，通过端口号对不同主机进程加以区分，用来解决 IP 地址不足的问题。</span><br><span class="line"></span><br><span class="line">TCP&#x2F;IP 应用层协议：</span><br><span class="line"></span><br><span class="line">HTTP 协议 ： 超文本传输协议，实现万维网功能 。是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。</span><br><span class="line"></span><br><span class="line">DHCP 协议 ： 动态主机配置协议 ，自动设置 IP 地址，统一管理 IP 地址分配。</span><br><span class="line"></span><br><span class="line">TFTP 协议 ： 简单 文件传输协议 。采用 UDP 进行传输 ，是 TCP&#x2F;IP 协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。</span><br></pre></td></tr></table></figure>
+
+<p>答:ICMP协议： 因特网控制报文协议。它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。<br>TFTP协议： 是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。<br>HTTP协议： 超文本传输协议，是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。<br>NAT协议：网络地址转换属接入广域网(WAN)技术，是一种将私有（保留）地址转化为合法IP地址的转换技术，<br>DHCP协议：动态主机配置协议，是一种让系统得以连接到网络上，并获取所需要的配置参数手段，使用UDP协议工作。具体用途：给内部网络或网络服务供应商自动分配IP地址，给用户或者内部网络管理员作为对所有计算机作中央管理的手段。</p>
+<h2 id="描述RARP协议"><a href="#描述RARP协议" class="headerlink" title="描述RARP协议"></a>描述RARP协议</h2><p>RARP的工作过程如下： </p>
+<p>  1、网络上的每台设备都会有一个独一无二的硬件地址，通常是由设备厂商分配的MAC地址。PC1从网卡上读取MAC地址，然后在网络上发送一个RARP请求的广播数据包，请求RARP服务器回复该PC的IP地址。 </p>
+<p>  2、RARP服务器收到了RARP请求数据包，为其分配IP地址，并将RARP回应发送给PC1。 </p>
+<p>  3、PC1收到RARP回应后，就使用得到的IP地址进行通讯</p>
+<p>RARP是逆地址解析协议，作用是完成硬件地址到IP地址的映射，主要用于无盘工作站，因为给无盘工作站配置的IP地址不能保存。工作流程：在网络中配置一台RARP服务器，里面保存着IP地址和MAC地址的映射关系，当无盘工作站启动后，就封装一个RARP数据包，里面有其MAC地址，然后广播到网络上去，当服务器收到请求包后，就查找对应的MAC地址的IP地址装入响应报文中发回给请求者。因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
+<h2 id="了解交换机、路由器、网关的概念，并知道各自的用途"><a href="#了解交换机、路由器、网关的概念，并知道各自的用途" class="headerlink" title="了解交换机、路由器、网关的概念，并知道各自的用途"></a>了解交换机、路由器、网关的概念，并知道各自的用途</h2><p>接下来，把服务器按照 IP 或主机名作为关键字进行哈希，这样就能确定其在哈希环的位置。<br>一般意义上说交换机是工作在数据链路层。但随着科技的发展，现在有了三层交换机，三层交换机已经扩展到了网络层。也就是说：它等于“数据链路层 + 部分网络层”。交换机中传的是帧。通过存储转发来实现的。路由器是工作在网络层。路由器中传的是 IP 数据报。主要是选址和路由。</p>
+<h1 id="操作系统Operating-System"><a href="#操作系统Operating-System" class="headerlink" title="操作系统Operating System"></a>操作系统Operating System</h1><h2 id="互斥锁，自旋锁，读写锁，悲观锁，乐观锁"><a href="#互斥锁，自旋锁，读写锁，悲观锁，乐观锁" class="headerlink" title="互斥锁，自旋锁，读写锁，悲观锁，乐观锁"></a>互斥锁，自旋锁，读写锁，悲观锁，乐观锁</h2><p> 互斥锁（Mutex):互斥锁是一种「独占锁」，比如当线程 A 加锁成功后，此时互斥锁已经被线程独A 占了，只要线程 A 没有释放手中的锁，线程 B 加锁就会失败，于是就会释放 CPU 让给其他线程，既然 线程 B 释放掉了 CPU，自然线程 B 加锁的代码就会被阻塞. </p>
+<p>上下文开销成本大： </p>
+<p>● 当线程加锁失败时，内核会把线程的状态从「运行」状态设置为「睡眠」状态，然后把 CPU 切换给其他线程运行；</p>
+<p> ● 接着，当锁被释放时，之前「睡眠」状态的线程会变为「就绪」状态，然后内核会在合适的时 间，把 CPU 切换给该线程运行。 如果你能确定被锁住的代码执行时间很短，就不应该用互斥锁，而应该选用自旋锁，否则使用互 斥锁 </p>
+<p>自旋锁（Spin Lock)：一般加锁的过程，包含两个步骤：第一步，查看锁的状态，如果锁是空闲 的，则将锁设置为当前线程持有。当发生多线程竞争锁的情况，加锁失败的线程会「忙等待」，直到它拿 到锁。自旋锁是最比较简单的一种锁，一直自旋，利用 CPU 周期，直到锁可用。 自旋锁开销少，在多核系统下一般不会主动产生线程切换，适合异步、协程等在用户态切换请求 的编程方式，但如果被锁住的代码执行时间过长，自旋的线程会长时间占用 CPU 资源，所以自旋 的时间和被锁住的代码执行的时间是成「正比」的关系，我们需要清楚的知道这一点。 </p>
+<p>读写锁：读锁是一个共享锁，写锁是互斥锁。 </p>
+<p>● 当「写锁」没有被线程持有时，多个线程能够并发地持有读锁，这大大提高了共享资源的 访问效率，因为「读锁」是用于读取共享资源的场景，所以多个线程同时持有读锁也不会 破坏共享资源的数据。</p>
+<p> ● 但是，一旦「写锁」被线程持有后，读线程的获取读锁的操作会被阻塞，而且其他写线程的 获取写锁的操作也会被阻塞。 所以说，写锁是独占锁，因为任何时刻只能有一个线程持有写锁，类似互斥锁和自旋锁，而读锁是 共享锁，因为读锁可以被多个线程同时持有。读写锁在读多写少的场景，能发挥出优势 </p>
+<p>乐观锁：乐观锁做事比较乐观，它假定冲突的概率很低，它的工作方式是：先修改完共享资源，再 验证这段时间内有没有发生冲突，如果没有其他线程在修改资源，那么操作完成，如果发现有其 他线程已经修改过这个资源，就放弃本次操作。 </p>
+<p>悲观锁：前面提到的互斥锁、自旋锁、读写锁，都是属于悲观锁。悲观锁做事比较悲观，它认为 多线程同时修改共享资源的概率比较高，于是很容易出现冲突，所以访问共享资源前，先要上 锁。什么是死锁，死锁的条件 A deadlock occurs when a process or thread enters a waiting state because a requested system resource is held by another waiting process, which in turn is waiting for another resource held by another waiting process. 1. Mutual exclusion: Only one process can use the resource at any given instant of time 2. Hold and wait: a process is currently holding at least one resource and requesting additional resources which are being held by other processes. 3. No preemption: a resource can be released only voluntarily by the process holding it. 4. Circular Wait: 当线程A持有独占锁a，并尝试去获取独占锁b的同时，线程B持有独占锁b，并尝试获取独占锁a的 情况下，就会发生AB两个线程由于互相持有对方需要的锁，而发生的阻塞现象，我们称为死锁。 (1） 互斥条件：一个资源每次只能被一个进程使用。 （2） 请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。 （3） 不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺。 （4） 循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。 如何预防死锁，避免死锁，死锁发生的检查 预防死锁:破坏死锁的四个条件: ● 把只能互斥访问的资源改造为允许共享使用 ● 允许高优先级的进程剥夺低优先级的进程保持的资源 ● 静态资源分配:进程一次性获取全部所需资源再运行 ● 给资源的优先级编号，必须按增序获取 堆和栈的区别以及存储模式有什么区别 Reference 栈是由编译器自动分配和释放，存放函数的参数和局部变量的值，它的访问速度较快。栈上数据 的释放是随着出栈自动销毁了。栈的生长方向向下，内存地址由高到低。 堆是程序运行时显式申请和释放的内存空间，程序结束后由操作系统回收，容易产生内存碎片。 堆的空间比较灵活，可以不连续，通常比栈要大。堆的生长方向向上，内存地址由低到高。内存泄漏和内存溢出 内存溢出(out of memory): 是指程序在申请内存时，没有足够的内存空间供其使用，出现outof memory；比如申请了一个integer,但给它存了long才能存下的数，那就是内存溢出。比如栈满的时 候入栈，栈空的时候出栈。 内存泄露 (memory leak)：是指程序在申请内存后，无法释放已申请的内存空间，一次内存泄露 危害可以忽略，但内存泄露堆积后果很严重，无论多少内存,迟早会被占光。内存泄漏是指你向系 统申请分配内存进行使用(new)，可是使用完了以后却不归还(delete)，结果你申请到的那块内存 你自己也不能再访问（也许你把它的地址给弄丢了），而系统也不能再次将它分配给需要的程序 计算机内存管理的方式 Video Reference 常见的内存管理方式有块式管理、页式管理、段式和段页式管理。 （1）块式管理：把主存分为一大块一大块的，当所需的程序片段不在主存时就分配一块主存空间， 把程序片段load入主存，就算所需的程序片段只有几个字节也只能把这一块分配给它。这样会造 成很大的浪费，平均浪费了50%的内存空间，但是易于管理。 （2）页式管理：把主存分为一页一页的，每一页的空间要比一块一块的空间小很多，这种方法的空 间利用率要比块式管理高很多。程序的逻辑内存分为多个页（page）， 通过页表（page tab来le寻） 找物理内存的映射，即相应的页帧（page frame）。如果对应的帧号是磁盘，那就会进入内核态，内核会到磁盘中找到对应的数据然后加载到物理内存的帧中，然后将帧号填写到页表中。 如果物理 内存已经满了，那就会使用页置换算法把不常用的页帧换到磁盘中。 ● 时间优化：将常访问的几个页表项存到访问速度更快的硬件中，， 一般是MMU（内存管理 单元），这个小表名称叫做TLB(Translation Lookaside Buffer)，可以称其为快表。寻址时先 查找TLB，miss后再查page table。 （3）段式管理：把主存分为一段一段的，每一段的空间又要比一页一页的空间小很多，这种方法在 空间利用率上又比页式管理高得多，但是也有另外一个缺点。一个程序片段可能会被分为几十段 ，这样很多时间就会被浪费在计算每一段的物理地址上。 （4）段页式管理：结合了段式管理和页式管理的优点。把主存先分成若干段，每个段又分成若干 页。段页式管理每取一护具，要访问3次内存。 虚拟内存 用于扩充内存的。 它使得应用程序认为它拥有连续可用的内存（一个连续完整的地址空间），而 实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要 时进行数据交换。虚拟内存的重要意义是它定义了一个连续的虚拟地址空间，并且把内存扩展到 硬盘空间 如果程序很大，可以将经常用的部分装入内存，暂时用不到的部分留在外存。如果内存空间不足， 操作系统会将暂时用不到的信息放入外存。当访问的信息不在内存中时，操作系统会将外中存的 信息移入内存。 线程和进程的区别是什么 Reference 根本区别：进程是操作系统资源分配的基本单位，而线程是处理器任务调度和执行的基本单位 ● 资源开销：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换会有较大 的开销；线程可以看做轻量级的进程，同一类线程共享代码和数据空间，每个线程都有自 己独立的运行栈和程序计数器（PC），线程之间切换的开销小。 ● 包含关系：如果一个进程内有多个线程，则执行过程不是一条线的，而是多条线（线程）共 同完成的；线程是进程的一部分，所以线程也被称为轻权进程或者轻量级进程。 ● 内存分配：同一进程的线程共享本进程的地址空间和资源，而进程之间的地址空间和资源 是相互独立的 ● 影响关系：一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃 整个进程都死掉。所以多进程要比多线程健壮。● 执行过程：每个独立的进程有程序运行的入口、顺序执行序列和程序出口。但是线程不能 独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制，两者均可并发执 行 多线程和多进程，以及应用场景 多进程多线程主要是为了实现并行计算。 ● 多进程的话各个进程需要在操作系统层面进行进程的通信。 ● 多线程共享进程的数据段和程序段，节约内存，可以直接操作共享内存，会涉及到同步问 题。 ● 多进程的新建进程开销，进程调度开销和通信开销要比多线程大。此外多进程的可靠性也 强于多线程，因为多线程中的一个线程死亡可能导致整个进程异常，比如该线程没有释放 一个锁。 ● 多线程适合线程间需要数据共享的计算，多进程适合高性能要求的计算，以及分布式的系 统。 ● 在python中由于全局解释器锁的存在，多线程无法利用多核cpu实现并行化，所以python 多线程适合IO密集型操作，多进程适合计算密集型操作 进程通信方式 Reference 1. 匿名管道：只支持单向数据流；只能用于具有亲缘关系的进程之间；没有名字；管道的缓冲区是 有限的 2. 有名管道：有名管道不同于匿名管道之处在于它提供了一个路径名与之关联，以有名管道的文 件形式存在于文件系统中，这样，即使与有名管道的创建进程不存在亲缘关系的进程，只要可以 访问该路径，就能够彼此通过有名管道相互通信 3. 信号(Signal)： 信号是Linux系统中用于进程间互相通信或者操作的一种机制，信号可以在 任何 时候发给某一进程，而无需知道该进程的状态。 ● 如果该进程当前并未处于执行状态，则该信号就由内核保存起来，直到该进程恢复执行并 传递给它为止。 ● 如果一个信号被进程设置为阻塞，则该信号的传递被延迟，直到其阻塞被取消是才被传递 给进程。 4. 消息队列(Message): 与管道（无名管道：只存在于内存中的文件；命名管道：存在于实际的盘磁 介质或者文件系统）不同的是消息队列存放在内核中，只有在内核重启(即，操作系统重启)或者 显示地删除一个消息队列时，该消息队列才会被真正的删除。 5. 共享内存(Shared Memory): ● 使得多个进程可以可以直接读写同一块内存空间，是最快的可用IPC形式。是针对其他通 信机制运行效率较低而设计的。 ● 为了在多个进程间交换信息，内核专门留出了一块内存区，可以由需要访问的进程将其映 射到自己的私有地址空间。进程就可以直接读写这一块内存而不需要进行数据的拷贝， 从而大大提高效率。 ● 由于多个进程共享一段内存，因此需要依靠某种同步机制（如信号量）来达到进程间的同 步及互斥。6. 信号量(Semaphore): 信号量是一个计数器，用于多进程对共享数据的访问，信号量的意图在于 进程间同步。为了获得共享资源，进程需要执行下列操作： （1）创建一个信号量：这要求调用者指定初始值，对于二值信号量来说，它通常是1，也可是0 （2）等待一个信号量：该操作会测试这个信号量的值，如果小于0，就阻塞。也称为P操作。 （3）挂出一个信号量：该操作将信号量的值加1，也称为V操作。 7. 套接字(Socket): 套接字是一种通信机制，凭借这种机制，客户/服务器（即要进行通信的进程） 系统的开发工作既可以在本地单机上进行，也可以跨网络进行。也就是说它可以让不在同一台计 算机但通过网络连接计算机上的进程进行通信。 进程调度方法 Reference: 1. 非剥夺方式（非抢占方式）：一旦占用CPU，直至完成或阻塞。不利用实时任务，不利用短作业； 使用于批处理系统 2. 剥夺方式（抢占方式）： 在一定情况下，可剥夺一进程占有的处理机。抢占的原则有：短作业（进 程）优先原则、时间片原则、优先权原则。 ● 先来先服务调度算法（FCFS） ● 短作业优先调度算法（SJF） ● 时间片轮转调度算法（RR） ● 高响应比优先调度算法（HRRF）： 响应时间 / 运行时间 ● 最高优先级优先调度算法 什么是Linux用户态和内核态 Reference 指的是处理器处于的两种状态。 ● 用户态的程序只能访问用户空间的资源，执行非特权指令，对于特权指令要通过系统调用 的方式进行。 ● 运行在内核态的进程控制着操作系统内核程序和计算机的硬件资源，可以执行特权指令 和非特权指令。 用户态就是提供应用程序运行的空间，为了使应用程序访问到内核管理的资源例如CPU，内存， I/O。内核必须提供一组通用的访问接口，这些接口就叫系统调用 从用户态到内核态切换可以通过三种方式： 1. 系统调用: 其实系统调用本身就是中断，但是软件中断，跟硬中断不同。 2. 异常：如果当前进程运行在用户态，如果这个时候发生了异常事件，就会触发切换。例如： 缺页异常。 3. 外设中断：当外设完成用户的请求时，会向CPU发送中断信号。进程的状态，进程状态就绪和等待状态的区别是什么 就绪，执行，阻塞 阻塞和就绪的区别：阻塞是等待除CPU以外的资源，而就绪等待的是CPU资源。 1）就绪——执行：对就绪状态的进程，当进程调度程序按一种选定的策略从中选中一个就绪进程， 为之分配了处理机后，该进程便由就绪状态变为执行状态； 2）执行——阻塞：正在执行的进程因发生某等待事件而无法执行，则进程由执行状态变为阻塞状 态，如进程提出输入/输出请求而变成等待外部设备传输信息的状态，进程申请资源（主存空间或 外部设备）得不到满足时变成等待资源状态，进程运行中出现了故障（程序出错或主存储器读写 错等）变成等待干预状态等等； 当进程进入阻塞状态，是不占用CPU资源的。 3）阻塞——就绪：处于阻塞状态的进程，在其等待的事件已经发生，如输入/输出完成，资源得到满 足或错误处理完毕时，处于等待状态的进程并不马上转入执行状态，而是先转入就绪状态，然后 再由系统进程调度程序在适当的时候将该进程转为执行状态； 4）执行——就绪：正在执行的进程，因时间片用完而被暂停执行，或在采用抢先式优先级调度算法 的系统中,当有更高优先级的进程要运行而被迫让出处理机时，该进程便由执行状态转变为就绪状 态。 线程池 线程池就是事先将若干个进程放入一个容器中，当需要的时候从线程池中获取线程，使用完毕的 时候将线程放回线程池。这样可以减少多任务的时候创建和销毁线程的开销。这是一种多线程实 现方式。 线程安全的实现方式 Reference 线程安全定义：当多个线程访问某个类, 不管运行环境采用何种调度方式或者这些线程如何交替 执行, 并且在主调代码中不需要任何额外的同步或协同, 这个类都能表现出正确的行为, 那么就称 这个类为线程安全的 ● Synchronized: synchronized关键字，就是用来控制线程同步的，保证我们的线程在多线 程环境下，不被多个线程同时执行，确保我们数据的完整性，使用方法一般是加在方法 上。 当synchronized锁住一个对象之后，别的线程如果想要获取锁对象，那么就必须等这 个线程执行完释放锁对象之后才可以，否则一直处于等待状态。 ● Lock：就是我们在需要的时候去手动的获取锁和释放锁，甚至我们还可以中断获取 以及超时获取的同步特性，但是从使用上说Lock明显没有synchronized使用起来方 便快捷。 进程和线程的上下文切换 Context Switches: 上下文切换就是从当前执行任务切换到另一个任务执行的过程。但是，为了确 保下次能从正确的位置继续执行，在切换之前，会保存上一个任务的状态。进程上下文切换与线程上下文切换最主要的区别就是线程的切换虚拟空间内存是相同的（因为都 是属于自己的进程），但是，进程切换的虚拟空间内存则是不同的。 同时，这两种上下文切换的处理都是通过操作系统内核来完成的。内核的这种切换过程伴随的最 显著的性能损耗是将寄存器中的内容切换出。线程上下文切换比进程上下文切换快的多。 协程 Reference 协程的特点 1. 线程的切换由操作系统负责调度，协程由用户自己进行调度，因此减少了上下文切换，提 高了效率。 2. 线程的默认Stack大小是1M，而协程更轻量，接近1K。因此可以在相同的内存中开启更多 的协程。 3. 由于在同一个线程上，因此可以避免竞争关系而使用锁。 4. 适用于被阻塞的，且需要大量并发的场景。但不适用于大量计算的多线程，遇到此种情况 ，更好实用线程去解决 协程的原理：当出现IO阻塞的时候，由协程的调度器进行调度，通过将数据流立刻yield掉（主动让 出），并且记录当前栈上的数据，阻塞完后立刻再通过线程恢复栈，并把阻塞的结果放到这个线程 上去跑，这样看上去好像跟写同步代码没有任何差别，这整个流程可以称为coroutine 协程是轻量级线程，拥有自己的上下文和栈，在调度切换的时候可以恢复上一次调用时的状态， 也 就是上一次离开逻辑流的位置。适合IO密集型程序和高并发程序 并发和并行区别 ● 并行(parallel)：指在同一时刻，有多条指令在多个处理器上同时执行。所以无论从微观还 是从宏观来看，二者都是一起执行的。 ● 并发(concurrency)：指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执 行，使得在宏观上具有多个进程同时执行的效果，但在微观上并不是同时执行的，只是把 时间分成若干段，使多个进程快速交替的执行。</p>
+<h2 id="什么是死锁，死锁的条件"><a href="#什么是死锁，死锁的条件" class="headerlink" title="什么是死锁，死锁的条件"></a>什么是死锁，死锁的条件</h2><p>A deadlock occurs when a process or thread enters a waiting state because a requested system resource is held by another waiting process, which in turn is waiting for another resource held by another waiting process. </p>
+<ol>
+<li><p>Mutual exclusion: Only one process can use the resource at any given instant of time </p>
+</li>
+<li><p>Hold and wait: a process is currently holding at least one resource and requesting additional resources which are being held by other processes. </p>
+</li>
+<li><p>No preemption: a resource can be released only voluntarily by the process holding it. </p>
+</li>
+<li><p>Circular Wait: </p>
+</li>
+</ol>
+<p>当线程A持有独占锁a，并尝试去获取独占锁b的同时，线程B持有独占锁b，并尝试获取独占锁a的 情况下，就会发生AB两个线程由于互相持有对方需要的锁，而发生的阻塞现象，我们称为死锁。 (1） 互斥条件：一个资源每次只能被一个进程使用。 （2） 请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。 （3） 不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺。 （4） 循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。</p>
+<h2 id="如何预防死锁，避免死锁，死锁发生的检查"><a href="#如何预防死锁，避免死锁，死锁发生的检查" class="headerlink" title="如何预防死锁，避免死锁，死锁发生的检查"></a>如何预防死锁，避免死锁，死锁发生的检查</h2><p>预防死锁:破坏死锁的四个条件: </p>
+<p>● 把只能互斥访问的资源改造为允许共享使用 </p>
+<p>● 允许高优先级的进程剥夺低优先级的进程保持的资源 </p>
+<p>● 静态资源分配:进程一次性获取全部所需资源再运行 </p>
+<p>● 给资源的优先级编号，必须按增序获取</p>
+<h2 id="堆和栈的区别以及存储模式有什么区别"><a href="#堆和栈的区别以及存储模式有什么区别" class="headerlink" title="堆和栈的区别以及存储模式有什么区别"></a>堆和栈的区别以及存储模式有什么区别</h2><p>栈是由编译器自动分配和释放，存放函数的参数和局部变量的值，它的访问速度较快。栈上数据 的释放是随着出栈自动销毁了。栈的生长方向向下，内存地址由高到低。 堆是程序运行时显式申请和释放的内存空间，程序结束后由操作系统回收，容易产生内存碎片。 堆的空间比较灵活，可以不连续，通常比栈要大。堆的生长方向向上，内存地址由低到高。</p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="Indexing"><a href="#Indexing" class="headerlink" title="Indexing"></a>Indexing</h2><p>根据数据库的功能，可以在数据库设计器中创建三种索引：唯一索引、主键索引和聚集索引。</p>
+<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>唯一索引是不允许其中任何两行具有相同索引值的索引。<br>当现有数据中存在重复的键值时，大多数数据库不允许将新创建的唯一索引与表一起保存。数据库还可能防止添加将在表中创建重复键值的新数据。例如，如果在employee表中职员的姓(lname)上创建了唯一索引，则任何两个员工都不能同姓。</p>
+<h3 id="主键索引"><a href="#主键索引" class="headerlink" title="主键索引"></a>主键索引</h3><p>数据库表经常有一列或列组合，其值唯一标识表中的每一行。该列称为表的主键。<br>在数据库关系图中为表定义主键将自动创建主键索引，主键索引是唯一索引的特定类型。该索引要求主键中的每个值都唯一。当在查询中使用主键索引时，它还允许对数据的快速访问。</p>
+<h3 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h3><p>在聚集索引中，表中行的物理顺序与键值的逻辑（索引）顺序相同。一个表只能包含一个聚集索引。<br>如果某索引不是聚集索引，则表中行的物理顺序与键值的逻辑顺序不匹配。与非聚集索引相比，聚集索引通常提供更快的数据访问速度。</p>
+<p>1、普通索引<br>     CREATE INDEX indexName ON mytable(username(length));<br>     创建表的时候直接指定： </p>
+<p>CREATE TABLE mytable(<br>       ID INT NOT NULL,<br>       username VARCHAR(16) NOT NULL,<br>       INDEX [indexName] (username(length))<br> );<br>  删除索引的语法：<br>DROP INDEX [indexName] ON mytable;</p>
+<p>2、唯一索引<br>它与普通索引类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。</p>
+<p>创建索引：<br>CREATE UNIQUE INDEX indexName ON mytable(username(length))<br>修改表结构：<br>ALTER table mytable ADD UNIQUE [indexName] (username(length))<br>创建表的时候直接指定：<br>CREATE TABLE mytable(<br>     ID INT NOT NULL,<br>      username VARCHAR(16) NOT NULL,<br>      UNIQUE [indexName] (username(length))<br> );<br>有四种方式来添加数据表的索引：</p>
+<p>1.ALTER TABLE tbl_name ADD PRIMARY KEY (column_list): 该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。<br>2.ALTER TABLE tbl_name ADD UNIQUE index_name (column_list): 这条语句创建索引的值必须是唯一的（除了NULL外，NULL可能会出现多次）。<br>3.ALTER TABLE tbl_name ADD INDEX index_name (column_list): 添加普通索引，索引值可出现多次。4.ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):该语句指定了索引为 FULLTEXT ，用于全文索引。<br>例如：</p>
+<p>创建索引：ALTER TABLE testalter_tbl ADD INDEX (c);<br>删除索引：ALTER TABLE testalter_tbl DROP INDEX (c);<br>显示索引信息<br>SHOW INDEX FROM table_name\G</p>
+<h2 id="MVC模式实现数据库的增删改查"><a href="#MVC模式实现数据库的增删改查" class="headerlink" title="MVC模式实现数据库的增删改查"></a><a href="https://segmentfault.com/a/1190000022996706" target="_blank" rel="noopener">MVC模式实现数据库的增删改查</a></h2><p>什么是MVC模式</p>
+<p>MVC模式中M代表模型、V代表视图、C代表控制器。<br>Model（模型）表示应用程序核心（比如数据库记录列表）。<br>View（视图）显示数据（数据库记录）。<br>Controller（控制器）处理输入（写入数据库记录）。工具类（负责连接数据库）实现数据库的增删改查的操作类</p>
+<h2 id="Restful-api"><a href="#Restful-api" class="headerlink" title="Restful api"></a>Restful api</h2><p>表现层状态转换 (Representational state transfer)</p>
+<p>REST是设计风格而<strong>不是</strong>标准。REST通常基于<a href="https://zh.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">HTTP</a>、<a href="https://zh.wikipedia.org/wiki/URI" target="_blank" rel="noopener">URI</a>、<a href="https://zh.wikipedia.org/wiki/XML" target="_blank" rel="noopener">XML</a>以及<a href="https://zh.wikipedia.org/wiki/HTML" target="_blank" rel="noopener">HTML</a>这些现有的广泛流行的协议和标准。</p>
+<ul>
+<li>资源是由URI来指定。</li>
+<li>对资源的操作包括获取、创建、修改和删除，这些操作正好对应HTTP协议提供的GET、POST、PUT和DELETE方法。</li>
+<li>通过操作资源的表现形式来操作资源。</li>
+<li>资源的表现形式则是XML或者HTML，取决于读者是机器还是人、是消费Web服务的客户软件还是Web浏览器。当然也可以是任何其他的格式，例如JSON。</li>
+</ul>
+<p>符合REST设计风格的Web API称为<strong>RESTful API</strong>。它从以下三个方面资源进行定义：</p>
+<ul>
+<li>直观简短的资源地址：URI，比如：<code>http://example.com/resources</code>。</li>
+<li>传输的资源：Web服务接受与返回的<a href="https://zh.wikipedia.org/wiki/互联网媒体类型" target="_blank" rel="noopener">互联网媒体类型</a>，比如：<a href="https://zh.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">JSON</a>，<a href="https://zh.wikipedia.org/wiki/XML" target="_blank" rel="noopener">XML</a>，<a href="https://zh.wikipedia.org/wiki/YAML" target="_blank" rel="noopener">YAML</a>等。</li>
+<li>对资源的操作：Web服务在该资源上所支持的一系列<a href="https://zh.wikipedia.org/wiki/超文本传输协议#请求方法" target="_blank" rel="noopener">请求方法</a>（比如：POST，GET，PUT或DELETE）。</li>
+</ul>
+<h2 id="Cookie和session是什么，为什么要用cookie和session"><a href="#Cookie和session是什么，为什么要用cookie和session" class="headerlink" title="Cookie和session是什么，为什么要用cookie和session"></a>Cookie和session是什么，为什么要用cookie和session</h2><p>Session是在服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据 库、文件中； Cookie是客户端保存用户信息的一种机制，用来记录用户的一些信息，也是实现Session的一种 方式 </p>
+<p>Why原因：</p>
+<p>由于HTTP协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来 识具体的用户，这个机制就是Session.</p>
+<p>典型的场景比如购物车，当你点击下单按钮时，由于HTTP 协议无状态，所以并不知道是哪个用户操作的，所以服务端要为特定的用户创建了特定的 Session，用于标识这个用户，并且跟踪用户，这样才知道购物车里面有几本书。这个Session是保存在服务端的，有一个唯一标识。在服务端保存Session的方法很多，内存、数据库、文件都有 </p>
+<p>思考一下服务端如何识别特定的客户？</p>
+<p>这个时候Cookie就登场了。每次HTTP请求的时候，客户端都会发送相应的Cookie信息到服务端。实际上大多数的应用都是用 Cookie 来实现Session跟踪 的，第一次创建Session的时候，服务端会在HTTP协议中告诉客户端，需要在 Cookie 里面记录一 个Session ID，以后每次请求把这个会话ID发送到服务器，我就知道你是谁了。有人问，如果客户 端的浏览器禁用了 Cookie 怎么办？一般这种情况下，会使用一种叫做URL重写的技术来进行会 话跟踪，即每次HTTP交互，URL后面都会被附加上一个诸如 sid=xxxxx 这样的参数，服务端据此 来识别用户 </p>
+<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点:"></a>不同点:</h3><p>● Cookie在客户端，Session在服务器端 ● Cookie只能存储较少的ASCII数据，Session可以存任意数据。● Cookie有效期比较⻓，在浏览器中一般⻓期保存。Session有效期比较短，在用户会话结束 之 后立刻失效。 ● Cookie的安全性比较差，因为存放在用户端。</p>
+<h2 id="数据库的事务是什么四个特性-ACID-？"><a href="#数据库的事务是什么四个特性-ACID-？" class="headerlink" title="数据库的事务是什么四个特性(ACID)？"></a>数据库的事务是什么四个特性(ACID)？</h2><p>怎么使用 数据库事务是指作为单个逻辑单元执行的一系列操作，要么完全执行，要么完全地不执行。事务 的四个特性(ACID):原子性、一致性、隔离性和持久性。 mysql中执⾏insert delete和update的时候，就开启了⼀个事务。或者⽤starttransaction⼿动开 启事务，commit之后提交成功。rollback回滚。</p>
+<h2 id="事务的特性（ACID）"><a href="#事务的特性（ACID）" class="headerlink" title="事务的特性（ACID）"></a>事务的特性（ACID）</h2><p>讲一下每个特性的意思 一般来说，事务是必须满足4个条件（ACID）：：</p>
+<p>原子性（Atomicity，或称不可分割性）、（一致性 Consistency）、隔离性（Isolation，又称独立性）、持久性（Durability）。 </p>
+<p>原子性：一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间 某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事 务从来没有执行过一样。 一致性：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须 完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定 的工作。 隔离性：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事 务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable re）和ad串行化（Serializable）。 持久性：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Interview/" rel="tag"># Interview</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/26/Front%20End%20Interview/" rel="prev" title="Front End Interview">
+      <i class="fa fa-chevron-left"></i> Front End Interview
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机基础知识"><span class="nav-number">1.</span> <span class="nav-text">计算机基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高频面试题及答案"><span class="nav-number">2.</span> <span class="nav-text">高频面试题及答案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Repo"><span class="nav-number">3.</span> <span class="nav-text">Repo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Thread线程与process进程的区别和联系"><span class="nav-number">3.1.</span> <span class="nav-text">Thread线程与process进程的区别和联系?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程是否具有相同的堆栈-是否有独立的堆栈"><span class="nav-number">3.1.1.</span> <span class="nav-text">线程是否具有相同的堆栈?是否有独立的堆栈?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量，全局静态变量，局部静态变量等存储在哪里"><span class="nav-number">3.2.</span> <span class="nav-text">全局变量，全局静态变量，局部静态变量等存储在哪里</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态-以及实现机制，Override和overload的区别"><span class="nav-number">3.3.</span> <span class="nav-text">多态 以及实现机制，Override和overload的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序什么时候应该使用线程，什么时候单线程效率高"><span class="nav-number">3.4.</span> <span class="nav-text">程序什么时候应该使用线程，什么时候单线程效率高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用线程是如何防止出现大的波峰。"><span class="nav-number">3.5.</span> <span class="nav-text">使用线程是如何防止出现大的波峰。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆栈溢出一般是由什么原因导致的？"><span class="nav-number">3.6.</span> <span class="nav-text">堆栈溢出一般是由什么原因导致的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络"><span class="nav-number">4.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI，TCP-IP，五层协议的体系结构，以及各层协议"><span class="nav-number">4.1.</span> <span class="nav-text">OSI，TCP&#x2F;IP，五层协议的体系结构，以及各层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在浏览器中输入www-baidu-com后执行的全部过程"><span class="nav-number">4.2.</span> <span class="nav-text">在浏览器中输入www.baidu.com后执行的全部过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP三次握手和四次挥手的全过程"><span class="nav-number">4.3.</span> <span class="nav-text">TCP三次握手和四次挥手的全过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么不用2次握手？三次握手建立连接时，发送方再次发送确认的必要性？"><span class="nav-number">4.4.</span> <span class="nav-text">为什么不用2次握手？三次握手建立连接时，发送方再次发送确认的必要性？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？"><span class="nav-number">4.5.</span> <span class="nav-text">TCP的接收缓冲区满了，收到数据后会向发送方发送ACK吗？该怎么解决？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP的区别？"><span class="nav-number">4.6.</span> <span class="nav-text">TCP和UDP的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP如何保证可靠传输，丢包怎么办"><span class="nav-number">4.7.</span> <span class="nav-text">TCP如何保证可靠传输，丢包怎么办</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http和https-http是超文本传输协议"><span class="nav-number">4.8.</span> <span class="nav-text">Http和https http是超文本传输协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Socket-编程"><span class="nav-number">4.9.</span> <span class="nav-text">Socket 编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http协议如何保证可靠性"><span class="nav-number">4.10.</span> <span class="nav-text">http协议如何保证可靠性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fd-socket-与tcp协议栈之间有什么联系？"><span class="nav-number">4.11.</span> <span class="nav-text">fd(socket) 与tcp协议栈之间有什么联系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用滑动窗口控制提高速度"><span class="nav-number">4.12.</span> <span class="nav-text">利用滑动窗口控制提高速度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS域名系统，简单描述其工作原理。"><span class="nav-number">4.13.</span> <span class="nav-text">DNS域名系统，简单描述其工作原理。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址的分类"><span class="nav-number">4.14.</span> <span class="nav-text">IP地址的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP是地址解析协议，简单语言解释一下工作原理。"><span class="nav-number">4.15.</span> <span class="nav-text">ARP是地址解析协议，简单语言解释一下工作原理。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各种协议的介绍"><span class="nav-number">4.16.</span> <span class="nav-text">各种协议的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述RARP协议"><span class="nav-number">4.17.</span> <span class="nav-text">描述RARP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解交换机、路由器、网关的概念，并知道各自的用途"><span class="nav-number">4.18.</span> <span class="nav-text">了解交换机、路由器、网关的概念，并知道各自的用途</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作系统Operating-System"><span class="nav-number">5.</span> <span class="nav-text">操作系统Operating System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#互斥锁，自旋锁，读写锁，悲观锁，乐观锁"><span class="nav-number">5.1.</span> <span class="nav-text">互斥锁，自旋锁，读写锁，悲观锁，乐观锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是死锁，死锁的条件"><span class="nav-number">5.2.</span> <span class="nav-text">什么是死锁，死锁的条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何预防死锁，避免死锁，死锁发生的检查"><span class="nav-number">5.3.</span> <span class="nav-text">如何预防死锁，避免死锁，死锁发生的检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆和栈的区别以及存储模式有什么区别"><span class="nav-number">5.4.</span> <span class="nav-text">堆和栈的区别以及存储模式有什么区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库"><span class="nav-number">6.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Indexing"><span class="nav-number">6.1.</span> <span class="nav-text">Indexing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一索引"><span class="nav-number">6.1.1.</span> <span class="nav-text">唯一索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主键索引"><span class="nav-number">6.1.2.</span> <span class="nav-text">主键索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚集索引"><span class="nav-number">6.1.3.</span> <span class="nav-text">聚集索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC模式实现数据库的增删改查"><span class="nav-number">6.2.</span> <span class="nav-text">MVC模式实现数据库的增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restful-api"><span class="nav-number">6.3.</span> <span class="nav-text">Restful api</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie和session是什么，为什么要用cookie和session"><span class="nav-number">6.4.</span> <span class="nav-text">Cookie和session是什么，为什么要用cookie和session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同点"><span class="nav-number">6.4.1.</span> <span class="nav-text">不同点:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的事务是什么四个特性-ACID-？"><span class="nav-number">6.5.</span> <span class="nav-text">数据库的事务是什么四个特性(ACID)？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的特性（ACID）"><span class="nav-number">6.6.</span> <span class="nav-text">事务的特性（ACID）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dejavu"
+      src="/images/v2-f8df7dc974a522b119a385a0fc09311e_xll.jpg">
+  <p class="site-author-name" itemprop="name">Dejavu</p>
+  <div class="site-description" itemprop="description">Stay gold</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Dejavu-19" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Dejavu-19" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/liu.kunling19@gmail.com" title="E-Mail → liu.kunling19@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dejavu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
